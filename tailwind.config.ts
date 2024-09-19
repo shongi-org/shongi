@@ -7,6 +7,9 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      poppins: ["Poppins-regular", "sans-serif"],
+    },
     extend: {
       colors: {
         background: "var(--background)",
