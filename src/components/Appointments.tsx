@@ -1,7 +1,10 @@
-import React from "react";
-import Image from "next/image";
-import { Flex, Box, Container, Card, Avatar, Text } from "@radix-ui/themes";
-import { Label } from "@radix-ui/react-label";
+import React from 'react';
+import Image from 'next/image';
+import { Flex, Box, Container, Card, Avatar, Text } from '@radix-ui/themes';
+import { Label } from '@radix-ui/react-label';
+import { dayToString } from '@/utils/datehandler';
+import { format } from 'date-fns';
+import { formatDate } from 'date-fns';
 
 type IAppointmentsProps = {};
 
@@ -15,39 +18,39 @@ type IAppointment = {
 const data: IAppointment[] = [
   {
     id: 1,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
   {
     id: 2,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
   {
     id: 3,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
   {
     id: 4,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
   {
     id: 5,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
   {
     id: 6,
-    service: "Phisiotherapy",
+    service: 'Phisiotherapy',
     date: new Date(),
-    providerName: "John Doe",
+    providerName: 'John Doe',
   },
 ];
 
@@ -56,7 +59,7 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
     <Box className="w-full sm:w-1/3 mt-3">
       <Label className="font-poppins">Upcoming Appointments</Label>
       <Flex
-        direction={"column"}
+        direction={'column'}
         className="w-[94vw] h-[30vh] overflow-scroll no-scrollbar mt-3 shadow-inner "
       >
         {data.map((service) => (
@@ -64,22 +67,29 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
             className="w-full sm:w-[33vw] p-3 border-cyan-700 border-2 mb-2 rounded-xl"
             key={service.id}
           >
-            <Flex className="w-full h-fit items-center ">
-              <Flex direction={"column"} className="">
-                <Text as="p" className="text-black text-sm font-poppins">
+            <Flex className="w-full h-fit items-center">
+              <Flex
+                direction={'column'}
+                align={'center'}
+                className="border-cyan-700 border-2 p-3 rounded-md"
+              >
+                <Text
+                  as="p"
+                  className="text-black text-xl font-bold font-poppins"
+                >
                   {service.date.getDate()}
                 </Text>
                 <Text as="p" className="text-black text-sm font-poppins">
-                  {service.date.getDay()}
+                  {dayToString[service.date.getDay() as number]}
                 </Text>
               </Flex>
               <Flex
-                align={"center"}
-                direction={"column"}
-                className="w-full justify-center"
+                align={'start'}
+                direction={'column'}
+                className="w-full justify-center pl-3"
               >
                 <Text as="p" className="text-black text-sm font-poppins">
-                  {service.date.getTime()}
+                  {format(service.date, 'HH:mm')}
                 </Text>
                 <Text as="p" className="text-black text-sm font-poppins">
                   {service.providerName}
