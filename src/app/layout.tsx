@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import "@radix-ui/themes/styles.css";
+import { Theme } from "@radix-ui/themes";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,11 +26,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="no-scrollbar ">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ overflow: "overlay" }}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black `}
       >
-        {children}
+        <Theme accentColor="cyan" panelBackground="solid">
+          {children}
+        </Theme>
       </body>
     </html>
   );
