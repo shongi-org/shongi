@@ -64,8 +64,8 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
             className="w-full sm:w-[33vw] p-3 border-cyan-700 border-2 mb-2 rounded-xl"
             key={service.id}
           >
-            <Flex className="w-full h-fit items-center">
-              <Flex direction={"column"}>
+            <Flex className="w-full h-fit items-center ">
+              <Flex direction={"column"} className="">
                 <Text as="p" className="text-black text-sm font-poppins">
                   {service.date.getDate()}
                 </Text>
