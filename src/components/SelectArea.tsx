@@ -1,5 +1,5 @@
-import { Select } from "@radix-ui/themes";
-import React from "react";
+import { Select } from '@radix-ui/themes';
+import React from 'react';
 
 type SelectAreaProps = {};
 
@@ -12,36 +12,35 @@ type IArea = {
   };
 };
 
-const data: IArea[] = [
-  {
-    id: 1,
-    area: "Dhanmondi",
-    geocode: {
-      lat: 23,
-      long: 91,
-    },
-  },
-  {
-    id: 2,
-    area: "Gulshan",
-    geocode: {
-      lat: 23,
-      long: 91,
-    },
-  },
-  {
-    id: 3,
-    area: "Beribadh",
-    geocode: {
-      lat: 23,
-      long: 91,
-    },
-  },
-];
-
 const SelectArea: React.FC<SelectAreaProps> = () => {
+  const data: IArea[] = [
+    {
+      id: 1,
+      area: 'Dhanmondi',
+      geocode: {
+        lat: 23,
+        long: 91,
+      },
+    },
+    {
+      id: 2,
+      area: 'Gulshan',
+      geocode: {
+        lat: 23,
+        long: 91,
+      },
+    },
+    {
+      id: 3,
+      area: 'Beribadh',
+      geocode: {
+        lat: 23,
+        long: 91,
+      },
+    },
+  ];
   return (
-    <div className="">
+    <div className="w-[45vw]">
       <Select.Root defaultValue="1">
         <Select.Trigger variant="ghost" />
         <Select.Content>
