@@ -8,7 +8,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const CustomButton = ({
+const Button = ({
   size = 'medium',
   variant = 'primary',
   type,
@@ -49,4 +49,4 @@ const CustomButton = ({
   );
 };
 
-export default CustomButton;
+export default Button;

@@ -4,6 +4,7 @@ import { Input } from '@/components/Input';
 import { DatePicker } from '@/components/Calendar';
 import { useState } from 'react';
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
+import Button from '@/components/Button';
 
 export default function SignupPage() {
   const [firstName, setFirstName] = useState('');
@@ -122,12 +123,12 @@ export default function SignupPage() {
           </div>
 
           <div>
-            <button
+            <Button
               type="submit"
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Sign Up
-            </button>
+            </Button>
           </div>
         </form>
 
