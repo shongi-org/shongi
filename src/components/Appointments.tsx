@@ -1,10 +1,8 @@
 import React from 'react';
-import Image from 'next/image';
-import { Flex, Box, Container, Card, Avatar, Text } from '@radix-ui/themes';
+import { Flex, Box, Text } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { dayToString } from '@/utils/datehandler';
 import { format } from 'date-fns';
-import { formatDate } from 'date-fns';
 
 type IAppointmentsProps = {};
 
