@@ -58,7 +58,7 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
       <Label className="font-poppins">Upcoming Appointments</Label>
       <Flex
         direction={'column'}
-        className="w-[94vw] h-[30vh] overflow-scroll no-scrollbar mt-3 shadow-inner "
+        className="w-[94vw] h-[40vh] overflow-scroll no-scrollbar mt-3 p-2 text-white"
       >
         {data.map((service) => (
           <Box
@@ -84,12 +84,18 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
               <Flex
                 align={'start'}
                 direction={'column'}
-                className="w-full justify-center pl-3"
+                className="w-full justify-center pl-5"
               >
-                <Text as="p" className="text-black text-sm font-poppins">
+                <Text
+                  as="p"
+                  className=" text-sm font-poppins pl-2 pr-2 rounded-full bg-cyan-700 text-white"
+                >
                   {format(service.date, 'HH:mm')}
                 </Text>
-                <Text as="p" className="text-black text-sm font-poppins">
+                <Text
+                  as="p"
+                  className="text-black text-sm font-poppins font-bold"
+                >
                   {service.providerName}
                 </Text>
                 <Text as="p" className="text-black text-sm font-poppins">
