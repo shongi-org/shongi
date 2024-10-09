@@ -5,17 +5,17 @@ interface RadioButtonProps {
   selectedValue: string;
   onValueChange: (value: string) => void;
   buttonWidth?: string;
-  orientation?: 'vertical' | 'horizontal'; 
+  orientation?: 'vertical' | 'horizontal';
 }
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   options,
   selectedValue,
   onValueChange,
-  buttonWidth = 'w-full', 
-  orientation = 'horizontal', 
+  buttonWidth = 'w-full',
+  orientation = 'horizontal',
 }) => {
-  const containerClass = `flex ${orientation === 'horizontal' ? 'flex-row space-x-4' : 'flex-col space-y-4'}`;
+  const containerClass = `flex ${orientation === 'horizontal' ? 'flex-row space-x-4 w-full' : 'flex-col space-y-4 w-full'}`;
 
   return (
     <RadioGroup.Root

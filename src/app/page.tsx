@@ -1,6 +1,4 @@
-import Image from 'next/image';
-import { Flex, Box, Container, Card, Avatar, Text } from '@radix-ui/themes';
-import { Label } from '@radix-ui/react-label';
+import { Flex} from '@radix-ui/themes';
 import Recommendation from '@/components/Recommendation';
 import SelectArea from '@/components/SelectArea';
 import ServiceList from '@/components/ServiceList';
