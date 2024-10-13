@@ -3,7 +3,7 @@ import SelectAreaOrder from '@/components/SelectAreaOrder';
 import { Box } from '@radix-ui/themes';
 import React from 'react';
 
-type pageProps = {};
+type pageProps = object;
 
 const page: React.FC<pageProps> = () => {
   return (
