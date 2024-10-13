@@ -4,6 +4,7 @@ import { Label } from '@radix-ui/react-label';
 import { dayToString } from '@/utils/datehandler';
 import { format } from 'date-fns';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type IAppointmentsProps = {};
 
 type IAppointment = {

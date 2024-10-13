@@ -1,9 +1,9 @@
-// components/Others.tsx
-
 'use client';
 import { useState } from 'react';
 import { Input } from '@/components/Input';
 import RadioButton from '@/components/RadioButton';
+import { IoIosArrowBack } from 'react-icons/io';
+import Topbar from '@/components/Topbar';
 
 const Others = () => {
   const [formData, setFormData] = useState({
@@ -35,37 +35,46 @@ const Others = () => {
   ];
 
   return (
-    <div>
-      <h2 className="text-lg font-bold mb-4">User Information</h2>
-      <Input
-        type="text"
-        name="name"
-        placeholder="Full name"
-        value={formData.name}
-        onChange={handleInputChange}
-      />
-      <Input
-        type="tel"
-        name="phone"
-        placeholder="Phone number"
-        value={formData.phone}
-        onChange={handleInputChange}
-      />
-      <Input
-        type="text"
-        name="address"
-        placeholder="Address"
-        value={formData.address}
-        onChange={handleInputChange}
+    <>
+      <Topbar
+        title="For Others"
+        leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
 
-      <RadioButton
-        options={genderOptions}
-        selectedValue={formData.gender}
-        onValueChange={handleGenderChange}
-        buttonWidth="w-full"
-      />
-    </div>
+      <div className="flex items-center justify-center min-h-screen w-full p-4">
+        <div className="w-full space-y-2">
+          <h2 className="text-lg font-bold mb-4">User Information</h2>
+          <Input
+            type="text"
+            name="name"
+            placeholder="Full name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+          <Input
+            type="tel"
+            name="phone"
+            placeholder="Phone number"
+            value={formData.phone}
+            onChange={handleInputChange}
+          />
+          <Input
+            type="text"
+            name="address"
+            placeholder="Address"
+            value={formData.address}
+            onChange={handleInputChange}
+          />
+
+          <RadioButton
+            options={genderOptions}
+            selectedValue={formData.gender}
+            onValueChange={handleGenderChange}
+            buttonWidth="w-full"
+          />
+        </div>
+      </div>
+    </>
   );
 };
 
