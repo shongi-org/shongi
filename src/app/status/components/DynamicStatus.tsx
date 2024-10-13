@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import LottieAnimation from '@/app/status/components/LottieAnimation';
-import waiting from '@/../public/lottiefiles/delivered.json';
+import waiting from '@/../public/lottiefiles/waiting.json';
 
 const DynamicStatus: React.FC = () => {
   return (
