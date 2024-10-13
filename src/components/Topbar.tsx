@@ -14,12 +14,10 @@ const Topbar = ({ leftIcon, title, rightIcon }: TopbarProps) => {
         {leftIcon ? <div>{leftIcon}</div> : <div></div>}
       </div>
 
-      {/* Title Section */}
       <div className="flex-1 flex justify-center">
         {title && <h1 className="text-lg font-semibold">{title}</h1>}
       </div>
 
-      {/* Right Icon Section */}
       <div className="w-12 flex justify-end">
         {rightIcon ? <div>{rightIcon}</div> : <div></div>}
       </div>

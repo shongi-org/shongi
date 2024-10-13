@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import { Flex, Box, Container, Card, Avatar, Text } from "@radix-ui/themes";
+import { Flex, Box, Text } from "@radix-ui/themes";
 import { Label } from "@radix-ui/react-label";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type IServiceListProps = {};
 
 type IService = {

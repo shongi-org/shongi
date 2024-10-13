@@ -19,15 +19,17 @@ const Button = ({
 }: ButtonProps) => {
   const sizeClasses = {
     small: 'py-1 px-2 text-sm',
-    medium: 'py-2 px-4', 
+    medium: 'py-2 px-4',
     block: 'w-full py-2 px-4 flex items-center',
   };
 
   const variantClasses = {
-    primary: 'bg-primary text-primary-contrast border-transparent',
-    secondary: 'bg-field-background text-secondary-contrast border-transparent',
+    primary:
+      'bg-primary text-primary-contrast border-transparent hover:bg-primary-dark',
+    secondary:
+      'bg-field-background text-secondary-contrast border-transparent hover:bg-gray-300',
     transparent:
-      'bg-transparent text-secondary-contrast border border-border-gray',
+      'bg-transparent text-secondary-contrast border border-border-gray hover:bg-gray-100',
   };
 
   return (
@@ -41,8 +43,7 @@ const Button = ({
           {icon}
         </span>
       )}
-      {/* text-[#202224] */}
-      <span className="text-[14px] px-3 py-4 font-aktiv-medium flex-1 text-center whitespace-nowrap">
+      <span className="text-[14px] px-3 py-4  flex-1 text-center whitespace-nowrap">
         {children}
       </span>
     </button>
