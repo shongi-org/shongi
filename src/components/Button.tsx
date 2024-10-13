@@ -35,7 +35,7 @@ const Button = ({
   return (
     <button
       type={type}
-      className={`${className} rounded-[12px] h-[47px] border font-medium shadow-sm transition-all duration-300 ease-in-out focus:outline-none flex items-center ${sizeClasses[size]} ${variantClasses[variant]} `}
+      className={`${className} rounded-[12px] h-[47px] text-white border font-medium shadow-sm transition-all duration-300 ease-in-out focus:outline-none flex items-center ${sizeClasses[size]} ${variantClasses[variant]} `}
       {...props}
     >
       {icon && (

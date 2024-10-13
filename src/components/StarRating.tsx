@@ -2,43 +2,56 @@ import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
 interface StarRatingProps {
-  maxRating?: number;
+  maxStars?: number;
+  initialRating?: number;
   onRatingSelect?: (rating: number) => void;
+  readOnly?: boolean;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({
-  maxRating = 5,
-  onRatingSelect,
-}) => {
-  const [rating, setRating] = useState<number>(0);
-  const [hover, setHover] = useState<number>(0);
+const StarRating = ({
+  maxStars = 5,
+  initialRating = 0,
+  onRatingSelect = () => {},
+  readOnly = false,
+}: StarRatingProps) => {
+  const [currentRating, setCurrentRating] = useState(initialRating);
+  const [hoverRating, setHoverRating] = useState(0);
 
-  const handleClick = (value: number) => {
-    setRating(value);
-    if (onRatingSelect) onRatingSelect(value);
+  const handleClick = (rating: number) => {
+    if (!readOnly) {
+      setCurrentRating(rating);
+      onRatingSelect(rating);
+    }
+  };
+
+  const handleMouseEnter = (rating: number) => {
+    if (!readOnly) {
+      setHoverRating(rating);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!readOnly) {
+      setHoverRating(0);
+    }
   };
 
   return (
-    <div className="star-rating flex">
-      {[...Array(maxRating)].map((_, i) => {
-        const ratingValue = i + 1;
+    <div className="flex items-center space-x-1">
+      {Array.from({ length: maxStars }, (_, index) => {
+        const starValue = index + 1;
         return (
-          <label key={i}>
-            <input
-              type="radio"
-              name="rating"
-              value={ratingValue}
-              onClick={() => handleClick(ratingValue)}
-              style={{ display: 'none' }}
-            />
-            <FaStar
-              size={30}
-              color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-              onMouseEnter={() => setHover(ratingValue)}
-              onMouseLeave={() => setHover(0)}
-              style={{ cursor: 'pointer' }}
-            />
-          </label>
+          <FaStar
+            key={starValue}
+            className={`cursor-pointer text-2xl ${
+              (hoverRating || currentRating) >= starValue
+                ? 'text-yellow-400'
+                : 'text-gray-300'
+            }`}
+            onClick={() => handleClick(starValue)}
+            onMouseEnter={() => handleMouseEnter(starValue)}
+            onMouseLeave={handleMouseLeave}
+          />
         );
       })}
     </div>
