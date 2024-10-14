@@ -3,6 +3,7 @@ import { Flex, Box, Text } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import { dayToString } from '@/utils/datehandler';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type IAppointmentsProps = {};
@@ -12,6 +13,7 @@ type IAppointment = {
   service: string;
   date: Date;
   providerName: string;
+  link: string;
 };
 
 const data: IAppointment[] = [
@@ -20,36 +22,42 @@ const data: IAppointment[] = [
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
   {
     id: 2,
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
   {
     id: 3,
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
   {
     id: 4,
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
   {
     id: 5,
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
   {
     id: 6,
     service: 'Phisiotherapy',
     date: new Date(),
     providerName: 'John Doe',
+    link: '/issue',
   },
 ];
 
@@ -59,51 +67,53 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
       <Label className="font-poppins">Upcoming Appointments</Label>
       <Flex
         direction={'column'}
-        className="w-[94vw] h-[40vh] overflow-scroll no-scrollbar mt-3 p-2 text-white"
+        className="w-[95vw] h-[40vh] overflow-scroll no-scrollbar mt-3 text-white"
       >
         {data.map((service) => (
           <Box
-            className="w-full sm:w-[33vw] p-3 border-cyan-700 border-2 mb-2 rounded-xl"
+            className="w-full sm:w-[33vw] p-2 border-cyan-700 border-2 mb-2 rounded-xl"
             key={service.id}
           >
-            <Flex className="w-full h-fit items-center">
-              <Flex
-                direction={'column'}
-                align={'center'}
-                className="border-cyan-700 border-2 p-3 rounded-md"
-              >
-                <Text
-                  as="p"
-                  className="text-black text-xl font-bold font-poppins"
+            <Link href={service.link}>
+              <Flex className="w-full h-fit items-center">
+                <Flex
+                  direction={'column'}
+                  align={'center'}
+                  className="border-cyan-700 border-2 p-3 rounded-md"
                 >
-                  {service.date.getDate()}
-                </Text>
-                <Text as="p" className="text-black text-sm font-poppins">
-                  {dayToString[service.date.getDay() as number]}
-                </Text>
+                  <Text
+                    as="p"
+                    className="text-black text-xl font-bold font-poppins"
+                  >
+                    {service.date.getDate()}
+                  </Text>
+                  <Text as="p" className="text-black text-sm font-poppins">
+                    {dayToString[service.date.getDay() as number]}
+                  </Text>
+                </Flex>
+                <Flex
+                  align={'start'}
+                  direction={'column'}
+                  className="w-full justify-center pl-5"
+                >
+                  <Text
+                    as="p"
+                    className=" text-sm font-poppins pl-2 pr-2 rounded-full bg-cyan-700 text-white"
+                  >
+                    {format(service.date, 'HH:mm')}
+                  </Text>
+                  <Text
+                    as="p"
+                    className="text-black text-sm font-poppins font-bold"
+                  >
+                    {service.providerName}
+                  </Text>
+                  <Text as="p" className="text-black text-sm font-poppins">
+                    {service.service}
+                  </Text>
+                </Flex>
               </Flex>
-              <Flex
-                align={'start'}
-                direction={'column'}
-                className="w-full justify-center pl-5"
-              >
-                <Text
-                  as="p"
-                  className=" text-sm font-poppins pl-2 pr-2 rounded-full bg-cyan-700 text-white"
-                >
-                  {format(service.date, 'HH:mm')}
-                </Text>
-                <Text
-                  as="p"
-                  className="text-black text-sm font-poppins font-bold"
-                >
-                  {service.providerName}
-                </Text>
-                <Text as="p" className="text-black text-sm font-poppins">
-                  {service.service}
-                </Text>
-              </Flex>
-            </Flex>
+            </Link>
           </Box>
         ))}
       </Flex>

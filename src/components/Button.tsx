@@ -43,7 +43,7 @@ const Button = ({
           {icon}
         </span>
       )}
-      <span className="text-[14px] px-3 py-4  flex-1 text-center whitespace-nowrap">
+      <span className="text-xl px-3 py-4  flex-1 text-center whitespace-nowrap">
         {children}
       </span>
     </button>
