@@ -31,6 +31,7 @@ export default function RootLayout({
         style={{ overflow: "overlay" }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black `}
       >
+
         <Theme accentColor="cyan" panelBackground="solid">
           {children}
         </Theme>
