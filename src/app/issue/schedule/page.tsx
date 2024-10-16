@@ -4,15 +4,16 @@ import { useState } from 'react';
 import { format, isBefore, startOfDay, addMinutes } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import * as Select from '@radix-ui/react-select';
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'; 
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import 'react-day-picker/dist/style.css';
-
+import { useRouter } from 'next/navigation';
 
 export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTime, setSelectedTime] = useState<string | undefined>(
     undefined,
   );
+  const router = useRouter();
 
   const handleDateChange = (date: Date | undefined) => {
     if (date && isBefore(date, startOfDay(new Date()))) {
@@ -61,20 +62,21 @@ export default function SchedulePage() {
 
     const scheduledDateTime = `${format(selectedDate, 'yyyy-MM-dd')} ${selectedTime}`;
     console.log('Scheduled Date and Time:', scheduledDateTime);
-    alert(`Scheduled on: ${scheduledDateTime}`);
+    // alert(`Scheduled on: ${scheduledDateTime}`);
+    router.push('/cart');
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg">
+      <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg flex flex-col justify-evenly">
         <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
           Schedule Event
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Date Picker */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Select a Date
+          <div className="flex flex-col items-center">
+            <label className="block text-lg font-medium text-gray-700 mb-2">
+              Select a Date for your appointment
             </label>
             <DayPicker
               mode="single"
@@ -101,12 +103,12 @@ export default function SchedulePage() {
                 >
                   <Select.Value placeholder="Select a time" />
                   <Select.Icon>
-                    <FiChevronDown /> 
+                    <FiChevronDown />
                   </Select.Icon>
                 </Select.Trigger>
                 <Select.Content className="bg-white shadow-lg rounded-lg">
                   <Select.ScrollUpButton className="flex items-center justify-center p-2">
-                    <FiChevronUp /> 
+                    <FiChevronUp />
                   </Select.ScrollUpButton>
                   <Select.Viewport className="p-2">
                     <Select.Group>
@@ -122,7 +124,7 @@ export default function SchedulePage() {
                     </Select.Group>
                   </Select.Viewport>
                   <Select.ScrollDownButton className="flex items-center justify-center p-2">
-                    <FiChevronDown /> 
+                    <FiChevronDown />
                   </Select.ScrollDownButton>
                 </Select.Content>
               </Select.Root>

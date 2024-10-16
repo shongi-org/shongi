@@ -4,7 +4,9 @@ import Image from 'next/image';
 import React from 'react';
 import Counter from './Counter';
 
-type OrderItemListProps = {};
+type OrderItemListProps = {
+  children?: string;
+};
 
 const data: ICart = {
   orderItems: [

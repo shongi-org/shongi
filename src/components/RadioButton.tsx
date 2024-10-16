@@ -35,7 +35,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
           value={option.value}
           id={option.value}
         >
-          <label htmlFor={option.value} className="cursor-pointer">
+          <label htmlFor={option.value} className="cursor-pointer text-2xl">
             {option.label}
           </label>
         </RadioGroup.Item>
