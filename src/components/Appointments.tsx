@@ -63,7 +63,7 @@ const data: IAppointment[] = [
 
 const Appointments: React.FC<IAppointmentsProps> = () => {
   return (
-    <Box className="w-full sm:w-1/3 mt-3">
+    <Box className="w-full sm:w-1/3 mt-3 z-10">
       <Label className="font-poppins text-xl font-bold">
         Upcoming Appointments
       </Label>
@@ -73,7 +73,7 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
       >
         {data.map((service) => (
           <Box
-            className="w-full sm:w-[33vw] p-2 bg-rose-200 border-2 mb-2 rounded-xl shadow-md"
+            className="w-full sm:w-[33vw] p-2 bg-white border-2 mb-2 rounded-xl shadow-md"
             key={service.id}
           >
             <Link href={service.link}>
@@ -81,15 +81,15 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
                 <Flex
                   direction={'column'}
                   align={'center'}
-                  className="border-white border-2 p-3 rounded-md"
+                  className="border-primary border-2 p-3 rounded-md"
                 >
                   <Text
                     as="p"
-                    className="text-white text-xl font-bold font-poppins"
+                    className="text-primary text-xl font-bold font-poppins"
                   >
                     {service.date.getDate()}
                   </Text>
-                  <Text as="p" className="text-white text-sm font-poppins">
+                  <Text as="p" className="text-primary text-sm font-poppins">
                     {dayToString[service.date.getDay() as number]}
                   </Text>
                 </Flex>
@@ -100,17 +100,17 @@ const Appointments: React.FC<IAppointmentsProps> = () => {
                 >
                   <Text
                     as="p"
-                    className=" text-sm font-poppins pl-2 pr-2 rounded-full bg-white text-[#b03b47] font-bold"
+                    className=" text-sm font-poppins pl-2 pr-2 rounded-full bg-primary text-white font-bold"
                   >
                     {format(service.date, 'HH:mm')}
                   </Text>
                   <Text
                     as="p"
-                    className="text-white text-sm font-poppins font-bold"
+                    className="text-black text-sm font-poppins font-bold"
                   >
                     {service.providerName}
                   </Text>
-                  <Text as="p" className="text-white text-sm font-poppins">
+                  <Text as="p" className="text-black text-sm font-poppins">
                     {service.service}
                   </Text>
                 </Flex>
