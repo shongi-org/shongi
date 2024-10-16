@@ -20,7 +20,7 @@ const RadioButtonList: React.FC = () => {
 
   const handleValueChange = (value: string) => {
     setSelectedOption(value);
-    router.push('/dashboard');
+    router.push('/issue/schedule');
   };
 
   return (
