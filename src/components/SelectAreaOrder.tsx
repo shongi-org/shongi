@@ -1,8 +1,10 @@
 import { IArea } from '@/interfaces/IArea';
 import { Box, Flex } from '@radix-ui/themes';
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-type SelectAreaOrderProps = {};
+type SelectAreaOrderProps = {
+  children?: ReactNode;
+};
 
 const data: IArea[] = [
   {
@@ -21,7 +23,7 @@ const SelectAreaOrder: React.FC<SelectAreaOrderProps> = () => {
   const selected = 1;
   return (
     <div className="mt-4 font-poppins">
-      <p className="text-xl">Select Area</p>
+      <p className="text-xl mb-5 font-bold">Select Area</p>
       <Box className="w-full">
         {data.map((item) => (
           <Flex
@@ -29,7 +31,7 @@ const SelectAreaOrder: React.FC<SelectAreaOrderProps> = () => {
             width={'full'}
             direction={'column'}
             align={'start'}
-            className={`${item.id === selected ? 'border-cyan-700' : 'border-gray-400'}  border-2 p-2 rounded-md mb-2`}
+            className={`${item.id === selected ? 'border-primary' : 'border-gray-400'}  border-2 p-2 rounded-md mb-2 shadow-md`}
             key={item.id}
           >
             <p className="">{item.label}</p>
