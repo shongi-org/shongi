@@ -7,6 +7,7 @@ import * as Select from '@radix-ui/react-select';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import 'react-day-picker/dist/style.css';
 import { useRouter } from 'next/navigation';
+import FloatingCallButton from '@/components/FloatingCallButton';
 
 export default function SchedulePage() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
@@ -142,6 +143,7 @@ export default function SchedulePage() {
           </div>
         </form>
       </div>
+      <FloatingCallButton phoneNumber="1234567890" />
     </div>
   );
 }

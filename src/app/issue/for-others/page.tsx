@@ -4,6 +4,7 @@ import { Input } from '@/components/Input';
 import RadioButton from '@/components/RadioButton';
 import { IoIosArrowBack } from 'react-icons/io';
 import Topbar from '@/components/Topbar';
+import FloatingCallButton from '@/components/FloatingCallButton';
 
 const Others = () => {
   const [formData, setFormData] = useState({
@@ -74,6 +75,7 @@ const Others = () => {
           />
         </div>
       </div>
+      <FloatingCallButton phoneNumber="1234567890" />
     </>
   );
 };
