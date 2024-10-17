@@ -3,6 +3,7 @@ import RadioButton from '@/components/RadioButton';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const dummyData = [
   { label: 'Physiotherapist', value: 'physiotherapist' },
@@ -15,9 +16,11 @@ const RadioButtonList: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>(
     dummyData[0].value,
   );
+  const router = useRouter();
 
   const handleValueChange = (value: string) => {
     setSelectedOption(value);
+    router.push('/issue/schedule');
   };
 
   return (

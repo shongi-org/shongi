@@ -4,7 +4,9 @@ import Image from 'next/image';
 import React from 'react';
 import Counter from './Counter';
 
-type OrderItemListProps = {};
+type OrderItemListProps = {
+  children?: string;
+};
 
 const data: ICart = {
   orderItems: [
@@ -34,47 +36,52 @@ data.total = data.cartTotal + data.deliveryFee;
 
 const OrderItemList: React.FC<OrderItemListProps> = () => {
   return (
-    <div className="mt-4 border-b-2 border-black">
-      <Box className="w-full">
+    <div className="w-full mt-4 ">
+      <Box className="">
         {data.orderItems.map((item) => (
           <Flex
             align={'center'}
             width={'full'}
             justify={'between'}
-            className="border-cyan-700 border-2 p-2 rounded-md mb-2"
+            className="border-2 p-2 rounded-md mb-2 shadow-md"
             key={item.id}
           >
-            <Image
-              src={item.image}
-              width={50}
-              height={50}
-              alt="cart-item"
-            ></Image>
-            <div>
-              <p className="font-poppins">{item.generic}</p>
-              <p className="font-poppins">
-                {item.marketName},{item.brand}
-              </p>
-            </div>
+            <Flex>
+              <Image
+                src={item.image}
+                width={50}
+                height={50}
+                alt="cart-item"
+              ></Image>
+              <div className="ml-2">
+                <p className="font-poppins">{item.generic}</p>
+                <p className="font-poppins">
+                  {item.marketName},{item.brand}
+                </p>
+              </div>
+            </Flex>
             <Counter></Counter>
           </Flex>
         ))}
       </Box>
-      <Box>
-        <Flex justify={'between'}>
+      <Box className="mt-5 mb-5">
+        <Flex justify={'between'} className="mb-2">
           {' '}
-          <p className="font-poppins font-bold">Summary</p>
-          <p className="font-poppins font-bold">{data.cartTotal}</p>
+          <p className="font-poppins font-bold text-gray-400">Summary</p>
+          <p className="font-poppins font-bold ">{data.cartTotal}Tk</p>
         </Flex>
-        <Flex justify={'between'}>
+        <Flex
+          justify={'between'}
+          className="border-b-2 border-black border-dotted pb-5"
+        >
           {' '}
-          <p className="font-poppins font-bold">Delivery Fee</p>
-          <p className="font-poppins font-bold">{data.deliveryFee}</p>
+          <p className="font-poppins font-bold text-gray-400">Delivery Fee</p>
+          <p className="font-poppins font-bold">{data.deliveryFee}Tk</p>
         </Flex>
-        <Flex justify={'between'}>
+        <Flex justify={'between'} className="mt-5">
           {' '}
-          <p className="font-poppins font-bold">Total</p>
-          <p className="font-poppins font-bold">{data.total}</p>
+          <p className="font-poppins font-bold text-gray-400">Total</p>
+          <p className="font-poppins font-bold">{data.total}Tk</p>
         </Flex>
       </Box>
     </div>

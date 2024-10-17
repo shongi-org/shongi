@@ -5,97 +5,116 @@ import {
   AiOutlineUpload,
 } from 'react-icons/ai';
 import axios from 'axios';
-import Button from './Button';
+import Button from '@/components/Button'; 
 
 interface UploadImageProps {
-  cloudinaryUrl: string; 
-  uploadPreset: string; 
+  cloudinaryUrl: string;
+  uploadPreset: string;
 }
 
 const UploadImage: React.FC<UploadImageProps> = ({
   cloudinaryUrl,
   uploadPreset,
 }) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setSelectedFile(file);
-      setPreviewUrl(URL.createObjectURL(file)); 
-    }
+    const files = Array.from(e.target.files || []);
+    setSelectedFiles(files);
+
+    const urls = files.map((file) => URL.createObjectURL(file));
+    setPreviewUrls(urls);
   };
 
-  const handleDelete = () => {
-    setSelectedFile(null);
-    setPreviewUrl(null);
+  const handleDelete = (index: number) => {
+    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+    const updatedUrls = previewUrls.filter((_, i) => i !== index);
+    setSelectedFiles(updatedFiles);
+    setPreviewUrls(updatedUrls);
   };
 
   const handleUpload = async () => {
-    if (!selectedFile) return; 
+    if (!selectedFiles.length) return;
 
-    const formData = new FormData();
-    formData.append('file', selectedFile);
-    formData.append('upload_preset', uploadPreset);
+    setUploading(true);
 
     try {
-      setUploading(true); 
-      const response = await axios.post(cloudinaryUrl, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
+      const uploadPromises = selectedFiles.map((file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', uploadPreset);
+
+        return axios.post(cloudinaryUrl, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+        });
       });
-      alert('Image uploaded successfully!');
-      console.log('Upload response:', response.data);
+
+ 
+      const responses = await Promise.all(uploadPromises);
+
+      alert('Images uploaded successfully!');
+      console.log(
+        'Upload responses:',
+        responses.map((response) => response.data),
+      );
 
       setUploading(false);
-      handleDelete();
+      setSelectedFiles([]);
+      setPreviewUrls([]);
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('Error uploading images:', error);
       setUploading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <label className="cursor-pointer">
+    <div className="flex flex-col items-center space-y-6">
+      <label className="cursor-pointer flex flex-col items-center justify-center py-4 px-6 bg-white text-primary rounded-lg shadow-md transition-all duration-300">
         <input
           type="file"
           accept="image/*"
+          multiple
           className="hidden"
           onChange={handleFileChange}
         />
-        <AiOutlinePlus className="text-4xl text-blue-500 hover:text-blue-700" />
+        <AiOutlinePlus className="text-3xl" />
       </label>
 
-      {previewUrl && (
-        <div className="relative">
-          <img
-            src={previewUrl}
-            alt="Preview"
-            className="w-48 h-48 object-cover"
-          />
-          <button
-            onClick={handleDelete}
-            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-700"
-          >
-            <AiOutlineDelete />
-          </button>
+      {previewUrls.length > 0 && (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+          {previewUrls.map((url, index) => (
+            <div key={index} className="relative">
+              <img
+                src={url}
+                alt={`Preview ${index}`}
+                className="w-20 h-20 object-cover rounded-md shadow-sm"
+              />
+              <button
+                onClick={() => handleDelete(index)}
+                className="absolute top-1 right-1 bg-danger text-white rounded-full p-1 shadow hover:bg-red-600 transition-all"
+              >
+                <AiOutlineDelete />
+              </button>
+            </div>
+          ))}
         </div>
       )}
 
-      {previewUrl && (
-        <Button type='button'
+      {selectedFiles.length > 0 && (
+        <Button
+          type="button"
           onClick={handleUpload}
-          className="bg-primary text-white py-2 px-4 rounded hover:bg-green-700 flex items-center"
+          size="medium"
+          variant="primary"
+          icon={<AiOutlineUpload />}
           disabled={uploading}
+          className={`mt-4 transition-all duration-300 ${uploading ? 'cursor-not-allowed opacity-50' : ''}`}
         >
-          {uploading ? 'Uploading...' : 'Upload'}
-          <AiOutlineUpload className="ml-2" />
+          {uploading ? 'Uploading...' : 'Upload Images'}
         </Button>
       )}
-
-     
     </div>
   );
 };

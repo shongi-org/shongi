@@ -1,7 +1,10 @@
 import { Select } from '@radix-ui/themes';
+import Image from 'next/image';
 import React from 'react';
 
-type SelectAreaProps = {};
+type SelectAreaProps = {
+  children?: string;
+};
 
 type IArea = {
   id: number;
@@ -40,22 +43,31 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
     },
   ];
   return (
-    <div className="w-[45vw]">
-      <Select.Root defaultValue="1">
-        <Select.Trigger variant="ghost" />
-        <Select.Content>
-          {data.map((area) => (
-            <Select.Item
-              className="font-poppins "
-              key={area.id}
-              value={area.id.toString()}
-            >
-              <p className="text-base font-poppins">{area.area}</p>
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
-    </div>
+    <>
+      <div className=" flex items-center justify-between">
+        <Image
+          src="https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729074290/marker_majhpp.png"
+          alt="marker"
+          width={50}
+          height={50}
+          className="h-8 w-auto mr-5"
+        ></Image>
+        <Select.Root defaultValue="1">
+          <Select.Trigger variant="ghost" />
+          <Select.Content>
+            {data.map((area) => (
+              <Select.Item
+                className="font-poppins"
+                key={area.id}
+                value={area.id.toString()}
+              >
+                <p className="text-base font-poppins">{area.area}</p>
+              </Select.Item>
+            ))}
+          </Select.Content>
+        </Select.Root>
+      </div>
+    </>
   );
 };
 export default SelectArea;

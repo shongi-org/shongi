@@ -8,7 +8,7 @@ type TopbarProps = {
 
 const Topbar = ({ leftIcon, title, rightIcon }: TopbarProps) => {
   return (
-    <div className="flex items-center justify-between h-12 px-4 bg-white shadow-sm">
+    <div className="w-full flex items-center justify-between h-12 px-4 bg-white shadow-sm font-poppins">
       {/* Left Icon Section */}
       <div className="w-12 flex justify-start">
         {leftIcon ? <div>{leftIcon}</div> : <div></div>}

@@ -1,10 +1,11 @@
-import React from "react";
-import Image from "next/image";
-import { Flex, Box, Text } from "@radix-ui/themes";
-import { Label } from "@radix-ui/react-label";
+import React, { ReactNode } from 'react';
+import Image from 'next/image';
+import { Flex, Box, Text } from '@radix-ui/themes';
+import { Label } from '@radix-ui/react-label';
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-type IServiceListProps = {};
+type IServiceListProps = {
+  children?: ReactNode;
+};
 
 type IService = {
   id: number;
@@ -15,53 +16,62 @@ type IService = {
 const data: IService[] = [
   {
     id: 1,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988860/infinimed/pharmacy_ehjroy.jpg",
-    title: "Pharmacy",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/pharmacy_coimsv.png',
+    title: 'Pharmacy at Home',
   },
   {
     id: 2,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988853/infinimed/nursing_eg5lqj.jpg",
-    title: "Nursing",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
+    title: 'Nursing at Home',
   },
   {
     id: 3,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988852/infinimed/phisiotherapist_tfsxlh.jpg",
-    title: "Phisiotherapy",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
+    title: 'Phisiotherapy at Home',
   },
   {
     id: 4,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988860/infinimed/pharmacy_ehjroy.jpg",
-    title: "Pharmacy",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
+    title: 'Tests at Home',
   },
   {
     id: 5,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988853/infinimed/nursing_eg5lqj.jpg",
-    title: "Nursing",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
+    title: 'Online Consultation',
   },
   {
     id: 6,
-    icon: "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988852/infinimed/phisiotherapist_tfsxlh.jpg",
-    title: "Phisiotherapy",
+    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
+    title: 'Doctor at Home',
   },
 ];
 
 const ServiceList: React.FC<IServiceListProps> = () => {
   return (
     <Box className="w-full sm:w-1/3 mt-3">
-      <Label className="font-poppins">Services</Label>
-      <Flex className="w-[95vw] overflow-scroll no-scrollbar mt-3">
+      <Label className="font-poppins text-xl font-bold">Services</Label>
+      <Flex
+        justify={'between'}
+        className="w-full flex-wrap no-scrollbar justify-between mt-3 gap-y-3"
+      >
         {data.map((service) => (
-          <Box className="w-fit sm:w-[33vw] mr-3 " key={service.id}>
-            <Flex className="w-[27vw] h-fit flex-col items-center">
+          <Box className="w-fit sm:w-[33vw] " key={service.id}>
+            <Flex className="w-[28vw] h-fit flex-col items-center">
               <Image
-                width={200}
-                height={200}
-                className="w-full h-auto rounded-lg"
+                width={150}
+                height={150}
+                className="w-full h-auto rounded-lg p-5 bg-[#283891]"
                 alt="service"
                 src={service.icon}
               />
-              <Flex justify={"center"} className="w-full justify-center">
-                <Text as="p" className="text-black text-sm font-poppins">
+              <Flex
+                justify={'center'}
+                className="w-full justify-center mt-2 font-bold"
+              >
+                <Text
+                  as="p"
+                  className="text-black text-base font-poppins text-center"
+                >
                   {service.title}
                 </Text>
               </Flex>

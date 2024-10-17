@@ -25,7 +25,7 @@ const Button = ({
 
   const variantClasses = {
     primary:
-      'bg-primary text-primary-contrast border-transparent hover:bg-primary-dark',
+      'bg-primary text-primary-contrast border-transparent hover:bg-primaryDark',
     secondary:
       'bg-field-background text-secondary-contrast border-transparent hover:bg-gray-300',
     transparent:
@@ -43,7 +43,7 @@ const Button = ({
           {icon}
         </span>
       )}
-      <span className="text-[14px] px-3 py-4  flex-1 text-center whitespace-nowrap">
+      <span className="text-xl px-3 py-4  flex-1 text-center whitespace-nowrap">
         {children}
       </span>
     </button>
