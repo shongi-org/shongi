@@ -23,6 +23,7 @@ const config: Config = {
       colors: {
         primary: '#2196f3',
         secondary: '##88c2fb',
+        primaryDark: '#2180ff',
         danger: '#F43F5E',
         background: {
           light: '#F3F4F6',
