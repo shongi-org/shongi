@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import * as Avatar from '@radix-ui/react-avatar';
 import Link from 'next/link';
 
-type ProfileAvatarProps = {};
+type ProfileAvatarProps = {
+  children?: ReactNode;
+};
 
 const ProfileAvatar: React.FC<ProfileAvatarProps> = () => {
   return (

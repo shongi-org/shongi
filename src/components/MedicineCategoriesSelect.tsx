@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Select } from '@radix-ui/themes';
-type MedicineCategoriesSelectProps = {};
+type MedicineCategoriesSelectProps = {
+  children?: ReactNode;
+};
 
 type IMedicineCategory = {
   id: number;

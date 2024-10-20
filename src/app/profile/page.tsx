@@ -1,9 +1,11 @@
 import * as Tabs from '@radix-ui/react-tabs';
 import * as Avatar from '@radix-ui/react-avatar';
-import { Box, Flex, Text } from '@radix-ui/themes';
-import React from 'react';
+import { Flex, Text } from '@radix-ui/themes';
+import React, { ReactNode } from 'react';
 
-type profileProps = {};
+type profileProps = {
+  children?: ReactNode;
+};
 
 const profile: React.FC<profileProps> = () => {
   return (
@@ -73,7 +75,7 @@ const profile: React.FC<profileProps> = () => {
               value="tab1"
             >
               <p className="mb-5 text-mauve11 text-[15px] leading-normal">
-                Make changes to your account here. Click save when you're done.
+                Make changes to your account here. Click save when you are done.
               </p>
               <fieldset className="mb-[15px] w-full flex flex-col justify-start">
                 <label
