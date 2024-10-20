@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 type TopbarProps = {
@@ -7,10 +9,16 @@ type TopbarProps = {
 };
 
 const Topbar = ({ leftIcon, title, rightIcon }: TopbarProps) => {
+  const router = useRouter();
   return (
     <div className="w-full flex items-center justify-between h-20 px-4 bg-white shadow-sm font-poppins">
       {/* Left Icon Section */}
-      <div className="w-12 flex justify-start">
+      <div
+        onClick={() => {
+          router.back();
+        }}
+        className="w-12 flex justify-start"
+      >
         {leftIcon ? <div>{leftIcon}</div> : <div></div>}
       </div>
 

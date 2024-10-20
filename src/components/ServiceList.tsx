@@ -26,31 +26,31 @@ const data: IService[] = [
     id: 2,
     icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
     title: 'Nursing at Home',
-    link: '/issue',
+    link: '/issue/services/nurses-at-home',
   },
   {
     id: 3,
     icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
     title: 'Phisiotherapy at Home',
-    link: '/issue',
+    link: '/issue/services/phisiotherapy-at-home',
   },
   {
     id: 4,
     icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
     title: 'Tests at Home',
-    link: '/issue',
+    link: '/issue/services/test-investigation-at-home',
   },
   {
     id: 5,
     icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
     title: 'Online Consultation',
-    link: '/issue',
+    link: '/issue/services/online-consultation',
   },
   {
     id: 6,
     icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
     title: 'Doctor at Home',
-    link: '/issue',
+    link: '/issue/services/health-at-home',
   },
 ];
 

@@ -1,0 +1,114 @@
+{
+  "online-consultation": [
+    {
+      "id": 1,
+      "subserviceName": "Muscle Pain",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "subserviceName": "Specific Organ Pain",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "subserviceName": "Physical Injury",
+      "image": ""
+    }
+  ],
+  "health-at-home": [
+    {
+      "id": 1,
+      "subserviceName": "IV Canula and Saline",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "subserviceName": "Dressing at Home",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "subserviceName": "Cathetre Care",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "subserviceName": "Stoma Care",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "subserviceName": "N-4 Tube Care",
+      "image": ""
+    },
+    {
+      "id": 6,
+      "subserviceName": "I/V & I/M Injection",
+      "image": ""
+    },
+    {
+      "id": 7,
+      "subserviceName": "Stitch Omit",
+      "image": ""
+    },
+    {
+      "id": 8,
+      "subserviceName": "BP Check and DM Check",
+      "image": ""
+    },
+    {
+      "id": 9,
+      "subserviceName": "Ambulance Service",
+      "image": ""
+    }
+  ],
+  "test-investigation-at-home": [
+    {
+      "id": 1,
+      "subserviceName": "Blood, UMI, Stool or Sputu",
+      "image": ""
+    },
+    {
+      "id": 2,
+      "subserviceName": "ECG",
+      "image": ""
+    },
+    {
+      "id": 3,
+      "subserviceName": "X-ray",
+      "image": ""
+    },
+    {
+      "id": 4,
+      "subserviceName": "USG",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "subserviceName": "ECHO",
+      "image": ""
+    }
+  ],
+  "pharmacy": [
+    {
+      "id": 1,
+      "subserviceName": "ECHO",
+      "image": ""
+    }
+  ],
+  "phisiotherapy-at-home": [
+    {
+      "id": 5,
+      "subserviceName": "ECHO",
+      "image": ""
+    }
+  ],
+  "nurses-at-home": [
+    {
+      "id": 5,
+      "subserviceName": "ECHO",
+      "image": ""
+    }
+  ]
+}
