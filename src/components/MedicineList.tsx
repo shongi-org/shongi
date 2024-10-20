@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import MedicineCard from './MedicineCard';
 import { IMedicine } from '@/interfaces/IMedicine';
 
-type MedicineListProps = {};
+type MedicineListProps = {
+  children?: ReactNode;
+};
 
 const MedicineList: React.FC<MedicineListProps> = () => {
   const data: IMedicine[] = [
@@ -58,9 +60,9 @@ const MedicineList: React.FC<MedicineListProps> = () => {
     },
   ];
   return (
-    <div className="flex flex-wrap w-[100vw] justify-evenly gap-y-3 mt-3">
+    <div className="flex flex-wrap w-[100vw] justify-evenly gap-y-3 mt-3 pb-20">
       {data.map((medicine) => (
-        <div key={medicine.id} className="w-[45vw]">
+        <div key={medicine.id} className="w-[45vw] animate-slidein">
           <MedicineCard medicine={medicine} />
         </div>
       ))}

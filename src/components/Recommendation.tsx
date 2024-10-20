@@ -59,7 +59,7 @@ const settings = {
 
 const Recommendation: React.FC<RecommendationProps> = () => {
   return (
-    <Box className="w-full sm:w-1/3 mt-3">
+    <Box className="w-full sm:w-1/3 mt-3 animate-slidein">
       <Label className="font-poppins no-scrollbar font-bold text-xl">
         Recommended For you
       </Label>

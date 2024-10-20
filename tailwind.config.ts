@@ -1,13 +1,25 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
+      keyframes: {
+        slidein: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(-10px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+      },
       colors: {
         primary: '#2196f3',
         secondary: '##88c2fb',
@@ -22,7 +34,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        poppins: ["Poppins-regular", "sans-serif"],
+        poppins: ['Poppins-regular', 'sans-serif'],
       },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -41,6 +53,9 @@ const config: Config = {
         DEFAULT: '0.25rem',
         lg: '0.5rem',
         full: '9999px',
+      },
+      animation: {
+        slidein: 'slidein 1s ease 600ms forwards',
       },
     },
   },

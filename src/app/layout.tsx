@@ -3,6 +3,8 @@ import localFont from 'next/font/local';
 import './globals.css';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
+// import { store } from '@/lib/store';
+// import { Provider } from 'react-redux';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -31,9 +33,11 @@ export default function RootLayout({
         style={{ overflow: 'overlay' }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black `}
       >
+        {/* <Provider store={store}> */}
         <Theme accentColor="ruby" panelBackground="solid">
           {children}
         </Theme>
+        {/* </Provider> */}
       </body>
     </html>
   );
