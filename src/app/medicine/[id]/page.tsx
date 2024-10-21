@@ -30,7 +30,7 @@ const page: React.FC<pageProps> = () => {
         <Flex
           justify={'between'}
           align={'center'}
-          className="absolute bottom-[-7.5vh] bg-slate-300 w-[80vw] h-[15vh] rounded-full p-8 shadow-lg animate-slidein z-10"
+          className="absolute bottom-[-7.5vh] bg-slate-300 w-[80vw] h-[15vh] rounded-full p-8 shadow-lg z-10"
         >
           <Flex direction={'column'}>
             <p className="font-poppins font-bold text-xl">
@@ -61,7 +61,7 @@ const page: React.FC<pageProps> = () => {
           className="w-full p-2 bg-red-200"
         />
       </div>
-      <Box className="pt-[10vh] pl-[5vw] pr-[5vw] bg-white  h-[60vh] w-full animate-slidein">
+      <Box className="pt-[10vh] pl-[5vw] pr-[5vw] bg-white  h-[60vh] w-full ">
         <p className="text-black font-bold font-poppins text-xl mt-6">
           Dosage{' '}
         </p>

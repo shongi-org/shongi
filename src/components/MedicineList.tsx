@@ -62,7 +62,7 @@ const MedicineList: React.FC<MedicineListProps> = () => {
   return (
     <div className="flex flex-wrap w-[100vw] justify-evenly gap-y-3 mt-3 pb-20">
       {data.map((medicine) => (
-        <div key={medicine.id} className="w-[45vw] animate-slidein">
+        <div key={medicine.id} className="w-[45vw] ">
           <MedicineCard medicine={medicine} />
         </div>
       ))}

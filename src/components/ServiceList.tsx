@@ -56,7 +56,7 @@ const data: IService[] = [
 
 const ServiceList: React.FC<IServiceListProps> = () => {
   return (
-    <Box className="w-full sm:w-1/3 mt-3 animate-slidein">
+    <Box className="w-full sm:w-1/3 mt-3">
       <Label className="font-poppins text-xl font-bold">Services</Label>
       <Flex
         justify={'between'}
