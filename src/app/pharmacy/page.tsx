@@ -2,11 +2,9 @@ import MedicineCategories from '@/components/MedicineCategories';
 import MedicineList from '@/components/MedicineList';
 import SearchBar from '@/components/SearchBar';
 import { Flex } from '@radix-ui/themes';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-type pageProps = {
-  children?: ReactNode;
-};
+type pageProps = object;
 
 const page: React.FC<pageProps> = () => {
   return (

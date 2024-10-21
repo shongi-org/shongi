@@ -1,14 +1,10 @@
 'use client';
-import React, { ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
+import React from 'react';
 import Image from 'next/image';
 import { IMedicine } from '@/interfaces/IMedicine';
 import { Box, Flex } from '@radix-ui/themes';
 
-type pageProps = {
-  children?: ReactNode;
-};
-
+type pageProps = object;
 const dataTable: IMedicine[] = [
   {
     id: 1,
@@ -25,9 +21,8 @@ const dataTable: IMedicine[] = [
   },
 ];
 
-const Page: React.FC<pageProps> = () => {
-  const pathname = usePathname();
-  console.log(pathname);
+const page: React.FC<pageProps> = () => {
+  // const pathname = usePathname();
   const data = dataTable[0];
   return (
     <div className="w-full overflow-y-scroll">
@@ -80,4 +75,4 @@ const Page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default Page;
+export default page;

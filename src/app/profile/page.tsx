@@ -1,11 +1,9 @@
 import * as Tabs from '@radix-ui/react-tabs';
 import * as Avatar from '@radix-ui/react-avatar';
 import { Flex, Text } from '@radix-ui/themes';
-import React, { ReactNode } from 'react';
+import React from 'react';
 
-type profileProps = {
-  children?: ReactNode;
-};
+type profileProps = object;
 
 const profile: React.FC<profileProps> = () => {
   return (
