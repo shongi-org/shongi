@@ -28,7 +28,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
           alt="medicine image"
         />
 
-        <div className="p-5 w-full">
+        <div className="p-5 w-full bg-white">
           <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
             {medicine.generic}
           </h5>

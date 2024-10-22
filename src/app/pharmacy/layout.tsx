@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Box className="absolute bottom-0 mb-2">
         <Flex
           justify={'center'}
-          className="w-[96vw] bg-primary flex text-white font-poppins font-medium p-3 text-xl rounded-md "
+          className="w-[96vw] bg-primary flex text-white font-poppins font-medium p-3 text-xl rounded-md"
         >
           <p className="w-1/2 text-end pr-2">Cart</p>
           <p>|</p>
