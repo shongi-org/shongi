@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
+'use client';
+// import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
+import ReduxProvider from '@/lib/redux-provider';
 // import { store } from '@/lib/store';
 // import { Provider } from 'react-redux';
 
@@ -17,10 +19,10 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
-export const metadata: Metadata = {
-  title: 'Infinimed',
-  description: 'Home Medic Services',
-};
+// export const metadata: Metadata = {
+//   title: 'Infinimed',
+//   description: 'Home Medic Services',
+// };
 
 export default function RootLayout({
   children,
@@ -33,10 +35,12 @@ export default function RootLayout({
         style={{ overflow: 'overlay' }}
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black `}
       >
-        {/* <Provider store={store}> */}
-        <Theme accentColor="ruby" panelBackground="solid">
-          {children}
-        </Theme>
+        <ReduxProvider>
+          {/* <Provider store={store}> */}
+          <Theme accentColor="ruby" panelBackground="solid">
+            {children}
+          </Theme>
+        </ReduxProvider>
         {/* </Provider> */}
       </body>
     </html>

@@ -1,7 +1,9 @@
+import CartButton from '@/components/CartButton';
 import Topbar from '@/components/Topbar';
-import { Box, Flex } from '@radix-ui/themes';
+
 import { ReactNode } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+import CartIconTopbar from '@/components/CartIconTopbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -9,18 +11,10 @@ export default function Layout({ children }: { children: ReactNode }) {
       <Topbar
         title="Pharmacy"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
+        rightIcon={<CartIconTopbar></CartIconTopbar>}
       ></Topbar>
       <>{children}</>
-      <Box className="absolute bottom-0 mb-2">
-        <Flex
-          justify={'center'}
-          className="w-[96vw] bg-primary flex text-white font-poppins font-medium p-3 text-xl rounded-md"
-        >
-          <p className="w-1/2 text-end pr-2">Cart</p>
-          <p>|</p>
-          <p className="w-1/2 text-start pl-2">50Tk</p>
-        </Flex>
-      </Box>
+      {/* <CartButton></CartButton> */}
     </div>
   );
 }
