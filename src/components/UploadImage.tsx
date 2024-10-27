@@ -5,7 +5,7 @@ import {
   AiOutlineUpload,
 } from 'react-icons/ai';
 import axios from 'axios';
-import Button from '@/components/Button'; 
+import Button from '@/components/Button';
 
 interface UploadImageProps {
   cloudinaryUrl: string;
@@ -51,7 +51,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
         });
       });
 
- 
       const responses = await Promise.all(uploadPromises);
 
       alert('Images uploaded successfully!');

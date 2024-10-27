@@ -32,7 +32,7 @@ const LocationPicker = () => {
   const searchLocation = async (event: React.FormEvent) => {
     event.preventDefault();
     if (location.trim() === '') return;
-    console.log("token===", process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
+    // console.log("token===", process.env.NEXT_PUBLIC_MAPBOX_TOKEN)
     const response = await fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN}`,
     );

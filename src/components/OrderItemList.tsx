@@ -38,7 +38,7 @@ data.total = data.cartTotal + data.deliveryFee;
 
 const OrderItemList: React.FC<OrderItemListProps> = () => {
   const cart = useAppSelector((state) => state.addToCart.items);
-  console.log(Object.values(cart));
+  // console.log(Object.values(cart));
   return (
     <div className="w-full mt-4 ">
       <Box className="">

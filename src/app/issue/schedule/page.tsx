@@ -51,7 +51,7 @@ export default function SchedulePage() {
     startTime.setMinutes(nextHalfHour);
 
     const earliestStart = setHours(startOfDay(selectedDate || now), 10);
-    const latestStart = setHours(startOfDay(selectedDate || now), 18); 
+    const latestStart = setHours(startOfDay(selectedDate || now), 18);
 
     for (let i = 0; i < 48; i++) {
       const time = addMinutes(startTime, i * 30);
@@ -74,7 +74,7 @@ export default function SchedulePage() {
       addMinutes(startOfDay(selectedDate!), startHour * 60 + startMinutes),
       startHour,
     );
-    const endTime = addMinutes(startDateTime, 4 * 60); 
+    const endTime = addMinutes(startDateTime, 4 * 60);
     return format(endTime, 'HH:mm');
   };
 
@@ -90,9 +90,9 @@ export default function SchedulePage() {
       return;
     }
 
-    const endTime = getEndTime(selectedStartTime);
-    const scheduledDateTime = `${format(selectedDate, 'yyyy-MM-dd')} from ${selectedStartTime} to ${endTime}`;
-    console.log('Scheduled Date and Time:', scheduledDateTime);
+    // const endTime = getEndTime(selectedStartTime);
+    // const scheduledDateTime = `${format(selectedDate, 'yyyy-MM-dd')} from ${selectedStartTime} to ${endTime}`;
+
     router.push('/cart');
   };
 

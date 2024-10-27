@@ -58,7 +58,10 @@ const RatingPage = () => {
         </div>
       ))}
 
-      <Button type='submit' variant='primary' size='block'
+      <Button
+        type="submit"
+        variant="primary"
+        size="block"
         onClick={() => console.log('Selected Ratings:', ratings)}
       >
         Submit Ratings

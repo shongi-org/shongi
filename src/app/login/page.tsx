@@ -3,8 +3,7 @@
 import Button from '@/components/Button';
 import { Input } from '@/components/Input';
 import { useState } from 'react';
-import {  FaGoogle, FaFacebook } from 'react-icons/fa';
-
+import { FaGoogle, FaFacebook } from 'react-icons/fa';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -12,7 +11,7 @@ export default function LoginPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login submitted', { email, password });
+    // console.log('Login submitted', { email, password });
   };
 
   return (
