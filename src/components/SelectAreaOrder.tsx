@@ -31,7 +31,7 @@ const SelectAreaOrder: React.FC<SelectAreaOrderProps> = () => {
             width={'full'}
             direction={'column'}
             align={'start'}
-            className={`${item.id === selected ? 'border-primary' : 'border-gray-400'}  border-2 p-2 rounded-md mb-2 shadow-md`}
+            className={`${item.id === selected ? 'border-[#283b77]' : 'border-gray-400'}  border-2 p-2 rounded-md mb-2 shadow-md`}
             key={item.id}
           >
             <p className="">{item.label}</p>

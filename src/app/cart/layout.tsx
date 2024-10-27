@@ -12,10 +12,10 @@ export default function Layout({ children }: { children: ReactNode }) {
       ></Topbar>
       <>{children}</>
       <Box className="absolute bottom-0 mb-2">
-        <Box className="w-[96vw] bg-white text-cyan-700 border-solid border-2 border-cyan-700 font-poppins font-bold text-xl p-3 text-center rounded-md mb-2">
+        <Box className="w-[96vw] bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2">
           Order more
         </Box>
-        <Box className="w-[96vw] bg-cyan-700 text-white font-poppins font-bold text-xl p-3 text-center rounded-md ">
+        <Box className="w-[96vw] bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md ">
           Place Order
         </Box>
       </Box>

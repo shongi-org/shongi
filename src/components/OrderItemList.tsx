@@ -1,8 +1,10 @@
+'use client';
 import { ICart } from '@/interfaces/ICart';
 import { Box, Flex } from '@radix-ui/themes';
 import Image from 'next/image';
 import React from 'react';
 import Counter from './Counter';
+import { useAppSelector } from '@/lib/hooks';
 
 type OrderItemListProps = {
   children?: string;
@@ -35,10 +37,12 @@ data.cartTotal = data.orderItems.reduce((acc, curr) => acc + curr.quantity, 0);
 data.total = data.cartTotal + data.deliveryFee;
 
 const OrderItemList: React.FC<OrderItemListProps> = () => {
+  const cart = useAppSelector((state) => state.addToCart.items);
+  console.log(Object.values(cart));
   return (
     <div className="w-full mt-4 ">
       <Box className="">
-        {data.orderItems.map((item) => (
+        {Object.values(cart).map((item) => (
           <Flex
             align={'center'}
             width={'full'}
@@ -60,7 +64,7 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
                 </p>
               </div>
             </Flex>
-            <Counter></Counter>
+            <Counter quantity={item.quantity}></Counter>
           </Flex>
         ))}
       </Box>
@@ -68,7 +72,13 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
         <Flex justify={'between'} className="mb-2">
           {' '}
           <p className="font-poppins font-bold text-gray-400">Summary</p>
-          <p className="font-poppins font-bold ">{data.cartTotal}Tk</p>
+          <p className="font-poppins font-bold ">
+            {Object.values(cart).reduce(
+              (acc, curr) => acc + curr.quantity * curr.price,
+              0,
+            )}
+            Tk
+          </p>
         </Flex>
         <Flex
           justify={'between'}
@@ -81,7 +91,13 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
         <Flex justify={'between'} className="mt-5">
           {' '}
           <p className="font-poppins font-bold text-gray-400">Total</p>
-          <p className="font-poppins font-bold">{data.total}Tk</p>
+          <p className="font-poppins font-bold">
+            {Object.values(cart).reduce(
+              (acc, curr) => acc + curr.quantity * curr.price,
+              0,
+            ) + 30}{' '}
+            Tk
+          </p>
         </Flex>
       </Box>
     </div>

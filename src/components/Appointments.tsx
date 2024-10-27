@@ -64,9 +64,22 @@ const data: IAppointment[] = [
 const Appointments: React.FC<IAppointmentsProps> = () => {
   return (
     <Box className="w-full sm:w-1/3 mt-3 z-10">
-      <Label className="font-poppins text-xl font-bold">
-        Upcoming Appointments
-      </Label>
+      <Flex justify={'between'}>
+        <Label className="font-poppins text-xl font-bold">Appointments</Label>{' '}
+        <div className="rounded-full bg-[#283b77] py-0.5 px-2.5 border text-base text-white font-poppins transition-all shadow-lg ">
+          Book New
+        </div>
+      </Flex>
+
+      <Flex gapX={'3'} mt={'3'}>
+        {' '}
+        <div className="rounded-full bg-[#283b77] py-0.5 px-2.5 border border-transparent text-base text-white font-poppins transition-all shadow-lg ">
+          Upcoming
+        </div>
+        <div className="rounded-full bg-[#ffffff] py-0.5 px-2.5 border-[1px] border-solid border-[#283b77] text-base text-[#283b77] font-poppins transition-all shadow-lg">
+          Past
+        </div>
+      </Flex>
       <Flex
         direction={'column'}
         className="w-full h-[40vh] overflow-scroll no-scrollbar mt-3 text-white "

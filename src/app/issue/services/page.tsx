@@ -16,7 +16,10 @@ import * as dummyData from '@/data/service.json';
 
 const RadioButtonList: React.FC = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
   const data: { [key: string]: object } = dummyData;
+
   const options = pathname.replace('/issue/services', '')
     ? Object.values(
         data[
@@ -37,11 +40,15 @@ const RadioButtonList: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string>(
     options[0].value,
   );
-  const router = useRouter();
 
   const handleValueChange = (value: string) => {
     setSelectedOption(value);
-    router.push('/issue/schedule');
+    console.log(pathname.replace('/issue/services', ''));
+    if (pathname.replace('/issue/services', '').length) {
+      router.push('/issue/schedule');
+    } else {
+      router.push(`/issue/services/${value}`);
+    }
   };
 
   return (

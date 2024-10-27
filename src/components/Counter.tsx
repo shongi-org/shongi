@@ -1,9 +1,11 @@
 import React from 'react';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-type CounterProps = {};
+type CounterProps = {
+  quantity: number;
+};
 
-const Counter: React.FC<CounterProps> = () => {
+const Counter: React.FC<CounterProps> = ({ quantity }) => {
   return (
     <form className="max-w-xs ">
       <div className="relative flex items-center max-w-[8rem]">
@@ -37,6 +39,7 @@ const Counter: React.FC<CounterProps> = () => {
           className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="0"
           required
+          value={quantity}
         />
         <button
           type="button"
