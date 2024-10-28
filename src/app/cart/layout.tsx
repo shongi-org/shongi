@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       ></Topbar>
       <>{children}</>
-      <Box className="absolute bottom-0 mb-2">
+      <Box className="fixed bottom-0 mb-2">
         <Box className="w-[96vw] bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2">
           Order more
         </Box>
