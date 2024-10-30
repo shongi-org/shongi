@@ -5,6 +5,7 @@ import './globals.css';
 import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import ReduxProvider from '@/lib/redux-provider';
+import BottomNavbar from '@/components/BottomNavbar';
 // import { store } from '@/lib/store';
 // import { Provider } from 'react-redux';
 
@@ -33,14 +34,18 @@ export default function RootLayout({
     <html lang="en" className="no-scrollbar ">
       <body
         style={{ overflow: 'overlay' }}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black overflow-scroll`}
       >
         <ReduxProvider>
           {/* <Provider store={store}> */}
           <Theme accentColor="ruby" panelBackground="solid">
-            {children}
+            <div className="">
+              {children}
+              <BottomNavbar></BottomNavbar>
+            </div>
           </Theme>
         </ReduxProvider>
+
         {/* </Provider> */}
       </body>
     </html>
