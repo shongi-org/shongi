@@ -11,7 +11,7 @@ type SearchBarProps = {
 
 const SearchBar: React.FC<SearchBarProps> = () => {
   return (
-    <Box className="w-[90vw] mt-2 rounded-full shadow-lg">
+    <Box className="w-[90vw] mt-2 rounded-full shadow-lg m-auto">
       <TextField.Root
         radius="full"
         className="w-full h-9 rounded-full font-poppins"

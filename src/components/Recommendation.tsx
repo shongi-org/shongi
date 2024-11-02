@@ -52,7 +52,7 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
-  speed: 2000,
+  speed: 700,
   autoplaySpeed: 4000,
   cssEase: 'linear',
 };
