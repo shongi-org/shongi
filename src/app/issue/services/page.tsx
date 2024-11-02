@@ -5,7 +5,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import * as dummyData from '@/data/service';
+import * as dummyData from '@/data/service.json';
 
 // const dummyData = [
 //   { label: 'Physiotherapist', value: 'physiotherapist' },
