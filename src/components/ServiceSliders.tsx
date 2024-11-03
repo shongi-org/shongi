@@ -1,5 +1,6 @@
 import React from 'react';
 import ServiceSlider from './ServiceSlider';
+import { Box } from '@radix-ui/themes';
 
 type ServiceSlidersProps = object;
 
@@ -44,7 +45,7 @@ const data: IService[] = [
 
 const ServiceSliders: React.FC<ServiceSlidersProps> = () => {
   return (
-    <>
+    <Box className="mb-[10vh]">
       {data.map((service) => (
         <div key={service.id} className="mt-4">
           <p className="font-poppins no-scrollbar font-bold text-xl">
@@ -53,7 +54,7 @@ const ServiceSliders: React.FC<ServiceSlidersProps> = () => {
           <ServiceSlider serviceSlug={service.serviceSlug}></ServiceSlider>
         </div>
       ))}
-    </>
+    </Box>
   );
 };
 export default ServiceSliders;

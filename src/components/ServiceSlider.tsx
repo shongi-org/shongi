@@ -14,14 +14,18 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
   const data: { [key: string]: { [key: string]: string | number }[] } =
     subServiceList;
   return (
-    <Flex className="w-[95vw] overflow-scroll no-scrollbar mt-3">
+    <Flex
+      justify={'center'}
+      align={'center'}
+      className="w-[95vw] overflow-scroll no-scrollbar mt-3 h-full"
+    >
       {data[serviceSlug] &&
         data[serviceSlug].map((service: { [key: string]: string | number }) => (
           <Box
             className="w-[45vw] sm:w-[33vw] mr-3 mt-3 drop-shadow-lg"
             key={service.id}
           >
-            <Link href={(service.link || '') as Url}>
+            <Link href={`/issue?sub-service=${service.id}`}>
               <Flex
                 direction={'column'}
                 className="w-[45vw] h-fit justify-start items-end relative"
@@ -50,6 +54,22 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
             </Link>
           </Box>
         ))}
+      <Flex
+        justify={'center'}
+        align={'center'}
+        className="w-[45vw] sm:w-[33vw] mr-3 mt-3 drop-shadow-lg h-full"
+      >
+        <Link href={(serviceSlug || '') as Url}>
+          <Flex
+            direction={'column'}
+            className="w-[45vw] h-full justify-center items-center relative"
+          >
+            <p className="font-poppins font-semibold text-danger text-2xl">
+              See More
+            </p>
+          </Flex>
+        </Link>
+      </Flex>
     </Flex>
   );
 };

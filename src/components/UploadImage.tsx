@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import {
   AiOutlinePlus,
@@ -78,7 +79,10 @@ const UploadImage: React.FC<UploadImageProps> = ({
           className="hidden"
           onChange={handleFileChange}
         />
-        <AiOutlinePlus className="text-3xl" />
+        <span className="flex">
+          <AiOutlinePlus className="text-3xl" />
+          <p className="font-poppins text-2xl">Choose Images</p>
+        </span>
       </label>
 
       {previewUrls.length > 0 && (
@@ -111,7 +115,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
           disabled={uploading}
           className={`mt-4 transition-all duration-300 ${uploading ? 'cursor-not-allowed opacity-50' : ''}`}
         >
-          {uploading ? 'Uploading...' : 'Upload Images'}
+          {uploading ? 'Uploading...' : 'Submit'}
         </Button>
       )}
     </div>
