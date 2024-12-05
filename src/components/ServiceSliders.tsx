@@ -14,7 +14,7 @@ const data: IService[] = [
   {
     id: 1,
     title: 'Pharmacy at Home',
-    serviceSlug: 'pharmacy-at-home',
+    serviceSlug: 'pharmacy',
   },
   {
     id: 2,

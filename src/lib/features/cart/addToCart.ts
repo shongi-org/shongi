@@ -1,9 +1,11 @@
+import { IAppointment } from '@/interfaces/IAppointment';
 import { IMedicine } from '@/interfaces/IMedicine';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type ICart = {
   items: {
-    [key: number]: IMedicine & {
+    [key: string]: (IMedicine | IAppointment) & {
       quantity: number;
+      type: 'appointment' | 'medicine';
     };
   };
 };
@@ -18,7 +20,12 @@ const addToCartSlice = createSlice({
   reducers: {
     addToCart(
       state: ICart,
-      action: PayloadAction<IMedicine & { quantity: number }>,
+      action: PayloadAction<
+        (IMedicine | IAppointment) & {
+          quantity: number;
+          type: 'appointment' | 'medicine';
+        }
+      >,
     ) {
       // console.log(action.payload);
       if (state.items && state.items[action.payload.id]?.quantity) {

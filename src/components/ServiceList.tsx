@@ -1,60 +1,35 @@
-import React, { ReactNode } from 'react';
+'use client';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Flex, Box, Text } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
+import { config } from '@/config';
 
 type IServiceListProps = {
-  children?: ReactNode;
+  data?: ReactNode;
 };
 
 type IService = {
-  id: number;
+  _id: number;
   icon: string;
-  title: string;
-  link: string;
+  name: string;
+  decription: string;
 };
 
-const data: IService[] = [
-  {
-    id: 1,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/pharmacy_coimsv.png',
-    title: 'Pharmacy at Home',
-    link: '/pharmacy',
-  },
-  {
-    id: 2,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
-    title: 'Nursing at Home',
-    link: '/issue/services/nurses-at-home',
-  },
-  {
-    id: 3,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
-    title: 'Phisiotherapy at Home',
-    link: '/issue/services/phisiotherapy-at-home',
-  },
-  {
-    id: 4,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
-    title: 'Tests at Home',
-    link: '/issue/services/test-investigation-at-home',
-  },
-  {
-    id: 5,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
-    title: 'Online Consultation',
-    link: '/issue/services/online-consultation',
-  },
-  {
-    id: 6,
-    icon: 'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png',
-    title: 'Doctor at Home',
-    link: '/issue/services/health-at-home',
-  },
-];
-
 const ServiceList: React.FC<IServiceListProps> = () => {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    async function fetchServices() {
+      const response = await fetch(
+        `${config.backendURL}/api/service/category/`,
+      );
+      const data = await response.json();
+      setServices(data.serviceCategories);
+    }
+    fetchServices();
+  }, []);
   return (
     <Box className="w-full sm:w-1/3 mt-3">
       <Label className="font-poppins text-xl font-bold">Services</Label>
@@ -62,9 +37,16 @@ const ServiceList: React.FC<IServiceListProps> = () => {
         justify={'between'}
         className="w-full flex-wrap no-scrollbar justify-between mt-3 gap-y-3"
       >
-        {data.map((service) => (
-          <Link key={service.link} href={service.link}>
-            <Box className="w-fit sm:w-[33vw] " key={service.id}>
+        {services?.map((service: IService) => (
+          <Link
+            key={service._id}
+            href={
+              service.name.includes('Pharmacy')
+                ? '/pharmacy'
+                : `/issue/services/${service.name.split(' ').join('-')}?_id=${service._id}`
+            }
+          >
+            <Box className="w-fit sm:w-[33vw] " key={service._id}>
               <Flex className="w-[28vw] h-fit flex-col items-center">
                 <Image
                   width={150}
@@ -81,7 +63,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
                     as="p"
                     className="text-black text-base font-poppins text-center"
                   >
-                    {service.title}
+                    {service.name}
                   </Text>
                 </Flex>
               </Flex>
@@ -92,4 +74,5 @@ const ServiceList: React.FC<IServiceListProps> = () => {
     </Box>
   );
 };
+
 export default ServiceList;

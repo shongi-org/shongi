@@ -21,8 +21,9 @@ const dataTable: IMedicine[] = [
   },
 ];
 
-const page: React.FC<pageProps> = () => {
+const Page: React.FC<pageProps> = () => {
   // const pathname = usePathname();
+
   const data = dataTable[0];
   return (
     <div className="w-full overflow-y-scroll">
@@ -75,4 +76,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;

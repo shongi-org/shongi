@@ -7,6 +7,7 @@ import SearchIcon from '@/components/SearchIcon';
 import NotificationIcon from '@/components/NotificationIcon';
 import SearchBar from '@/components/SearchBar';
 import ServiceSliders from '@/components/ServiceSliders';
+
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
 export default function Home() {

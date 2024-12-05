@@ -1,5 +1,5 @@
 export type IMedicine = {
-  id: number;
+  id: string;
   generic: string;
   dosage: string;
   image: string;
@@ -9,4 +9,5 @@ export type IMedicine = {
   cost?: number;
   discountedPrice?: number;
   description?: string;
+  type: string;
 };

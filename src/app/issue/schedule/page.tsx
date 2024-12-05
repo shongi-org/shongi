@@ -8,25 +8,35 @@ import {
   addMinutes,
   setHours,
   isAfter,
+  parseISO,
+  isToday,
 } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import * as Select from '@radix-ui/react-select';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import 'react-day-picker/dist/style.css';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import FloatingCallButton from '@/components/FloatingCallButton';
 import '@/styles/schedule.page.css';
 import Button from '@/components/Button';
 import { CiCircleInfo } from 'react-icons/ci';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
+import { useAppDispatch } from '@/lib/hooks';
+import { addToCart } from '@/lib/features/cart/addToCart';
 
 export default function SchedulePage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const issue_id = searchParams.get('issue_id');
+  const service_name = searchParams.get('service_name');
+  const dispatch = useAppDispatch();
+
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedStartTime, setSelectedStartTime] = useState<
     string | undefined
   >(undefined);
-  const router = useRouter();
 
   const handleDateChange = (date: Date | undefined) => {
     if (date && isBefore(date, startOfDay(new Date()))) {
@@ -36,6 +46,41 @@ export default function SchedulePage() {
     setSelectedDate(date);
     setSelectedStartTime(undefined);
   };
+
+  const generateStartTimeOptionsDiffDay = () => {
+    const timeOptions: string[] = [];
+    const now = new Date();
+    let startTime = selectedDate
+      ? startOfDay(selectedDate)
+      : startOfDay(new Date());
+
+    const minutes = now.getMinutes();
+    const nextHalfHour =
+      minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
+    startTime = setHours(startTime, now.getHours());
+    startTime.setMinutes(nextHalfHour);
+
+    const earliestStart = setHours(startOfDay(selectedDate as Date), 10);
+    const latestStart = setHours(startOfDay(selectedDate as Date), 18);
+
+    for (let i = 0; i < 48; i++) {
+      const time = addMinutes(startTime, i * 30);
+      if (
+        !isAfter(time, latestStart) &&
+        !isBefore(time, earliestStart) &&
+        !isBefore(time, now)
+      ) {
+        timeOptions.push(format(time, 'HH:mm'));
+      }
+    }
+
+    return timeOptions;
+  };
+
+  console.log(selectedDate);
+  console.log(
+    selectedDate && isToday(parseISO((selectedDate as Date)?.toISOString())),
+  );
 
   const generateStartTimeOptions = () => {
     const timeOptions: string[] = [];
@@ -90,9 +135,23 @@ export default function SchedulePage() {
       return;
     }
 
-    // const endTime = getEndTime(selectedStartTime);
-    // const scheduledDateTime = `${format(selectedDate, 'yyyy-MM-dd')} from ${selectedStartTime} to ${endTime}`;
+    const endTime = getEndTime(selectedStartTime);
 
+    dispatch(
+      addToCart({
+        id: issue_id as string,
+
+        time_frame: {
+          date: selectedDate.toDateString(),
+          start_time: selectedStartTime,
+          end_time: endTime as string,
+        },
+        quantity: 1,
+        type: 'appointment',
+        price: 300,
+        service_name: service_name as string,
+      }),
+    );
     router.push('/cart');
   };
 
@@ -142,7 +201,12 @@ export default function SchedulePage() {
                     </Select.ScrollUpButton>
                     <Select.Viewport className="p-2">
                       <Select.Group>
-                        {generateStartTimeOptions().map((time, index) => (
+                        {(isToday(
+                          parseISO((selectedDate as Date)?.toISOString()),
+                        )
+                          ? generateStartTimeOptions()
+                          : generateStartTimeOptionsDiffDay()
+                        ).map((time, index) => (
                           <Select.Item
                             key={index}
                             value={time}

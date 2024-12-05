@@ -6,6 +6,9 @@ import '@radix-ui/themes/styles.css';
 import { Theme } from '@radix-ui/themes';
 import ReduxProvider from '@/lib/redux-provider';
 import BottomNavbar from '@/components/BottomNavbar';
+import AuthProvider from '@/Providers/AuthProvider';
+import { store } from '@/lib/store';
+import { Provider } from 'react-redux';
 // import { store } from '@/lib/store';
 // import { Provider } from 'react-redux';
 
@@ -37,16 +40,17 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black overflow-scroll`}
       >
         <ReduxProvider>
-          {/* <Provider store={store}> */}
-          <Theme accentColor="ruby" panelBackground="solid">
-            <div className="">
-              {children}
-              <BottomNavbar></BottomNavbar>
-            </div>
-          </Theme>
+          <Provider store={store}>
+            <AuthProvider>
+              <Theme accentColor="ruby" panelBackground="solid">
+                <div className="">
+                  {children}
+                  <BottomNavbar></BottomNavbar>
+                </div>
+              </Theme>
+            </AuthProvider>
+          </Provider>
         </ReduxProvider>
-
-        {/* </Provider> */}
       </body>
     </html>
   );

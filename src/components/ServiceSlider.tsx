@@ -13,6 +13,7 @@ type ServiceSliderProps = {
 const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
   const data: { [key: string]: { [key: string]: string | number }[] } =
     subServiceList;
+
   return (
     <Flex
       justify={'center'}

@@ -2,10 +2,12 @@
 import RadioButton from '@/components/RadioButton';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import * as dummyData from '@/data/service.json';
+import { useSearchParams } from 'next/navigation';
+import { config } from '@/config';
+import { ISubservice } from '@/interfaces/ISubservice';
 
 // const dummyData = [
 //   { label: 'Physiotherapist', value: 'physiotherapist' },
@@ -17,26 +19,34 @@ import * as dummyData from '@/data/service.json';
 const RadioButtonList: React.FC = () => {
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const data: { [key: string]: object } = dummyData;
+  const id = searchParams.get('_id');
 
-  const options = pathname.replace('/issue/services', '')
-    ? Object.values(
-        data[
-          pathname.replace('/issue/services', '').replace('/', '') as string
-        ],
-      ).map((subservice) => {
-        return {
-          label: subservice.subserviceName,
-          value: subservice.id,
-        };
-      })
-    : Object.keys(dummyData).map((service) => {
-        return {
-          label: service.replace(/-/g, ' ').toUpperCase(),
-          value: service,
-        };
-      });
+  const [options, setOptions] = useState([
+    {
+      value: '',
+      label: '',
+    },
+  ]);
+
+  useEffect(() => {
+    async function fetchServices() {
+      const response = await fetch(
+        `${config.backendURL}/api/service/sub-category/${id}`,
+      );
+      const data = await response.json();
+      const mappedOptions = data.subCategories.map(
+        (subCategory: ISubservice) => ({
+          label: subCategory.name,
+          value: subCategory._id,
+        }),
+      );
+      setOptions(mappedOptions);
+    }
+    fetchServices();
+  }, [id]);
+
   const [selectedOption, setSelectedOption] = useState<string>(
     options[0].value,
   );

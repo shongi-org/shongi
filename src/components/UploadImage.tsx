@@ -11,11 +11,13 @@ import Button from '@/components/Button';
 interface UploadImageProps {
   cloudinaryUrl: string;
   uploadPreset: string;
+  onUploadImage: (assets: string[]) => Promise<void>;
 }
 
 const UploadImage: React.FC<UploadImageProps> = ({
   cloudinaryUrl,
   uploadPreset,
+  onUploadImage,
 }) => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -53,12 +55,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
       });
 
       const responses = await Promise.all(uploadPromises);
-
-      alert('Images uploaded successfully!');
-      console.log(
-        'Upload responses:',
-        responses.map((response) => response.data),
-      );
+      await onUploadImage(responses.map((response) => response.data.url));
 
       setUploading(false);
       setSelectedFiles([]);

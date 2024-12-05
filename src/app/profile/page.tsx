@@ -1,11 +1,23 @@
+'use client';
 import * as Tabs from '@radix-ui/react-tabs';
 import * as Avatar from '@radix-ui/react-avatar';
 import { Flex, Text } from '@radix-ui/themes';
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '@/lib/hooks';
+import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 
 type profileProps = object;
 
-const profile: React.FC<profileProps> = () => {
+const Profile: React.FC<profileProps> = () => {
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  function handleLogout() {
+    localStorage.removeItem('token');
+    dispatch(setIsLoggedIn(true));
+    router.push('/');
+  }
   return (
     <>
       <Flex
@@ -133,7 +145,10 @@ const profile: React.FC<profileProps> = () => {
               className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
               value="tab3"
             >
-              <p className="mb-5 text-mauve11 text-[15px] leading-normal">
+              <p
+                onClick={handleLogout}
+                className="mb-5 text-mauve11 text-[15px] leading-normal"
+              >
                 Logout
               </p>
               <p className="mb-5 text-mauve11 text-[15px] leading-normal">
@@ -146,4 +161,4 @@ const profile: React.FC<profileProps> = () => {
     </>
   );
 };
-export default profile;
+export default Profile;

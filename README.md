@@ -27,6 +27,8 @@ Fixed bottom navbar - Cart, Offers, Logo that leads to home, Favourites, Servic
 
 change to health at home from doctor at home
 change to stitch removal from stitch omit
+Pill scheduler
+
 
 
 

@@ -1,5 +1,7 @@
 export type ISubservice = {
-  id: string;
-  subserviceName: string;
-  image: string;
+  _id: string;
+  name: string;
+  category_id: string;
+  description: string;
+  banner_image: string;
 };

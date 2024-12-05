@@ -5,6 +5,8 @@ import Image from 'next/image';
 import React from 'react';
 import Counter from './Counter';
 import { useAppSelector } from '@/lib/hooks';
+import { IMedicine } from '@/interfaces/IMedicine';
+import { IAppointment } from '@/interfaces/IAppointment';
 
 type OrderItemListProps = {
   children?: string;
@@ -38,35 +40,75 @@ data.total = data.cartTotal + data.deliveryFee;
 
 const OrderItemList: React.FC<OrderItemListProps> = () => {
   const cart = useAppSelector((state) => state.addToCart.items);
-  // console.log(Object.values(cart));
+  console.log(Object.values(cart));
   return (
     <div className="w-full mt-4 ">
       <Box className="">
-        {Object.values(cart).map((item) => (
-          <Flex
-            align={'center'}
-            width={'full'}
-            justify={'between'}
-            className="border-2 p-2 rounded-md mb-2 shadow-md"
-            key={item.id}
-          >
-            <Flex>
-              <Image
-                src={item.image}
-                width={50}
-                height={50}
-                alt="cart-item"
-              ></Image>
-              <div className="ml-2">
-                <p className="font-poppins">{item.generic}</p>
-                <p className="font-poppins">
-                  {item.marketName},{item.brand}
-                </p>
-              </div>
-            </Flex>
-            <Counter quantity={item.quantity}></Counter>
-          </Flex>
-        ))}
+        {Object.values(cart).map((item) => {
+          if (item.type === 'medicine') {
+            return (
+              <Flex
+                align={'center'}
+                width={'full'}
+                justify={'between'}
+                className="border-2 p-2 rounded-md mb-2 shadow-md"
+                key={item.id}
+              >
+                <Flex>
+                  <Image
+                    src={(item as IMedicine).image}
+                    width={50}
+                    height={50}
+                    alt="cart-item"
+                  ></Image>
+                  <div className="ml-2">
+                    <p className="font-poppins">
+                      {(item as IMedicine).generic}
+                    </p>
+                    <p className="font-poppins">
+                      {(item as IMedicine).marketName},
+                      {(item as IMedicine).brand}
+                    </p>
+                  </div>
+                </Flex>
+                <Counter quantity={item.quantity}></Counter>
+              </Flex>
+            );
+          }
+          if (item.type === 'appointment') {
+            return (
+              <Flex
+                align={'center'}
+                width={'full'}
+                justify={'between'}
+                className="border-2 p-2 rounded-md mb-2 shadow-md"
+                key={item.id}
+              >
+                <Flex>
+                  <Image
+                    src={(item as IAppointment).image as string}
+                    width={50}
+                    height={50}
+                    alt="cart-item"
+                  ></Image>
+                  <div className="ml-2">
+                    <p className="font-poppins">
+                      {(item as IAppointment).service_name}
+                    </p>
+                    <p className="font-poppins">
+                      {(item as IAppointment).time_frame.date}
+                    </p>
+                    <p className="font-poppins">
+                      between {(item as IAppointment).time_frame.start_time}-
+                      {(item as IAppointment).time_frame.end_time}
+                    </p>
+                  </div>
+                </Flex>
+                <Counter quantity={item.quantity}></Counter>
+              </Flex>
+            );
+          }
+        })}
       </Box>
       <Box className="mt-5 mb-5">
         <Flex justify={'between'} className="mb-2">
