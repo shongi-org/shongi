@@ -23,12 +23,13 @@ export default function Docs() {
       assets: assets,
     });
     const createdIssue = await createdIssueResponse.json();
+    // console.log(createdIssue);
     router.push(
       `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}`,
     );
-    alert(
-      'Your Issue has been recorded. Please schedule a time suitable time for an appointment',
-    );
+    // alert(
+    //   'Your Issue has been recorded. Please schedule a time suitable time for an appointment',
+    // );
   }
 
   return (

@@ -8,8 +8,6 @@ import {
   addMinutes,
   setHours,
   isAfter,
-  parseISO,
-  isToday,
 } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import * as Select from '@radix-ui/react-select';
@@ -47,41 +45,6 @@ export default function SchedulePage() {
     setSelectedStartTime(undefined);
   };
 
-  const generateStartTimeOptionsDiffDay = () => {
-    const timeOptions: string[] = [];
-    const now = new Date();
-    let startTime = selectedDate
-      ? startOfDay(selectedDate)
-      : startOfDay(new Date());
-
-    const minutes = now.getMinutes();
-    const nextHalfHour =
-      minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
-    startTime = setHours(startTime, now.getHours());
-    startTime.setMinutes(nextHalfHour);
-
-    const earliestStart = setHours(startOfDay(selectedDate as Date), 10);
-    const latestStart = setHours(startOfDay(selectedDate as Date), 18);
-
-    for (let i = 0; i < 48; i++) {
-      const time = addMinutes(startTime, i * 30);
-      if (
-        !isAfter(time, latestStart) &&
-        !isBefore(time, earliestStart) &&
-        !isBefore(time, now)
-      ) {
-        timeOptions.push(format(time, 'HH:mm'));
-      }
-    }
-
-    return timeOptions;
-  };
-
-  console.log(selectedDate);
-  console.log(
-    selectedDate && isToday(parseISO((selectedDate as Date)?.toISOString())),
-  );
-
   const generateStartTimeOptions = () => {
     const timeOptions: string[] = [];
     const now = new Date();
@@ -90,16 +53,20 @@ export default function SchedulePage() {
       : startOfDay(new Date());
 
     const minutes = now.getMinutes();
+
     const nextHalfHour =
       minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
+
     startTime = setHours(startTime, now.getHours());
     startTime.setMinutes(nextHalfHour);
 
     const earliestStart = setHours(startOfDay(selectedDate || now), 10);
-    const latestStart = setHours(startOfDay(selectedDate || now), 18);
 
+    const latestStart = setHours(startOfDay(selectedDate || now), 18);
+    // console.log(latestStart);
     for (let i = 0; i < 48; i++) {
       const time = addMinutes(startTime, i * 30);
+      console.log(time);
       if (
         !isAfter(time, latestStart) &&
         !isBefore(time, earliestStart) &&
@@ -201,12 +168,7 @@ export default function SchedulePage() {
                     </Select.ScrollUpButton>
                     <Select.Viewport className="p-2">
                       <Select.Group>
-                        {(isToday(
-                          parseISO((selectedDate as Date)?.toISOString()),
-                        )
-                          ? generateStartTimeOptions()
-                          : generateStartTimeOptionsDiffDay()
-                        ).map((time, index) => (
+                        {generateStartTimeOptions().map((time, index) => (
                           <Select.Item
                             key={index}
                             value={time}
