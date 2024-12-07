@@ -76,7 +76,7 @@ export default function SchedulePage() {
       }
     }
 
-    return timeOptions;
+    return ['00:00'];
   };
 
   const getEndTime = (startTime: string) => {

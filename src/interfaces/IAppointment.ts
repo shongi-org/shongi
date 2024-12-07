@@ -8,4 +8,9 @@ export type IAppointment = {
   price: number;
   image?: string;
   service_name?: string;
+  address?: {
+    detail: string;
+    lat: number;
+    long: number;
+  };
 };

@@ -9,7 +9,7 @@ type MedicineListProps = {
 const MedicineList: React.FC<MedicineListProps> = () => {
   const data: IMedicine[] = [
     {
-      id: '1',
+      id: '6754cf60e4b07afe3daff93c',
       generic: 'paracetamol',
       dosage: '20mg tablet',
       image:

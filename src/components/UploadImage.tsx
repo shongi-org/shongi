@@ -12,12 +12,14 @@ interface UploadImageProps {
   cloudinaryUrl: string;
   uploadPreset: string;
   onUploadImage: (assets: string[]) => Promise<void>;
+  handleSkip: () => Promise<void>;
 }
 
 const UploadImage: React.FC<UploadImageProps> = ({
   cloudinaryUrl,
   uploadPreset,
   onUploadImage,
+  handleSkip,
 }) => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -78,7 +80,21 @@ const UploadImage: React.FC<UploadImageProps> = ({
         />
         <span className="flex">
           <AiOutlinePlus className="text-3xl" />
-          <p className="font-poppins text-2xl">Choose Images</p>
+          <p className="font-poppins text-2xl">Upload Pictures</p>
+        </span>
+      </label>
+      <label className="cursor-pointer flex flex-col items-center justify-center py-4 px-6  text-primary rounded-lg shadow-md transition-all duration-300 bg-primaryDark">
+        {/* <input
+          type="file"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={handleFileChange}
+        /> */}
+        <span className="flex ">
+          <p className="font-poppins text-2xl text-white" onClick={handleSkip}>
+            Skip This Step
+          </p>
         </span>
       </label>
 
