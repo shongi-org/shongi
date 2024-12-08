@@ -36,12 +36,13 @@ export const changeOrderFormat = (
       });
     }
     // 2022-12-16T02:33:24Z
+    // date.toISOString().split('T')[0]
 
     if (orderItem.type === 'appointment') {
       result[orderItem.type].push({
         time_frame: {
-          start_time: `${(orderItem as IAppointment).time_frame.date}${(orderItem as IAppointment).time_frame.start_time}`,
-          end_time: (orderItem as IAppointment).time_frame.end_time,
+          start_time: `${new Date((orderItem as IAppointment).time_frame.date).toISOString().split('T')[0]}T${(orderItem as IAppointment).time_frame.start_time}:00Z`,
+          end_time: `${new Date((orderItem as IAppointment).time_frame.date).toISOString().split('T')[0]}T${(orderItem as IAppointment).time_frame.end_time}:00Z`,
         },
         issue_id: (orderItem as IAppointment).id,
         address: address,

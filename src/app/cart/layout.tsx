@@ -11,7 +11,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
   const address = {
-    detail: '',
+    detail: 'asd',
     lat: 0,
     long: 0,
   };
