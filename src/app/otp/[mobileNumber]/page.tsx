@@ -25,7 +25,7 @@ const OTPPage: React.FC = () => {
               localStorage.setItem('token', res.token);
               dispatch(setIsLoggedIn(true));
               if (service_id) {
-                router.push(`/docs?service_id=${service_id}`);
+                router.push(`/issue/docs?service_id=${service_id}`);
               } else router.push(`/`);
             } else {
               if (service_id) {
