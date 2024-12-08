@@ -45,6 +45,40 @@ export default function SchedulePage() {
     setSelectedStartTime(undefined);
   };
 
+  // const generateStartTimeOptions = () => {
+  //   const timeOptions: string[] = [];
+  //   const now = new Date();
+  //   let startTime = selectedDate
+  //     ? startOfDay(selectedDate)
+  //     : startOfDay(new Date());
+
+  //   const minutes = now.getMinutes();
+
+  //   const nextHalfHour =
+  //     minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
+
+  //   startTime = setHours(startTime, now.getHours());
+  //   startTime.setMinutes(nextHalfHour);
+
+  //   const earliestStart = setHours(startOfDay(selectedDate || now), 10);
+
+  //   const latestStart = setHours(startOfDay(selectedDate || now), 18);
+  //   // console.log(latestStart);
+  //   for (let i = 0; i < 48; i++) {
+  //     const time = addMinutes(startTime, i * 30);
+  //     console.log(time);
+  //     if (
+  //       !isAfter(time, latestStart) &&
+  //       !isBefore(time, earliestStart) &&
+  //       !isBefore(time, now)
+  //     ) {
+  //       timeOptions.push(format(time, 'HH:mm'));
+  //     }
+  //   }
+
+  //   return timeOptions;
+  // };
+
   const generateStartTimeOptions = () => {
     const timeOptions: string[] = [];
     const now = new Date();
@@ -52,32 +86,53 @@ export default function SchedulePage() {
       ? startOfDay(selectedDate)
       : startOfDay(new Date());
 
-    const minutes = now.getMinutes();
+   
+    if (selectedDate && isSameDay(selectedDate, now)) {
+      const minutes = now.getMinutes();
+      const nextHalfHour =
+        minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
 
-    const nextHalfHour =
-      minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
-
-    startTime = setHours(startTime, now.getHours());
-    startTime.setMinutes(nextHalfHour);
+      startTime = setHours(startTime, now.getHours());
+      startTime.setMinutes(nextHalfHour);
+    } else {
+      startTime = setHours(startTime, 10);
+    }
 
     const earliestStart = setHours(startOfDay(selectedDate || now), 10);
+    const latestStart = setHours(startOfDay(selectedDate || now), 18); 
 
-    const latestStart = setHours(startOfDay(selectedDate || now), 18);
-    // console.log(latestStart);
     for (let i = 0; i < 48; i++) {
       const time = addMinutes(startTime, i * 30);
-      console.log(time);
       if (
         !isAfter(time, latestStart) &&
         !isBefore(time, earliestStart) &&
-        !isBefore(time, now)
+        !isBefore(time, now) // Only allow times after current time for today
       ) {
         timeOptions.push(format(time, 'HH:mm'));
       }
     }
 
-    return ['00:00'];
+    return timeOptions;
   };
+
+ 
+  const isSameDay = (date1: Date, date2: Date) => {
+    return (
+      date1.getDate() === date2.getDate() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getFullYear() === date2.getFullYear()
+    );
+  };
+
+  // const handleDateChange = (date: Date | undefined) => {
+  //   if (date && isBefore(date, startOfDay(new Date()))) {
+  //     alert('Please select a future date!');
+  //     return;
+  //   }
+  //   setSelectedDate(date);
+  //   setSelectedStartTime(undefined); // Reset start time when date changes
+  // };
+
 
   const getEndTime = (startTime: string) => {
     if (!startTime) return undefined;
