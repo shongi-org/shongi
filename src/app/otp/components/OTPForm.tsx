@@ -7,7 +7,7 @@ import Button from '@/components/Button';
 interface OTPFormProps {
   onSubmit: (otp: string) => void;
   length?: number;
-  error: string;
+  error?: string;
 }
 
 const OTPForm: React.FC<OTPFormProps> = ({ onSubmit, length = 6, error }) => {

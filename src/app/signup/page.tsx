@@ -25,7 +25,7 @@ export default function SignupPage() {
       last_name: lastName,
       phone_number: phone_number as string,
       sex: gender,
-      type: 'regular',
+      role: 'regular',
       verified: true,
     })
       .then((res) => {
@@ -33,7 +33,7 @@ export default function SignupPage() {
       })
       .then((res) => {
         if (res.user) {
-          if (service_id) {
+          if (service_id === null) {
             router.push(`/docs?service_id=${service_id}`);
           } else {
             router.push(`/`);

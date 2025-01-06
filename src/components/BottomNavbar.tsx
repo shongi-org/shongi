@@ -74,7 +74,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
                 src="https://res.cloudinary.com/dgayarw1f/image/upload/v1733056332/WhatsApp_Image_2022-12-14_at_08.53.02_tjiwxg.jpg"
                 width={100}
                 height={100}
-                className="rounded-full w-11 h-11"
+                className="rounded-full w-full aspect-square object-cover"
                 alt=""
               ></Image>
               <p></p>

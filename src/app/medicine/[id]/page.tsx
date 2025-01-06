@@ -7,17 +7,18 @@ import { Box, Flex } from '@radix-ui/themes';
 type pageProps = object;
 const dataTable: IMedicine[] = [
   {
-    id: 1,
-    generic: 'Paracetamol',
+    id: '1',
+    generic: { name: 'Paracetamol' },
     dosage: '20mg tablet',
     image:
       'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1727873184/medicine_883407_jolgrg.png',
     price: 40,
     brand: 'Square',
-    marketName: 'Napa',
+    name: 'Napa',
     description:
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
     discountedPrice: 0,
+    type: 'medicine',
   },
 ];
 
@@ -35,9 +36,9 @@ const Page: React.FC<pageProps> = () => {
         >
           <Flex direction={'column'}>
             <p className="font-poppins font-bold text-xl">
-              {data.generic.toUpperCase()}
+              {data.generic.name.toUpperCase()}
             </p>
-            <p className="font-poppins font-bold">{data.marketName}</p>
+            <p className="font-poppins font-bold">{data.name}</p>
             <p className="font-poppins">{data.brand.toUpperCase()}</p>
           </Flex>
           <Flex direction={'column'} align={'center'} className="">

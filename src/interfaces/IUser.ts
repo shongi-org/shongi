@@ -3,6 +3,6 @@ export type IUser = {
   first_name: string;
   last_name: string;
   sex: string;
-  type: string;
+  role: string;
   verified: boolean;
 };

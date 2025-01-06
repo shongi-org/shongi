@@ -7,45 +7,62 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { addToCart } from '@/lib/features/cart/addToCart';
 
 type MedicineCardProps = {
-  medicine: IMedicine;
+  medicine: IMedicine & {
+    _id: string;
+    generic: {
+      name: string;
+    };
+    name: string;
+  };
 };
 
 const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
   const dispatch = useAppDispatch();
 
   function handleAddToCart(quantityToAdd: number) {
-    dispatch(addToCart({ ...medicine, quantity: quantityToAdd }));
+    dispatch(
+      addToCart({
+        ...medicine,
+        id: medicine._id,
+        quantity: quantityToAdd,
+        type: 'medicine',
+      }),
+    );
   }
 
   const cart = useAppSelector((state) => state.addToCart.items);
+  console.log(cart['6754cf60e4b07afe3daff93c']);
 
   return (
     <div className="w-[45vw] bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-      <Link href={`/medicine/${medicine.id}`}>
+      <Link href={`/medicine/${medicine._id}`}>
         <Image
           width={300}
           height={300}
           className="w-full rounded-t-lg p-2 bg-gray-400"
-          src={medicine.image}
+          src={
+            medicine.image ||
+            'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1727873184/medicine_883407_jolgrg.png'
+          }
           alt="medicine image"
         />
       </Link>
       <div className="p-5 w-full bg-white">
-        <Link href={`/medicine/${medicine.id}`}>
+        <Link href={`/medicine/${medicine._id}`}>
           <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            {medicine.generic}
+            {medicine.generic.name}
           </h5>
 
           <p className="mb-3 flex justify-between w-full font-normal text-gray-700 dark:text-gray-400">
             {medicine.brand} <br />
-            {medicine.marketName}
+            {medicine.name}
           </p>
           <p className="font-poppins font-bold text-xl mb-4">
             {medicine.price}Tk
           </p>
         </Link>
 
-        {cart[medicine.id]?.quantity ? (
+        {cart[medicine._id]?.quantity ? (
           <div className="w-full inline-flex items-center justify-between">
             <div
               onClick={() => handleAddToCart(1)}
@@ -54,7 +71,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
               +
             </div>
             <div className="text-lg font-poppins">
-              {cart[medicine.id]?.quantity}
+              {cart[medicine._id as string].quantity}
             </div>
             <div
               onClick={() => handleAddToCart(-1)}

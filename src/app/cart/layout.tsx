@@ -10,33 +10,40 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
-  const address = {
-    detail: 'asd',
-    lat: 0,
-    long: 0,
-  };
+
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
   const cart = useAppSelector((state) => state.addToCart);
+  const area = useAppSelector((state) => state.area);
+  console.log(area);
   function handleOrderMore() {
     router.push('/');
   }
   async function handlePlaceOrder() {
-    const processedOrderItems = changeOrderFormat(cart, address);
-    console.log(processedOrderItems);
+    const processedOrderItems = changeOrderFormat(cart, {
+      detail: area.detail,
+      lat: area.geocode.lat,
+      long: area.geocode.long,
+    });
     const response = await createOrder(processedOrderItems);
     const order = await response.json();
-    console.log(order);
+    router.push(`/order-success?order_id = ${order._id}`);
   }
   return (
     <>
-      <div className="relative min-h-[75vh] flex flex-col items-center">
+      <div className="relative flex flex-col items-center">
         <Topbar
           title="Cart"
           leftIcon={<IoIosArrowBack fontSize={'24px'} />}
         ></Topbar>
         <>{children}</>
       </div>
-      <Box className="mb-2">
+      <Box className="pb-[10vh]">
+        <Box
+          onClick={() => router.push('add-area')}
+          className="w-[96vw] m-2 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
+        >
+          Change Area
+        </Box>
         <Box
           onClick={handleOrderMore}
           className="w-[96vw] m-2 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"

@@ -27,7 +27,6 @@ const addToCartSlice = createSlice({
         }
       >,
     ) {
-      // console.log(action.payload);
       if (state.items && state.items[action.payload.id]?.quantity) {
         state.items[action.payload.id].quantity =
           state.items[action?.payload?.id].quantity + action.payload.quantity;

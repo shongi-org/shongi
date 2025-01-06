@@ -1,9 +1,11 @@
 export type IMedicine = {
   id: string;
-  generic: string;
+  generic: {
+    name: string;
+  };
   dosage: string;
   image: string;
-  marketName: string;
+  name: string;
   brand: string;
   price: number;
   cost?: number;

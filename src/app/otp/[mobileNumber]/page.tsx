@@ -11,6 +11,7 @@ const OTPPage: React.FC = () => {
   const { mobileNumber }: { mobileNumber: string } = useParams();
   const searchParams = useSearchParams();
   const service_id = searchParams.get('service_id');
+  const service_name = searchParams.get('service_name');
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [error, setError] = useState('');
@@ -25,7 +26,9 @@ const OTPPage: React.FC = () => {
               localStorage.setItem('token', res.token);
               dispatch(setIsLoggedIn(true));
               if (service_id) {
-                router.push(`/issue/docs?service_id=${service_id}`);
+                router.push(
+                  `/issue/docs?service_id=${service_id}&service_name=${service_name}`,
+                );
               } else router.push(`/`);
             } else {
               if (service_id) {

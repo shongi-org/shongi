@@ -13,10 +13,10 @@ interface DatePickerProps {
 export const DatePicker: React.FC<DatePickerProps> = ({
   selectedDate,
   onDateChange,
-  allowPastDates = false, 
+  // allowPastDates = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const today = new Date();
+  // const today = new Date();
 
   const handleDayClick = (range: DateRange | undefined) => {
     if (range?.from) {
@@ -27,14 +27,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     setIsOpen(false);
   };
 
-  const modifiers = allowPastDates ? {} : { disabled: { before: today } };
+  // const modifiers = allowPastDates ? {} : { disabled: { before: today } };
 
   return (
     <div className="relative">
       <input
         type="text"
         value={selectedDate ? selectedDate.toLocaleDateString() : ''}
-        onClick={() => setIsOpen((prev) => !prev)} 
+        onClick={() => setIsOpen((prev) => !prev)}
         readOnly
         placeholder="Select Date"
         className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -45,7 +45,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             mode="single"
             selected={selectedDate}
             onSelect={(date) => handleDayClick({ from: date, to: date })}
-            modifiers={modifiers} 
+            // modifiers={modifiers}
           />
         </div>
       )}

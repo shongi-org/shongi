@@ -9,7 +9,8 @@ import { Label } from '@radix-ui/react-label';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Link from 'next/link';
+// import Link from 'next/link';
+import { useAppSelector } from '@/lib/hooks';
 // import Carousel from 'react-multi-carousel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -58,6 +59,12 @@ const settings = {
 };
 
 const Recommendation: React.FC<RecommendationProps> = () => {
+  const dropdownOpenState = useAppSelector(
+    (state) => state.changeAreaDropDownOpenState,
+  );
+
+  console.log('dropdownstate', dropdownOpenState);
+
   return (
     <Box className="w-full sm:w-1/3 mt-3 ">
       <Label className="font-poppins no-scrollbar font-bold text-xl">
@@ -67,27 +74,25 @@ const Recommendation: React.FC<RecommendationProps> = () => {
       <Slider {...settings}>
         {data.map((service: IRecommendation) => (
           <Box className="w-[95vw] sm:w-[33vw] mr-3 mt-3 " key={service.id}>
-            <Link href={service.link}>
-              <Flex className="w-[95vw] h-fit justify-start items-end relative">
-                <Flex className="flex absolute w-[95vw] pl-4 pb-6 text-start justify-start items-center ">
-                  <Text
-                    as="p"
-                    weight="bold"
-                    className="text-white text-4xl font-poppins"
-                  >
-                    {service.title}
-                  </Text>
-                </Flex>
-
-                <Image
-                  width={200}
-                  height={200}
-                  className="w-[93vw] h-auto rounded-lg "
-                  alt="service"
-                  src={service.image}
-                />
+            <Flex className="w-[95vw] h-fit justify-start items-end relative">
+              <Flex className="flex absolute w-[95vw] pl-4 pb-6 text-start justify-start items-center ">
+                <Text
+                  as="p"
+                  weight="bold"
+                  className="text-white text-4xl font-poppins"
+                >
+                  {service.title}
+                </Text>
               </Flex>
-            </Link>
+
+              <Image
+                width={200}
+                height={200}
+                className="w-[93vw] h-auto rounded-lg "
+                alt="service"
+                src={service.image}
+              />
+            </Flex>
           </Box>
         ))}
       </Slider>

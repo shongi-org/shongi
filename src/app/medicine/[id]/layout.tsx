@@ -1,3 +1,4 @@
+// import SearchBarSpecific from '@/components/SearchBarSpecific';
 import Topbar from '@/components/Topbar';
 import { Box } from '@radix-ui/themes';
 import { ReactNode } from 'react';
@@ -10,6 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
         title="Paracetamol"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       ></Topbar>
+      {/* <SearchBarSpecific /> */}
       <>{children}</>
       <Box className="absolute bottom-0 mb-2">
         <Box className="w-[96vw] bg-white text-primary border-solid border-2 border-primary font-poppins font-bold text-xl p-3 text-center rounded-md mb-2">

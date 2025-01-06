@@ -40,7 +40,7 @@ data.total = data.cartTotal + data.deliveryFee;
 
 const OrderItemList: React.FC<OrderItemListProps> = () => {
   const cart = useAppSelector((state) => state.addToCart.items);
-  console.log(Object.values(cart));
+
   return (
     <div className="w-full mt-4 ">
       <Box className="">
@@ -56,18 +56,20 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
               >
                 <Flex>
                   <Image
-                    src={(item as IMedicine).image}
+                    src={
+                      (item as IMedicine).image ||
+                      'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1727873184/medicine_883407_jolgrg.png'
+                    }
                     width={50}
                     height={50}
                     alt="cart-item"
                   ></Image>
                   <div className="ml-2">
                     <p className="font-poppins">
-                      {(item as IMedicine).generic}
+                      {(item as IMedicine).generic.name}
                     </p>
                     <p className="font-poppins">
-                      {(item as IMedicine).marketName},
-                      {(item as IMedicine).brand}
+                      {(item as IMedicine).name},{(item as IMedicine).brand}
                     </p>
                   </div>
                 </Flex>

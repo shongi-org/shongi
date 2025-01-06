@@ -1,5 +1,10 @@
 export type IArea = {
-  id: number;
-  label: string;
-  details: string;
+  _id: string;
+  detail: string;
+  area: string;
+  geocode: {
+    lat: number;
+    long: number;
+  };
+  barikoi_id?: number;
 };
