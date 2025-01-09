@@ -10,7 +10,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // import Link from 'next/link';
-import { useAppSelector } from '@/lib/hooks';
+// import { useAppSelector } from '@/lib/hooks';
 // import Carousel from 'react-multi-carousel';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -59,23 +59,21 @@ const settings = {
 };
 
 const Recommendation: React.FC<RecommendationProps> = () => {
-  const dropdownOpenState = useAppSelector(
-    (state) => state.changeAreaDropDownOpenState,
-  );
-
-  console.log('dropdownstate', dropdownOpenState);
+  // const dropdownOpenState = useAppSelector(
+  //   (state) => state.changeAreaDropDownOpenState,
+  // );
 
   return (
-    <Box className="w-full sm:w-1/3 mt-3 ">
+    <Box>
       <Label className="font-poppins no-scrollbar font-bold text-xl">
         Recommended For you
       </Label>
       {/* <Flex className="w-[95vw] overflow-scroll no-scrollbar mt-3"> */}
-      <Slider {...settings}>
+      <Slider {...settings} className="lg:w-[70vw]">
         {data.map((service: IRecommendation) => (
-          <Box className="w-[95vw] sm:w-[33vw] mr-3 mt-3 " key={service.id}>
-            <Flex className="w-[95vw] h-fit justify-start items-end relative">
-              <Flex className="flex absolute w-[95vw] pl-4 pb-6 text-start justify-start items-center ">
+          <Box className="w-[95vw] lg:w-[70vw] mr-3 mt-3" key={service.id}>
+            <Flex className="w-[95vw] lg:w-[70vw] h-fit justify-start items-end relative">
+              <Flex className="flex absolute w-[95vw] lg:w-[70vw] pl-4 pb-6 text-start justify-start items-center ">
                 <Text
                   as="p"
                   weight="bold"
@@ -88,7 +86,7 @@ const Recommendation: React.FC<RecommendationProps> = () => {
               <Image
                 width={200}
                 height={200}
-                className="w-[93vw] h-auto rounded-lg "
+                className="w-[93vw] lg:w-[70vw] h-auto rounded-lg "
                 alt="service"
                 src={service.image}
               />
@@ -96,7 +94,6 @@ const Recommendation: React.FC<RecommendationProps> = () => {
           </Box>
         ))}
       </Slider>
-      {/* </Flex> */}
     </Box>
   );
 };

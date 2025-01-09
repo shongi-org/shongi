@@ -58,7 +58,7 @@ export default function Docs() {
         title="Upload Documents"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      <div className="min-h-[90vh] flex items-center justify-center bg-gray-100">
+      <div className="min-h-[90vh] lg:min-h-[70vh] flex items-center justify-center bg-gray-100">
         {successfullyUploaded ? (
           <>
             <label className="block text-lg font-medium text-gray-700 mb-2">

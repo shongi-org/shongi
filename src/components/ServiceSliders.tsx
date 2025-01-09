@@ -45,12 +45,18 @@ const data: IService[] = [
 
 const ServiceSliders: React.FC<ServiceSlidersProps> = () => {
   return (
-    <Box className="mb-[10vh]">
+    <Box className="mb-[10vh] w-full">
       {data.map((service) => (
         <div key={service.id} className="mt-4">
-          <p className="font-poppins no-scrollbar font-bold text-xl">
-            {service.title}
-          </p>
+          <div className="flex justify-between">
+            <p className="font-poppins no-scrollbar font-bold text-xl">
+              {service.title}
+            </p>
+            <p className="font-poppins font-semibold text-danger text-2xl ">
+              See More
+            </p>
+          </div>
+
           <ServiceSlider serviceSlug={service.serviceSlug}></ServiceSlider>
         </div>
       ))}

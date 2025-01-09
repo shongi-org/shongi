@@ -47,42 +47,49 @@ const RadioButtonList: React.FC = () => {
         title="Services"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      {/* <SearchBarSpecific purpose={`service sub_category=${sub_category_id}`} /> */}
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="w-full p-4 mb-[8vh]">
-          {options.map((option) => (
-            <Box
-              // onClick={() => handleValueChange(option)}
-              className="w-[95vw] sm:w-[33vw] mr-3 mt-3 "
-              key={option.value}
+      {/* <SearchBarSpecific
+      getSearchResults={}
+      handleRedirect={}
+      // purpose={`service category_id=${category_id}`}
+    /> */}
+      <Flex
+        wrap={'wrap'}
+        align={'center'}
+        justify={'center'}
+        className="min-h-screen lg:min-h-full lg:w-[70vw] w-full p-4 pb-[8vh]"
+      >
+        {options.map((option) => (
+          <Box
+            // onClick={() => handleValueChange(option)}
+            className="w-[95vw] lg:w-1/3 sm:w-[33vw] mr-3 lg:mr-0 mt-3"
+            key={option.value}
+          >
+            <Link
+              href={`/issue?service_id=${option.value}&service_name=${option.label}`}
             >
-              <Link
-                href={`/issue?service_id=${option.value}&service_name=${option.label}`}
-              >
-                <Flex className="w-[95vw] h-fit justify-start items-end relative">
-                  <Flex className="flex absolute w-[95vw] pl-4 pb-6 text-start justify-start items-center ">
-                    <Text
-                      as="p"
-                      weight="bold"
-                      className="text-white text-4xl font-poppins z-10"
-                    >
-                      {option.label}
-                    </Text>
-                  </Flex>
-
-                  <Image
-                    width={200}
-                    height={200}
-                    className="w-[93vw] h-auto rounded-lg brightness-50"
-                    alt="service"
-                    src={option.banner_image}
-                  />
+              <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
+                <Flex className="flex absolute w-[95vw] lg:w-full pl-4 pb-6 text-start justify-start items-center ml-[2.5vw]">
+                  <Text
+                    as="p"
+                    weight="bold"
+                    className="text-white text-4xl font-poppins z-10"
+                  >
+                    {option.label}
+                  </Text>
                 </Flex>
-              </Link>
-            </Box>
-          ))}
-        </div>
-      </div>
+
+                <Image
+                  width={200}
+                  height={200}
+                  className="w-[95vw] lg:w-full h-auto rounded-lg brightness-50 ml-[2.5vw]"
+                  alt="service"
+                  src={option.banner_image}
+                />
+              </Flex>
+            </Link>
+          </Box>
+        ))}
+      </Flex>
     </>
   );
 };

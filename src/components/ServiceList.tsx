@@ -31,7 +31,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
     fetchServices();
   }, []);
   return (
-    <Box className="w-full sm:w-1/3 mt-3">
+    <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
       <Label className="font-poppins text-xl font-bold">Services</Label>
       <Flex
         justify={'between'}
@@ -46,8 +46,8 @@ const ServiceList: React.FC<IServiceListProps> = () => {
                 : `/issue/services/${service.name.split(' ').join('-')}?_id=${service._id}`
             }
           >
-            <Box className="w-fit sm:w-[33vw] " key={service._id}>
-              <Flex className="w-[28vw] h-fit flex-col items-center">
+            <Box className="w-fit sm:w-[33vw] lg:w-[11vw]" key={service._id}>
+              <Flex className="w-[28vw] lg:w-full h-fit flex-col items-center">
                 <Image
                   width={150}
                   height={150}

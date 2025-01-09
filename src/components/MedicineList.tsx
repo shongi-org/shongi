@@ -20,10 +20,10 @@ const MedicineList: React.FC<MedicineListProps> = () => {
     fetchMedicines();
   }, []);
   return (
-    <div className="flex flex-wrap w-[100vw] justify-evenly gap-y-3 mt-3 pb-20">
+    <div className="flex flex-wrap w-[100vw] lg:w-full justify-evenly lg:justify-start gap-y-3 mt-3 pb-20">
       {(medicines as (IMedicine & { _id: string })[])?.map(
         (medicine: IMedicine & { _id: string }) => (
-          <div key={medicine.id} className="w-[45vw] ">
+          <div key={medicine.id} className="w-[45vw] lg:w-[15vw] lg:m-2">
             <MedicineCard medicine={medicine} />
           </div>
         ),

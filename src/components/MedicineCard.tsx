@@ -34,7 +34,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
   console.log(cart['6754cf60e4b07afe3daff93c']);
 
   return (
-    <div className="w-[45vw] bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-[45vw] lg:w-[15vw] bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
       <Link href={`/medicine/${medicine._id}`}>
         <Image
           width={300}

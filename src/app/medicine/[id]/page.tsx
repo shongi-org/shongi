@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import { IMedicine } from '@/interfaces/IMedicine';
 import { Box, Flex } from '@radix-ui/themes';
+import SimilarItems from '@/components/SimilarItems';
 
 type pageProps = object;
 const dataTable: IMedicine[] = [
@@ -27,12 +28,12 @@ const Page: React.FC<pageProps> = () => {
 
   const data = dataTable[0];
   return (
-    <div className="w-full overflow-y-scroll">
-      <div className="relative flex flex-col w-full items-center bg-red-200 ">
+    <div className="w-full h-fit overflow-y-scroll no-scrollbar">
+      <div className="relative flex flex-col w-full lg:w-[70vw] items-center">
         <Flex
           justify={'between'}
           align={'center'}
-          className="absolute bottom-[-7.5vh] bg-slate-300 w-[80vw] h-[15vh] rounded-full p-8 shadow-lg z-10"
+          className="absolute bottom-[-7.5vh] bg-slate-300 w-[80vw] lg:w-[30vw] h-[15vh]  rounded-full p-8 shadow-lg z-10 lg:z-0"
         >
           <Flex direction={'column'}>
             <p className="font-poppins font-bold text-xl">
@@ -60,10 +61,10 @@ const Page: React.FC<pageProps> = () => {
           height={300}
           src={data.image}
           alt="medicine-picture"
-          className="w-full p-2 bg-red-200"
+          className="w-full lg:w-[15vw] p-2 bg-red-200"
         />
       </div>
-      <Box className="pt-[10vh] pl-[5vw] pr-[5vw] bg-white  h-[60vh] w-full ">
+      <Box className="pt-[10vh] pl-[5vw] pr-[5vw] bg-white  h-[60vh] w-full">
         <p className="text-black font-bold font-poppins text-xl mt-6">
           Dosage{' '}
         </p>
@@ -73,7 +74,9 @@ const Page: React.FC<pageProps> = () => {
         </p>
         <p className="text-black font-poppins mt-3">{data.description}</p>
       </Box>
-      <Flex></Flex>
+      <div className="lg:w-[70vw]">
+        <SimilarItems serviceSlug="online-consultation"></SimilarItems>
+      </div>
     </div>
   );
 };

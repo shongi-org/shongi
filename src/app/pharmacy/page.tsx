@@ -9,7 +9,7 @@ type pageProps = object;
 const page: React.FC<pageProps> = () => {
   return (
     <Flex
-      className="w-full overflow-y-scroll"
+      className="w-full overflow-y-scroll lg:mt-3"
       direction={'column'}
       align={'center'}
     >

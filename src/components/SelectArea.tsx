@@ -66,14 +66,15 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
             `https://barikoi.xyz/v2/api/search/reverse/geocode?api_key=bkoi_c89eb01cd546186469d208b0ff0f461b47969fa9be9366e593ae2ed6642df13b&longitude=${longitude}&latitude=${latitude}&address=true&area=true`,
           );
           const data = await response.json();
+          console.log(response);
           setCurrentArea({
             _id: '0',
             geocode: {
               lat: latitude,
               long: longitude,
             },
-            detail: data.place.address,
-            area: data.place.area,
+            detail: data.place?.address,
+            area: data.place?.area,
           });
           if (!area._id) {
             dispatch(
@@ -83,8 +84,8 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
                   lat: latitude,
                   long: longitude,
                 },
-                detail: data.place.address,
-                area: data.place.area,
+                detail: data.place?.address,
+                area: data.place?.area,
               }),
             );
           }

@@ -86,7 +86,6 @@ export default function SchedulePage() {
       ? startOfDay(selectedDate)
       : startOfDay(new Date());
 
-   
     if (selectedDate && isSameDay(selectedDate, now)) {
       const minutes = now.getMinutes();
       const nextHalfHour =
@@ -99,7 +98,7 @@ export default function SchedulePage() {
     }
 
     const earliestStart = setHours(startOfDay(selectedDate || now), 10);
-    const latestStart = setHours(startOfDay(selectedDate || now), 18); 
+    const latestStart = setHours(startOfDay(selectedDate || now), 18);
 
     for (let i = 0; i < 48; i++) {
       const time = addMinutes(startTime, i * 30);
@@ -115,7 +114,6 @@ export default function SchedulePage() {
     return timeOptions;
   };
 
- 
   const isSameDay = (date1: Date, date2: Date) => {
     return (
       date1.getDate() === date2.getDate() &&
@@ -132,7 +130,6 @@ export default function SchedulePage() {
   //   setSelectedDate(date);
   //   setSelectedStartTime(undefined); // Reset start time when date changes
   // };
-
 
   const getEndTime = (startTime: string) => {
     if (!startTime) return undefined;
@@ -183,7 +180,7 @@ export default function SchedulePage() {
         title="Appointment"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="min-h-screen lg:min-h-[70vh] flex items-center justify-center bg-gray-50">
         <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg flex flex-col justify-evenly">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex flex-col items-center">

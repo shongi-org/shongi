@@ -2,7 +2,7 @@
 import Topbar from '@/components/Topbar';
 import { useAppSelector } from '@/lib/hooks';
 
-import { Box, Flex, Text } from '@radix-ui/themes';
+import { Flex, Text } from '@radix-ui/themes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -44,44 +44,49 @@ const Issue = () => {
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
-  console.log(service_id);
 
   return (
     <>
       <Topbar title="Issue" leftIcon={<IoIosArrowBack fontSize={'24px'} />} />
-      <div className="flex justify-center min-h-screen">
-        <div className="w-full p-4 space-y-1">
-          {options.map((option) => (
-            <Box className="w-[95vw] sm:w-[33vw] mr-3 mt-3" key={option.id}>
-              <Link
-                href={`${isLoggedIn ? `./issue/${option.link}?service_id=${service_id}&service_name=${service_name}` : `./login?service_id=${service_id}&service_name=${service_name}`}`}
-              >
-                <Flex className="w-[95vw] h-fit justify-start items-end relative">
-                  <Flex className="flex absolute w-[95vw] pl-4 pb-6 text-start justify-start items-center ">
-                    <Text
-                      as="p"
-                      weight="bold"
-                      className="text-white text-4xl font-poppins z-10"
-                    >
-                      {option.label}
-                    </Text>
-                  </Flex>
-
-                  <Image
-                    width={200}
-                    height={200}
-                    className="w-[93vw] h-auto rounded-lg brightness-50"
-                    alt="service"
-                    src={option.image}
-                  />
+      <div className="flex min-h-screen lg:min-h-[50vh] w-screen lg:w-[70vw] lg:flex-wrap space-y-1 flex-col lg:flex-row items-center">
+        {options.map((option) => (
+          <Flex
+            wrap={'wrap'}
+            justify={'center'}
+            align={'center'}
+            className="w-[95vw] lg:w-[22vw] sm:w-[33vw] mr-3 mt-3"
+            key={option.id}
+          >
+            <Link
+              href={`${isLoggedIn ? `./issue/${option.link}?service_id=${service_id}&service_name=${service_name}` : `./login?service_id=${service_id}&service_name=${service_name}`}`}
+            >
+              <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
+                <Flex className="flex absolute w-[95vw] lg:w-full pl-4 pb-6 text-start justify-start items-center ">
+                  <Text
+                    as="p"
+                    weight="bold"
+                    className="text-white text-4xl font-poppins z-10"
+                  >
+                    {option.label}
+                  </Text>
                 </Flex>
-              </Link>
-            </Box>
-          ))}
-        </div>
+
+                <Image
+                  width={300}
+                  height={300}
+                  className="w-[95vw] lg:w-full h-auto rounded-lg brightness-50 ml-[2.5vw] lg:ml-0"
+                  alt="service"
+                  src={option.image}
+                />
+              </Flex>
+            </Link>
+          </Flex>
+        ))}
       </div>
     </>
   );
 };
+
+// href={`${isLoggedIn ? `./issue/${option.link}?service_id=${service_id}&service_name=${service_name}` : `./login?service_id=${service_id}&service_name=${service_name}`}`}
 
 export default Issue;

@@ -51,7 +51,7 @@ const MedicineCategories: React.FC<MedicineCategoriesProps> = () => {
   ];
 
   return (
-    <div className="w-[90vw] flex flex-wrap gap-3 mt-4 ">
+    <div className="w-[90vw] lg:w-full flex flex-wrap gap-3 mt-4 ">
       {data.slice(0, showMore ? data.length : 3).map((category) => (
         <div
           key={category.id}
