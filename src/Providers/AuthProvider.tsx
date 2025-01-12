@@ -10,10 +10,10 @@ export default function AuthProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const token = localStorage.getItem('token');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
     if (token) {
       isLoggedIn(token)
         .then((res) => {

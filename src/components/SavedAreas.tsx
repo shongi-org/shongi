@@ -41,18 +41,6 @@ const SavedAreas: React.FC<SavedAreasProps> = () => {
             <p className="">{item.details}</p>
           </Flex>
         ))}
-
-        {/* <Flex
-          justify={'center'}
-          width={'full'}
-          direction={'column'}
-          align={'start'}
-          className={`${1 === selected ? 'border-[#283b77]' : 'border-gray-400'}  border-2 p-2 rounded-md mb-2 shadow-md`}
-          key={area._id}
-        >
-          <p className="">{area.area}</p>
-          <p className="">{area.detail}</p>
-        </Flex> */}
       </Box>
     </div>
   );

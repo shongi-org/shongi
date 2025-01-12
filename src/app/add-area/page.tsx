@@ -2,12 +2,17 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import LocationMap from '@/components/MapView';
+// import LocationMap from '@/components/MapView';
 import { Box } from '@radix-ui/themes';
 import { useAppDispatch } from '@/lib/hooks';
 import { setArea } from '@/lib/features/area/area';
 import { useRouter } from 'next/navigation';
 import SavedAreas from '@/components/SavedAreas';
+import dynamic from 'next/dynamic';
+const LocationMap = dynamic(() => import('@/components/MapView'), {
+  loading: () => <p>loading...</p>,
+  ssr: false,
+});
 
 const Page: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -23,7 +28,7 @@ const Page: React.FC = () => {
   );
 
   const API_KEY =
-    'bkoi_c89eb01cd546186469d208b0ff0f461b47969fa9be9366e593ae2ed6642df13b';
+    'bkoi_6661bfd56b3a2520c41a8fc45280262e0b724386659ee30db35e35bb5cd498b6';
   const [sessionId, setSessionId] = useState<string | null>(null);
 
   // Debounce handler
@@ -32,7 +37,6 @@ const Page: React.FC = () => {
       setResults([]);
       return;
     }
-
     const timeoutId = setTimeout(() => {
       searchPlaces(query);
     }, 500);
@@ -182,7 +186,7 @@ const Page: React.FC = () => {
           <Box className="">
             <Box
               onClick={handleAddAddress}
-              className="w-[96vw]  bg-white mt-2 text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl text-center p-2 rounded-md mb-2"
+              className="w-[96vw] lg:w-full bg-white mt-2 text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl text-center p-2 rounded-md mb-2 cursor-pointer"
             >
               Add Address
             </Box>

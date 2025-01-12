@@ -37,7 +37,7 @@ export default function Home() {
           <ServiceSliders></ServiceSliders>
         </div>
 
-        <div className="hidden lg:flex mt-[50px]">
+        <div className="hidden lg:flex mt-[7vh]">
           <div className="w-[20vw] fixed h-full border-gray-300 border-r-[1px]">
             <SideNavbar></SideNavbar>
           </div>

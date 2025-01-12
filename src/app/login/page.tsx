@@ -6,6 +6,7 @@ import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
 import { sendOTP } from '@/services/sendOTP';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 export default function LoginPage() {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -42,23 +43,25 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96 ">
-        <h1 className="text-2xl font-bold mb-6 text-center">
-          Enter Phone Number
-        </h1>
-        <PhoneInput handleChange={handleChange}></PhoneInput>
-        <div>{error}</div>
-        <div className="flex flex-col items-end">
-          <Button
-            className="h-14 text-xl mt-2"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Next
-          </Button>
+    <Suspense>
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-8 rounded-lg shadow-md w-96 ">
+          <h1 className="text-2xl font-bold mb-6 text-center">
+            Enter Phone Number
+          </h1>
+          <PhoneInput handleChange={handleChange}></PhoneInput>
+          <div>{error}</div>
+          <div className="flex flex-col items-end">
+            <Button
+              className="h-14 text-xl mt-2"
+              type="submit"
+              onClick={handleSubmit}
+            >
+              Next
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 }

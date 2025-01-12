@@ -2,7 +2,7 @@
 
 import { Input } from '@/components/Input';
 import { DatePicker } from '@/components/Calendar';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import Button from '@/components/Button';
 import { createUser } from '@/services/createUser';
 import { useSearchParams } from 'next/navigation';
@@ -48,71 +48,72 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-md">
-        <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
-          Create your account
-        </h2>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm space-y-4">
-            <div>
-              <label htmlFor="firstName" className="sr-only">
-                First Name
-              </label>
-              <Input
-                type="text"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
+    <Suspense>
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-xl shadow-md">
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
+            Create your account
+          </h2>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <div className="rounded-md shadow-sm space-y-4">
+              <div>
+                <label htmlFor="firstName" className="sr-only">
+                  First Name
+                </label>
+                <Input
+                  type="text"
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="lastName" className="sr-only">
+                  Last Name
+                </label>
+                <Input
+                  type="text"
+                  placeholder="Last Name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </div>
+              <div>
+                <label htmlFor="gender" className="sr-only">
+                  Gender
+                </label>
+                <select
+                  value={gender}
+                  onChange={(e) => setGender(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="" disabled>
+                    Select Gender
+                  </option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="dob" className="sr-only">
+                  Date of Birth
+                </label>
+                <DatePicker selectedDate={dob} onDateChange={setDob} />
+              </div>
             </div>
+
             <div>
-              <label htmlFor="lastName" className="sr-only">
-                Last Name
-              </label>
-              <Input
-                type="text"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="gender" className="sr-only">
-                Gender
-              </label>
-              <select
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              <Button
+                type="submit"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
-                <option value="" disabled>
-                  Select Gender
-                </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
+                Create Account
+              </Button>
             </div>
-            <div>
-              <label htmlFor="dob" className="sr-only">
-                Date of Birth
-              </label>
-              <DatePicker selectedDate={dob} onDateChange={setDob} />
-            </div>
-          </div>
+          </form>
 
-          <div>
-            <Button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Create Account
-            </Button>
-          </div>
-        </form>
-
-        {/* <div className="mt-6">
+          {/* <div className="mt-6">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-300"></div>
@@ -145,7 +146,8 @@ export default function SignupPage() {
             </div>
           </div>
         </div> */}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
