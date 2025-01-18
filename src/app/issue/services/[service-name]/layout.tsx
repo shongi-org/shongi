@@ -5,7 +5,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Issue',
+  title: 'Select Category',
   description: 'Choose Issue',
 };
 

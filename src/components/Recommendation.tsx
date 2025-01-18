@@ -86,7 +86,7 @@ const Recommendation: React.FC<RecommendationProps> = () => {
               <Image
                 width={400}
                 height={400}
-                className="w-[93vw] lg:w-[70vw] h-[40vh] rounded-lg object-cover"
+                className="w-[93vw] lg:w-[70vw] lg:h-[40vh] rounded-lg object-cover"
                 alt="service"
                 src={service.image}
               />

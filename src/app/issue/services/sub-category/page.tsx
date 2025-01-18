@@ -10,6 +10,7 @@ import Image from 'next/image';
 import { config } from '@/config';
 import { ISubservice } from '@/interfaces/ISubservice';
 import { useSearchParams } from 'next/navigation';
+import SearchBar from '@/components/SearchBar';
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
 
 const RadioButtonList: React.FC = () => {
@@ -47,11 +48,7 @@ const RadioButtonList: React.FC = () => {
         title="Services"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      {/* <SearchBarSpecific
-      getSearchResults={}
-      handleRedirect={}
-      // purpose={`service category_id=${category_id}`}
-    /> */}
+      <SearchBar visibility={true} />
       <Flex
         wrap={'wrap'}
         align={'center'}

@@ -6,12 +6,11 @@ search service and medicine
 
 POST user bug
 See past orders
+See Timeline
 See on going orders on homepage
 
-Hook remaining home page services with category  
-Success page on Order placement
+Hook remaining home page services with category
 
-Desktop view
 UI improvements
 Redux Persist
 
@@ -21,3 +20,14 @@ Card dimentions
 Provider App
 
 change type interface of cart items
+
+Doctors at home -> Health at Home
+Online Consultation -> Doctor Consultation
+
+Make Payment Icon
+
+Customer side
+Order Placed
+Order Confirmed
+Provider on their way
+Service Provided

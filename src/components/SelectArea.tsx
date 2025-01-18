@@ -52,8 +52,8 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
       lat: 0,
       long: 0,
     },
-    detail: '',
-    area: '',
+    detail: 'Road 9/A, Sankar',
+    area: 'Dhanmondi',
   });
   const router = useRouter();
 
@@ -63,18 +63,18 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
         async (position) => {
           const { latitude, longitude } = position.coords;
           const response = await fetch(
-            `https://barikoi.xyz/v2/api/search/reverse/geocode?api_key=bkoi_6661bfd56b3a2520c41a8fc45280262e0b724386659ee30db35e35bb5cd498b6&longitude=${longitude}&latitude=${latitude}&address=true&area=true`,
+            `https://barikoi.xyz/v2/api/search/reverse/geocode?api_key=bkoi_6661bfd56b3a2520c41a8fc45280262e0b724386659ee30db35e35bb5cd498b&longitude=${longitude}&latitude=${latitude}&address=true&area=true`,
           );
           const data = await response.json();
-          console.log(response);
+
           setCurrentArea({
             _id: '0',
             geocode: {
               lat: latitude,
               long: longitude,
             },
-            detail: data.place?.address,
-            area: data.place?.area,
+            detail: data.place?.address || 'Road 9/A, Sankar',
+            area: data.place?.area || 'Dhanmondi',
           });
           if (!area._id) {
             dispatch(
@@ -84,8 +84,8 @@ const SelectArea: React.FC<SelectAreaProps> = () => {
                   lat: latitude,
                   long: longitude,
                 },
-                detail: data.place?.address,
-                area: data.place?.area,
+                detail: data.place?.address || 'Road 9/A, Sankar',
+                area: data.place?.area || 'Dhanmondi',
               }),
             );
           }

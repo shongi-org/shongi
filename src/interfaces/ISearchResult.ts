@@ -1,4 +1,5 @@
 export type ISearchResult = {
-  _id: string;
   name: string;
+  id: string;
+  category: 'medicine' | 'service';
 };

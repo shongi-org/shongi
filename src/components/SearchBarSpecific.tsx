@@ -87,7 +87,7 @@ const SearchBarSpecific: React.FC<SearchBarSpecificProps> = ({
       >
         {results.map((result) => (
           <li
-            key={result._id}
+            key={result.id}
             onClick={() => handleSelect(result)}
             style={{
               padding: '10px',

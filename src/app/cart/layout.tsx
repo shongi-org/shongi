@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
   const cart = useAppSelector((state) => state.addToCart);
   const area = useAppSelector((state) => state.area);
-  console.log(area);
+
   function handleOrderMore() {
     router.push('/');
   }
