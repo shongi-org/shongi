@@ -1,8 +1,8 @@
 import MedicineCategories from '@/components/MedicineCategories';
 import MedicineList from '@/components/MedicineList';
-import SearchBar from '@/components/SearchBar';
 import { Flex } from '@radix-ui/themes';
 import React from 'react';
+import SearchBar from './components/SearchBar';
 
 type pageProps = object;
 
@@ -13,7 +13,11 @@ const page: React.FC<pageProps> = () => {
       direction={'column'}
       align={'center'}
     >
-      <SearchBar></SearchBar>
+      <SearchBar
+        visibility={true}
+        // purpose={`service category_id=${category_id}`}
+        searchEndPoint={`/medicine`}
+      ></SearchBar>
       <MedicineCategories></MedicineCategories>
       <MedicineList></MedicineList>
     </Flex>

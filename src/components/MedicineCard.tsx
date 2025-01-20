@@ -31,7 +31,6 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
   }
 
   const cart = useAppSelector((state) => state.addToCart.items);
-  console.log(cart['6754cf60e4b07afe3daff93c']);
 
   return (
     <div className="w-[45vw] lg:w-[15vw] bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">

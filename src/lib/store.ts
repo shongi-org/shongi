@@ -5,6 +5,8 @@ import changeSearchBarVisibilityState from './features/searchBar/searchBarVisibi
 import setIsLoggedIn from './features/auth/isLoggedIn';
 import changeAreaDropDownOpenState from './features/areaDropDownOpen/searchBarVisibility';
 import setArea from './features/area/area';
+import setSearchResults from './features/searchResults/searchResults';
+import setMedicineSearchResults from './features/searchResults/medicineSearchResults';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +15,8 @@ export const store = configureStore({
     setIsLoggedIn: setIsLoggedIn,
     changeAreaDropDownOpenState: changeAreaDropDownOpenState,
     area: setArea,
+    searchResults: setSearchResults,
+    medicineSearchResults: setMedicineSearchResults,
   },
 });
 

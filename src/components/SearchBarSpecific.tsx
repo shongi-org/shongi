@@ -5,6 +5,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import magnifyingGlass from '@/icons/magnifyingGlass.svg';
 import Image from 'next/image';
 import { ISearchResult } from '@/interfaces/ISearchResult';
+import { useRouter } from 'next/navigation';
 
 type SearchBarSpecificProps = {
   children?: ReactNode;
@@ -19,6 +20,7 @@ const SearchBarSpecific: React.FC<SearchBarSpecificProps> = ({
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (query.trim() === '') {
@@ -39,7 +41,11 @@ const SearchBarSpecific: React.FC<SearchBarSpecificProps> = ({
   }
 
   async function handleSelect(result: ISearchResult) {
-    console.log(result);
+    if (result.category === 'service') {
+      router.push(`/issue/service/${result.id}`);
+    } else {
+      router.push(`/medicine/${result.id}`);
+    }
   }
 
   const search = async (searchQuery: string) => {

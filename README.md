@@ -1,10 +1,9 @@
 To do -
 
-search services
-search medicine
-search service and medicine
+Medicine Search
 
-POST user bug
+Upload prescription feature
+
 See past orders
 See Timeline
 See on going orders on homepage
@@ -16,8 +15,9 @@ Redux Persist
 
 Add Phone number changing option at cart for OTP exception
 Card dimentions
+POST user bug
 
-Provider App
+Service Provider App
 
 change type interface of cart items
 
@@ -27,7 +27,5 @@ Online Consultation -> Doctor Consultation
 Make Payment Icon
 
 Customer side
-Order Placed
-Order Confirmed
-Provider on their way
-Service Provided
+Order Placed -> Order Confirmed
+Provider on their way -> Service Provided

@@ -9,13 +9,16 @@ import Image from 'next/image';
 import { config } from '@/config';
 import { ISubservice } from '@/interfaces/ISubservice';
 import { useSearchParams } from 'next/navigation';
-import SearchBar from '@/components/SearchBar';
+// import SearchBar from '@/components/SearchBar';
+import { useAppSelector } from '@/lib/hooks';
+import SearchBar from '../components/SearchBar';
+// import { ISearchResult } from '@/interfaces/ISearchResult';
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
 
 const RadioButtonList: React.FC = () => {
   const searchParams = useSearchParams();
   const category_id = searchParams.get('_id');
-
+  const searchResults = useAppSelector((state) => state.searchResults);
   const [options, setOptions] = useState([
     {
       value: '',
@@ -51,14 +54,22 @@ const RadioButtonList: React.FC = () => {
       <SearchBar
         visibility={true}
         // purpose={`service category_id=${category_id}`}
+        searchEndPoint={`/service/sub-category/${category_id}`}
       />
       <Flex
         wrap={'wrap'}
-        align={'center'}
+        align={'start'}
         justify={'center'}
         className="min-h-screen lg:min-h-[50vh] lg:w-[70vw] w-full p-4 pb-[8vh]"
       >
-        {options.map((option) => (
+        {(searchResults.length > 0
+          ? searchResults.map((item: ISubservice) => ({
+              label: item.name,
+              value: item._id,
+              banner_image: item.banner_image,
+            }))
+          : options
+        ).map((option) => (
           <Box
             // onClick={() => handleValueChange(option)}
             className="w-[95vw] lg:w-1/3 sm:w-[33vw] mr-3 lg:mr-0 mt-3"
@@ -83,7 +94,7 @@ const RadioButtonList: React.FC = () => {
                   height={200}
                   className="w-[95vw] lg:w-full h-auto rounded-lg brightness-50 ml-[2.5vw]"
                   alt="service"
-                  src={option.banner_image}
+                  src={option.banner_image as string}
                 />
               </Flex>
             </Link>

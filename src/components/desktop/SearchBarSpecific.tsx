@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { ISearchResult } from '@/interfaces/ISearchResult';
 import axios from 'axios';
 import { config } from '@/config';
+import { useRouter } from 'next/navigation';
 
 type SearchBarSpecificProps = {
   children?: ReactNode;
@@ -20,6 +21,7 @@ const SearchBarSpecific: React.FC<
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (query.trim() === '') {
@@ -40,7 +42,11 @@ const SearchBarSpecific: React.FC<
   }
 
   async function handleSelect(result: ISearchResult) {
-    console.log(result);
+    if (result.category === 'service') {
+      router.push(`/issue/service/${result.id}`);
+    } else {
+      router.push(`/medicine/${result.id}`);
+    }
   }
 
   const search = async (searchQuery: string) => {
@@ -74,8 +80,6 @@ const SearchBarSpecific: React.FC<
           <Image src={magnifyingGlass} alt="search"></Image>
         </TextField.Slot>
       </TextField.Root>
-      {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <ul
         className="results-list p-2 drop-shadow-md"
@@ -94,6 +98,8 @@ const SearchBarSpecific: React.FC<
           boxShadow: '-moz-initial',
         }}
       >
+        {loading && <li>Loading...</li>}
+        {error && <li style={{ color: 'red' }}>{error}</li>}
         {results.map((result) => (
           <li
             key={result.id}

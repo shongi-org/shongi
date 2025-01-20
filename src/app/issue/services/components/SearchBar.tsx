@@ -5,31 +5,36 @@ import React, { ReactNode, useEffect, useState } from 'react';
 // import { Magnifying } from '@radix-ui/react-icons'
 import magnifyingGlass from '@/icons/magnifyingGlass.svg';
 import Image from 'next/image';
-import { useAppSelector } from '@/lib/hooks';
-import { ISearchResult } from '@/interfaces/ISearchResult';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { config } from '@/config';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { setSearchResults } from '@/lib/features/searchResults/searchResults';
+// import { ISubservice } from '@/interfaces/ISubservice';
 
 type SearchBarProps = {
   children?: ReactNode;
   visibility?: boolean;
   width?: string;
+  searchEndPoint?: string;
 };
 
-const SearchBar: React.FC<SearchBarProps> = ({ visibility }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  visibility,
+  searchEndPoint,
+}) => {
   const searchBarVisibility = useAppSelector(
     (state) => state.searchBarVisibility,
   );
+
+  const dispatch = useAppDispatch();
+
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<ISearchResult[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const router = useRouter();
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (query.trim() === '') {
-      setResults([]);
+      dispatch(setSearchResults([]));
       return;
     }
     const timeoutId = setTimeout(() => {
@@ -41,12 +46,19 @@ const SearchBar: React.FC<SearchBarProps> = ({ visibility }) => {
 
   const search = async (query: string) => {
     setLoading(true);
-    setError(null);
+    setError('');
     try {
       const response = await axios.get(
-        `${config.backendURL}/api/search?searchTerm=${query}`,
+        `${config.backendURL}/api/search${searchEndPoint}?searchTerm=${query}`,
       );
-      setResults(response.data);
+      // .then((res) => {
+      //   return res.data.map((item: ISubservice) => ({
+      //     label: item.name,
+      //     value: item._id,
+      //     banner_image: item.banner_image,
+      //   }));
+      // });
+      dispatch(setSearchResults(response.data));
       // console.log(response);
     } catch (err: unknown) {
       console.log(err);
@@ -56,13 +68,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ visibility }) => {
     }
   };
 
-  async function handleSelect(result: ISearchResult) {
-    if (result.category === 'service') {
-      router.push(`/issue/service/${result.id}`);
-    } else {
-      router.push(`/medicine/${result.id}`);
-    }
-  }
   return (
     <>
       <Box
@@ -80,29 +85,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ visibility }) => {
             <Image src={magnifyingGlass} alt="search"></Image>
           </TextField.Slot>
         </TextField.Root>
-
-        <ul
-          className="results-list lg:w-[70vw] w-[94vw] list-none z-10 m-0 mt-[1rem] rounded-sm max-h-[200px] overflow-y-auto bg-white absolute"
-          style={{
-            border: results.length > 0 ? '1px solid #ccc' : 'none',
-          }}
-        >
-          {loading && <li className="p-[10px] cursor-pointer ">Loading...</li>}
-          {error && <li style={{ color: 'red' }}>{error}</li>}
-          {results.map((result) => (
-            <li
-              className="p-[10px] cursor-pointer "
-              key={result.id}
-              onClick={() => handleSelect(result)}
-              style={{
-                borderBottom: '1px solid #f0f0f0',
-              }}
-            >
-              {result.name}
-            </li>
-          ))}
-        </ul>
       </Box>
+      {loading ? <p>Loading</p> : <></>}
+      {error ? <p>An Error Occured</p> : <></>}
     </>
   );
 };

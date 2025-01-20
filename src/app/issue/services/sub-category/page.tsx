@@ -10,13 +10,15 @@ import Image from 'next/image';
 import { config } from '@/config';
 import { ISubservice } from '@/interfaces/ISubservice';
 import { useSearchParams } from 'next/navigation';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '../components/SearchBar';
+import { useAppSelector } from '@/lib/hooks';
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
 
 const RadioButtonList: React.FC = () => {
   const searchParams = useSearchParams();
 
   const sub_category_id = searchParams.get('sub_category_id');
+  const searchResults = useAppSelector((state) => state.searchResults);
 
   const [options, setOptions] = useState([
     {
@@ -42,20 +44,32 @@ const RadioButtonList: React.FC = () => {
     fetchServices();
   }, [sub_category_id]);
 
+  console.log(searchResults);
+
   return (
     <>
       <Topbar
         title="Services"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      <SearchBar visibility={true} />
+      <SearchBar
+        visibility={true}
+        searchEndPoint={`/service/${sub_category_id}`}
+      />
       <Flex
         wrap={'wrap'}
-        align={'center'}
+        align={'start'}
         justify={'center'}
         className="min-h-screen lg:min-h-full lg:w-[70vw] w-full p-4 pb-[8vh]"
       >
-        {options.map((option) => (
+        {(searchResults.length > 0
+          ? searchResults.map((item: ISubservice) => ({
+              label: item.name,
+              value: item._id,
+              banner_image: item.banner_image,
+            }))
+          : options
+        ).map((option) => (
           <Box
             // onClick={() => handleValueChange(option)}
             className="w-[95vw] lg:w-1/3 sm:w-[33vw] mr-3 lg:mr-0 mt-3"
