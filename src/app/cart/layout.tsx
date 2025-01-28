@@ -61,7 +61,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </Box>
           <Box
             onClick={handlePlaceOrder}
-            className="w-[96vw] lg:w-[70vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md "
+            className="w-[96vw] lg:w-[70vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
           >
             Place Order
           </Box>

@@ -1,23 +1,30 @@
 To do -
 
-Medicine Search
+Set Order Details in time line page, make page dynamic
 
-Upload prescription feature
-
-See past orders
-See Timeline
 See on going orders on homepage
+
+Service Provider App
+
+Flow for past Issue
+
+Flow for Someone else
+
+Case Insensitive search
 
 Hook remaining home page services with category
 
 UI improvements
-Redux Persist
 
 Add Phone number changing option at cart for OTP exception
-Card dimentions
-POST user bug
 
-Service Provider App
+Card dimentions
+
+Clear Cart when Order is placed
+
+Fix Date of birth issue at Signup
+
+Profile picture upload feature
 
 change type interface of cart items
 
@@ -29,3 +36,11 @@ Make Payment Icon
 Customer side
 Order Placed -> Order Confirmed
 Provider on their way -> Service Provided
+
+Create User Date Time input needs to be changed
+
+Upload prescription feature
+
+Redux Persist
+
+See more in past orders page not pagination

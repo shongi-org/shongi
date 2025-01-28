@@ -48,6 +48,19 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
           </div>
         </Link>
       ))}
+      <Link href={'/past-orders'}>
+        <div className="p-4 flex items-center border-gray-300 border-b-[1px] w-[18vw]">
+          <Image
+            src={
+              'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png'
+            }
+            width={30}
+            height={30}
+            alt="service-icon"
+          ></Image>
+          <p className="ml-5">Orders</p>
+        </div>
+      </Link>
     </div>
   );
 };

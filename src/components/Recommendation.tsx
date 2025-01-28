@@ -65,11 +65,11 @@ const Recommendation: React.FC<RecommendationProps> = () => {
 
   return (
     <Box>
-      <Label className="font-poppins no-scrollbar font-bold text-xl z-30 mb-[5vh]">
+      <Label className="font-poppins no-scrollbar font-bold text-xl z-30 mb-[5vh] mt-3">
         Recommended For you
       </Label>
       {/* <Flex className="w-[95vw] overflow-scroll no-scrollbar mt-3"> */}
-      <Slider {...settings} className="lg:w-[70vw]">
+      <Slider {...settings} className="lg:w-[70vw] mt-3">
         {data.map((service: IRecommendation) => (
           <Box className="w-[95vw] lg:w-[70vw] mr-3" key={service.id}>
             <Flex className="w-[95vw] lg:w-[70vw] h-fit justify-start items-end relative">

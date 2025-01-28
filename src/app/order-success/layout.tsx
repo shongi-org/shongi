@@ -11,8 +11,8 @@ export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
-  function handleOrderMore() {
-    router.push('/');
+  function handleSeeRunningOrders() {
+    router.push('/past-orders');
   }
 
   return (
@@ -35,8 +35,8 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
             <Box className="pb-[10vh]">
               <Box
-                onClick={handleOrderMore}
-                className="w-[96vw] lg:w-[70vw] m-2 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md "
+                onClick={handleSeeRunningOrders}
+                className="w-[96vw] lg:w-[70vw] m-2 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
               >
                 See Running Orders
               </Box>
