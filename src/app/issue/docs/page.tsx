@@ -14,9 +14,16 @@ export default function Docs() {
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
   const for_someone = searchParams.get('for_someone');
+  const name = searchParams.get('name');
+  const dob = searchParams.get('dob');
+  const gender = searchParams.get('gender');
+
+  console.log(dob);
+
   const [successfullyUploaded, setSuccessfullyUploaded] =
     useState<boolean>(false);
 
+  console.log(name, gender);
   async function onUploadImage(assets: string[]) {
     const JWTToken = localStorage.getItem('token');
     const createdIssueResponse = await createIssue({

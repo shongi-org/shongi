@@ -1,20 +1,20 @@
 To do -
 
-Set Order Details in time line page, make page dynamic
-
-See on going orders on homepage
-
-Service Provider App
-
-Flow for past Issue
-
 Flow for Someone else
 
 Case Insensitive search
 
+Service Provider App - Shahriar
+
 Hook remaining home page services with category
 
 UI improvements
+
+- place icons instead of labels in past orders and other lists
+- home page desktop spacings
+- Signup form needs to be coherent
+
+See on going orders on homepage
 
 Add Phone number changing option at cart for OTP exception
 
@@ -41,6 +41,8 @@ Create User Date Time input needs to be changed
 
 Upload prescription feature
 
-Redux Persist
+Redux Persist and Thunk
 
 See more in past orders page not pagination
+
+Improve recommendation in lists

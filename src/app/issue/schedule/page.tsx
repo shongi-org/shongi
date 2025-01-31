@@ -131,6 +131,20 @@ export default function SchedulePage() {
   //   setSelectedStartTime(undefined); // Reset start time when date changes
   // };
 
+  const getStartDate = () => {
+    // if (new Date().getHours() > 18) {
+    //   return new Date();
+    // } else {
+    // }
+    return new Date().getHours() < 18
+      ? new Date()
+      : new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+  };
+
+  const getDefaultMonth = () => {
+    return new Date(getStartDate().getFullYear(), getStartDate().getMonth());
+  };
+  // console.log(new Date().getHours() > 18);
   const getEndTime = (startTime: string) => {
     if (!startTime) return undefined;
     const [startHour, startMinutes] = startTime.split(':').map(Number);
@@ -191,15 +205,16 @@ export default function SchedulePage() {
                 mode="single"
                 selected={selectedDate}
                 onSelect={handleDateChange}
-                fromDate={new Date()}
+                hidden={{ before: getStartDate() }}
                 className="border rounded-lg p-2 bg-gray-50 w-full"
+                defaultMonth={getDefaultMonth()}
               />
             </div>
 
             {selectedDate && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Select a Start Time
+                  Select a 4-hour Time Frame
                 </label>
                 <Select.Root
                   value={selectedStartTime}
@@ -247,7 +262,10 @@ export default function SchedulePage() {
             {selectedStartTime && (
               <div className="text-sm text-gray-500 mb-2 flex items-start">
                 <CiCircleInfo className="mr-1 text-lg" />
-                <span>The end time is automatically calculated.</span>
+                <span>
+                  We will send you an appropriate professional within this
+                  time-frame
+                </span>
               </div>
             )}
 

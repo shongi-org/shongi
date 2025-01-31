@@ -37,7 +37,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onClick={() => setIsOpen((prev) => !prev)}
         readOnly
         placeholder="Select Date"
-        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full px-4 py-1 border h-14 text-xl border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       {isOpen && (
         <div className="absolute z-10 bg-white shadow-lg rounded-lg mt-2">

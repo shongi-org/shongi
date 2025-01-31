@@ -29,7 +29,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
       <Box className="">
         {Object.values(orders).map((item: IPastAppointment) => {
           return (
-            <Link key={item._id} href={`/past-orders/${item._id}`}>
+            <Link key={item._id} href={`/past-orders/appointment/${item._id}`}>
               <Flex
                 align={'center'}
                 width={'full'}

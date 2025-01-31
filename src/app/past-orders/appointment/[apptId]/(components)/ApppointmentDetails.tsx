@@ -11,11 +11,11 @@ import React, { useEffect, useState } from 'react';
 type DetailsProps = object;
 
 const AppointmentDetails: React.FC<DetailsProps> = () => {
-  const { orderId } = useParams();
+  const { apptId } = useParams();
   const [appointment, setAppointment] = useState<IAppointmentDetails>();
 
   useEffect(() => {
-    getAppointment(orderId as string)
+    getAppointment(apptId as string)
       .then((res) => res.json())
       .then((res) => {
         setAppointment(res);
@@ -26,10 +26,9 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
     <>
       <Flex
         align={'center'}
-        width={'90vw'}
         direction={'column'}
         justify={'between'}
-        className="mt-[5vh] p-2 rounded-md shadow-lg shadow-[#283891] mb-[5vh] border-[#283891]"
+        className="mt-[5vh] p-2 rounded-md shadow-lg shadow-[#283891] mb-[5vh] border-[#283891] w-[90vw] lg:w-[50vw]"
       >
         <Flex className="items-center w-full">
           {/* <Image
@@ -69,12 +68,11 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
         </Flex>
         <Flex
           align={'start'}
-          width={'90vw'}
-          className="p-2 ml-4 font-poppins font-bold"
+          className="p-2 ml-4 font-poppins font-bold w-[90vw] lg:w-[50vw]"
         >
           Investigation documents
         </Flex>
-        <Flex align={'start'} width={'90vw'} className="p-2 ml-2">
+        <Flex align={'start'} className="p-2 ml-2 w-[90vw] lg:w-[50vw]">
           {appointment?.issue_id.assets.map((asset) => (
             <img
               key={asset}
