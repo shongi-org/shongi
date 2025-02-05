@@ -35,7 +35,7 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
                 width={'full'}
                 justify={'between'}
                 className="border-2 p-2 rounded-md mb-2 shadow-md"
-                key={item._id}
+                key={item?._id}
               >
                 <Flex>
                   <Image
@@ -49,13 +49,13 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
                   <div className="ml-2">
                     <p className="font-poppins font-bold">Pharamacy</p>
                     <p className="font-poppins">
-                      {item.medicine_name}...<Link href={``}>See Details</Link>
+                      {item?.medicine_name}...<Link href={``}>See Details</Link>
                     </p>
                   </div>
                 </Flex>
 
                 <div className="rounded-full bg-[#283b77] lg:py-0.5 lg:px-2.5 px-1 border border-transparent text-base text-white font-poppins transition-all shadow-lg text-center">
-                  {item.status}
+                  {item?.status}
                 </div>
               </Flex>
             </Link>

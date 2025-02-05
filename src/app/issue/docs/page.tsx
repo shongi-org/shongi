@@ -1,6 +1,7 @@
 'use client';
 import Topbar from '@/components/Topbar';
 import UploadImage from '@/components/UploadImage';
+import { IGender } from '@/interfaces/IIssue';
 import { createIssue } from '@/services/createIssue';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -18,12 +19,9 @@ export default function Docs() {
   const dob = searchParams.get('dob');
   const gender = searchParams.get('gender');
 
-  console.log(dob);
-
   const [successfullyUploaded, setSuccessfullyUploaded] =
     useState<boolean>(false);
 
-  console.log(name, gender);
   async function onUploadImage(assets: string[]) {
     const JWTToken = localStorage.getItem('token');
     const createdIssueResponse = await createIssue({
@@ -31,16 +29,18 @@ export default function Docs() {
       for_someone: for_someone ? true : false,
       service_id: service_id as string,
       assets: assets,
+      patient_details: {
+        name: name as string,
+        dob: new Date(dob as string),
+        gender: gender as IGender,
+      },
     });
     const createdIssue = await createdIssueResponse.json();
-    // console.log(createdIssue);
+
     setSuccessfullyUploaded(true);
     router.push(
       `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}`,
     );
-    // alert(
-    //   'Your Issue has been recorded. Please schedule a time suitable time for an appointment',
-    // );
   }
 
   async function handleSkip() {
@@ -50,9 +50,14 @@ export default function Docs() {
       for_someone: for_someone ? true : false,
       service_id: service_id as string,
       assets: [],
+      patient_details: {
+        name: name as string,
+        dob: new Date(dob as string),
+        gender: gender as IGender,
+      },
     });
     const createdIssue = await createdIssueResponse.json();
-    // console.log(createdIssue);
+
     setSuccessfullyUploaded(true);
     router.push(
       `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}`,
@@ -65,7 +70,7 @@ export default function Docs() {
         title="Upload Documents"
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
-      <div className="min-h-[90vh] lg:min-h-[70vh] flex items-center justify-center bg-gray-100">
+      <div className="min-h-[90vh] lg:min-h-[70vh] w-full flex items-center justify-center bg-gray-100">
         {successfullyUploaded ? (
           <>
             <label className="block text-lg font-medium text-gray-700 mb-2">

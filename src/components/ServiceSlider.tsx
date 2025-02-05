@@ -10,18 +10,32 @@ type ServiceSliderProps = {
   serviceSlug: string;
 };
 
+type Service = {
+  id: number;
+  subserviceName: string;
+  image: string;
+  url?: string;
+};
+
+type feed = {
+  'doctor-consultation': Service[];
+  'health-at-home': Service[];
+  'tests-at-home': Service[];
+  'phisiotherapy-at-home': Service[];
+  'nurses-at-home': Service[];
+};
+
 const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
-  const data: { [key: string]: { [key: string]: string | number }[] } =
-    subServiceList;
+  const data: feed = subServiceList;
 
   return (
     <Flex
       justify={'start'}
-      align={'center'}
+      align={'start'}
       className="w-full overflow-scroll no-scrollbar mt-3 h-full"
     >
-      {data[serviceSlug] &&
-        data[serviceSlug]
+      {data[serviceSlug as keyof feed] &&
+        data[serviceSlug as keyof feed]
           .slice(0, 4)
           .map((service: { [key: string]: string | number }) => (
             <Box

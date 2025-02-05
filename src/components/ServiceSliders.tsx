@@ -12,11 +12,6 @@ type IService = {
 
 const data: IService[] = [
   {
-    id: 1,
-    title: 'Pharmacy at Home',
-    serviceSlug: 'pharmacy',
-  },
-  {
     id: 2,
     title: 'Nursing at Home',
     serviceSlug: 'nurses-at-home',
@@ -29,17 +24,17 @@ const data: IService[] = [
   {
     id: 4,
     title: 'Tests at Home',
-    serviceSlug: 'test-investigation-at-home',
+    serviceSlug: 'tests-at-home',
   },
   {
     id: 5,
-    title: 'Online Consultation',
-    serviceSlug: 'online-consultation',
+    title: 'Doctor Consultation',
+    serviceSlug: 'doctor-consultation',
   },
   {
     id: 6,
-    title: 'Doctor at Home',
-    serviceSlug: 'doctor-at-home',
+    title: 'Health at Home',
+    serviceSlug: 'health-at-home',
   },
 ];
 
@@ -52,7 +47,7 @@ const ServiceSliders: React.FC<ServiceSlidersProps> = () => {
             <p className="font-poppins no-scrollbar font-bold text-xl">
               {service.title}
             </p>
-            <p className="font-poppins font-semibold text-danger text-2xl ">
+            <p className="font-poppins font-semibold text-danger text-xl ">
               See More
             </p>
           </div>

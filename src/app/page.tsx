@@ -1,5 +1,4 @@
 import { Flex } from '@radix-ui/themes';
-
 import Recommendation from '@/components/Recommendation';
 import SelectArea from '@/components/SelectArea';
 import ServiceList from '@/components/ServiceList';

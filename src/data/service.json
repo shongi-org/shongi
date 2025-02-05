@@ -1,92 +1,54 @@
 {
-  "online-consultation": [
+  "doctor-consultation": [
     {
       "id": 1,
-      "subserviceName": "Muscle Pain",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Online Medicine Doctor Consultation",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/1_cazb0m.jpg",
+      "url": "/service/234"
     },
     {
       "id": 2,
-      "subserviceName": "Specific Organ Pain",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Online Surgery Doctor Consultation",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/1_cazb0m.jpg",
+      "url": ""
     },
     {
       "id": 3,
-      "subserviceName": "Physical Injury",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "General Doctor Consultation At Home",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/2_mmtc4k.jpg"
     },
     {
       "id": 3,
-      "subserviceName": "Physical Injury",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 3,
-      "subserviceName": "Physical Injury",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 3,
-      "subserviceName": "Physical Injury",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 3,
-      "subserviceName": "Physical Injury",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Specialized Doctor Consultation At Home",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/2_mmtc4k.jpg"
     }
   ],
   "health-at-home": [
     {
       "id": 4,
       "subserviceName": "IV Canula and Saline",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/3_kl64yx.jpg"
     },
     {
       "id": 5,
       "subserviceName": "Dressing at Home",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/4_jnjixn.jpg"
     },
     {
       "id": 6,
       "subserviceName": "Cathetre Care",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/5_xahmkk.jpg"
     },
     {
       "id": 7,
       "subserviceName": "Stoma Care",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 8,
-      "subserviceName": "N-4 Tube Care",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 9,
-      "subserviceName": "I/V & I/M Injection",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 10,
-      "subserviceName": "Stitch Omit",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/6_yu6orx.jpg"
     }
   ],
-  "test-investigation-at-home": [
+  "tests-at-home": [
     {
       "id": 13,
-      "subserviceName": "Blood, UMI, Stool or Sputu",
+      "subserviceName": "Blood Test",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718695/images_t5nm60.jpg"
     },
     {
@@ -101,128 +63,53 @@
     },
     {
       "id": 16,
-      "subserviceName": "USG",
+      "subserviceName": "Ultrasologram",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718695/usg_euadia.jpg"
-    },
-    {
-      "id": 17,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718695/echo_xokzl9.jpg"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
     }
   ],
-  "pharmacy": [
-    {
-      "id": 18,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 19,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 20,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    }
-  ],
+
   "phisiotherapy-at-home": [
     {
       "id": 21,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Mobilizing Exercise for 14 days",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/24_k1a9ro.jpg"
     },
     {
       "id": 22,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "UST for 14days",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/27_toyze8.jpg"
     },
     {
       "id": 23,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "SWD for 14 days",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/25_w8tpbr.jpg"
     },
     {
       "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Mobilizing exercise for 5 days",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/24_k1a9ro.jpg"
     }
   ],
   "nurses-at-home": [
     {
       "id": 24,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Nursing Service for 3hours",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/28_x4v9um.jpg"
     },
     {
       "id": 25,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Nursing Service for 24hours",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/28_x4v9um.jpg"
     },
     {
       "id": 26,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Caregiver service for 3hours",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/29_tg2zic.jpg"
     },
     {
       "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    }
-  ],
-  "pharmacy-at-home": [
-    {
-      "id": 27,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 28,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 29,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    }
-  ],
-  "doctor-at-home": [
-    {
-      "id": 30,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 31,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 32,
-      "subserviceName": "ECHO",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
-    },
-    {
-      "id": 11,
-      "subserviceName": "BP Check and DM Check",
-      "image": "https://res.cloudinary.com/dsuiwxwkg/image/upload/v1730543253/medrop-i-v-cannula-20g-color-pink-i-d-0-8mm-o-d-1-1mm-pack-of-100-pcs--500x500_yr53q6.webp"
+      "subserviceName": "Caregiver service for 24hours",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/29_tg2zic.jpg"
     }
   ]
 }

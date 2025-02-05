@@ -83,7 +83,7 @@ const RadioButtonList: React.FC = () => {
                   <Text
                     as="p"
                     weight="bold"
-                    className="text-white text-4xl font-poppins z-10"
+                    className="text-white text-2xl font-poppins z-10"
                   >
                     {option.label}
                   </Text>

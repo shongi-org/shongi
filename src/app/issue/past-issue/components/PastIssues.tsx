@@ -36,7 +36,7 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                 className="border-2 p-2 rounded-md mb-2 mr-2 shadow-md w-[98%]"
               >
                 <Link
-                  href={`/issue/schedule?issue_id=${item._id}&service_name=${item.service_id.name}`}
+                  href={`/issue/schedule?issue_id=${item._id}&service_name=${item?.service_id?.name}`}
                 >
                   <Flex
                     direction={'column'}
@@ -55,7 +55,7 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                       justify={'start'}
                       className="p-2 ml-2 w-full lg:w-full"
                     >
-                      {item.assets.slice(0, 2).map((asset) => (
+                      {item?.assets.slice(0, 2).map((asset) => (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={asset}
@@ -67,13 +67,13 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                         ></img>
                       ))}
                       <p>
-                        {item.assets.length - 2 > 0 &&
+                        {item?.assets.length - 2 > 0 &&
                           `See ${item.assets.length - 2} More`}
                       </p>
                     </Flex>
                     <div className="ml-2">
                       <p className="font-poppins font-bold text-gray-500 text-sm">
-                        Uploaded for {item.service_id.name} Service
+                        Uploaded for {item?.service_id?.name} Service
                       </p>
                     </div>
                   </Flex>

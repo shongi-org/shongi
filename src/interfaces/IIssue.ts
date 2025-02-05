@@ -1,10 +1,15 @@
 // import { IOrderItem } from './IOrderItem';
-
+export type IGender = 'male' | 'female' | 'other';
 export type IIssue = {
   token: string;
   for_someone: boolean;
   service_id: string;
   assets: string[];
+  patient_details?: {
+    name: string;
+    gender: IGender;
+    dob: Date;
+  };
 };
 
 export type IIssueDetails = {

@@ -1,12 +1,22 @@
 To do -
 
-Flow for Someone else
+Fix Signup Form
+
+profile picture updating feature
+
+Fix Date of birth issue at Signup - change form type.
+
+Clear Cart when Order is placed
 
 Case Insensitive search
 
-Service Provider App - Shahriar
+Hook backend with Service provider app
 
 Hook remaining home page services with category
+
+Click to expand Investigation documents
+
+Conditional rendering on order cancelling - Only pending order can be cancelled
 
 UI improvements
 
@@ -19,12 +29,6 @@ See on going orders on homepage
 Add Phone number changing option at cart for OTP exception
 
 Card dimentions
-
-Clear Cart when Order is placed
-
-Fix Date of birth issue at Signup
-
-Profile picture upload feature
 
 change type interface of cart items
 
@@ -46,3 +50,5 @@ Redux Persist and Thunk
 See more in past orders page not pagination
 
 Improve recommendation in lists
+
+Implement ISR in as many pages as possible

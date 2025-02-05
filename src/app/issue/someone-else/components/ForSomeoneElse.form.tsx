@@ -45,33 +45,17 @@ export default function LoginPage() {
 
   function handleSubmit() {
     if (validateSomeoneElse(name, dob as Date, gender) !== 'success') {
-      console.log(validateSomeoneElse(name, dob as Date, gender));
       setError(() => validateSomeoneElse(name, dob as Date, gender));
     } else {
       router.push(
         `/issue/docs/?service_id=${service_id}&service_name=${service_name}&for_someone=true&name=${name}&dob=${new Date(dob as Date).toISOString()}&gender=${gender}`,
       );
-      //   sendOTP(phoneNumber)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //       if (res.result === 'OTP Sent') {
-      //         router.push(
-      //           `/otp/${phoneNumber}?service_id=${service_id}&service_name=${service_name}`,
-      //         );
-      //       } else {
-      //         setError('Server Error. Please try again');
-      //       }
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //       setError('server Error');
-      //     });
     }
   }
 
   return (
     <Suspense>
-      <div className=" flex items-center justify-center bg-gray-100 mb-[40vh] mt-[20vh]">
+      <div className=" flex items-center justify-center bg-gray-100 pb-[40vh] pt-[20vh]">
         <div className="bg-white p-8 rounded-lg shadow-md w-96 ">
           <h1 className="text-2xl font-bold mb-6 text-center">
             Enter Patient Details
@@ -79,7 +63,7 @@ export default function LoginPage() {
           <Input
             onChange={handleChange}
             className="h-14 text-xl mb-3"
-            type="tel"
+            type="name"
             placeholder="Name"
           />
           {/* <div>

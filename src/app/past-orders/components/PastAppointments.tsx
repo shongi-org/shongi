@@ -29,7 +29,10 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
       <Box className="">
         {Object.values(orders).map((item: IPastAppointment) => {
           return (
-            <Link key={item._id} href={`/past-orders/appointment/${item._id}`}>
+            <Link
+              key={item?._id}
+              href={`/past-orders/appointment/${item?._id}`}
+            >
               <Flex
                 align={'center'}
                 width={'full'}
@@ -48,27 +51,31 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                   ></Image>
                   <div className="ml-2">
                     <p className="font-poppins font-bold">
-                      {item.issue_id.service_id.name}
+                      {item?.issue_id?.service_id.name}
                     </p>
                     <p className="font-poppins">
                       <span className="text-gray-700 font-bold">
                         Appointment Date
                       </span>{' '}
                       {new Date(
-                        item.time_frame.start_time,
+                        item?.time_frame?.start_time,
                       ).toLocaleDateString()}
                       <br />
                       <span className="text-gray-700 font-bold">
                         Timeframe
                       </span>{' '}
-                      {format(new Date(item.time_frame.start_time), 'hh:mm a')}{' '}
-                      - {format(new Date(item.time_frame.end_time), 'hh:mm a')}
+                      {format(
+                        new Date(item?.time_frame?.start_time),
+                        'hh:mm a',
+                      )}{' '}
+                      -{' '}
+                      {format(new Date(item?.time_frame?.end_time), 'hh:mm a')}
                     </p>
                   </div>
                 </Flex>
 
                 <div className="rounded-full bg-[#283b77] lg:py-0.5 lg:px-2.5 px-1 border border-transparent text-base text-white font-poppins transition-all shadow-lg ">
-                  {item.status}
+                  {item?.status}
                 </div>
               </Flex>
             </Link>
