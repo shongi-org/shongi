@@ -48,6 +48,7 @@ export default function SignupPage() {
       sex: gender,
       role: 'regular',
       verified: true,
+      date_of_birth: dob as Date,
     })
       .then((res) => {
         return res.json();

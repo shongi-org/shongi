@@ -5,6 +5,6 @@ export type IUser = {
   sex: string;
   role: string;
   verified: boolean;
-  profile_pic: string;
-  date_of_birth: Date;
+  profile_pic?: string;
+  date_of_birth?: Date;
 };
