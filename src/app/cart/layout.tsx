@@ -2,7 +2,8 @@
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 import Topbar from '@/components/Topbar';
-import { useAppSelector } from '@/lib/hooks';
+import { clearCart } from '@/lib/features/cart/addToCart';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { changeOrderFormat } from '@/lib/utils/changeOrderFormat.processing';
 import { createOrder } from '@/services/createOrder';
 import { Box } from '@radix-ui/themes';
@@ -12,15 +13,19 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
-
-  // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
+  const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
   const cart = useAppSelector((state) => state.addToCart);
+  const dispatch = useAppDispatch();
   const area = useAppSelector((state) => state.area);
 
   function handleOrderMore() {
     router.push('/');
   }
   async function handlePlaceOrder() {
+    if (!isLoggedIn) {
+      router.push('/login?from_cart=true');
+      return;
+    }
     const processedOrderItems = changeOrderFormat(cart, {
       detail: area.detail,
       lat: area.geocode.lat,
@@ -28,7 +33,9 @@ export default function Layout({ children }: { children: ReactNode }) {
     });
     const response = await createOrder(processedOrderItems);
     const order = await response.json();
+
     router.push(`/order-success?order_id = ${order._id}`);
+    dispatch(clearCart());
   }
   return (
     <>
@@ -37,7 +44,6 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="hidden lg:block w-[20vw] fixed h-full border-gray-300 border-r-[1px]">
         <SideNavbar></SideNavbar>
       </div>
-      {/* <SearchBarSpecific purpose="medicine" /> */}
       <div className="lg:w-[70vw] lg:ml-[25vw] lg:mt-[50px]">
         <div className="relative flex flex-col items-center">
           <Topbar
@@ -49,19 +55,19 @@ export default function Layout({ children }: { children: ReactNode }) {
         <Box className="pb-[10vh] lg:p-0">
           <Box
             onClick={() => router.push('add-area')}
-            className="w-[96vw] lg:w-[70vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
+            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
           >
             Change Area
           </Box>
           <Box
             onClick={handleOrderMore}
-            className="w-[96vw] lg:w-[70vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
+            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
           >
             Order more
           </Box>
           <Box
             onClick={handlePlaceOrder}
-            className="w-[96vw] lg:w-[70vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
+            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
           >
             Place Order
           </Box>

@@ -51,7 +51,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                   ></Image>
                   <div className="ml-2">
                     <p className="font-poppins font-bold">
-                      {item?.issue_id?.service_id.name}
+                      {item?.issue_id?.service_id?.name}
                     </p>
                     <p className="font-poppins">
                       <span className="text-gray-700 font-bold">

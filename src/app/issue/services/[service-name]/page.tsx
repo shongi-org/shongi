@@ -58,9 +58,10 @@ const RadioButtonList: React.FC = () => {
       />
       <Flex
         wrap={'wrap'}
+        // direction={'column'}
         align={'start'}
         justify={'center'}
-        className="min-h-screen lg:min-h-[50vh] lg:w-[70vw] w-full p-4 pb-[8vh]"
+        className=" lg:min-h-[50vh] lg:w-[70vw] w-full p-4 pb-[9vh]"
       >
         {(searchResults.length > 0
           ? searchResults.map((item: ISubservice) => ({

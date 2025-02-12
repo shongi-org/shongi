@@ -2,10 +2,12 @@
 import * as Tabs from '@radix-ui/react-tabs';
 import * as Avatar from '@radix-ui/react-avatar';
 import { Flex, Text } from '@radix-ui/themes';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch } from '@/lib/hooks';
 import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
+import { getUser } from '@/services/getUser';
+import { IUser } from '@/interfaces/IUser';
 
 type profileProps = object;
 
@@ -13,11 +15,25 @@ const Profile: React.FC<profileProps> = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
+  const [user, setUser] = useState<IUser>();
+
+  useEffect(() => {
+    getUser()
+      .then((res) => res.json())
+      .then((res) => {
+        setUser(res);
+      });
+  }, []);
+
   function handleLogout() {
     localStorage.removeItem('token');
-    dispatch(setIsLoggedIn(true));
+    dispatch(setIsLoggedIn(false));
     router.push('/');
   }
+  function handleProfilePictureChange() {
+    router.push('./profile/picture-change');
+  }
+
   return (
     <>
       <Flex
@@ -26,6 +42,7 @@ const Profile: React.FC<profileProps> = () => {
         direction={'column'}
         justify={'center'}
         align={'center'}
+        className="lg:mt-[10vh]"
       >
         <Flex
           width={'full'}
@@ -38,21 +55,20 @@ const Profile: React.FC<profileProps> = () => {
             <Avatar.Image
               src="https://res.cloudinary.com/dsuiwxwkg/image/upload/v1685504283/1670986805718_x7kecr.jpg"
               alt="profile-pic"
-              // fallback="https://res.cloudinary.com/dsuiwxwkg/image/upload/v1685504283/1670986805718_x7kecr.jpg"
-              className="w-[20vw] rounded-full"
+              className="w-[20vw] lg:w-[10vw] rounded-full"
             ></Avatar.Image>
           </Avatar.Root>
-          <Text as="p">Noel Alam, 26</Text>
         </Flex>
         <Flex
-          pt={'10vh'}
           direction={'column'}
           width={'100%'}
-          height={'80vh'}
           align={'center'}
           justify={'start'}
-          className="bg-cyan-700 rounded-2xl"
+          className="bg-indigo-900 rounded-2xl pt-[10vh] lg:pt-[5vh] h-[80vh] lg:h-[50vh]"
         >
+          <Text as="p" className="lg:mb-[3vh] lg:text-white lg:font-bold">
+            {`${user?.first_name} ${user?.last_name}${user?.date_of_birth ? `,${user?.date_of_birth}` : ''}`}
+          </Text>
           <Tabs.Root
             className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA2"
             defaultValue="tab1"
@@ -146,14 +162,20 @@ const Profile: React.FC<profileProps> = () => {
               value="tab3"
             >
               <p
+                onClick={handleProfilePictureChange}
+                className="mb-5 text-mauve11 text-[15px] leading-normal cursor-pointer"
+              >
+                Change Profile Picture
+              </p>
+              <p
                 onClick={handleLogout}
-                className="mb-5 text-mauve11 text-[15px] leading-normal"
+                className="mb-5 text-mauve11 text-[15px] leading-normal cursor-pointer"
               >
                 Logout
               </p>
-              <p className="mb-5 text-mauve11 text-[15px] leading-normal">
+              {/* <p className="mb-5 text-mauve11 text-[15px] leading-normal">
                 Delete
-              </p>
+              </p> */}
             </Tabs.Content>
           </Tabs.Root>
         </Flex>

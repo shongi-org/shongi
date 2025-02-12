@@ -46,12 +46,12 @@ const ServiceList: React.FC<IServiceListProps> = () => {
                 : `/issue/services/${service.name.split(' ').join('-')}?_id=${service._id}`
             }
           >
-            <Box className="w-fit sm:w-[33vw] lg:w-[11vw]" key={service._id}>
+            <Box className="w-fit sm:w-[33vw] lg:w-[11vw] " key={service._id}>
               <Flex className="w-[28vw] lg:w-full h-fit flex-col items-center">
                 <Image
                   width={150}
                   height={150}
-                  className="w-full h-auto rounded-lg p-5 bg-[#283891]"
+                  className="w-full h-auto rounded-2xl p-3 bg-white border-solid border-4 border-[#283891]"
                   alt="service"
                   src={service.icon}
                 />

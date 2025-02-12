@@ -15,6 +15,7 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
+  const from_cart = searchParams.get('from_cart');
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setPhoneNumber(e.currentTarget.value);
@@ -29,7 +30,7 @@ export default function LoginPage() {
         .then((res) => {
           if (res.result === 'OTP Sent') {
             router.push(
-              `/otp/${phoneNumber}?service_id=${service_id}&service_name=${service_name}`,
+              `/otp/${phoneNumber}?service_id=${service_id}&service_name=${service_name}&from_cart=${from_cart}`,
             );
           } else {
             setError('Server Error. Please try again');

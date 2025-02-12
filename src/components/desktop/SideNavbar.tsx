@@ -36,29 +36,29 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
         >
           <div
             key={service._id}
-            className="p-4 flex items-center border-gray-300 border-b-[1px] w-[18vw]"
+            className="p-2 flex items-center border-gray-300 border-b-[1px] w-[18vw]"
           >
             <Image
               src={service.icon}
-              width={30}
-              height={30}
+              width={60}
+              height={60}
               alt="service-icon"
             ></Image>
-            <p className="ml-5">{service.name}</p>
+            <p className="ml-5 font-bold">{service.name}</p>
           </div>
         </Link>
       ))}
       <Link href={'/past-orders'}>
-        <div className="p-4 flex items-center border-gray-300 border-b-[1px] w-[18vw]">
+        <div className="p-2 flex items-center border-gray-300 border-b-[1px] w-[18vw]">
           <Image
             src={
-              'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1729066462/syringe_nbzsuh.png'
+              'https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png'
             }
-            width={30}
-            height={30}
+            width={60}
+            height={60}
             alt="service-icon"
           ></Image>
-          <p className="ml-5">Orders</p>
+          <p className="ml-5 font-bold">Orders</p>
         </div>
       </Link>
     </div>

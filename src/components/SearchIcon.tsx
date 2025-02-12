@@ -11,11 +11,11 @@ const SearchIcon: React.FC<SearchIconProps> = () => {
 
   return (
     <Image
-      src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730314821/search-interface-symbol_spf0ct.png"
-      height={20}
-      width={25}
+      src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956001/Search_01_eb48up.png"
+      height={40}
+      width={40}
       alt=""
-      className="w-[2rem] h-auto"
+      className=""
       onClick={() => {
         dispatch(changeSearchBarVisibilityState());
       }}

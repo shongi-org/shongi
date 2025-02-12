@@ -4,4 +4,5 @@ export type ISubservice = {
   category_id: string;
   description: string;
   banner_image: string;
+  price: number;
 };

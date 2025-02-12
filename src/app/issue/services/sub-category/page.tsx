@@ -3,7 +3,6 @@
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
 import React, { useEffect, useState } from 'react';
-
 import { Box, Flex, Text } from '@radix-ui/themes';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -12,7 +11,6 @@ import { ISubservice } from '@/interfaces/ISubservice';
 import { useSearchParams } from 'next/navigation';
 import SearchBar from '../components/SearchBar';
 import { useAppSelector } from '@/lib/hooks';
-// import SearchBarSpecific from '@/components/SearchBarSpecific';
 
 const RadioButtonList: React.FC = () => {
   const searchParams = useSearchParams();
@@ -25,6 +23,7 @@ const RadioButtonList: React.FC = () => {
       value: '',
       label: '',
       banner_image: '',
+      price: 0,
     },
   ]);
 
@@ -38,13 +37,12 @@ const RadioButtonList: React.FC = () => {
         label: service.name,
         value: service._id,
         banner_image: service.banner_image,
+        price: service.price,
       }));
       setOptions(mappedOptions);
     }
     fetchServices();
   }, [sub_category_id]);
-
-  console.log(searchResults);
 
   return (
     <>
@@ -67,11 +65,11 @@ const RadioButtonList: React.FC = () => {
               label: item.name,
               value: item._id,
               banner_image: item.banner_image,
+              price: item.price,
             }))
           : options
         ).map((option) => (
           <Box
-            // onClick={() => handleValueChange(option)}
             className="w-[95vw] lg:w-1/3 sm:w-[33vw] mr-3 lg:mr-0 mt-3"
             key={option.value}
           >
@@ -79,13 +77,19 @@ const RadioButtonList: React.FC = () => {
               href={`/issue?service_id=${option.value}&service_name=${option.label}`}
             >
               <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
-                <Flex className="flex absolute w-[95vw] lg:w-full pl-4 pb-6 text-start justify-start items-center ml-[2.5vw]">
+                <Flex
+                  direction={'column'}
+                  className="flex absolute w-[95vw] lg:w-full pl-4 pb-6 text-start justify-center items-start ml-[2.5vw]"
+                >
                   <Text
                     as="p"
                     weight="bold"
                     className="text-white text-2xl font-poppins z-10"
                   >
                     {option.label}
+                  </Text>
+                  <Text as="p" className="text-white text-xl font-poppins z-10">
+                    {option.price}Tk
                   </Text>
                 </Flex>
 

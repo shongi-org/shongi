@@ -1,9 +1,8 @@
 import { config } from '@/config';
 
-export const getAppointment = async (id: string) => {
+export const getUser = async () => {
   const JWTToken = localStorage.getItem('token');
-
-  return await fetch(`${config.backendURL}/api/appointment/${id}`, {
+  return await fetch(`${config.backendURL}/api/users/single`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',

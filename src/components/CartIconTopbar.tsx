@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import React from 'react';
-import cart from '@/assets/cart.png';
+
 import { useAppSelector } from '@/lib/hooks';
 import Link from 'next/link';
 
@@ -12,8 +12,16 @@ const CartIconTopbar: React.FC<CartIconTopbarProps> = () => {
   return (
     <Link href={'/cart'}>
       <div className="relative">
-        <Image src={cart} alt="cart" />
-        <div className="absolute bottom-[-15px] right-[15px] bg-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-white font-poppins">
+        <Image
+          width={'70'}
+          height={'70'}
+          className="h-12 w-auto"
+          src={
+            'https://res.cloudinary.com/dgayarw1f/image/upload/v1738956001/Cart_01_mn8gkq.png'
+          }
+          alt="cart"
+        />
+        <div className="absolute bottom-[-15px] right-[15px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
           {' '}
           {Object.values(cartItems).reduce(
             (accumulator, currentValue) =>

@@ -14,19 +14,19 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
     <>
       <FloatingCallButton phoneNumber="1234567890" />
       <div className="bg-white h-[9vh] w-full fixed bottom-0 z-10 shadow-inner flex space-between pb-4 lg:hidden">
-        <div className="w-1/5 p-5">
+        <div className="w-1/5 p-3">
           <Link href="/past-orders">
             <Image
-              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/r78nyfkpodkzyv4bp880.png"
+              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png"
               width={100}
               height={100}
-              className="w-full"
+              className=""
               alt=""
             ></Image>
             <p></p>
           </Link>
         </div>
-        <div className="w-1/5 p-5">
+        <div className="w-1/5 p-3">
           <Link href={'/offers'}>
             <Image
               src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292454/rqsytgy2wgja67p3a3dv.png"
@@ -48,15 +48,15 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             <p></p>
           </Link>
         </div>
-        <div className="w-1/5 p-5 relative">
+        <div className="w-1/5 p-2 relative">
           <Link href={'/cart'}>
             <Image
-              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292454/unb6etme3ue4yn2bw4he.png"
+              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956001/Cart_01_mn8gkq.png"
               width={100}
               height={100}
               alt=""
             />
-            <div className="absolute top-[-20px] right-[15px] bg-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-white font-poppins">
+            <div className="absolute bottom-[-10px] right-[-2px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
               {' '}
               {Object.values(cartItems).reduce(
                 (accumulator, currentValue) =>
@@ -67,7 +67,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             </div>
           </Link>
         </div>
-        <div className="w-1/5 p-5">
+        <div className="w-1/5 p-3">
           {isLoggedIn ? (
             <Link href={'/profile'}>
               <Image

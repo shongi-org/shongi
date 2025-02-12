@@ -10,10 +10,11 @@ type ProfilePictureProps = {
 
 const ProfilePicture: React.FC<ProfilePictureProps> = () => {
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
+
   return (
     <div className="w-[3vw]">
       {' '}
-      {isLoggedIn ? (
+      {isLoggedIn === true ? (
         <Link href={'/profile'}>
           <Image
             src="https://res.cloudinary.com/dgayarw1f/image/upload/v1733056332/WhatsApp_Image_2022-12-14_at_08.53.02_tjiwxg.jpg"

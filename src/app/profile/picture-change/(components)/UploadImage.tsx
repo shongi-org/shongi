@@ -74,7 +74,6 @@ const UploadImage: React.FC<UploadImageProps> = ({
         <input
           type="file"
           accept="image/*"
-          multiple
           className="hidden"
           onChange={handleFileChange}
         />
@@ -90,14 +89,14 @@ const UploadImage: React.FC<UploadImageProps> = ({
               className="font-poppins text-2xl text-white"
               onClick={handleSkip}
             >
-              Skip This Step
+              Cancel
             </p>
           </span>
         </label>
       )}
 
       {previewUrls.length > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+        <div className="grid grid-cols-1 gap-4 mt-4">
           {previewUrls.map((url, index) => (
             <div key={index} className="relative">
               <img

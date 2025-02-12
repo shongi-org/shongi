@@ -12,6 +12,7 @@ const OTPPage: React.FC = () => {
   const searchParams = useSearchParams();
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
+  const from_cart = searchParams.get('from_cart');
   const dispatch = useAppDispatch();
   const router = useRouter();
   const [error, setError] = useState('');
@@ -25,15 +26,23 @@ const OTPPage: React.FC = () => {
             if (res.token) {
               localStorage.setItem('token', res.token);
               dispatch(setIsLoggedIn(true));
-              if (service_id) {
+              if (service_id !== 'null') {
                 router.push(
                   `/issue/docs?service_id=${service_id}&service_name=${service_name}`,
                 );
-              } else router.push(`/`);
+              } else if (from_cart) {
+                router.push(`/cart`);
+              } else {
+                router.push(`/`);
+              }
             } else {
-              if (service_id) {
+              if (service_id !== 'null') {
                 router.push(
                   `/signup?service_id=${service_id}&phone_number=${mobileNumber}`,
+                );
+              } else if (from_cart === 'true') {
+                router.push(
+                  `/signup?phone_number=${mobileNumber}&from_cart=true`,
                 );
               } else {
                 router.push(`/signup?phone_number=${mobileNumber}`);

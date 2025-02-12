@@ -1,39 +1,43 @@
 To do -
 
-Fix Signup Form
-
 profile picture updating feature
 
-Fix Date of birth issue at Signup - change form type.
-
-Clear Cart when Order is placed
+Fix Date of birth issue at Signup - change form type. - Shahriar
 
 Case Insensitive search
 
-Hook backend with Service provider app
+Hook backend with Service provider app - Shahriar
 
-Hook remaining home page services with category
+Error Handling
 
 Click to expand Investigation documents
 
 Conditional rendering on order cancelling - Only pending order can be cancelled
 
+Stress test app with a load testing app
+
+Notification Page and Feature
+
+Hook See more button in homepage
+
+Slider should be half
+
+Top bar in service page
+
 UI improvements
 
 - place icons instead of labels in past orders and other lists
 - home page desktop spacings
-- Signup form needs to be coherent
+
+----- Nice to have & Further requirements -----
+
+Upload more documents from appointment status page
 
 See on going orders on homepage
 
 Add Phone number changing option at cart for OTP exception
 
-Card dimentions
-
 change type interface of cart items
-
-Doctors at home -> Health at Home
-Online Consultation -> Doctor Consultation
 
 Make Payment Icon
 
@@ -41,11 +45,7 @@ Customer side
 Order Placed -> Order Confirmed
 Provider on their way -> Service Provided
 
-Create User Date Time input needs to be changed
-
 Upload prescription feature
-
-Redux Persist and Thunk
 
 See more in past orders page not pagination
 

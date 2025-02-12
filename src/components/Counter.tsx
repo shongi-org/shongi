@@ -3,15 +3,22 @@ import React from 'react';
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type CounterProps = {
   quantity: number;
+  increment: () => void;
+  decrement: () => void;
 };
 
-const Counter: React.FC<CounterProps> = ({ quantity }) => {
+const Counter: React.FC<CounterProps> = ({
+  quantity,
+  increment,
+  decrement,
+}) => {
   return (
     <form className="max-w-xs ">
       <div className="relative flex items-center max-w-[8rem]">
         <button
           type="button"
           id="decrement-button"
+          onClick={decrement}
           data-input-counter-decrement="quantity-input"
           className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
         >
@@ -44,6 +51,7 @@ const Counter: React.FC<CounterProps> = ({ quantity }) => {
         <button
           type="button"
           id="increment-button"
+          onClick={increment}
           data-input-counter-increment="quantity-input"
           className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none"
         >

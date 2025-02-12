@@ -84,7 +84,7 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
             onClick={() => handleAddToCart(1)}
             className="w-full inline-flex items-center justify-center px-3 py-2 text-lg font-poppins text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Add to Cart
+            Add
           </div>
         )}
       </div>

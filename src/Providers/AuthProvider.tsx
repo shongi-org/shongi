@@ -1,5 +1,3 @@
-// import type { Metadata } from 'next';
-
 import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 import { useAppDispatch } from '@/lib/hooks';
 import { isLoggedIn } from '@/services/isLoggedIn';
