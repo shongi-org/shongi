@@ -101,7 +101,11 @@ export default function SignupPage() {
                 <label htmlFor="dob" className="sr-only">
                   Date of Birth
                 </label>
-                <DatePicker selectedDate={dob} onDateChange={setDob} />
+                <DatePicker
+                  selectedDate={dob}
+                  onDateChange={setDob}
+                  allowPastDates={true}
+                />
               </div>
             </div>
             <div>
