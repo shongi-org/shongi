@@ -1,16 +1,10 @@
 To do -
 
-profile picture updating feature
-
-Fix Date of birth issue at Signup - change form type. - Shahriar
-
 Case Insensitive search
 
 Hook backend with Service provider app - Shahriar
 
 Error Handling
-
-Click to expand Investigation documents
 
 Conditional rendering on order cancelling - Only pending order can be cancelled
 
@@ -20,7 +14,7 @@ Notification Page and Feature
 
 Hook See more button in homepage
 
-Slider should be half
+Slider should be cut off so that people know that its a slider
 
 Top bar in service page
 
@@ -28,6 +22,8 @@ UI improvements
 
 - place icons instead of labels in past orders and other lists
 - home page desktop spacings
+
+Click to expand Investigation documents
 
 ----- Nice to have & Further requirements -----
 
