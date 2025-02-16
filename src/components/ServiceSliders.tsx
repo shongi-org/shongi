@@ -1,6 +1,7 @@
 import React from 'react';
 import ServiceSlider from './ServiceSlider';
 import { Box } from '@radix-ui/themes';
+import Link from 'next/link';
 
 type ServiceSlidersProps = object;
 
@@ -47,9 +48,11 @@ const ServiceSliders: React.FC<ServiceSlidersProps> = () => {
             <p className="font-poppins no-scrollbar font-bold text-xl">
               {service.title}
             </p>
-            <p className="font-poppins font-semibold text-danger text-xl ">
-              See More
-            </p>
+            <Link href={`/${service.serviceSlug}`}>
+              <p className="font-poppins font-semibold text-red-700 text-xl cursor-pointer">
+                See More
+              </p>
+            </Link>
           </div>
 
           <ServiceSlider serviceSlug={service.serviceSlug}></ServiceSlider>

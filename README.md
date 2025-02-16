@@ -1,6 +1,10 @@
 To do -
 
-Case Insensitive search
+Hook See more button in homepage
+
+Slider should be cut off so that people know that its a slider
+
+Top bar in service page
 
 Hook backend with Service provider app - Shahriar
 
@@ -11,12 +15,6 @@ Conditional rendering on order cancelling - Only pending order can be cancelled
 Stress test app with a load testing app
 
 Notification Page and Feature
-
-Hook See more button in homepage
-
-Slider should be cut off so that people know that its a slider
-
-Top bar in service page
 
 UI improvements
 
