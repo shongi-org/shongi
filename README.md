@@ -1,11 +1,5 @@
 To do -
 
-Hook See more button in homepage
-
-Slider should be cut off so that people know that its a slider
-
-Top bar in service page
-
 Hook backend with Service provider app - Shahriar
 
 Error Handling

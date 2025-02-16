@@ -53,9 +53,9 @@ const Profile: React.FC<profileProps> = () => {
         >
           <Avatar.Root>
             <Avatar.Image
-              src="https://res.cloudinary.com/dsuiwxwkg/image/upload/v1685504283/1670986805718_x7kecr.jpg"
+              src={user?.profile_picture}
               alt="profile-pic"
-              className="w-[20vw] lg:w-[10vw] rounded-full"
+              className="w-[20vw] h-[20vw] object-cover lg:w-[10vw] lg:h-[10vw] rounded-full"
             ></Avatar.Image>
           </Avatar.Root>
         </Flex>

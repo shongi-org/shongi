@@ -16,7 +16,9 @@ const SimilarItems: React.FC<SimilarItemsProps> = ({ serviceSlug }) => {
 
   return (
     <>
-      <p className="font-poppins font-bold text-lg ml-3"> Similar Items</p>
+      <p className="font-poppins font-bold text-lg ml-3">
+        {data[serviceSlug as string] && 'Similar Items'}
+      </p>
       <Flex
         justify={'start'}
         align={'center'}

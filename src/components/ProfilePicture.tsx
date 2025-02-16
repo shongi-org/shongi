@@ -1,8 +1,10 @@
 'use client';
+import { IUser } from '@/interfaces/IUser';
 import { useAppSelector } from '@/lib/hooks';
+import { getUser } from '@/services/getUser';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 type ProfilePictureProps = {
   children?: string;
@@ -10,6 +12,17 @@ type ProfilePictureProps = {
 
 const ProfilePicture: React.FC<ProfilePictureProps> = () => {
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
+  const [user, setUser] = useState<IUser>();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getUser()
+        .then((res) => res.json())
+        .then((res) => setUser(res));
+    }
+  }, [isLoggedIn]);
+
+  console.log(user);
 
   return (
     <div className="w-[3vw]">
@@ -17,7 +30,7 @@ const ProfilePicture: React.FC<ProfilePictureProps> = () => {
       {isLoggedIn === true ? (
         <Link href={'/profile'}>
           <Image
-            src="https://res.cloudinary.com/dgayarw1f/image/upload/v1733056332/WhatsApp_Image_2022-12-14_at_08.53.02_tjiwxg.jpg"
+            src={user?.profile_picture as string}
             width={100}
             height={100}
             className="rounded-full w-full aspect-square object-cover"

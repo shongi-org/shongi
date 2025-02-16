@@ -37,29 +37,29 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
       {data[serviceSlug as keyof feed] &&
         data[serviceSlug as keyof feed].slice(0, 4).map((service: Service) => (
           <Box
-            className="w-[45vw] sm:w-[33vw] lg:w-[22vw] ml-3 mt-3 drop-shadow-lg"
+            className="w-[60vw] sm:w-[33vw] lg:w-[22vw] ml-3 mt-3 drop-shadow-lg"
             key={service.id}
           >
             <Link href={`/issue/service/${service?.url}`}>
               <Flex
                 direction={'column'}
-                className="w-[45vw] lg:w-full h-fit justify-start items-end relative"
+                className="w-[60vw] lg:w-full h-fit justify-start items-end relative"
               >
                 <Image
                   width={200}
                   height={200}
-                  className="w-[45vw] lg:w-full h-auto rounded-lg"
+                  className="w-[60vw] lg:w-full h-auto rounded-lg"
                   alt="service"
                   src={service.image as string}
                 />
                 <Flex
                   justify={'between'}
-                  className="flex w-[45vw] lg:w-full pb-6 text-start justify-between items-center mt-3 pl-2 pr-2"
+                  className="flex w-[60vw] lg:w-full pb-6 text-start justify-between items-center mt-3 pl-2 pr-2"
                 >
                   <Text
                     as="p"
                     weight={'bold'}
-                    className="text-black text-md font-poppins w-full"
+                    className="text-black text-lg font-poppins w-full"
                   >
                     {service.subserviceName}
                   </Text>
