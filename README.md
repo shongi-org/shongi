@@ -1,10 +1,10 @@
 To do -
 
+Conditional rendering on order cancelling - Only pending order can be cancelled
+
 Hook backend with Service provider app - Shahriar
 
 Error Handling
-
-Conditional rendering on order cancelling - Only pending order can be cancelled
 
 Stress test app with a load testing app
 
