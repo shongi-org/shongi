@@ -1,4 +1,3 @@
-'use client';
 // import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
@@ -7,10 +6,7 @@ import { Theme } from '@radix-ui/themes';
 import ReduxProvider from '@/lib/redux-provider';
 import BottomNavbar from '@/components/BottomNavbar';
 import AuthProvider from '@/Providers/AuthProvider';
-import { store } from '@/lib/store';
-import { Provider } from 'react-redux';
-// import { store } from '@/lib/store';
-// import { Provider } from 'react-redux';
+import type { Metadata } from 'next';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -23,10 +19,10 @@ const geistMono = localFont({
   weight: '100 900',
 });
 
-// export const metadata: Metadata = {
-//   title: 'Infinimed',
-//   description: 'Home Medic Services',
-// };
+export const metadata: Metadata = {
+  title: 'Infinimed',
+  description: 'Home Medic Services',
+};
 
 export default function RootLayout({
   children,
@@ -40,16 +36,15 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black overflow-scroll`}
       >
         <ReduxProvider>
-          <Provider store={store}>
-            <AuthProvider>
-              <Theme accentColor="ruby" panelBackground="solid">
-                <div className="">
-                  {children}
-                  <BottomNavbar></BottomNavbar>
-                </div>
-              </Theme>
-            </AuthProvider>
-          </Provider>
+          <AuthProvider>
+            <Theme accentColor="ruby" panelBackground="solid">
+              <div className="">
+                {children}
+
+                <BottomNavbar></BottomNavbar>
+              </div>
+            </Theme>
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>

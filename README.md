@@ -1,33 +1,31 @@
 To do -
 
-Conditional rendering on order cancelling - Only pending order can be cancelled
+See on going orders on homepage
+
+Add Service subcategory name where needed
+
+Cancel appointment/order endpoint. Modal to ask if he really wants to cancel
+
+Error Handling - Order placing - Issue creation - Signin - signup - get requests failing error boundary
 
 Hook backend with Service provider app - Shahriar
 
-Error Handling
-
-Stress test app with a load testing app
-
-Notification Page and Feature
+Upload more documents from appointment status page
 
 UI improvements
 
 - place icons instead of labels in past orders and other lists
 - home page desktop spacings
 
-Click to expand Investigation documents
-
 ----- Nice to have & Further requirements -----
 
-Upload more documents from appointment status page
-
-See on going orders on homepage
+Stress test app with Post man performance testing
 
 Add Phone number changing option at cart for OTP exception
 
-change type interface of cart items
-
 Make Payment Icon
+
+Click to expand Investigation documents
 
 Customer side
 Order Placed -> Order Confirmed
@@ -40,3 +38,8 @@ See more in past orders page not pagination
 Improve recommendation in lists
 
 Implement ISR in as many pages as possible
+
+change type interface of cart items
+
+-----------Done-----------------
+Notification Page and Feature

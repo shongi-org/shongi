@@ -1,61 +1,40 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
-import React from 'react';
-import { Check, Clock, X, AlertCircle } from 'lucide-react';
+import {
+  IGetStatusInfo,
+  Status,
+} from '@/app/issue/past-issue/appointment/[apptId]/(components)/ApppointmentDetails';
+import {
+  IGetOrderStatusInfo,
+  IStatusOrder,
+} from '@/app/issue/past-issue/order/[orderId]/(components)/OrderDetails';
+// import { Icon, IconOptions } from 'leaflet';
 
-export type Status =
-  | 'Pending'
-  | 'Fixed Provider and Time'
-  | 'Service Provider Reached'
-  | 'Patient Served'
-  | 'Provider Declined'
-  | 'Client Declined';
+import React from 'react';
 
 interface TimelineProps {
-  currentStatus: Status;
+  currentStatus: Status | IStatusOrder;
+  getStatusInfo: IGetStatusInfo | IGetOrderStatusInfo;
+  mainStatuses: string[];
+  finalStatuses: string[];
 }
 
 const Timeline: React.FC<TimelineProps> = ({
   currentStatus = 'Client Declined',
+  getStatusInfo,
+  mainStatuses,
+  finalStatuses,
 }) => {
-  const getStatusInfo = (status: Status) => {
-    switch (status) {
-      case 'Pending':
-        return { icon: Clock, color: 'text-yellow-500', bg: 'bg-yellow-100' };
-      case 'Fixed Provider and Time':
-        return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
-      case 'Service Provider Reached':
-        return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
-      case 'Patient Served':
-        return { icon: Check, color: 'text-green-500', bg: 'bg-green-100' };
-      case 'Provider Declined':
-        return { icon: X, color: 'text-red-500', bg: 'bg-red-100' };
-      case 'Client Declined':
-        return { icon: AlertCircle, color: 'text-red-500', bg: 'bg-red-100' };
-    }
-  };
-
-  const mainStatuses = [
-    'Pending',
-    'Fixed Provider and Time',
-    'Service Provider Reached',
-  ];
-
-  const getFinalStatus = () => {
-    if (
-      ['Patient Served', 'Provider Declined', 'Client Declined'].includes(
-        currentStatus,
-      )
-    ) {
-      return currentStatus;
-    }
-    return null;
-  };
-
   const isActive = (status: Status) => {
     const allStatuses = [...mainStatuses, getFinalStatus()].filter(Boolean);
     const statusIndex = allStatuses.indexOf(status);
     const currentIndex = allStatuses.indexOf(currentStatus);
     return statusIndex <= currentIndex;
+  };
+  const getFinalStatus = () => {
+    if (finalStatuses?.includes(currentStatus)) {
+      return currentStatus;
+    }
+    return null;
   };
 
   const finalStatus = getFinalStatus();
@@ -63,8 +42,10 @@ const Timeline: React.FC<TimelineProps> = ({
   return (
     <div className="max-w-md mx-auto p-4">
       <div className="relative">
-        {mainStatuses.map((status, index) => {
-          const StatusIcon = getStatusInfo(status as Status)?.icon;
+        {mainStatuses?.map((status, index) => {
+          const StatusIcon = getStatusInfo(
+            status as Status | IStatusOrder,
+          )?.icon;
           const active = isActive(status as Status);
           const isLast = index === mainStatuses.length - 1 && !finalStatus;
 

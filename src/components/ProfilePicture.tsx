@@ -22,8 +22,6 @@ const ProfilePicture: React.FC<ProfilePictureProps> = () => {
     }
   }, [isLoggedIn]);
 
-  console.log(user);
-
   return (
     <div className="w-[3vw]">
       {' '}
