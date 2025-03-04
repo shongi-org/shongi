@@ -1,5 +1,8 @@
 To do -
 
+Bugs -
+Add to cart doesnt work in single medicine page
+
 Error Handling
 
 - Signin - TEST
@@ -12,7 +15,6 @@ Error Handling
 Requirements
 
 - OTP verification on Service Provider end
-- Pricing logic for appointment - TEST
 - Upload more documents from appointment status page
 - Click to expand Investigation documents
 
@@ -29,7 +31,7 @@ UI improvements
 
 UX improvements -
 
-- Someone else autofill
+- Someone-else autofill
 - past issue only appears if you are loggedin and have a past issue for that service
 - Error Handling
 - - Fetch Past orders
@@ -38,6 +40,7 @@ UX improvements -
 - Customer side
 - - Order Placed -> Order Confirmed
 - - Provider on their way -> Service Provided
+- When user tries to book an appointment
 
 Security Improvements -
 
@@ -46,6 +49,7 @@ Security Improvements -
 - Take Barikoi Api to backend
 - People can make multiple accounts with the same number. That needs to be barred.
 - People can change phone number after otp verification during signup. that needs to be barred.
+- Price checker when order is placed
 
 Performance Improvements -
 

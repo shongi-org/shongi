@@ -158,12 +158,14 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
           {' '}
           <p className="font-poppins font-bold text-gray-400">Total</p>
           <p className="font-poppins font-bold">
-            {Object.values(cart).reduce(
-              (acc, curr) => acc + curr.quantity * curr.price,
-              0,
-            ) *
-              1.15 +
-              30}{' '}
+            {(
+              Object.values(cart).reduce(
+                (acc, curr) => acc + curr.quantity * curr.price,
+                0,
+              ) *
+                1.15 +
+              30
+            ).toFixed(2)}{' '}
             Tk
           </p>
         </Flex>
