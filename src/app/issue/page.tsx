@@ -43,6 +43,7 @@ const Issue = () => {
   const searchParams = useSearchParams();
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
+  const price = searchParams.get('price');
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
 
   return (
@@ -58,7 +59,7 @@ const Issue = () => {
             key={option.id}
           >
             <Link
-              href={`${isLoggedIn ? `./issue/${option.link}?service_id=${service_id}&service_name=${service_name}` : `./login?service_id=${service_id}&service_name=${service_name}`}`}
+              href={`${isLoggedIn ? `./issue/${option.link}?service_id=${service_id}&service_name=${service_name}&price=${price}` : `./login?service_id=${service_id}&service_name=${service_name}&price=${price}`}`}
             >
               <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
                 <Flex className="flex absolute w-[95vw] lg:w-full pl-4 pb-6 text-start justify-start items-center ">

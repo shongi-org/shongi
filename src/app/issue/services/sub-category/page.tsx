@@ -27,19 +27,28 @@ const RadioButtonList: React.FC = () => {
     },
   ]);
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
   useEffect(() => {
     async function fetchServices() {
-      const response = await fetch(
-        `${config.backendURL}/api/service/${sub_category_id}`,
-      );
-      const data = await response.json();
-      const mappedOptions = data.services.map((service: ISubservice) => ({
-        label: service.name,
-        value: service._id,
-        banner_image: service.banner_image,
-        price: service.price,
-      }));
-      setOptions(mappedOptions);
+      try {
+        const response = await fetch(
+          `${config.backendURL}/api/service/${sub_category_id}`,
+        );
+        const data = await response.json();
+        const mappedOptions = data.services.map((service: ISubservice) => ({
+          label: service.name,
+          value: service._id,
+          banner_image: service.banner_image,
+          price: service.price,
+        }));
+        setOptions(mappedOptions);
+        setLoading(false);
+      } catch (error) {
+        setError(error as string);
+        setLoading(false);
+      }
     }
     fetchServices();
   }, [sub_category_id]);
@@ -60,6 +69,14 @@ const RadioButtonList: React.FC = () => {
         justify={'center'}
         className="min-h-screen lg:min-h-full lg:w-[70vw] w-full p-4 pb-[8vh]"
       >
+        {error && <p>Faced a server error. Please refresh</p>}
+        {loading && <p>Fetching Services</p>}
+        {options.length === 0 && !loading && (
+          <p>
+            This service has no sub-service under it yet. IM Health is working
+            on it.
+          </p>
+        )}
         {(searchResults.length > 0
           ? searchResults.map((item: ISubservice) => ({
               label: item.name,
@@ -74,7 +91,7 @@ const RadioButtonList: React.FC = () => {
             key={option.value}
           >
             <Link
-              href={`/issue?service_id=${option.value}&service_name=${option.label}`}
+              href={`/issue?service_id=${option.value}&service_name=${option.label}&price=${option.price}`}
             >
               <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
                 <Flex

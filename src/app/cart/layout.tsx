@@ -2,20 +2,24 @@
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 import Topbar from '@/components/Topbar';
-import { clearCart } from '@/lib/features/cart/addToCart';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { useAppSelector } from '@/lib/hooks';
+
 import { changeOrderFormat } from '@/lib/utils/changeOrderFormat.processing';
 import { createOrder } from '@/services/createOrder';
 import { Box } from '@radix-ui/themes';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+import loader from '@/assets/loader.svg';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string>();
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
   const cart = useAppSelector((state) => state.addToCart);
-  const dispatch = useAppDispatch();
   const area = useAppSelector((state) => state.area);
 
   function handleOrderMore() {
@@ -26,16 +30,23 @@ export default function Layout({ children }: { children: ReactNode }) {
       router.push('/login?from_cart=true');
       return;
     }
+    setLoading(true);
     const processedOrderItems = changeOrderFormat(cart, {
       detail: area.detail,
       lat: area.geocode.lat,
       long: area.geocode.long,
     });
-    const response = await createOrder(processedOrderItems);
-    const order = await response.json();
-
-    router.push(`/order-success?order_id = ${order._id}`);
-    dispatch(clearCart());
+    try {
+      const response = await createOrder(processedOrderItems);
+      const order = await response.json();
+      if (order._id) {
+        router.push(`/order-success?order_id = ${order._id}`);
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
+      setError(`Server Error : ${error}. Please try again`);
+    }
   }
   return (
     <>
@@ -65,11 +76,20 @@ export default function Layout({ children }: { children: ReactNode }) {
           >
             Order more
           </Box>
+          <div>{error}</div>
           <Box
             onClick={handlePlaceOrder}
             className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
           >
-            Place Order
+            {loading ? (
+              <Image
+                className="w-[2rem] h-[2rem] text-white"
+                src={loader}
+                alt="loader"
+              />
+            ) : (
+              'Place Order'
+            )}
           </Box>
         </Box>
       </div>

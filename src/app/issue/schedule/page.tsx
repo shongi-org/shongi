@@ -29,6 +29,8 @@ export default function SchedulePage() {
 
   const issue_id = searchParams.get('issue_id');
   const service_name = searchParams.get('service_name');
+  const price = searchParams.get('price');
+
   const dispatch = useAppDispatch();
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
@@ -44,40 +46,6 @@ export default function SchedulePage() {
     setSelectedDate(date);
     setSelectedStartTime(undefined);
   };
-
-  // const generateStartTimeOptions = () => {
-  //   const timeOptions: string[] = [];
-  //   const now = new Date();
-  //   let startTime = selectedDate
-  //     ? startOfDay(selectedDate)
-  //     : startOfDay(new Date());
-
-  //   const minutes = now.getMinutes();
-
-  //   const nextHalfHour =
-  //     minutes % 30 === 0 ? minutes : Math.ceil(minutes / 30) * 30;
-
-  //   startTime = setHours(startTime, now.getHours());
-  //   startTime.setMinutes(nextHalfHour);
-
-  //   const earliestStart = setHours(startOfDay(selectedDate || now), 10);
-
-  //   const latestStart = setHours(startOfDay(selectedDate || now), 18);
-  //   // console.log(latestStart);
-  //   for (let i = 0; i < 48; i++) {
-  //     const time = addMinutes(startTime, i * 30);
-  //     console.log(time);
-  //     if (
-  //       !isAfter(time, latestStart) &&
-  //       !isBefore(time, earliestStart) &&
-  //       !isBefore(time, now)
-  //     ) {
-  //       timeOptions.push(format(time, 'HH:mm'));
-  //     }
-  //   }
-
-  //   return timeOptions;
-  // };
 
   const generateStartTimeOptions = () => {
     const timeOptions: string[] = [];
@@ -122,20 +90,7 @@ export default function SchedulePage() {
     );
   };
 
-  // const handleDateChange = (date: Date | undefined) => {
-  //   if (date && isBefore(date, startOfDay(new Date()))) {
-  //     alert('Please select a future date!');
-  //     return;
-  //   }
-  //   setSelectedDate(date);
-  //   setSelectedStartTime(undefined); // Reset start time when date changes
-  // };
-
   const getStartDate = () => {
-    // if (new Date().getHours() > 18) {
-    //   return new Date();
-    // } else {
-    // }
     return new Date().getHours() < 18
       ? new Date()
       : new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -144,7 +99,7 @@ export default function SchedulePage() {
   const getDefaultMonth = () => {
     return new Date(getStartDate().getFullYear(), getStartDate().getMonth());
   };
-  // console.log(new Date().getHours() > 18);
+
   const getEndTime = (startTime: string) => {
     if (!startTime) return undefined;
     const [startHour, startMinutes] = startTime.split(':').map(Number);
@@ -181,7 +136,7 @@ export default function SchedulePage() {
         },
         quantity: 1,
         type: 'appointment',
-        price: 300,
+        price: parseInt(price ? (price as string) : '0'),
         service_name: service_name as string,
       }),
     );

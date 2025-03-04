@@ -32,7 +32,9 @@ const ServiceList: React.FC<IServiceListProps> = () => {
   }, []);
   return (
     <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
-      <Label className="font-poppins text-xl font-bold">Services</Label>
+      <Label className="font-poppins text-xl font-bold">
+        {services.length > 0 && 'Services'}
+      </Label>
       <Flex
         justify={'between'}
         className="w-full flex-wrap no-scrollbar justify-between mt-3 gap-y-3"

@@ -14,11 +14,27 @@ export type IAppointment = {
     long: number;
   };
 };
+
+export type IUpcomingAppointment = {
+  _id: string;
+  status: string;
+  issue_id: {
+    service_id: {
+      name: string;
+      sub_category: {
+        name: string;
+      };
+    };
+  };
+  apt_time: Date;
+};
+
 export type IAppointmentDetails = {
   time_frame: {
     start_time: string;
     end_time: string;
   };
+  apt_time?: string;
   _id: string;
   user_id: {
     _id: string;
@@ -47,7 +63,9 @@ export type IAppointmentDetails = {
     service_id: {
       _id: string;
       name: string;
-      sub_category: string;
+      sub_category: {
+        name: string;
+      };
       price: number;
       general_cost: number;
       flat_discount: number;

@@ -1,34 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-// import { IMedicine } from '@/interfaces/IMedicine';
 import { Box, Flex } from '@radix-ui/themes';
 import SimilarItems from '@/components/SimilarItems';
-// const dataTable: IMedicine[] = [
-//   {
-//     id: '1',
-//     generic: { name: 'Paracetamol' },
-//     dosage: '20mg tablet',
-//     image:
-//       'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1727873184/medicine_883407_jolgrg.png',
-//     price: 40,
-//     brand: 'Square',
-//     name: 'Napa',
-//     description:
-//       'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-//     discountedPrice: 0,
-//     type: 'medicine',
-//   },
-// ];
 
 import { config } from '@/config';
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  // const pathname = usePathname();
   const slug = (await params).id;
   const res = await fetch(`${config.backendURL}/api/medicine/${slug}`);
   const data = await res.json();
 
-  // const data = dataTable[0];
   return (
     <div className="w-screen h-fit overflow-y-scroll no-scrollbar">
       <div className="relative flex flex-col lg:flex-row w-full lg:w-[70vw] items-center lg:justify-evenly">

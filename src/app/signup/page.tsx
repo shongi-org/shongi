@@ -11,6 +11,8 @@ import SelectComponent from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { useAppDispatch } from '@/lib/hooks';
 import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
+import Image from 'next/image';
+import loader from '@/assets/loader.svg';
 
 const options = [
   {
@@ -29,18 +31,28 @@ const options = [
 
 export default function SignupPage() {
   const [name, setName] = useState('');
-  // const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState<Date | undefined>(undefined);
   const dispatch = useAppDispatch();
   const searchParams = useSearchParams();
   const router = useRouter();
+
   const service_id = searchParams.get('service_id');
+  const service_name = searchParams.get('service_name');
   const phone_number = searchParams.get('phone_number');
   const from_cart = searchParams.get('from_cart');
+  const price = searchParams.get('price');
+
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!name && !gender && !dob) {
+      setError('Please fill up all the fields');
+      return;
+    }
+    setLoading(true);
     createUser({
       first_name: name.split(' ')[0],
       last_name: name.split(' ').slice(1).join(' '),
@@ -54,6 +66,7 @@ export default function SignupPage() {
         return res.json();
       })
       .then((res) => {
+        setLoading(false);
         if (res.user) {
           if (res.token) {
             localStorage.setItem('token', res.token);
@@ -61,17 +74,22 @@ export default function SignupPage() {
           }
 
           if (service_id) {
-            router.push(`/issue/docs?service_id=${service_id}`);
+            router.push(
+              `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
+            );
           } else if (from_cart === 'true') {
             router.push(`/cart`);
           } else {
             router.push(`/`);
           }
         } else {
+          setError('Server Error. Please try again');
           console.log('server error');
         }
       })
-      .catch((error) => {
+      .catch((err) => {
+        setLoading(false);
+        setError(err);
         console.log(error);
       });
   };
@@ -110,11 +128,21 @@ export default function SignupPage() {
               </div>
             </div>
             <div>
+              <div>{error}</div>
               <Button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-900 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                disabled={loading ? true : false}
               >
-                Create Account
+                {loading ? (
+                  <Image
+                    className="w-[2rem] h-[2rem] text-white"
+                    src={loader}
+                    alt="loader"
+                  />
+                ) : (
+                  'Create Account'
+                )}
               </Button>
             </div>
           </form>

@@ -18,6 +18,7 @@ export default function Docs() {
   const name = searchParams.get('name');
   const dob = searchParams.get('dob');
   const gender = searchParams.get('gender');
+  const price = searchParams.get('price');
 
   const [successfullyUploaded, setSuccessfullyUploaded] =
     useState<boolean>(false);
@@ -39,7 +40,7 @@ export default function Docs() {
 
     setSuccessfullyUploaded(true);
     router.push(
-      `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}`,
+      `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}&price=${price}`,
     );
   }
 
@@ -60,7 +61,7 @@ export default function Docs() {
 
     setSuccessfullyUploaded(true);
     router.push(
-      `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}`,
+      `./schedule?issue_id=${createdIssue._id}&service_name=${service_name}&price=${price}`,
     );
   }
 
@@ -73,7 +74,7 @@ export default function Docs() {
       <div className="min-h-[90vh] lg:min-h-[70vh] w-full flex items-center justify-center bg-gray-100">
         {successfullyUploaded ? (
           <>
-            <label className="block text-lg font-medium text-gray-700 mb-2">
+            <label className="block text-lg font-medium text-gray-700 mb-2 p-3">
               Your History has been created Successfully. Redirecting you to the
               Schedule Page.
             </label>

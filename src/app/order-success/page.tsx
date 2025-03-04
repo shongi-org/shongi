@@ -1,6 +1,9 @@
 // import Lottie from 'react-lottie';
+'use client';
 import React from 'react';
 // import * as successAnimation from '@/assets/success-animation.json';
+import { clearCart } from '@/lib/features/cart/addToCart';
+import { useAppDispatch } from '@/lib/hooks';
 
 type pageProps = object;
 // const mobileOptions = {
@@ -12,7 +15,9 @@ type pageProps = object;
 //   },
 // };
 
-const page: React.FC<pageProps> = () => {
+const Page: React.FC<pageProps> = () => {
+  const dispatch = useAppDispatch();
+  dispatch(clearCart());
   return (
     <div className="p-[2vw] relative w-full h-[60vh] flex items-center">
       <div className="w-full flex justify-center">
@@ -21,4 +26,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;

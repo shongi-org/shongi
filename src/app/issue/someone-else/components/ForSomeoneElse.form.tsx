@@ -35,6 +35,7 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const service_id = searchParams.get('service_id');
   const service_name = searchParams.get('service_name');
+  const price = searchParams.get('price');
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setName(e.currentTarget.value);
@@ -48,7 +49,7 @@ export default function LoginPage() {
       setError(() => validateSomeoneElse(name, dob as Date, gender));
     } else {
       router.push(
-        `/issue/docs/?service_id=${service_id}&service_name=${service_name}&for_someone=true&name=${name}&dob=${new Date(dob as Date).toISOString()}&gender=${gender}`,
+        `/issue/docs/?service_id=${service_id}&service_name=${service_name}&for_someone=true&name=${name}&dob=${new Date(dob as Date).toISOString()}&gender=${gender}&price=${price}`,
       );
     }
   }

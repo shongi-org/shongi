@@ -45,6 +45,7 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
                     width={50}
                     height={50}
                     alt="cart-item"
+                    className="w-auto h-fit"
                   ></Image>
                   <div className="ml-2">
                     <p className="font-poppins font-bold">Pharamacy</p>
@@ -54,7 +55,7 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
                   </div>
                 </Flex>
 
-                <div className="rounded-full bg-[#283b77] lg:py-0.5 lg:px-2.5 px-1 border border-transparent text-base text-white font-poppins transition-all shadow-lg text-center">
+                <div className=" rounded-full bg-[#283b77] lg:py-0.5 lg:px-2.5 px-1 border border-transparent text-base text-white font-poppins transition-all shadow-lg text-center">
                   {item?.status}
                 </div>
               </Flex>

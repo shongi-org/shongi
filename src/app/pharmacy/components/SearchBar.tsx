@@ -54,7 +54,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
       dispatch(setMedicineSearchResults(response.data));
     } catch (err: unknown) {
       console.log(err);
-      setError('Failed to fetch place details. Please try again.');
+      setError('Failed to fetch searh results. Please try again.');
     } finally {
       setLoading(false);
     }

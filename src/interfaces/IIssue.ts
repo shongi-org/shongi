@@ -17,6 +17,10 @@ export type IIssueDetails = {
   service_id: {
     _id: string;
     name: string;
+    sub_category: {
+      _id: string;
+      name: string;
+    };
   };
   assets: string[];
   __v?: number;

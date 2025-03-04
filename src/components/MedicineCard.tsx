@@ -64,19 +64,20 @@ const MedicineCard: React.FC<MedicineCardProps> = ({ medicine }) => {
         {cart[medicine._id]?.quantity ? (
           <div className="w-full inline-flex items-center justify-between">
             <div
-              onClick={() => handleAddToCart(1)}
-              className="w-10 px-3 py-2 text-lg font-poppins text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              +
-            </div>
-            <div className="text-lg font-poppins">
-              {cart[medicine._id as string].quantity}
-            </div>
-            <div
               onClick={() => handleAddToCart(-1)}
               className="w-10 px-3 py-2 text-lg font-poppins text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               -
+            </div>
+            <div className="text-lg font-poppins">
+              {cart[medicine._id as string].quantity}
+            </div>
+
+            <div
+              onClick={() => handleAddToCart(1)}
+              className="w-10 px-3 py-2 text-lg font-poppins text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              +
             </div>
           </div>
         ) : (

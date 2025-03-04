@@ -86,9 +86,11 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
               >
                 <Flex>
                   <Image
-                    src={(item as IAppointment).image as string}
-                    width={50}
-                    height={50}
+                    src={
+                      'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1740306044/appointment_qrpcom.png'
+                    }
+                    width={100}
+                    height={100}
                     alt="cart-item"
                   ></Image>
                   <div className="ml-2">
@@ -122,13 +124,35 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
             Tk
           </p>
         </Flex>
-        <Flex
+        {/* <Flex
           justify={'between'}
           className="border-b-2 border-black border-dotted pb-5"
         >
           {' '}
           <p className="font-poppins font-bold text-gray-400">Delivery Fee</p>
           <p className="font-poppins font-bold">{30}Tk</p>
+        </Flex> */}
+        <Flex
+          justify={'between'}
+          className="border-b-2 border-black border-dotted pb-5"
+        >
+          {' '}
+          <p className="font-poppins font-bold text-gray-400">Platform fee</p>
+          <p className="font-poppins font-bold">{30}Tk</p>
+        </Flex>
+        <Flex
+          justify={'between'}
+          className="border-b-2 border-black border-dotted pb-5"
+        >
+          {' '}
+          <p className="font-poppins font-bold text-gray-400">Vat (15%)</p>
+          <p className="font-poppins font-bold">
+            {Object.values(cart).reduce(
+              (acc, curr) => acc + curr.quantity * curr.price,
+              0,
+            ) * 0.15}
+            Tk
+          </p>
         </Flex>
         <Flex justify={'between'} className="mt-5">
           {' '}
@@ -137,7 +161,9 @@ const OrderItemList: React.FC<OrderItemListProps> = () => {
             {Object.values(cart).reduce(
               (acc, curr) => acc + curr.quantity * curr.price,
               0,
-            ) + 30}{' '}
+            ) *
+              1.15 +
+              30}{' '}
             Tk
           </p>
         </Flex>

@@ -28,7 +28,11 @@ const ProfilePicture: React.FC<ProfilePictureProps> = () => {
       {isLoggedIn === true ? (
         <Link href={'/profile'}>
           <Image
-            src={user?.profile_picture as string}
+            src={
+              (user?.profile_picture?.toString() as string)?.includes('http')
+                ? (user?.profile_picture?.toString() as string)
+                : 'https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png'
+            }
             width={100}
             height={100}
             className="rounded-full w-full aspect-square object-cover"

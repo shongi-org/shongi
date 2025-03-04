@@ -3,14 +3,22 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import * as Form from '@radix-ui/react-form';
 import OTPInput from './OTPInput';
 import Button from '@/components/Button';
+import Image from 'next/image';
+import loader from '@/assets/loader.svg';
 
 interface OTPFormProps {
   onSubmit: (otp: string) => void;
   length?: number;
   error?: string;
+  loading?: boolean;
 }
 
-const OTPForm: React.FC<OTPFormProps> = ({ onSubmit, length = 6, error }) => {
+const OTPForm: React.FC<OTPFormProps> = ({
+  onSubmit,
+  length = 6,
+  error,
+  loading,
+}) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -95,10 +103,19 @@ const OTPForm: React.FC<OTPFormProps> = ({ onSubmit, length = 6, error }) => {
       <div>{error}</div>
       <Form.Submit asChild>
         <Button
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
+          className="w-full bg-indigo-900 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
           type="submit"
+          disabled={loading ? true : false}
         >
-          Verify OTP
+          {loading ? (
+            <Image
+              className="w-[2rem] h-[2rem] text-white"
+              src={loader}
+              alt="loader"
+            />
+          ) : (
+            'Submit'
+          )}
         </Button>
       </Form.Submit>
     </Form.Root>

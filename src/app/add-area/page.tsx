@@ -2,13 +2,13 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import LocationMap from '@/components/MapView';
 import { Box } from '@radix-ui/themes';
 import { useAppDispatch } from '@/lib/hooks';
 import { setArea } from '@/lib/features/area/area';
 import { useRouter } from 'next/navigation';
 import SavedAreas from '@/components/SavedAreas';
 import dynamic from 'next/dynamic';
+
 const LocationMap = dynamic(() => import('@/components/MapView'), {
   loading: () => <p>loading...</p>,
   ssr: false,
@@ -20,6 +20,9 @@ const Page: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<any | null>(null);
+  const [markerMoved, setMarkerMoved] = useState<boolean>(false);
+
+  const [draggable, setDraggable] = useState(true);
 
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -33,6 +36,7 @@ const Page: React.FC = () => {
 
   // Debounce handler
   useEffect(() => {
+    setDraggable(false);
     if (query.trim() === '') {
       setResults([]);
       return;
@@ -61,7 +65,6 @@ const Page: React.FC = () => {
       setLoading(false);
     }
   };
-
   // Fetch place details to get latitude and longitude
   const fetchPlaceDetails = async (placeCode: string) => {
     if (!sessionId) {
@@ -84,6 +87,21 @@ const Page: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (latLong?.lat !== '' && latLong?.long !== '' && markerMoved) {
+      fetch(
+        `https://barikoi.xyz/v2/api/search/reverse/geocode?api_key=bkoi_6661bfd56b3a2520c41a8fc45280262e0b724386659ee30db35e35bb5cd498b6&longitude=${latLong?.long}&latitude=${latLong?.lat}&address=true&area=true`,
+      )
+        .then((res) => res.json())
+        .then((res) => {
+          setMarkerMoved(false);
+          setSelectedPlace({
+            address: res.place.address,
+          });
+        });
+    }
+  }, [latLong]);
+
   function handleAddAddress() {
     dispatch(
       setArea({
@@ -103,18 +121,14 @@ const Page: React.FC = () => {
   }
 
   const handleSelectPlace = (place: any) => {
+    setDraggable(true);
     setSelectedPlace(place);
-    // setQuery(place.address);
     setResults([]);
-    // Fetch latitude and longitude using place code
     fetchPlaceDetails(place.place_code);
   };
 
   return (
-    <div
-      className="search-place-component p-2 rounded-full"
-      style={{ maxWidth: '400px', margin: '0 auto' }}
-    >
+    <div className="search-place-component p-2 rounded-full w-[96vw] lg:w-[40vw]">
       <input
         type="text"
         value={query}
@@ -182,11 +196,14 @@ const Page: React.FC = () => {
             latitude={parseFloat(latLong.lat)}
             longitude={parseFloat(latLong.long)}
             address={selectedPlace?.address}
+            draggable={draggable}
+            setLatLong={setLatLong}
+            setMarkerMoved={setMarkerMoved}
           />
           <Box className="">
             <Box
               onClick={handleAddAddress}
-              className="w-[96vw] lg:w-full bg-white mt-2 text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl text-center p-2 rounded-md mb-2 cursor-pointer"
+              className="w-[96vw] lg:w-[39vw]  bg-white mt-2 text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl text-center p-2 rounded-md mb-2 cursor-pointer"
             >
               Add Address
             </Box>

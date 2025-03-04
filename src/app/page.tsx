@@ -8,6 +8,7 @@ import SearchBar from '@/components/SearchBar';
 import ServiceSliders from '@/components/ServiceSliders';
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
+import UpcomingAppointment from '@/components/UpcomingAppointment';
 
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
@@ -25,13 +26,14 @@ export default function Home() {
         <div className="lg:hidden">
           <Flex justify={'between'} align={'center'}>
             <SelectArea></SelectArea>
-            <Flex className="w-1/5" justify={'between'}>
+            <Flex className="" justify={'between'}>
               <SearchIcon></SearchIcon>
               <NotificationIcon></NotificationIcon>
             </Flex>
           </Flex>
           <SearchBar></SearchBar>
           <Recommendation></Recommendation>
+          <UpcomingAppointment></UpcomingAppointment>
           <ServiceList></ServiceList>
           <ServiceSliders></ServiceSliders>
         </div>
@@ -42,7 +44,9 @@ export default function Home() {
           </div>
           <div className="w-[70vw] ml-[25vw]">
             <Recommendation></Recommendation>
+            <UpcomingAppointment></UpcomingAppointment>
             <ServiceList></ServiceList>
+
             <ServiceSliders></ServiceSliders>
           </div>
         </div>

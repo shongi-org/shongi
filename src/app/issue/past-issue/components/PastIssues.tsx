@@ -13,19 +13,42 @@ type PastOrdersListProps = {
 const PastIssuesList: React.FC<PastOrdersListProps> = () => {
   const [issues, setIssues] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   useEffect(() => {
     setPage(1);
-    console.log(page);
-    getPastIssues(false)
+    getPastIssues(false, page)
       .then((res) => res.json())
       .then((res) => {
         setIssues(res);
+        setLoading(false);
+      })
+      .catch((e) => {
+        setLoading(false);
+        setError(e);
       });
   }, []);
 
   return (
     <div className="w-full mt-4">
-      <Grid columns={'3'} className="">
+      {loading && (
+        <Flex className="w-full p-3 justify-center">
+          <p>Fetching Past Issues</p>
+        </Flex>
+      )}
+
+      {!loading && issues.length === 0 && (
+        <Flex className="w-full p-3 justify-center">
+          <p>There are no past issues</p>
+        </Flex>
+      )}
+      {error !== '' && (
+        <Flex className="w-full p-3 justify-center">
+          <p>Server Error please refresh</p>
+        </Flex>
+      )}
+
+      <Grid className="lg:grid-cols-3 grid-cols-1">
         {issues.map((item: IIssueDetails) => {
           return (
             item.assets.length > 0 && (
@@ -36,20 +59,13 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                 className="border-2 p-2 rounded-md mb-2 mr-2 shadow-md w-[98%]"
               >
                 <Link
-                  href={`/issue/schedule?issue_id=${item._id}&service_name=${item?.service_id?.name}`}
+                  href={`/issue/schedule?issue_id=${item._id}&service_name=${item?.service_id?.name}%20${item?.service_id.sub_category.name}`}
                 >
                   <Flex
                     direction={'column'}
                     wrap={'wrap'}
                     className="items-start"
                   >
-                    {/* <Image
-                    src={item.service_id}
-                    className="lg:w-[5vw] w-auto h-fit"
-                    width={50}
-                    height={50}
-                    alt="cart-item"
-                  ></Image> */}
                     <Flex
                       align={'center'}
                       justify={'start'}
@@ -72,8 +88,9 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                       </p>
                     </Flex>
                     <div className="ml-2">
-                      <p className="font-poppins font-bold text-gray-500 text-sm">
-                        Uploaded for {item?.service_id?.name} Service
+                      <p className="font-poppins font-bold text-gray-500 lg:text-sm text-lg">
+                        Uploaded for {item?.service_id?.name}{' '}
+                        {item?.service_id.sub_category.name} Service
                       </p>
                     </div>
                   </Flex>

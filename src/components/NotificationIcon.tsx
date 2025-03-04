@@ -21,7 +21,7 @@ const NotificationIcon: React.FC<NotificationIconProps> = () => {
     <Link href={'/notifications'}>
       <div className="relative">
         <Image
-          src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Notification_01_q8jhkz.png"
+          src="https://res.cloudinary.com/dsuiwxwkg/image/upload/v1740317343/Notification_01_iaggbk.png"
           height={70}
           width={70}
           className="w-auto lg:w-[3vw] h-12"
@@ -29,7 +29,7 @@ const NotificationIcon: React.FC<NotificationIconProps> = () => {
         ></Image>
 
         <div
-          className={`${notificationCount > 0 ? 'absolute' : 'hidden'}  bottom-[-15px] text-white right-[15px] bg-red-900 pl-[10px] pt-[1px] pb-[1px] pr-[10px] rounded-full mt-8 font-poppins`}
+          className={`${notificationCount > 0 ? 'absolute' : 'hidden'}  bottom-[-13px] text-white right-[15px] bg-indigo-900 pl-[10px] pt-[1px] pb-[1px] pr-[10px] rounded-full mt-8 font-poppins`}
         >
           {' '}
           {notificationCount}

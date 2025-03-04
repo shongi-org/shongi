@@ -11,18 +11,24 @@ import {
 
 import React from 'react';
 
+type statusDetails = {
+  [key: string]: string;
+};
+
 interface TimelineProps {
   currentStatus: Status | IStatusOrder;
   getStatusInfo: IGetStatusInfo | IGetOrderStatusInfo;
   mainStatuses: string[];
   finalStatuses: string[];
+  statusDetails?: statusDetails;
 }
 
 const Timeline: React.FC<TimelineProps> = ({
-  currentStatus = 'Client Declined',
+  currentStatus,
   getStatusInfo,
   mainStatuses,
   finalStatuses,
+  statusDetails,
 }) => {
   const isActive = (status: Status) => {
     const allStatuses = [...mainStatuses, getFinalStatus()].filter(Boolean);
@@ -74,6 +80,9 @@ const Timeline: React.FC<TimelineProps> = ({
                 >
                   {status}
                 </h3>
+                <p className="font-bold">
+                  {statusDetails && (statusDetails[status as string] as string)}
+                </p>
               </div>
             </div>
           );

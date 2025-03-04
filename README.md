@@ -1,45 +1,90 @@
 To do -
 
-See on going orders on homepage
+Error Handling
 
-Add Service subcategory name where needed
+- Signin - TEST
+- signup - TEST
+- Order placing - TEST
+- Issue creation - TEST
+- get requests failing error boundary - TEST
+- Order Cancelling - TEST
 
-Cancel appointment/order endpoint. Modal to ask if he really wants to cancel
+Requirements
 
-Error Handling - Order placing - Issue creation - Signin - signup - get requests failing error boundary
-
-Hook backend with Service provider app - Shahriar
-
-Upload more documents from appointment status page
+- OTP verification on Service Provider end
+- Pricing logic for appointment - TEST
+- Upload more documents from appointment status page
+- Click to expand Investigation documents
 
 UI improvements
 
 - place icons instead of labels in past orders and other lists
 - home page desktop spacings
+- Past issues page need to be responsive
+- add address page need better styling
+- Service pictures should have black gradient
+- Upload your test reports or any other relevant pictures/documents
+- greyed out dates in schedule
+- make app tab responsive
+
+UX improvements -
+
+- Someone else autofill
+- past issue only appears if you are loggedin and have a past issue for that service
+- Error Handling
+- - Fetch Past orders
+- - Fetch Past Appointments
+- web socket with notification icon
+- Customer side
+- - Order Placed -> Order Confirmed
+- - Provider on their way -> Service Provided
+
+Security Improvements -
+
+- Make sure all the paths are protected
+- Rate limiting
+- Take Barikoi Api to backend
+- People can make multiple accounts with the same number. That needs to be barred.
+- People can change phone number after otp verification during signup. that needs to be barred.
+
+Performance Improvements -
+
+- Stress test app with Post man performance testing
+- insert pagination in past orders and appointments endpoint to decrease response time
+- Implement caching in various routes
 
 ----- Nice to have & Further requirements -----
 
-Stress test app with Post man performance testing
+Delivery fee should have logic behind it
 
 Add Phone number changing option at cart for OTP exception
 
 Make Payment Icon
 
-Click to expand Investigation documents
-
-Customer side
-Order Placed -> Order Confirmed
-Provider on their way -> Service Provided
-
 Upload prescription feature
-
-See more in past orders page not pagination
 
 Improve recommendation in lists
 
 Implement ISR in as many pages as possible
 
-change type interface of cart items
+Bangla Toggle
+
+Integrate Sentry for error handling
 
 -----------Done-----------------
 Notification Page and Feature
+
+See on going orders on homepage
+
+Add Service subcategory name where needed
+
+- Appointment list in past orders
+- Cart page
+- previous issues page
+- single Appoint
+
+See more button hooked
+
+Cancel appointment/order endpoint. Modal to ask if he really wants to cancel
+
+Map Marker Draggable
