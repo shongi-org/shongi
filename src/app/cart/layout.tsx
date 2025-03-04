@@ -6,7 +6,7 @@ import { useAppSelector } from '@/lib/hooks';
 
 import { changeOrderFormat } from '@/lib/utils/changeOrderFormat.processing';
 import { createOrder } from '@/services/createOrder';
-import { Box } from '@radix-ui/themes';
+import { Box, Flex } from '@radix-ui/themes';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { ReactNode, useState } from 'react';
@@ -39,10 +39,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     try {
       const response = await createOrder(processedOrderItems);
       const order = await response.json();
-      if (order._id) {
-        router.push(`/order-success?order_id = ${order._id}`);
-        setLoading(false);
-      }
+      router.push(`/order-success?order_id = ${order._id}`);
     } catch (error) {
       setLoading(false);
       setError(`Server Error : ${error}. Please try again`);
@@ -77,9 +74,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             Order more
           </Box>
           <div>{error}</div>
-          <Box
+          <Flex
             onClick={handlePlaceOrder}
-            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
+            justify={'center'}
+            className="w-[96vw] lg:w-[35vw] lg:m-0 lg:mt-1 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer m-auto justify-center"
           >
             {loading ? (
               <Image
@@ -88,9 +86,9 @@ export default function Layout({ children }: { children: ReactNode }) {
                 alt="loader"
               />
             ) : (
-              'Place Order'
+              <p>Place Order</p>
             )}
-          </Box>
+          </Flex>
         </Box>
       </div>
     </>

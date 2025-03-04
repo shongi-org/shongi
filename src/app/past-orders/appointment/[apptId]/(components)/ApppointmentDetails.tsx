@@ -195,12 +195,18 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
             getStatusInfo={getStatusInfo as IGetStatusInfo}
             mainStatuses={mainStatuses}
             finalStatuses={finalStatuses}
-            statusDetails={{
-              ['Fixed Provider and Time' as string]: format(
-                new Date(appointment?.apt_time as string),
-                'hh:mm a',
-              ) as string,
-            }}
+            statusDetails={
+              appointment?.apt_time
+                ? {
+                    ['Fixed Provider and Time' as string]: format(
+                      new Date(appointment?.apt_time as string),
+                      'hh:mm a',
+                    ) as string,
+                  }
+                : {
+                    ['Fixed Provider and Time' as string]: '',
+                  }
+            }
           ></Timeline>
         </Flex>
       )}

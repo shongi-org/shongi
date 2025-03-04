@@ -59,7 +59,7 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                 className="border-2 p-2 rounded-md mb-2 mr-2 shadow-md w-[98%]"
               >
                 <Link
-                  href={`/issue/schedule?issue_id=${item._id}&service_name=${item?.service_id?.name}%20${item?.service_id.sub_category.name}`}
+                  href={`/issue/schedule?issue_id=${item?._id}&service_name=${item?.service_id?.name}%20${item?.service_id?.sub_category?.name}`}
                 >
                   <Flex
                     direction={'column'}
@@ -90,7 +90,7 @@ const PastIssuesList: React.FC<PastOrdersListProps> = () => {
                     <div className="ml-2">
                       <p className="font-poppins font-bold text-gray-500 lg:text-sm text-lg">
                         Uploaded for {item?.service_id?.name}{' '}
-                        {item?.service_id.sub_category.name} Service
+                        {item?.service_id?.sub_category?.name} Service
                       </p>
                     </div>
                   </Flex>
