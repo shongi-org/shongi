@@ -5,6 +5,7 @@ import { Flex, Box, Text } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
 import { config } from '@/config';
+import Skeleton from './Skeleton';
 
 type IServiceListProps = {
   data?: ReactNode;
@@ -19,17 +20,25 @@ type IService = {
 
 const ServiceList: React.FC<IServiceListProps> = () => {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     async function fetchServices() {
-      const response = await fetch(
-        `${config.backendURL}/api/service/category/`,
-      );
-      const data = await response.json();
-      setServices(data.serviceCategories);
+      try {
+        const response = await fetch(
+          `${config.backendURL}/api/service/category/`,
+        );
+        const data = await response.json();
+        setServices(data.serviceCategories);
+        setLoading(false);
+      } catch (error) {
+        setError(error as string);
+      }
     }
     fetchServices();
   }, []);
+
   return (
     <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
       <Label className="font-poppins text-xl font-bold">
@@ -39,6 +48,20 @@ const ServiceList: React.FC<IServiceListProps> = () => {
         justify={'between'}
         className="w-full flex-wrap no-scrollbar justify-between mt-3 gap-y-3"
       >
+        {loading &&
+          new Array(6)
+            .fill(0)
+            .map((item) => (
+              <Skeleton
+                key={item}
+                className="w-[30vw] lg:w-[11vw] h-[30vw] lg:h-[11vw]"
+              />
+            ))}
+        {error && (
+          <>
+            <p>Server Error please try again</p>
+          </>
+        )}
         {services?.map((service: IService) => (
           <Link
             key={service._id}

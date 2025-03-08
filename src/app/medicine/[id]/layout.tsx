@@ -1,6 +1,5 @@
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
 import Topbar from '@/components/Topbar';
-import { Box } from '@radix-ui/themes';
 import { ReactNode } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 
@@ -29,12 +28,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             leftIcon={<IoIosArrowBack fontSize={'24px'} />}
           ></Topbar>
           {/* <SearchBarSpecific /> */}
-          <div className="pb-[18vh]">{children}</div>
-          <Box className="fixed bottom-[9vh] mb-2">
-            <Box className="w-[96vw] lg:w-[50vw] bg-white text-primary border-solid border-2 border-primary font-poppins font-bold text-xl p-3 text-center rounded-md mb-2">
-              Add to Cart
-            </Box>
-          </Box>
+          <div className="pb-[18vh] flex justify-center">{children}</div>
         </div>
       </div>
     </>

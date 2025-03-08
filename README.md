@@ -1,7 +1,6 @@
 To do -
 
 Bugs -
-Add to cart doesnt work in single medicine page
 
 Error Handling
 
@@ -16,17 +15,12 @@ Requirements
 
 - OTP verification on Service Provider end
 - Upload more documents from appointment status page
-- Click to expand Investigation documents
 
 UI improvements
 
 - place icons instead of labels in past orders and other lists
 - home page desktop spacings
-- Past issues page need to be responsive
-- add address page need better styling
 - Service pictures should have black gradient
-- Upload your test reports or any other relevant pictures/documents
-- greyed out dates in schedule
 - make app tab responsive
 
 UX improvements -

@@ -24,6 +24,7 @@ const RadioButtonList: React.FC = () => {
       label: '',
       banner_image: '',
       price: 0,
+      sub_category_name: '',
     },
   ]);
 
@@ -37,15 +38,18 @@ const RadioButtonList: React.FC = () => {
           `${config.backendURL}/api/service/${sub_category_id}`,
         );
         const data = await response.json();
+        console.log(data);
         const mappedOptions = data.services.map((service: ISubservice) => ({
           label: service.name,
           value: service._id,
           banner_image: service.banner_image,
           price: service.price,
+          sub_category_name: service?.sub_category?.name,
         }));
         setOptions(mappedOptions);
         setLoading(false);
       } catch (error) {
+        console.log(error);
         setError(error as string);
         setLoading(false);
       }
@@ -83,6 +87,7 @@ const RadioButtonList: React.FC = () => {
               value: item._id,
               banner_image: item.banner_image,
               price: item.price,
+              sub_category_name: item?.sub_category?.name,
             }))
           : options
         ).map((option) => (
@@ -91,7 +96,7 @@ const RadioButtonList: React.FC = () => {
             key={option.value}
           >
             <Link
-              href={`/issue?service_id=${option.value}&service_name=${option.label}&price=${option.price}`}
+              href={`/issue?service_id=${option.value}&service_name=${option.label}%20${option.sub_category_name}&price=${option.price}`}
             >
               <Flex className="w-[95vw] lg:w-full h-fit justify-start items-end relative">
                 <Flex

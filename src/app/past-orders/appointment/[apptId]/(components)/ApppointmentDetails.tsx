@@ -13,6 +13,7 @@ import { useSearchParams } from 'next/navigation';
 import { popNotification } from '@/services/getNotifications';
 import { updateAppointment } from '@/services/updateAppointment';
 import loader from '@/assets/loader.svg';
+import ImageDetails from './ImageDetails';
 
 type DetailsProps = object;
 
@@ -44,8 +45,9 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
   const [appointment, setAppointment] = useState<IAppointmentDetails>();
   const [cancellationPrompt, setCancellationPrompt] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
-  const [loadingYes, setLoadingYes] = useState(true);
+  const [loadingYes, setLoadingYes] = useState(false);
   const [error, setError] = useState('');
+  const [expandPhotos, setExpandPhotos] = useState(false);
   // const router = useRouter();
 
   const notification_body = searchParams.get('notification_body');
@@ -103,6 +105,7 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
 
   function handleYes() {
     setLoadingYes(true);
+
     setError('');
     updateAppointment(apptId as string, {
       status: 'Cancelled',
@@ -111,6 +114,12 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
       .then((res) => {
         console.log(res);
         setLoadingYes(false);
+        setCancellationPrompt(false);
+        setAppointment((prev) => {
+          return Object.assign({ ...prev }, {
+            status: 'Cancelled',
+          } as IAppointmentDetails);
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -121,6 +130,10 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
 
   function handleNo() {
     setCancellationPrompt(false);
+  }
+
+  function handleExpand() {
+    setExpandPhotos((prev) => !prev);
   }
 
   return (
@@ -177,18 +190,39 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
                 ? 'Investigation documents'
                 : ''}
             </Flex>
-            <Flex align={'start'} className="p-2 ml-2 w-[90vw] lg:w-[30vw]">
-              {appointment?.issue_id?.assets?.map((asset) => (
-                <Image
-                  key={asset}
-                  src={asset}
-                  height={50}
-                  width={50}
-                  alt="service-asset"
-                  className="m-2"
-                />
-              ))}
+            <Flex align={'center'} className="p-2 ml-2 w-[90vw] lg:w-[30vw]">
+              {appointment?.issue_id?.assets
+                ?.slice(0, 3)
+                .map((asset) => (
+                  <Image
+                    key={asset}
+                    src={asset}
+                    height={50}
+                    width={50}
+                    alt="service-asset"
+                    className="m-2"
+                  />
+                ))}
+              {appointment.issue_id.assets.length > 0 && (
+                <div onClick={handleExpand}>Expand</div>
+              )}
             </Flex>
+            {expandPhotos && (
+              <div className="lg:hidden block">
+                {appointment?.issue_id?.assets
+                  ?.slice(0, 3)
+                  .map((asset) => (
+                    <Image
+                      key={asset}
+                      src={asset}
+                      height={400}
+                      width={400}
+                      alt="service-asset"
+                      className=" w-[94vw] mb-2"
+                    />
+                  ))}
+              </div>
+            )}
           </Flex>
           <Timeline
             currentStatus={appointment?.status as Status}
@@ -254,6 +288,16 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
             </Box>
           </Flex>
         </Flex>
+      )}
+
+      {expandPhotos && (
+        <>
+          <ImageDetails
+            assets={appointment?.issue_id?.assets as string[]}
+            expandPhotos={expandPhotos}
+            setExpandPhotos={setExpandPhotos}
+          />
+        </>
       )}
     </>
   );
