@@ -103,7 +103,7 @@ const OTPForm: React.FC<OTPFormProps> = ({
       <div>{error}</div>
       <Form.Submit asChild>
         <Button
-          className="w-full bg-indigo-900 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
+          className="flex w-full bg-indigo-900 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors justify-center"
           type="submit"
           disabled={loading ? true : false}
         >
@@ -114,8 +114,9 @@ const OTPForm: React.FC<OTPFormProps> = ({
               alt="loader"
             />
           ) : (
-            'Submit'
+            <p>Submit</p>
           )}
+          {error && <>Server Error please try again</>}
         </Button>
       </Form.Submit>
     </Form.Root>

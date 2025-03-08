@@ -30,7 +30,6 @@ const OTPPage: React.FC = () => {
         .then((res) => {
           if (res.verified === true) {
             if (res.token) {
-              setLoading(false);
               localStorage.setItem('token', res.token);
               dispatch(setIsLoggedIn(true));
               if (service_id !== 'null') {

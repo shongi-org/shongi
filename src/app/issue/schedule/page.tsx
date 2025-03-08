@@ -160,7 +160,7 @@ export default function SchedulePage() {
                 mode="single"
                 selected={selectedDate}
                 onSelect={handleDateChange}
-                hidden={{ before: getStartDate() }}
+                disabled={{ before: getStartDate() }}
                 className="border rounded-lg p-2 bg-gray-50 w-full"
                 defaultMonth={getDefaultMonth()}
               />

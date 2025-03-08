@@ -3,6 +3,7 @@ import Topbar from '@/components/Topbar';
 import UploadImage from '@/components/UploadImage';
 import { IGender } from '@/interfaces/IIssue';
 import { createIssue } from '@/services/createIssue';
+import { Flex } from '@radix-ui/themes';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -80,12 +81,18 @@ export default function Docs() {
             </label>
           </>
         ) : (
-          <UploadImage
-            cloudinaryUrl="https://api.cloudinary.com/v1_1/dgn4bscl4/upload"
-            uploadPreset="infinimed"
-            onUploadImage={onUploadImage}
-            handleSkip={handleSkip}
-          />
+          <Flex direction={'column'}>
+            <p className="font-poppins w-full p-2 text-center mb-[5vh] text-lg">
+              Please upload your test reports or any other relevant
+              pictures/documents here
+            </p>
+            <UploadImage
+              cloudinaryUrl="https://api.cloudinary.com/v1_1/dgn4bscl4/upload"
+              uploadPreset="infinimed"
+              onUploadImage={onUploadImage}
+              handleSkip={handleSkip}
+            />
+          </Flex>
         )}
       </div>
     </>

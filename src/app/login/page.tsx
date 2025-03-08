@@ -43,7 +43,7 @@ export default function LoginPage() {
           } else {
             setError(res.result);
           }
-          setLoading(false);
+          // setLoading(false);
         })
         .catch((error) => {
           console.log(error);
@@ -78,6 +78,7 @@ export default function LoginPage() {
               ) : (
                 'Submit'
               )}
+              {error && <>Server Error please try again</>}
             </Button>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-// import { IMedicine } from '@/interfaces/IMedicine';
 import { Box, Flex } from '@radix-ui/themes';
 import SimilarItems from '@/components/SimilarItems';
 import { config } from '@/config';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
+import ScheduleButton from '../components/ScheduleButton';
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const slug = (await params).id;
@@ -25,23 +25,25 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             height={300}
             src={data.banner_image}
             alt="medicine-picture"
-            className="w-full lg:w-[25vw] p-2 lg:h-auto bg-indigo-900 mt-10"
+            className="w-full lg:w-[25vw] p-2 lg:h-auto bg-indigo-900 lg:mt-10"
           />
           <Flex
             justify={'between'}
             align={'center'}
-            className="absolute lg:relative bottom-[-7.5vh]  bg-slate-300 w-[80vw] lg:w-[30vw] h-[15vh] rounded-full p-8 shadow-lg z-10 lg:z-0"
+            direction={'column'}
+            className="absolute lg:relative bottom-[-7.5vh] text-white  bg-indigo-900 w-[80vw] lg:w-[30vw] h-fit rounded-full p-6 shadow-lg z-10 lg:z-0"
           >
-            <Flex direction={'column'}>
-              <p className="font-poppins font-bold text-xl">{data.name}</p>
-              <p className="font-poppins font-bold">
-                {data.sub_category.name} | {data.sub_category.category_id.name}
+            <Flex direction={'column'} className="w-full">
+              <p className="font-poppins font-bold text-lg lg:text-xl text-center">
+                {data.name} | {data.sub_category.name} |{' '}
+                {data.sub_category.category_id.name}
               </p>
-              <p className="font-poppins">{data.brand?.toUpperCase()}</p>
+              {/* <p className="font-poppins font-bold"></p>
+              <p className="font-poppins">{data.brand?.toUpperCase()}</p> */}
             </Flex>
             <Flex direction={'column'} align={'center'} className="">
               <p
-                className={`${data.discountedPrice ? 'line-through text-xl' : 'text-2xl'} font-poppins font-bold`}
+                className={`${data.discountedPrice ? 'line-through text-xl' : 'lg:text-2xl text-2xl'} font-poppins font-bold`}
               >
                 Tk. {data?.price}
               </p>
@@ -64,6 +66,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="lg:w-[70vw]">
           <SimilarItems serviceSlug="online-consultation"></SimilarItems>
         </div>
+        <ScheduleButton service={data} />
       </div>
     </>
   );
