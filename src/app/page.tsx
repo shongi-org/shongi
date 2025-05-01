@@ -11,6 +11,7 @@ import SideNavbar from '@/components/desktop/SideNavbar';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import Sliders from '@/components/Sliders';
 import AgentSignup from '@/components/AgentSignup';
+import { Suspense } from 'react';
 
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
@@ -40,9 +41,11 @@ export default function Home() {
           <Recommendation></Recommendation>
           {/* <UpcomingAppointment></UpcomingAppointment> */}
           <ServiceList></ServiceList>
-          <WhyChooseUs></WhyChooseUs>
-          <Sliders />
-          <AgentSignup></AgentSignup>
+          <Suspense>
+            <WhyChooseUs></WhyChooseUs>
+            <Sliders />
+            <AgentSignup></AgentSignup>
+          </Suspense>
         </div>
 
         <div className="hidden lg:flex mt-[7vh]">
@@ -53,10 +56,11 @@ export default function Home() {
             <Recommendation></Recommendation>
             {/* <UpcomingAppointment></UpcomingAppointment> */}
             <ServiceList></ServiceList>
-            <WhyChooseUs></WhyChooseUs>
-
-            <Sliders />
-            <AgentSignup></AgentSignup>
+            <Suspense>
+              <WhyChooseUs></WhyChooseUs>
+              <Sliders />
+              <AgentSignup></AgentSignup>
+            </Suspense>
           </div>
         </div>
       </Flex>

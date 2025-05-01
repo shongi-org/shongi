@@ -99,7 +99,11 @@ export default function LoginPage() {
             <label htmlFor="dob" className="sr-only">
               Date of Birth
             </label>
-            <DatePicker selectedDate={dob} onDateChange={setDob} />
+            <DatePicker
+              selectedDate={dob}
+              onDateChange={setDob}
+              placeholder="Date of Birth"
+            />
           </div>
           <div className="text-lg text-red-700 font-bold">{error}</div>
           <div className="flex flex-col items-end">

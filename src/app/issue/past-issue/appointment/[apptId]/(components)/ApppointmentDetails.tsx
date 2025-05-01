@@ -1,13 +1,13 @@
 'use client';
-import Timeline from '@/components/Timeline';
-import { IAppointmentDetails } from '@/interfaces/IAppointment';
-import { getAppointment } from '@/services/getAppointment';
-import { Box, Flex } from '@radix-ui/themes';
-import { format } from 'date-fns';
-import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import { Check, Clock, X, AlertCircle, LucideProps } from 'lucide-react';
+// import Timeline from '@/components/Timeline';
+// import { IAppointment } from '@/interfaces/IAppointment';
+// import { getAppointment } from '@/services/getAppointment';
+// import { Box, Flex } from '@radix-ui/themes';
+// import { format } from 'date-fns';
+// import Image from 'next/image';
+// import { useParams } from 'next/navigation';
+// import React, { useEffect, useState } from 'react';
+import { LucideProps } from 'lucide-react';
 import { IStatusOrder } from '../../../order/[orderId]/(components)/OrderDetails';
 
 type DetailsProps = object;
@@ -20,17 +20,17 @@ export type Status =
   | 'Provider Declined'
   | 'Client Declined';
 
-const mainStatuses = [
-  'Pending',
-  'Fixed Provider and Time',
-  'Service Provider Reached',
-];
+// const mainStatuses = [
+//   'Pending',
+//   'Fixed Provider and Time',
+//   'Service Provider Reached',
+// ];
 
-const finalStatuses = [
-  'Patient Served',
-  'Provider Declined',
-  'Client Declined',
-];
+// const finalStatuses = [
+//   'Patient Served',
+//   'Provider Declined',
+//   'Client Declined',
+// ];
 
 export type IGetStatusInfo = (status: Status | IStatusOrder) => {
   icon: React.ForwardRefExoticComponent<
@@ -41,39 +41,39 @@ export type IGetStatusInfo = (status: Status | IStatusOrder) => {
 };
 
 const AppointmentDetails: React.FC<DetailsProps> = () => {
-  const { apptId } = useParams();
-  const [appointment, setAppointment] = useState<IAppointmentDetails>();
+  // const { apptId } = useParams();
+  // const [appointment, setAppointment] = useState<IAppointment>();
 
-  useEffect(() => {
-    getAppointment(apptId as string)
-      .then((res) => res.json())
-      .then((res) => {
-        setAppointment(res);
-      });
-  }, []);
+  // useEffect(() => {
+  //   getAppointment(apptId as string)
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setAppointment(res);
+  //     });
+  // }, []);
 
-  const getStatusInfo = (status: Status) => {
-    switch (status) {
-      case 'Pending':
-        return { icon: Clock, color: 'text-yellow-500', bg: 'bg-yellow-100' };
-      case 'Fixed Provider and Time':
-        return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
-      case 'Service Provider Reached':
-        return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
-      case 'Patient Served':
-        return { icon: Check, color: 'text-green-500', bg: 'bg-green-100' };
-      case 'Provider Declined':
-        return { icon: X, color: 'text-red-500', bg: 'bg-red-100' };
-      case 'Client Declined':
-        return { icon: AlertCircle, color: 'text-red-500', bg: 'bg-red-100' };
-    }
-  };
+  // const getStatusInfo = (status: Status) => {
+  //   switch (status) {
+  //     case 'Pending':
+  //       return { icon: Clock, color: 'text-yellow-500', bg: 'bg-yellow-100' };
+  //     case 'Fixed Provider and Time':
+  //       return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
+  //     case 'Service Provider Reached':
+  //       return { icon: Check, color: 'text-blue-500', bg: 'bg-blue-100' };
+  //     case 'Patient Served':
+  //       return { icon: Check, color: 'text-green-500', bg: 'bg-green-100' };
+  //     case 'Provider Declined':
+  //       return { icon: X, color: 'text-red-500', bg: 'bg-red-100' };
+  //     case 'Client Declined':
+  //       return { icon: AlertCircle, color: 'text-red-500', bg: 'bg-red-100' };
+  //   }
+  // };
 
-  function handleOrderMore() {}
-
+  // function handleOrderMore() {}
+  //
   return (
     <>
-      <Flex
+      {/* <Flex
         align={'center'}
         direction={'column'}
         justify={'between'}
@@ -140,7 +140,7 @@ const AppointmentDetails: React.FC<DetailsProps> = () => {
             Cancel Order
           </Box>
         </Box>
-      )}
+      )} */}
     </>
   );
 };

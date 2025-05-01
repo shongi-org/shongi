@@ -1,7 +1,7 @@
-import { IAppointmentDetails } from '@/interfaces/IAppointment';
+import { IAppointment } from '@/interfaces/IAppointment';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: IAppointmentDetails = {
+const initialState: IAppointment = {
   patient_details: {
     name: '',
     gender: '',
@@ -21,14 +21,11 @@ const appointmentDetailsSlice = createSlice({
   name: 'appointment',
   initialState,
   reducers: {
-    setAppointment(
-      state: IAppointmentDetails,
-      action: PayloadAction<IAppointmentDetails>,
-    ) {
+    setAppointment(state: IAppointment, action: PayloadAction<IAppointment>) {
       state = { ...state, ...action.payload };
       return state;
     },
-    clearAppointment(state: IAppointmentDetails) {
+    clearAppointment(state: IAppointment) {
       state = {
         patient_details: {},
         selectedDate: new Date(),

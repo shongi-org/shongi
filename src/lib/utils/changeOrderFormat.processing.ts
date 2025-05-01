@@ -28,26 +28,9 @@ export const changeOrderFormat = (
     }[],
     address: address,
   };
-  Object.values(unprocessedOrderItems.items).forEach((orderItem) => {
-    if (orderItem.type === 'medicine') {
-      result[orderItem.type].push({
-        medicine_id: orderItem.id,
-        quantity: orderItem.quantity,
-      });
-    }
-    // 2022-12-16T02:33:24Z
-    // date.toISOString().split('T')[0]
 
-    if (orderItem.type === 'appointment') {
-      result[orderItem.type].push({
-        time_frame: {
-          start_time: `${new Date((orderItem as IAppointment).time_frame.date).toISOString().split('T')[0]}T${(orderItem as IAppointment).time_frame.start_time}:00Z`,
-          end_time: `${new Date((orderItem as IAppointment).time_frame.date).toISOString().split('T')[0]}T${(orderItem as IAppointment).time_frame.end_time}:00Z`,
-        },
-        issue_id: (orderItem as IAppointment).id,
-        address: address,
-      });
-    }
-  });
+  // 2022-12-16T02:33:24Z
+  // date.toISOString().split('T')[0]
+
   return result;
 };

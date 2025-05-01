@@ -1,8 +1,8 @@
 'use client';
 import { IMedicine } from '@/interfaces/IMedicine';
-import { addToCart } from '@/lib/features/cart/addToCart';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { Box } from '@radix-ui/themes';
+// import { addToCart } from '@/lib/features/cart/addToCart';
+// import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+// import { Box } from '@radix-ui/themes';
 import React from 'react';
 
 type AddToCartButtonProps = {
@@ -16,24 +16,25 @@ type AddToCartButtonProps = {
 };
 
 const AddToCartButton: React.FC<AddToCartButtonProps> = ({ medicine }) => {
-  const dispatch = useAppDispatch();
+  console.log(medicine);
+  // const dispatch = useAppDispatch();
 
-  const cart = useAppSelector((state) => state.addToCart.items);
+  // const cart = useAppSelector((state) => state.addToCart.items);
 
-  function handleAddToCart(quantityToAdd: number) {
-    dispatch(
-      addToCart({
-        ...medicine,
-        id: medicine._id,
-        quantity: quantityToAdd,
-        type: 'medicine',
-      }),
-    );
-  }
+  // function handleAddToCart(quantityToAdd: number) {
+  //   dispatch(
+  //     addToCart({
+  //       ...medicine,
+  //       id: medicine._id,
+  //       quantity: quantityToAdd,
+  //       type: 'medicine',
+  //     }),
+  //   );
+  // }
 
   return (
     <div className="fixed bottom-[9vh] w-[96vw] lg:w-[30vw] ">
-      {cart[medicine._id]?.quantity ? (
+      {/* {cart[medicine._id]?.quantity ? (
         <div className="w-full inline-flex items-center justify-between">
           <div
             onClick={() => handleAddToCart(-1)}
@@ -58,7 +59,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ medicine }) => {
             Add to Cart
           </Box>
         </Box>
-      )}
+      )} */}
     </div>
   );
 };
