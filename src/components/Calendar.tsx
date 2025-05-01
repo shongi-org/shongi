@@ -8,11 +8,13 @@ interface DatePickerProps {
   selectedDate: Date | undefined;
   onDateChange: (date: Date | undefined) => void;
   allowPastDates?: boolean;
+  placeholder: string;
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   selectedDate,
   onDateChange,
+  placeholder,
   allowPastDates = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +38,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         value={selectedDate ? selectedDate.toLocaleDateString() : ''}
         onClick={() => setIsOpen((prev) => !prev)}
         readOnly
-        placeholder="Select Date"
+        placeholder={placeholder}
         className="w-full px-4 py-1 border h-14 text-xl border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
       {isOpen && (

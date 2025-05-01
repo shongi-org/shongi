@@ -1,14 +1,16 @@
 import { Flex } from '@radix-ui/themes';
 import Recommendation from '@/components/Recommendation';
-import SelectArea from '@/components/SelectArea';
+// import SelectArea from '@/components/SelectArea';
 import ServiceList from '@/components/ServiceList';
-import SearchIcon from '@/components/SearchIcon';
+// import SearchIcon from '@/components/SearchIcon';
 import NotificationIcon from '@/components/NotificationIcon';
 import SearchBar from '@/components/SearchBar';
-import ServiceSliders from '@/components/ServiceSliders';
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
-import UpcomingAppointment from '@/components/UpcomingAppointment';
+// import UpcomingAppointment from '@/components/UpcomingAppointment';
+import WhyChooseUs from '@/components/WhyChooseUs';
+import Sliders from '@/components/Sliders';
+import AgentSignup from '@/components/AgentSignup';
 
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
@@ -25,17 +27,22 @@ export default function Home() {
         {/* For Mobile */}
         <div className="lg:hidden">
           <Flex justify={'between'} align={'center'}>
-            <SelectArea></SelectArea>
+            {/* <SelectArea></SelectArea> */}
+            <p className="font-poppins no-scrollbar font-bold text-xl">
+              Welcome to Shongi
+            </p>
             <Flex className="" justify={'between'}>
-              <SearchIcon></SearchIcon>
+              {/* <SearchIcon></SearchIcon> */}
               <NotificationIcon></NotificationIcon>
             </Flex>
           </Flex>
           <SearchBar></SearchBar>
           <Recommendation></Recommendation>
-          <UpcomingAppointment></UpcomingAppointment>
+          {/* <UpcomingAppointment></UpcomingAppointment> */}
           <ServiceList></ServiceList>
-          <ServiceSliders></ServiceSliders>
+          <WhyChooseUs></WhyChooseUs>
+          <Sliders />
+          <AgentSignup></AgentSignup>
         </div>
 
         <div className="hidden lg:flex mt-[7vh]">
@@ -44,10 +51,12 @@ export default function Home() {
           </div>
           <div className="w-[70vw] ml-[25vw]">
             <Recommendation></Recommendation>
-            <UpcomingAppointment></UpcomingAppointment>
+            {/* <UpcomingAppointment></UpcomingAppointment> */}
             <ServiceList></ServiceList>
+            <WhyChooseUs></WhyChooseUs>
 
-            <ServiceSliders></ServiceSliders>
+            <Sliders />
+            <AgentSignup></AgentSignup>
           </div>
         </div>
       </Flex>

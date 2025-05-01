@@ -14,11 +14,9 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
 
   useEffect(() => {
     async function fetchServices() {
-      const response = await fetch(
-        `${config.backendURL}/api/service/category/`,
-      );
+      const response = await fetch(`${config.backendURL}/api/services`);
       const data = await response.json();
-      setServices(data.serviceCategories);
+      setServices(data);
     }
     fetchServices();
   }, []);
@@ -39,7 +37,9 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
             className="p-2 flex items-center border-gray-300 border-b-[1px] w-[18vw]"
           >
             <Image
-              src={service.icon}
+              src={
+                'https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png'
+              }
               width={60}
               height={60}
               alt="service-icon"
@@ -58,7 +58,7 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
             height={60}
             alt="service-icon"
           ></Image>
-          <p className="ml-5 font-bold">Orders</p>
+          <p className="ml-5 font-bold">Appointments</p>
         </div>
       </Link>
     </div>

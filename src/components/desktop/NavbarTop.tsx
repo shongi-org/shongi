@@ -28,7 +28,7 @@ const NavbarTop: React.FC<NavbarTopProps> = () => {
         </Link>
         <p className="font-bold font-poppins">
           Hello,
-          <br /> Welcome to IM Health
+          <br /> Welcome to Shongi
         </p>
 
         <SelectArea></SelectArea>

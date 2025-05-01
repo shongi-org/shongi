@@ -19,9 +19,11 @@ const Page: React.FC<pageProps> = () => {
   const dispatch = useAppDispatch();
   dispatch(clearCart());
   return (
-    <div className="p-[2vw] relative w-full h-[60vh] flex items-center">
+    <div className="p-[2vw] relative w-full h-[90vh] lg:h-[60vh] flex items-center">
       <div className="w-full flex justify-center">
-        <p className="font-poppins text-2xl">We have received your order.</p>
+        <p className="font-poppins text-3xl text-center text-bold">
+          We have received your order! You will get an SMS confirmation shortly.
+        </p>
       </div>
     </div>
   );

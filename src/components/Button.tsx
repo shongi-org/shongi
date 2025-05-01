@@ -39,11 +39,11 @@ const Button = ({
       {...props}
     >
       {icon && (
-        <span className={`mr-2 ${size === 'block' ? 'text-white' : ''}`}>
+        <span className={`w-fit mr-2 ${size === 'block' ? 'text-white' : ''}`}>
           {icon}
         </span>
       )}
-      <span className="text-xl px-3 py-4  flex-1 text-center whitespace-nowrap">
+      <span className="flex w-fit text-xl px-3 py-4  flex-1 justify-center text-center whitespace-nowrap">
         {children}
       </span>
     </button>

@@ -7,6 +7,7 @@ import changeAreaDropDownOpenState from './features/areaDropDownOpen/searchBarVi
 import setArea from './features/area/area';
 import setSearchResults from './features/searchResults/searchResults';
 import setMedicineSearchResults from './features/searchResults/medicineSearchResults';
+import appointment from './features/appointment/appointmentDetails';
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     area: setArea,
     searchResults: setSearchResults,
     medicineSearchResults: setMedicineSearchResults,
+    appointment: appointment,
   },
 });
 

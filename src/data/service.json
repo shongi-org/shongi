@@ -1,133 +1,54 @@
 {
-  "doctor-consultation": [
+  "testimonials": [
     {
       "id": 1,
-      "subserviceName": "Online Medicine Doctor Consultation",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/1_cazb0m.jpg",
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380e9"
     },
     {
       "id": 2,
-      "subserviceName": "Online Surgery Doctor Consultation",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/1_cazb0m.jpg",
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380ea"
     },
     {
       "id": 3,
-      "subserviceName": "General Doctor Consultation At Home",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/2_mmtc4k.jpg",
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380f8"
     },
     {
-      "id": 3,
-      "subserviceName": "Specialized Doctor Consultation At Home",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/2_mmtc4k.jpg",
+      "id": 4,
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380f9"
     }
   ],
-  "health-at-home": [
+  "faq": [
+    {
+      "id": 1,
+      "subserviceName": "I booked a 4hour service but I need 6hours",
+      "image": "",
+      "url": "67a28c419899c8d0d83380e9"
+    },
+    {
+      "id": 2,
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "",
+      "url": "67a28c419899c8d0d83380ea"
+    },
+    {
+      "id": 3,
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "",
+      "url": "67a28c419899c8d0d83380f8"
+    },
     {
       "id": 4,
-      "subserviceName": "New IV Canula and Saline",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/3_kl64yx.jpg",
-      "url": "67a28c419899c8d0d83380fa"
-    },
-    {
-      "id": 5,
-      "subserviceName": "Dressing at Home (Medium)",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/4_jnjixn.jpg",
-      "url": "67a28c419899c8d0d83380fd"
-    },
-    {
-      "id": 6,
-      "subserviceName": "Cathetre Care",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/5_xahmkk.jpg",
-      "url": "67a28c419899c8d0d8338100"
-    },
-    {
-      "id": 7,
-      "subserviceName": "Stoma Care",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/6_yu6orx.jpg",
-      "url": "67a28c419899c8d0d8338102"
-    }
-  ],
-  "tests-at-home": [
-    {
-      "id": 13,
-      "subserviceName": "Blood Test",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718695/images_t5nm60.jpg",
-      "url": "67a28c419899c8d0d83381b2"
-    },
-    {
-      "id": 14,
-      "subserviceName": "ECG",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718696/ecg_f5hvaa.jpg",
-      "url": "67a28c419899c8d0d83381b6"
-    },
-    {
-      "id": 15,
-      "subserviceName": "X-ray",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718696/xray_anctzx.webp",
-      "url": "67a28c419899c8d0d83381b7"
-    },
-    {
-      "id": 16,
-      "subserviceName": "Ultrasologram",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730718695/usg_euadia.jpg",
-      "url": "67a28c419899c8d0d83381b9"
-    }
-  ],
-
-  "phisiotherapy-at-home": [
-    {
-      "id": 21,
-      "subserviceName": "Mobilizing Exercise for 14 days",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/24_k1a9ro.jpg",
-      "url": "67a28c419899c8d0d83381c9"
-    },
-    {
-      "id": 22,
-      "subserviceName": "UST for 14days",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/27_toyze8.jpg",
-      "url": "67a28c419899c8d0d83381d7"
-    },
-    {
-      "id": 23,
-      "subserviceName": "SWD for 14 days",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154701/25_w8tpbr.jpg",
-      "url": "67a28c419899c8d0d83381e5"
-    },
-    {
-      "id": 11,
-      "subserviceName": "Mobilizing exercise for 5 days",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154700/24_k1a9ro.jpg",
-      "url": "67a28c419899c8d0d83381c0"
-    }
-  ],
-  "nurses-at-home": [
-    {
-      "id": 24,
-      "subserviceName": "Nursing Service for 3hours",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/28_x4v9um.jpg",
-      "url": "67a28c419899c8d0d83381e6"
-    },
-    {
-      "id": 25,
-      "subserviceName": "Nursing Service for 24hours",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/28_x4v9um.jpg",
-      "url": "67a28c419899c8d0d83381e9"
-    },
-    {
-      "id": 26,
-      "subserviceName": "Caregiver service for 3hours",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/29_tg2zic.jpg",
-      "url": "67a28c419899c8d0d83381ea"
-    },
-    {
-      "id": 11,
-      "subserviceName": "Caregiver service for 24hours",
-      "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1738154702/29_tg2zic.jpg",
-      "url": "67a28c419899c8d0d83381ed"
+      "subserviceName": "Very prompt and Reliable Service",
+      "image": "",
+      "url": "67a28c419899c8d0d83380f9"
     }
   ]
 }

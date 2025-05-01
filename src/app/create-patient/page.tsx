@@ -2,17 +2,18 @@
 
 // import { Input } from '@/components/Input';
 import { DatePicker } from '@/components/Calendar';
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Button from '@/components/Button';
-import { createUser } from '@/services/createUser';
+// import { createUser } from '@/services/createUser';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import SelectComponent from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { useAppDispatch } from '@/lib/hooks';
-import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
+// import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
+import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
 
 const options = [
   {
@@ -33,15 +34,21 @@ export default function SignupPage() {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState<Date | undefined>(undefined);
+
   const dispatch = useAppDispatch();
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const service_id = searchParams.get('service_id');
+  useEffect(() => {
+    if (duration === 'null') {
+      router.push('/');
+    }
+  }, []);
+
   const service_name = searchParams.get('service_name');
-  const phone_number = searchParams.get('phone_number');
-  const from_cart = searchParams.get('from_cart');
+  const service_id = searchParams.get('service_id');
   const price = searchParams.get('price');
+  const duration = searchParams.get('duration');
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
@@ -53,53 +60,66 @@ export default function SignupPage() {
       return;
     }
     setLoading(true);
-    createUser({
-      first_name: name.split(' ')[0],
-      last_name: name.split(' ').slice(1).join(' '),
-      phone_number: phone_number as string,
-      sex: gender,
-      role: 'regular',
-      verified: true,
-      date_of_birth: dob as Date,
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        setLoading(false);
-        if (res.user) {
-          if (res.token) {
-            localStorage.setItem('token', res.token);
-            dispatch(setIsLoggedIn(true));
-          }
+    router.push(`/schedule-appointment?duration=${duration}`);
+    dispatch(
+      setAppointment({
+        patient_details: {
+          name: name,
+          gender: gender,
+          dob: dob,
+        },
+        service_name: service_name as string,
+        service_id: service_id,
+        price: parseInt(price as string),
+      }),
+    );
+    // createUser({
+    //   first_name: name.split(' ')[0],
+    //   last_name: name.split(' ').slice(1).join(' '),
+    //   phone_number: phone_number as string,
+    //   sex: gender,
+    //   role: 'regular',
+    //   verified: true,
+    //   date_of_birth: dob as Date,
+    // })
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((res) => {
+    //     setLoading(false);
+    //     if (res.user) {
+    //       if (res.token) {
+    //         localStorage.setItem('token', res.token);
+    //         dispatch(setIsLoggedIn(true));
+    //       }
 
-          if (service_id) {
-            router.push(
-              `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
-            );
-          } else if (from_cart === 'true') {
-            router.push(`/cart`);
-          } else {
-            router.push(`/`);
-          }
-        } else {
-          setError('Server Error. Please try again');
-          console.log('server error');
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(err);
-        console.log(error);
-      });
+    //       if (service_id) {
+    //         router.push(
+    //           `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
+    //         );
+    //       } else if (from_cart === 'true') {
+    //         router.push(`/cart`);
+    //       } else {
+    //         router.push(`/`);
+    //       }
+    //     } else {
+    //       setError('Server Error. Please try again');
+    //       console.log('server error');
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     setLoading(false);
+    //     setError(err);
+    //     console.log(error);
+    //   });
   };
 
   return (
     <Suspense>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="pt-[10vh] flex items-center justify-center bg-gray-100">
         <div className="max-w-md w-[95vw] space-y-8 p-8 bg-white rounded-xl shadow-lg">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
-            Create your account
+            Please provide Patient Details
           </h2>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm space-y-4">
@@ -124,7 +144,7 @@ export default function SignupPage() {
                   selectedDate={dob}
                   onDateChange={setDob}
                   allowPastDates={true}
-                  placeholder="Select Date of Birth"
+                  placeholder="Date of Birth"
                 />
               </div>
             </div>
@@ -142,7 +162,7 @@ export default function SignupPage() {
                     alt="loader"
                   />
                 ) : (
-                  'Create Account'
+                  'Submit'
                 )}
               </Button>
             </div>

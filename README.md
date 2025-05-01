@@ -50,6 +50,7 @@ Performance Improvements -
 - Stress test app with Post man performance testing
 - insert pagination in past orders and appointments endpoint to decrease response time
 - Implement caching in various routes
+- Use Callback and use Memo in schedule appointments page
 
 ----- Nice to have & Further requirements -----
 

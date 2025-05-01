@@ -20,8 +20,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Infinimed',
-  description: 'Home Medic Services',
+  title: 'Shongi',
+  description: 'Old Age Agent Services',
 };
 
 export default function RootLayout({

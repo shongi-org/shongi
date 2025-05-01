@@ -2,6 +2,7 @@
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 import Topbar from '@/components/Topbar';
+import { useAppSelector } from '@/lib/hooks';
 import { Box, Flex } from '@radix-ui/themes';
 import { useRouter } from 'next/navigation';
 import { ReactNode, Suspense } from 'react';
@@ -9,6 +10,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
+  const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
 
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
   function handleSeeRunningOrders() {
@@ -33,14 +35,16 @@ export default function Layout({ children }: { children: ReactNode }) {
               ></Topbar>
               <>{children}</>
             </div>
-            <Flex justify={'center'} className="pb-[10vh] w-full">
-              <Box
-                onClick={handleSeeRunningOrders}
-                className="w-[96vw] lg:w-[35vw] m-2 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
-              >
-                See Running Orders
-              </Box>
-            </Flex>
+            {isLoggedIn && (
+              <Flex justify={'center'} className="pb-[10vh] w-full">
+                <Box
+                  onClick={handleSeeRunningOrders}
+                  className="w-[96vw] lg:w-[35vw] m-2 bg-[#283b77] text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
+                >
+                  See Running Orders
+                </Box>
+              </Flex>
+            )}
           </div>
         </div>
         {/* <CartButton></CartButton> */}

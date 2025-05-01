@@ -8,7 +8,7 @@ import { useAppSelector } from '@/lib/hooks';
 type BottomNavbarProps = object;
 
 const BottomNavbar: React.FC<BottomNavbarProps> = () => {
-  const cartItems = useAppSelector((state) => state.addToCart.items);
+  // const cartItems = useAppSelector((state) => state.addToCart.items);
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
 
   return (
@@ -59,11 +59,11 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             />
             <div className="absolute bottom-[-10px] right-[-2px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
               {' '}
-              {Object.values(cartItems).reduce(
+              {/* {Object.values(cartItems).reduce(
                 (accumulator, currentValue) =>
                   accumulator + currentValue.price * currentValue.quantity,
                 0,
-              )}
+              )} */}
               Tk
             </div>
           </Link>

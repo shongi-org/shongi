@@ -9,34 +9,37 @@ import {
   setHours,
   isAfter,
 } from 'date-fns';
+import loader from '@/assets/loader.svg';
 import { DayPicker } from 'react-day-picker';
 import * as Select from '@radix-ui/react-select';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import 'react-day-picker/dist/style.css';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import FloatingCallButton from '@/components/FloatingCallButton';
 import '@/styles/schedule.page.css';
 import Button from '@/components/Button';
 import { CiCircleInfo } from 'react-icons/ci';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
-import { useAppDispatch } from '@/lib/hooks';
-import { addToCart } from '@/lib/features/cart/addToCart';
+// import { useAppDispatch } from '@/lib/hooks';
+// import { addToCart } from '@/lib/features/cart/addToCart';
+import Image from 'next/image';
 
 export default function SchedulePage() {
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
   const router = useRouter();
 
-  const issue_id = searchParams.get('issue_id');
-  const service_name = searchParams.get('service_name');
-  const price = searchParams.get('price');
+  // const issue_id = searchParams.get('issue_id');
+  // const service_name = searchParams.get('service_name');
+  // const price = searchParams.get('price');
 
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedStartTime, setSelectedStartTime] = useState<
     string | undefined
   >(undefined);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleDateChange = (date: Date | undefined) => {
     if (date && isBefore(date, startOfDay(new Date()))) {
@@ -117,29 +120,30 @@ export default function SchedulePage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!selectedDate || !selectedStartTime) {
       alert('Please select a date and start time!');
       return;
     }
 
-    const endTime = getEndTime(selectedStartTime);
+    // const endTime = getEndTime(selectedStartTime);
 
-    dispatch(
-      addToCart({
-        id: issue_id as string,
+    // dispatch(
+    //   addToCart({
+    //     id: issue_id as string,
 
-        time_frame: {
-          date: selectedDate.toDateString(),
-          start_time: selectedStartTime,
-          end_time: endTime as string,
-        },
-        quantity: 1,
-        type: 'appointment',
-        price: parseInt(price ? (price as string) : '0'),
-        service_name: service_name as string,
-      }),
-    );
+    //     time_frame: {
+    //       date: selectedDate.toDateString(),
+    //       start_time: selectedStartTime,
+    //       end_time: endTime as string,
+    //     },
+    //     quantity: 1,
+    //     type: 'appointment',
+    //     price: parseInt(price ? (price as string) : '0'),
+    //     service_name: service_name as string,
+    //   }),
+    // );
     router.push('/cart');
   };
 
@@ -228,8 +232,17 @@ export default function SchedulePage() {
               <Button
                 type="submit"
                 className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700"
+                disabled={loading ? true : false}
               >
-                Schedule
+                {loading ? (
+                  <Image
+                    className="w-[2rem] h-[2rem] text-white"
+                    src={loader}
+                    alt="loader"
+                  />
+                ) : (
+                  'Schedule'
+                )}
               </Button>
             </div>
           </form>

@@ -1,6 +1,6 @@
 'use client';
 import React, { ReactNode, useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { Flex, Box, Text } from '@radix-ui/themes';
 import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
@@ -16,6 +16,9 @@ type IService = {
   icon: string;
   name: string;
   decription: string;
+  price?: string;
+  children?: IService[];
+  duration: number;
 };
 
 const ServiceList: React.FC<IServiceListProps> = () => {
@@ -26,11 +29,10 @@ const ServiceList: React.FC<IServiceListProps> = () => {
   useEffect(() => {
     async function fetchServices() {
       try {
-        const response = await fetch(
-          `${config.backendURL}/api/service/category/`,
-        );
+        const response = await fetch(`${config.backendURL}/api/services`);
         const data = await response.json();
-        setServices(data.serviceCategories);
+
+        setServices(data);
         setLoading(false);
       } catch (error) {
         setError(error as string);
@@ -41,7 +43,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
 
   return (
     <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
-      <Label className="font-poppins text-xl font-bold">
+      <Label className="font-poppins text-4xl font-bold">
         {services.length > 0 && 'Services'}
       </Label>
       <Flex
@@ -65,28 +67,34 @@ const ServiceList: React.FC<IServiceListProps> = () => {
         {services?.map((service: IService) => (
           <Link
             key={service._id}
-            href={
-              service.name.includes('Pharmacy')
-                ? '/pharmacy'
-                : `/issue/services/${service.name.split(' ').join('-')}?_id=${service._id}`
-            }
+            href={`${(service.children as IService[])?.length > 0 ? `/choose-service` : `/create-patient?service_id=${service._id}&service_name=${service.name}&price=${service.price}&duration=${service.duration}`}`}
           >
-            <Box className="w-fit sm:w-[33vw] lg:w-[11vw] " key={service._id}>
-              <Flex className="w-[28vw] lg:w-full h-fit flex-col items-center">
-                <Image
+            <Box className="w-fit sm:w-[48vw] lg:w-[17vw]" key={service._id}>
+              <Flex
+                justify={'center'}
+                className="w-[45vw] lg:w-full h-fit flex-col items-center justify-center"
+              >
+                {/* <Image
                   width={150}
                   height={150}
                   className="w-full h-auto rounded-2xl p-3 bg-white border-solid border-4 border-[#283891]"
                   alt="service"
                   src={service.icon}
-                />
+                /> */}
+                <Flex
+                  justify={'center'}
+                  align={'center'}
+                  className="w-full lg:h-[11vw] h-[30vw] text-4xl lg:text-8xl text-center m-0 auto align-middle font-bold border-solid border-4 border-[#283891] text-indigo-900 rounded-2xl"
+                >
+                  <p>{service.icon}</p>
+                </Flex>
                 <Flex
                   justify={'center'}
                   className="w-full justify-center mt-2 font-bold"
                 >
                   <Text
                     as="p"
-                    className="text-black text-base font-poppins text-center"
+                    className="text-black lg:text-2xl text-xl font-poppins text-center"
                   >
                     {service.name}
                   </Text>

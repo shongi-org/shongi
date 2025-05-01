@@ -3,7 +3,7 @@ import React from 'react';
 import * as subServiceList from '@/data/service.json';
 // import { ISubservice } from '@/interfaces/ISubservice';
 import Link from 'next/link';
-import { Url } from 'next/dist/shared/lib/router/router';
+// import { Url } from 'next/dist/shared/lib/router/router';
 import Image from 'next/image';
 
 type ServiceSliderProps = {
@@ -18,11 +18,8 @@ type Service = {
 };
 
 type feed = {
-  'doctor-consultation': Service[];
-  'health-at-home': Service[];
-  'tests-at-home': Service[];
-  'phisiotherapy-at-home': Service[];
-  'nurses-at-home': Service[];
+  testimonials: Service[];
+  faq: Service[];
 };
 
 const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
@@ -37,21 +34,25 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
       {data[serviceSlug as keyof feed] &&
         data[serviceSlug as keyof feed].slice(0, 4).map((service: Service) => (
           <Box
-            className="w-[60vw] sm:w-[33vw] lg:w-[22vw] ml-3 mt-3 drop-shadow-lg"
+            className="w-fit sm:w-[33vw] lg:w-[22vw] text-xl mt-3 mr-2 drop-shadow-lg border-solid border-2 rounded border-indigo-900 p-4"
             key={service.id}
           >
             <Link href={`/issue/service/${service?.url}`}>
               <Flex
                 direction={'column'}
-                className="w-[60vw] lg:w-full h-fit justify-start items-end relative"
+                className=" lg:w-full h-fit justify-start items-start relative"
               >
-                <Image
-                  width={200}
-                  height={200}
-                  className="w-[60vw] lg:w-full h-auto rounded-lg"
-                  alt="service"
-                  src={service.image as string}
-                />
+                <Flex>
+                  {service.image && (
+                    <Image
+                      width={50}
+                      height={50}
+                      className="w-[10vw] lg:w-full h-auto rounded-lg"
+                      alt="service"
+                      src={service.image as string}
+                    />
+                  )}
+                </Flex>
                 <Flex
                   justify={'between'}
                   className="flex w-[60vw] lg:w-full pb-6 text-start justify-between items-center mt-3 pl-2 pr-2"
@@ -69,7 +70,7 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
             </Link>
           </Box>
         ))}
-      <div className=" w-[45vw] lg:w-fit sm:w-[33vw] mr-3 mt-3 drop-shadow-lg h-full lg:hidden">
+      {/* <div className=" w-[45vw] lg:w-fit sm:w-[33vw] mr-3 mt-3 drop-shadow-lg h-full lg:hidden">
         <Link href={(serviceSlug || '') as Url}>
           <Flex
             direction={'column'}
@@ -80,7 +81,7 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
             </p>
           </Flex>
         </Link>
-      </div>
+      </div> */}
     </Flex>
   );
 };
