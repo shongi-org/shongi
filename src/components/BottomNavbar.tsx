@@ -14,7 +14,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
   return (
     <>
       <FloatingCallButton phoneNumber="1234567890" />
-      <div className="bg-white h-[9vh] w-full fixed bottom-0 z-10 shadow-inner flex space-between pb-4 lg:hidden">
+      <div className="bg-white h-[9vh] w-full fixed bottom-0 z-10 shadow-inner flex justify-evenly pb-4 lg:hidden">
         <div className="w-1/5 p-3">
           <Link href="/past-orders">
             <Image
@@ -27,7 +27,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             <p></p>
           </Link>
         </div>
-        <div className="w-1/5 p-3">
+        {/* <div className="w-1/5 p-3">
           <Link href={'/offers'}>
             <Image
               src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292454/rqsytgy2wgja67p3a3dv.png"
@@ -37,11 +37,11 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             ></Image>
             <p></p>
           </Link>
-        </div>
+        </div> */}
         <div className="w-1/5 p-3">
           <Link href={'/'}>
             <Image
-              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292454/dvhuah5tzhgysxl2lxds.png"
+              src="https://res.cloudinary.com/dlezm6lou/image/upload/v1746101704/Untitled-1_nalqks.png"
               width={100}
               height={100}
               alt=""
@@ -49,7 +49,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
             <p></p>
           </Link>
         </div>
-        <div className="w-1/5 p-2 relative">
+        {/* <div className="w-1/5 p-2 relative">
           <Link href={'/cart'}>
             <Image
               src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956001/Cart_01_mn8gkq.png"
@@ -57,17 +57,17 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
               height={100}
               alt=""
             />
-            <div className="absolute bottom-[-10px] right-[-2px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
+            {/* <div className="absolute bottom-[-10px] right-[-2px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
               {' '}
-              {/* {Object.values(cartItems).reduce(
+              {Object.values(cartItems).reduce(
                 (accumulator, currentValue) =>
                   accumulator + currentValue.price * currentValue.quantity,
                 0,
-              )} */}
+              )}
               Tk
-            </div>
+            </div> 
           </Link>
-        </div>
+        </div> */}
         <div className="w-1/5 p-3">
           {isLoggedIn ? (
             <Link href={'/profile'}>
