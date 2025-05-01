@@ -3,7 +3,6 @@ To do -
 Bugs -
 
 Error Handling
-Hello
 
 - Signin - TEST
 - signup - TEST
