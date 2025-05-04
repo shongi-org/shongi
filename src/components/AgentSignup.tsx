@@ -3,12 +3,12 @@
 import { PhoneInput } from '@/components/PhoneInput';
 import { Button } from '@/components/ui/button';
 import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
-import { sendOTP } from '@/services/sendOTP';
 import { useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Suspense } from 'react';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
+import { agentExists } from '@/services/agentExists';
 // import greenTick from '@/app/assets/green_tick.png';
 
 export default function AgentSignup() {
@@ -17,12 +17,6 @@ export default function AgentSignup() {
   const [loading, setLoading] = useState<boolean>(false);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const service_id = searchParams.get('service_id');
-  const service_name = searchParams.get('service_name');
-  const from_cart = searchParams.get('from_cart');
-  const price = searchParams.get('price');
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setPhoneNumber(e.currentTarget.value);
@@ -33,15 +27,13 @@ export default function AgentSignup() {
       setError(() => validatePhoneNumber(phoneNumber));
     } else {
       setLoading(true);
-      sendOTP(phoneNumber)
+      agentExists(phoneNumber)
         .then((res) => res.json())
         .then((res) => {
-          if (res.result === 'OTP Sent') {
-            router.push(
-              `/otp/${phoneNumber}?service_id=${service_id}&service_name=${service_name}&from_cart=${from_cart}&price=${price}`,
-            );
+          if (res.user.role === 'agent') {
+            router.push(`/password`);
           } else {
-            setError(res.result);
+            setError(res.message);
           }
           // setLoading(false);
         })

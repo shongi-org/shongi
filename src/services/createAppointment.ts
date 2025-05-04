@@ -14,7 +14,7 @@ export const createAppointment = async (appointmentDetails: IAppointment) => {
   });
 };
 
-// {
+// { 
 //   "patient_details": {
 //       "name": "Noel",
 //       "gender": "female",
