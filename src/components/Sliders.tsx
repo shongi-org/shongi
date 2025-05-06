@@ -28,9 +28,9 @@ const Sliders: React.FC<ServiceSlidersProps> = () => {
   return (
     <Box className=" w-full">
       {data.map((service) => (
-        <div key={service.id} className="mt-4">
+        <div key={service.id} className="mt-4 w-[70vw] ">
           <div className="flex justify-between items-center">
-            <p className="font-poppins no-scrollbar font-bold text-4xl">
+            <p className="font-poppins no-scrollbar font-bold text-4xl mr-5">
               {service.title}
             </p>
             {/* <Link

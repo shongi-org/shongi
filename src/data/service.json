@@ -28,27 +28,28 @@
   "faq": [
     {
       "id": 1,
-      "subserviceName": "I booked a 4hour service but I need 6hours",
-      "image": "",
-      "url": "67a28c419899c8d0d83380e9"
+      "subserviceName": "What is Shongi Service?",
+      "description": "Shongi is a personalized service designed to assist patients or clients by providing a Shongi agent who will accompany them from home to the hospital or clinic and back home safely. The service ensures a smooth and secure journey for both patients and their families."
     },
     {
       "id": 2,
-      "subserviceName": "Very prompt and Reliable Service",
-      "image": "",
-      "url": "67a28c419899c8d0d83380ea"
+      "subserviceName": "Why should I opt for Shongi Service?",
+      "description": "If you or a loved one need assistance traveling to and from a hospital or clinic, or if you require someone to bring medicine, test results, or visit a patient, Shongi service is the ideal solution. It saves you time and ensures your loved ones are well taken care of during their hospital visits."
     },
     {
       "id": 3,
-      "subserviceName": "Very prompt and Reliable Service",
-      "image": "",
-      "url": "67a28c419899c8d0d83380f8"
+      "subserviceName": "How do I book Shongi Service?",
+      "description": "You can book the service by registering on our website or as a guest. Simply specify the required duration and pay 30% of the booking amount to confirm your reservation."
     },
     {
       "id": 4,
-      "subserviceName": "Very prompt and Reliable Service",
-      "image": "",
-      "url": "67a28c419899c8d0d83380f9"
+      "subserviceName": "How will I know that my Shongi Agent is assigned?",
+      "description": "Once you’ve made the payment, you will receive a confirmation via SMS or email. You can also check your profile, where the booking status will be updated, including details of the assigned agent, such as their photo, contact number, and agent ID."
+    },
+    {
+      "id": 5,
+      "subserviceName": "Will I receive a refund if I cancel the service?",
+      "description": "Yes, if you cancel the service at least two hours before the scheduled start time, you will receive a full refund. Cancellations made within two hours of the scheduled service time will not be refunded."
     }
   ]
 }

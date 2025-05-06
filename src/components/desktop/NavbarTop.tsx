@@ -5,7 +5,7 @@ import React from 'react';
 import SelectArea from '../SelectArea';
 import SearchBarSpecific from './SearchBarSpecific';
 import NotificationIcon from '../NotificationIcon';
-import CartIconTopbar from '../CartIconTopbar';
+// import CartIconTopbar from '../CartIconTopbar';
 import ProfilePicture from '../ProfilePicture';
 
 type NavbarTopProps = {
@@ -34,9 +34,9 @@ const NavbarTop: React.FC<NavbarTopProps> = () => {
         <SelectArea></SelectArea>
 
         <SearchBarSpecific></SearchBarSpecific>
-        <Flex className="w-[12vw]" justify={'between'} align={'center'}>
+        <Flex className="w-[8vw]" justify={'between'} align={'center'}>
           <NotificationIcon></NotificationIcon>
-          <CartIconTopbar></CartIconTopbar>
+          {/* <CartIconTopbar></CartIconTopbar> */}
           <ProfilePicture></ProfilePicture>
         </Flex>
       </Flex>
