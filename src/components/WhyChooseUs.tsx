@@ -104,7 +104,7 @@ const WhyChooseUs: React.FC = () => {
                 <Image
                   width={200}
                   height={200}
-                  className="w-[95vw] lg:w-full h-auto rounded-lg brightness-50 lg:ml-0 lg:mr-5"
+                  className="w-[95vw] lg:w-full h-auto rounded-lg brightness-100 lg:ml-0 lg:mr-5"
                   alt="service"
                   src={option.banner_image as string}
                 />

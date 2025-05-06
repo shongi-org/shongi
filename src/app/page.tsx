@@ -52,7 +52,7 @@ export default function Home() {
           <div className="w-[20vw] fixed h-full border-gray-300 border-r-[1px]">
             <SideNavbar></SideNavbar>
           </div>
-          <div className="w-[70vw] ml-[25vw]">
+          <div className="w-full ml-[25vw]">
             <Recommendation></Recommendation>
             {/* <UpcomingAppointment></UpcomingAppointment> */}
             <ServiceList></ServiceList>
