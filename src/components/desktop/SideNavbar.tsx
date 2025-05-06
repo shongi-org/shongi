@@ -1,7 +1,7 @@
 'use client';
 import { config } from '@/config';
 import { IService } from '@/interfaces/IService';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -34,30 +34,30 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
         >
           <div
             key={service._id}
-            className="p-2 flex items-center border-gray-300 border-b-[1px] w-[18vw]"
+            className="p-2 py-4 flex items-center border-gray-300 border-b-[1px] w-[18vw]"
           >
-            <Image
+            {/* <Image
               src={
                 'https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png'
               }
               width={60}
               height={60}
               alt="service-icon"
-            ></Image>
+            ></Image> */}
             <p className="ml-5 font-bold">{service.name}</p>
           </div>
         </Link>
       ))}
       <Link href={'/past-orders'}>
-        <div className="p-2 flex items-center border-gray-300 border-b-[1px] w-[18vw]">
-          <Image
+        <div className="p-2 py-5 flex items-center border-gray-300 border-b-[1px] w-[18vw]">
+          {/* <Image
             src={
               'https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png'
             }
             width={60}
             height={60}
             alt="service-icon"
-          ></Image>
+          ></Image> */}
           <p className="ml-5 font-bold">Appointments</p>
         </div>
       </Link>

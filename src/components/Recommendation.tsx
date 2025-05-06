@@ -27,23 +27,23 @@ const data: IRecommendation[] = [
   {
     id: 1,
     image:
-      'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988860/infinimed/pharmacy_ehjroy.jpg',
-    title: 'Pharmacy',
-    link: '/issue',
+      'https://res.cloudinary.com/dlezm6lou/image/upload/v1746249506/banner3_iavzk0.jpg',
+    title: '',
+    link: '',
   },
   {
     id: 2,
     image:
-      'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988853/infinimed/nursing_eg5lqj.jpg',
-    title: 'Nursing',
-    link: '/issue',
+      'https://res.cloudinary.com/dlezm6lou/image/upload/v1746528030/WhatsApp_Image_2025-04-30_at_12.30.40_1_lfvrew.jpg',
+    title: '',
+    link: '',
   },
   {
     id: 3,
     image:
-      'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1726988852/infinimed/phisiotherapist_tfsxlh.jpg',
-    title: 'Phisiotherapy',
-    link: '/issue',
+      'https://res.cloudinary.com/dlezm6lou/image/upload/v1746249506/banner1_jurrbe.jpg',
+    title: '',
+    link: '',
   },
 ];
 
@@ -86,7 +86,7 @@ const Recommendation: React.FC<RecommendationProps> = () => {
               <Image
                 width={400}
                 height={400}
-                className="w-[93vw] lg:w-[70vw] lg:h-[40vh] rounded-lg object-cover"
+                className="w-[93vw] lg:w-[70vw] lg:h-fit rounded-lg object-cover"
                 alt="service"
                 src={service.image}
               />
