@@ -116,7 +116,7 @@ export default function SignupPage() {
 
   return (
     <Suspense>
-      <div className="pt-[10vh] flex items-center justify-center bg-gray-100">
+      <div className="pt-[10vh] h-[200vh] flex items-start justify-center bg-gray-100">
         <div className="max-w-md w-[95vw] space-y-8 p-8 bg-white rounded-xl shadow-lg">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
             Please provide Patient Details

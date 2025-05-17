@@ -13,7 +13,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
 
   return (
     <>
-      <FloatingCallButton phoneNumber="1234567890" />
+      <FloatingCallButton phoneNumber="+8801577149428" />
       <div className="bg-white h-[9vh] w-full fixed bottom-0 z-10 shadow-inner flex justify-evenly pb-4 lg:hidden">
         <div className="w-1/5 p-3">
           <Link href="/past-orders">
@@ -41,7 +41,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
         <div className="w-1/5 p-3">
           <Link href={'/'}>
             <Image
-              src="https://res.cloudinary.com/dlezm6lou/image/upload/v1746101704/Untitled-1_nalqks.png"
+              src="https://res.cloudinary.com/dlezm6lou/image/upload/v1747480543/home-button_m9r42o.png"
               width={100}
               height={100}
               alt=""

@@ -2,19 +2,18 @@
 
 import { PhoneInput } from '@/components/PhoneInput';
 import { Button } from '@/components/ui/button';
-import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Suspense } from 'react';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
-import { agentExists } from '@/services/agentExists';
 // import greenTick from '@/app/assets/green_tick.png';
 
 export default function AgentSignup() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
+  console.log(setError);
 
   const router = useRouter();
 
@@ -23,26 +22,8 @@ export default function AgentSignup() {
   }
 
   function handleSubmit() {
-    if (validatePhoneNumber(phoneNumber) !== 'success') {
-      setError(() => validatePhoneNumber(phoneNumber));
-    } else {
-      setLoading(true);
-      agentExists(phoneNumber)
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.user.role === 'agent') {
-            router.push(`/password`);
-          } else {
-            setError(res.message);
-          }
-          // setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setError('server Error');
-          setLoading(false);
-        });
-    }
+    setLoading(true);
+    router.push(`https://shongi-agent.vercel.app/otp/${phoneNumber}`);
   }
 
   return (

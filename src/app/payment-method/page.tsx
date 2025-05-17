@@ -25,6 +25,10 @@ const paymentAmountOptions = [
     label: 'Pay 30%',
     value: '30%',
   },
+  {
+    label: 'Pay After Service',
+    value: '0%',
+  },
 ];
 
 const paymentOptions = [
@@ -39,6 +43,11 @@ const paymentOptions = [
   {
     label: 'Card',
     value: 'card',
+  },
+
+  {
+    label: 'Cash',
+    value: 'cash',
   },
 ];
 
