@@ -3,8 +3,6 @@ import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 import Topbar from '@/components/Topbar';
 import { useAppSelector } from '@/lib/hooks';
-
-// import { changeOrderFormat } from '@/lib/utils/changeOrderFormat.processing';
 import { createAppointment } from '@/services/createAppointment';
 import { Box, Flex } from '@radix-ui/themes';
 import Image from 'next/image';
@@ -15,16 +13,11 @@ import loader from '@/assets/loader.svg';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>();
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
   const appointment = useAppSelector((state) => state.appointment);
-  // const area = useAppSelector((state) => state.area);
 
-  // function handleOrderMore() {
-  //   router.push('/');
-  // }
   async function handlePlaceOrder() {
     if (!isLoggedIn) {
       router.push('/login?from_cart=true');
@@ -57,18 +50,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           <>{children}</>
         </div>
         <Box className="pb-[10vh] lg:p-0">
-          {/* <Box
-            onClick={() => router.push('add-area')}
-            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
-          >
-            Change Area
-          </Box>
-          <Box
-            onClick={handleOrderMore}
-            className="w-[96vw] lg:w-[35vw] m-2 lg:m-0 lg:mt-1 bg-white text-[#283b77] border-solid border-2 border-[#283b77] font-poppins font-bold text-xl p-3 text-center rounded-md mb-2"
-          >
-            Order more
-          </Box> */}
           <div>{error}</div>
           <Flex
             onClick={handlePlaceOrder}

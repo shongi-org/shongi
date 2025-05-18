@@ -3,7 +3,7 @@
 import { PhoneInput } from '@/components/PhoneInput';
 import { Button } from '@/components/ui/button';
 import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
-import { sendOTP } from '@/services/sendOTP';
+// import { sendOTP } from '@/services/sendOTP';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
@@ -11,6 +11,8 @@ import Image from 'next/image';
 import loader from '@/assets/loader.svg';
 import { createAppointment } from '@/services/createAppointment';
 import { useAppSelector } from '@/lib/hooks';
+import { accountExists } from '@/services/accountExists';
+import { sendOTP } from '@/services/sendOTP';
 // import greenTick from '@/app/assets/green_tick.png';
 
 export default function LoginPage() {
@@ -22,10 +24,10 @@ export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const service_id = searchParams.get('service_id');
-  const service_name = searchParams.get('service_name');
+  // const service_id = searchParams.get('service_id');
+  // const service_name = searchParams.get('service_name');
   const from_cart = searchParams.get('from_cart');
-  const price = searchParams.get('price');
+  // const price = searchParams.get('price');
   const appointment = useAppSelector((state) => state.appointment);
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
@@ -49,22 +51,24 @@ export default function LoginPage() {
       setError(() => validatePhoneNumber(phoneNumber));
     } else {
       setLoading(true);
-      sendOTP(phoneNumber)
+      accountExists(phoneNumber)
         .then((res) => res.json())
         .then((res) => {
-          if (res.result === 'OTP Sent') {
+          if (res.message === 'user exists') {
             router.push(
-              `/otp/${phoneNumber}?service_id=${service_id}&service_name=${service_name}&from_cart=${from_cart}&price=${price}`,
+              `/password?from_cart=${from_cart}&phone_number=${phoneNumber}`,
             );
           } else {
-            setError(res.result);
+            sendOTP(phoneNumber)
+              .then((res) => res.json())
+              .then((res) => {
+                if (res.result === 'OTP Sent') {
+                  router.push(`/otp/${phoneNumber}?from_cart=${from_cart}`);
+                } else {
+                  setError('Server Error. Please try again');
+                }
+              });
           }
-          // setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setError('server Error');
-          setLoading(false);
         });
     }
   }
