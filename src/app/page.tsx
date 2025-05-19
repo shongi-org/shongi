@@ -12,6 +12,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import Sliders from '@/components/Sliders';
 import AgentSignup from '@/components/AgentSignup';
 import { Suspense } from 'react';
+import Image from 'next/image';
 
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
@@ -29,9 +30,17 @@ export default function Home() {
         <div className="lg:hidden">
           <Flex justify={'between'} align={'center'}>
             {/* <SelectArea></SelectArea> */}
+            <Image
+              height={50}
+              width={50}
+              src={`https://res.cloudinary.com/dlezm6lou/image/upload/v1746101704/Untitled-1_nalqks.png`}
+              alt="logo"
+            ></Image>
             <p className="font-poppins no-scrollbar font-bold text-xl">
               Welcome to Shongi
             </p>
+            <span> </span>
+
             <Flex className="" justify={'between'}>
               {/* <SearchIcon></SearchIcon> */}
               <NotificationIcon></NotificationIcon>

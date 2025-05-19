@@ -4,18 +4,13 @@ import React, { useState } from 'react';
 import OTPForm from '../components/OTPForm';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { verifyOTP } from '@/services/verifyOTP';
-import { useAppDispatch } from '@/lib/hooks';
-import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 
 const OTPPage: React.FC = () => {
   const { mobileNumber }: { mobileNumber: string } = useParams();
   const searchParams = useSearchParams();
-  const service_id = searchParams.get('service_id');
-  const service_name = searchParams.get('service_name');
-  const from_cart = searchParams.get('from_cart');
-  const price = searchParams.get('price');
 
-  const dispatch = useAppDispatch();
+  const from_cart = searchParams.get('from_cart');
+
   const router = useRouter();
 
   const [error, setError] = useState('');
@@ -29,30 +24,12 @@ const OTPPage: React.FC = () => {
         .then((res) => res.json())
         .then((res) => {
           if (res.verified === true) {
-            if (res.token) {
-              localStorage.setItem('token', res.token);
-              dispatch(setIsLoggedIn(true));
-              if (service_id !== 'null') {
-                router.push(
-                  `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
-                );
-              } else if (from_cart !== null) {
-                router.push(`/cart`);
-              } else {
-                router.push(`/`);
-              }
+            if (from_cart === 'true') {
+              router.push(
+                `/signup?phone_number=${mobileNumber}&from_cart=true`,
+              );
             } else {
-              if (service_id !== 'null') {
-                router.push(
-                  `/signup?service_id=${service_id}&service_name=${service_name}&phone_number=${mobileNumber}&price=${price}`,
-                );
-              } else if (from_cart === 'true') {
-                router.push(
-                  `/signup?phone_number=${mobileNumber}&from_cart=true`,
-                );
-              } else {
-                router.push(`/signup?phone_number=${mobileNumber}`);
-              }
+              router.push(`/signup?phone_number=${mobileNumber}`);
             }
           } else if (res.verified === false) {
             setLoading(false);
@@ -61,7 +38,7 @@ const OTPPage: React.FC = () => {
         })
         .catch((error) => {
           setLoading(false);
-          setError(error);
+          setError('Server Error');
           console.log(error);
         });
     } else {

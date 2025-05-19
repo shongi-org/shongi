@@ -1,6 +1,6 @@
 import { config } from '@/config';
 
-export const agentExists = async (mobileNumber: string) => {
+export const accountExists = async (mobileNumber: string) => {
   return await fetch(
     `${config.backendURL}/api/auth/check-account/${mobileNumber}`,
     {

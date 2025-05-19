@@ -67,7 +67,6 @@ export default function SchedulePage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const service_id = searchParams.get('service_id');
   const duration = searchParams.get('duration');
   // const price = searchParams.get('price');
 
@@ -152,6 +151,7 @@ export default function SchedulePage() {
   const getEndTime = (startTime: string) => {
     if (!startTime) return undefined;
     const [startHour, startMinutes] = startTime.split(':').map(Number);
+
     const startDateTime = setHours(
       addMinutes(startOfDay(selectedDate!), startHour * 60 + startMinutes),
       startHour,
@@ -189,7 +189,6 @@ export default function SchedulePage() {
       setAppointment({
         selectedDate: selectedDate,
         startTime: selectedStartTime as string,
-        service_id: service_id as string,
         homeAddress: homeAddress,
         servicePointAddress: servicePointAddress,
         contactInfo: contactInfo,

@@ -9,10 +9,11 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import SelectComponent from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
-import { useAppDispatch } from '@/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
+import { createAppointment } from '@/services/createAppointment';
 
 const options = [
   {
@@ -37,11 +38,9 @@ export default function SignupPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const service_id = searchParams.get('service_id');
-  const service_name = searchParams.get('service_name');
   const phone_number = searchParams.get('phone_number');
   const from_cart = searchParams.get('from_cart');
-  const price = searchParams.get('price');
+  const appointment = useAppSelector((state) => state.appointment);
 
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
@@ -55,11 +54,10 @@ export default function SignupPage() {
     setLoading(true);
     createUser({
       first_name: name.split(' ')[0],
-      last_name: name.split(' ').slice(1).join(' '),
+      last_name: name.split(' ').slice(1).join(' ') || '',
       phone_number: phone_number as string,
       sex: gender,
       role: 'regular',
-      verified: true,
       date_of_birth: dob as Date,
     })
       .then((res) => {
@@ -73,17 +71,24 @@ export default function SignupPage() {
             dispatch(setIsLoggedIn(true));
           }
 
-          if (service_id) {
-            router.push(
-              `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
-            );
-          } else if (from_cart === 'true') {
-            router.push(`/cart`);
+          if (from_cart === 'true') {
+            createAppointment(appointment)
+              .then((res) => res.json())
+              .then((res) => {
+                router.push(`/order-success?order_id = ${res._id}`);
+              })
+              .catch((error) => {
+                setLoading(false);
+                console.log(error);
+                setError(
+                  `Server Error trying to create Appointment. Please try again`,
+                );
+              });
           } else {
-            router.push(`/`);
+            router.push('/');
           }
         } else {
-          setError('Server Error. Please try again');
+          setError('Server Error trying to create Account. Please try again');
           console.log('server error');
         }
       })
@@ -96,7 +101,7 @@ export default function SignupPage() {
 
   return (
     <Suspense>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="min-h-[200vh] flex items-start pt-[20vh] justify-center bg-gray-100">
         <div className="max-w-md w-[95vw] space-y-8 p-8 bg-white rounded-xl shadow-lg">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
             Create your account
