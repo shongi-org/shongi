@@ -28,16 +28,9 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
         : '100',
     ) / 100;
 
-  // const payment_method = searchParams.get('payment_method');
-
-  // console.log(appointment);
-  // const dispatch = useAppDispatch();
-
   return (
     <div className="w-full mt-4 ">
       <Box className="">
-        {/* {Object.values(cart).map((item) => { */}
-
         <Flex
           align={'center'}
           width={'full'}
@@ -81,14 +74,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
             Tk
           </p>
         </Flex>
-        {/* <Flex
-          justify={'between'}
-          className="border-b-2 border-black border-dotted pb-5"
-        >
-          {' '}
-          <p className="font-poppins font-bold text-gray-400">Delivery Fee</p>
-          <p className="font-poppins font-bold">{30}Tk</p>
-        </Flex> */}
+
         <Flex
           justify={'between'}
           className="border-b-2 border-black border-dotted pb-5"
@@ -113,8 +99,9 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
           <p className="font-poppins font-bold text-gray-400">Pay Now</p>
           <p className="font-poppins font-bold">
             {(
-              ((appointment.price as number) * 1.15 + 30) *
-              payment_amount_in_percent
+              (appointment.price as number) * payment_amount_in_percent +
+              30 +
+              (appointment.price as number) * 0.15
             ).toFixed(2)}{' '}
             Tk
           </p>
@@ -126,7 +113,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
           </p>
           <p className="font-poppins font-bold">
             {(
-              ((appointment.price as number) * 1.15 + 30) *
+              (appointment.price as number) *
               (1 - payment_amount_in_percent)
             ).toFixed(2)}{' '}
             Tk

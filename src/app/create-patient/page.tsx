@@ -73,45 +73,6 @@ export default function SignupPage() {
         price: parseInt(price as string),
       }),
     );
-    // createUser({
-    //   first_name: name.split(' ')[0],
-    //   last_name: name.split(' ').slice(1).join(' '),
-    //   phone_number: phone_number as string,
-    //   sex: gender,
-    //   role: 'regular',
-    //   verified: true,
-    //   date_of_birth: dob as Date,
-    // })
-    //   .then((res) => {
-    //     return res.json();
-    //   })
-    //   .then((res) => {
-    //     setLoading(false);
-    //     if (res.user) {
-    //       if (res.token) {
-    //         localStorage.setItem('token', res.token);
-    //         dispatch(setIsLoggedIn(true));
-    //       }
-
-    //       if (service_id) {
-    //         router.push(
-    //           `/issue/docs?service_id=${service_id}&service_name=${service_name}&price=${price}`,
-    //         );
-    //       } else if (from_cart === 'true') {
-    //         router.push(`/cart`);
-    //       } else {
-    //         router.push(`/`);
-    //       }
-    //     } else {
-    //       setError('Server Error. Please try again');
-    //       console.log('server error');
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false);
-    //     setError(err);
-    //     console.log(error);
-    //   });
   };
 
   return (

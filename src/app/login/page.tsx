@@ -29,6 +29,7 @@ export default function LoginPage() {
   const from_cart = searchParams.get('from_cart');
   // const price = searchParams.get('price');
   const appointment = useAppSelector((state) => state.appointment);
+  console.log(appointment);
 
   function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setPhoneNumber(e.currentTarget.value);
@@ -39,7 +40,8 @@ export default function LoginPage() {
     try {
       const response = await createAppointment(appointment);
       const order = await response.json();
-      router.push(`/order-success?order_id = ${order._id}`);
+      if (order._id) router.push(`/order-success?order_id = ${order._id}`);
+      else setError('Server Error Please try again');
     } catch (error) {
       setLoading(false);
       setError(`Server Error : ${error}. Please try again`);
@@ -77,14 +79,35 @@ export default function LoginPage() {
     <Suspense>
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-white p-8 rounded-lg shadow-md w-96 ">
+          <Button
+            className="h-14 text-xl mt-2 w-full bg-indigo-900 mb-2"
+            type="submit"
+            onClick={handleSkip}
+            disabled={loadingSkip ? true : false}
+          >
+            {loadingSkip ? (
+              <Image
+                className="w-[2rem] h-[2rem] text-white"
+                src={loader}
+                alt="loader"
+              />
+            ) : (
+              'Move on as Guest'
+            )}
+            {error && <>Server Error please try again</>}
+          </Button>
+
           <h1 className="text-2xl font-bold mb-6 text-center">
+            <br />
+            Or <br />
+            <br />
             Enter Phone Number
           </h1>
           <PhoneInput handleChange={handleChange}></PhoneInput>
           <div>{error}</div>
           <div className="flex flex-col items-end">
             <Button
-              className="h-14 text-xl mt-2 w-full bg-indigo-900"
+              className="h-14 text-xl mt-2 w-full bg-white border-solid border-indigo-900 border-2 text-indigo-900"
               type="submit"
               onClick={handleSubmit}
               disabled={loading ? true : false}
@@ -97,23 +120,6 @@ export default function LoginPage() {
                 />
               ) : (
                 'Submit'
-              )}
-              {error && <>Server Error please try again</>}
-            </Button>
-            <Button
-              className="h-14 text-xl mt-2 w-full bg-white border-solid border-indigo-900 border-2 text-indigo-900"
-              type="submit"
-              onClick={handleSkip}
-              disabled={loadingSkip ? true : false}
-            >
-              {loadingSkip ? (
-                <Image
-                  className="w-[2rem] h-[2rem] text-white"
-                  src={loader}
-                  alt="loader"
-                />
-              ) : (
-                'Move on as Guest'
               )}
               {error && <>Server Error please try again</>}
             </Button>
