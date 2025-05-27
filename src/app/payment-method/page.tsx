@@ -10,11 +10,11 @@ import Button from '@/components/Button';
 // import { CiCircleInfo } from 'react-icons/ci';
 import Topbar from '@/components/Topbar';
 import { IoIosArrowBack } from 'react-icons/io';
-import { addToCart } from '@/lib/features/cart/addToCart';
 // import { useAppSelector } from '@/lib/hooks';
 
 import SelectComponent from '@/components/ui/select';
 import { useAppDispatch } from '@/lib/hooks';
+import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
 
 const paymentAmountOptions = [
   {
@@ -69,7 +69,7 @@ export default function SchedulePage() {
     }
 
     dispatch(
-      addToCart({
+      setAppointment({
         paymentOption: paymentAmount,
         paymentMethod: paymentMethod,
       }),
@@ -107,6 +107,7 @@ export default function SchedulePage() {
               <Button
                 type="submit"
                 className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 mb-[10vh] text-xl"
+                onClick={handleSubmit}
               >
                 Next
               </Button>
