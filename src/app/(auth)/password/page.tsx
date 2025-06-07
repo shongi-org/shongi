@@ -56,7 +56,12 @@ const PasswordPage: React.FC = () => {
   };
 
   const handleForgotPassword = () => {
-    router.push('/reset-password');
+    const currentPhoneNumber = searchParams.get('phone_number');
+    if (currentPhoneNumber) {
+      router.push(`/forgot-password?phone_number=${currentPhoneNumber}`);
+    } else {
+      router.push('/forgot-password');
+    }
   };
 
   return (
