@@ -4,7 +4,7 @@ import React from 'react';
 // import * as successAnimation from '@/assets/success-animation.json';
 import { clearCart } from '@/lib/features/cart/addToCart';
 import { useAppDispatch } from '@/lib/hooks';
-import { useParams } from 'next/navigation';
+// import { useParams } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 
 type pageProps = object;
