@@ -40,8 +40,12 @@ export default function LoginPage() {
     try {
       const response = await createAppointment(appointment);
       const order = await response.json();
-      if (order._id) router.push(`/order-success?order_id = ${order._id}`);
-      else setError('Server Error Please try again');
+      console.log(order.message);
+      if (order._id && !order.sms) {
+        router.push(`/order-success?order_id = ${order._id}&sms_error=true`);
+      } else if (order._id) {
+        router.push(`/order-success?order_id = ${order._id}&sms_error=false`);
+      } else setError('Server Error Please try again');
     } catch (error) {
       setLoading(false);
       setError(`Server Error : ${error}. Please try again`);
