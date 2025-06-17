@@ -32,7 +32,7 @@ const PasswordPage: React.FC = () => {
         if (res.message === 'Sign-in successful.') {
           localStorage.setItem('token', res.token);
 
-          if (from_cart) {
+          if (from_cart !== 'null') {
             createAppointment(appointment)
               .then(() => res.json())
               .then((res) => {
@@ -96,7 +96,6 @@ const PasswordPage: React.FC = () => {
               ) : (
                 'Submit'
               )}
-              {error && <>Server Error please try again</>}
             </Button>
           </div>
           <div className="flex flex-col items-end">
@@ -115,7 +114,6 @@ const PasswordPage: React.FC = () => {
               ) : (
                 'Forgot Password'
               )}
-              {error && <>Server Error please try again</>}
             </Button>
           </div>
         </div>
