@@ -41,7 +41,7 @@ export default function AgentSignup() {
         .then((res) => {
           if (res.message === 'user exists') {
             router.push(
-              `https://shongi-agent.vercel.app/password?phone_number=${phoneNumber}`,
+              `https://agent.shongi.org/password?phone_number=${phoneNumber}`,
             );
             setLoading(false);
           } else {
@@ -49,9 +49,7 @@ export default function AgentSignup() {
               .then((res) => res.json())
               .then((res) => {
                 if (res.result === 'OTP Sent') {
-                  router.push(
-                    `https://shongi-agent.vercel.app/otp/${phoneNumber}`,
-                  );
+                  router.push(`https://agent.shongi.org/otp/${phoneNumber}`);
                   setLoading(false);
                 } else {
                   setError('Server Error. Please try again');
