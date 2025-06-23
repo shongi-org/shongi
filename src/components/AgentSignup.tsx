@@ -23,7 +23,7 @@ export default function AgentSignup() {
 
   function handleSubmit() {
     setLoading(true);
-    router.push(`https://shongi-agent.vercel.app/otp/${phoneNumber}`);
+    router.push(`https://agent.shongi.org/otp/${phoneNumber}`);
   }
 
   return (
