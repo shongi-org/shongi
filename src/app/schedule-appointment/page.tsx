@@ -184,6 +184,11 @@ export default function SchedulePage() {
       return;
     }
 
+    if (contactInfo.length !== 11) {
+      alert('Please Provide a valid 11 digit phone number!');
+      return;
+    }
+
     const endTime = getEndTime(selectedStartTime);
 
     dispatch(
