@@ -9,7 +9,8 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { createAppointment } from '@/services/createAppointment';
-import { useAppSelector } from '@/lib/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 
 // import OTPForm from './components/OTPForm';
 
@@ -19,6 +20,7 @@ const PasswordPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const searchParams = useSearchParams();
   const appointment = useAppSelector((state) => state.appointment);
+  const dispatch = useAppDispatch();
 
   const phoneNumber = searchParams.get('phone_number');
   const from_cart = searchParams.get('from_cart');
@@ -31,8 +33,9 @@ const PasswordPage: React.FC = () => {
       .then((res) => {
         if (res.message === 'Sign-in successful.') {
           localStorage.setItem('token', res.token);
+          dispatch(setIsLoggedIn(true));
 
-          if (from_cart) {
+          if (from_cart !== 'null') {
             createAppointment(appointment)
               .then(() => res.json())
               .then((res) => {
@@ -96,7 +99,6 @@ const PasswordPage: React.FC = () => {
               ) : (
                 'Submit'
               )}
-              {error && <>Server Error please try again</>}
             </Button>
           </div>
           <div className="flex flex-col items-end">
@@ -115,7 +117,6 @@ const PasswordPage: React.FC = () => {
               ) : (
                 'Forgot Password'
               )}
-              {error && <>Server Error please try again</>}
             </Button>
           </div>
         </div>

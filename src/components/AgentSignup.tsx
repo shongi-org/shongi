@@ -7,6 +7,9 @@ import { useRouter } from 'next/navigation';
 import { Suspense } from 'react';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
+import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
+import { accountExists } from '@/services/accountExists';
+import { sendOTP } from '@/services/sendOTP';
 // import greenTick from '@/app/assets/green_tick.png';
 
 export default function AgentSignup() {
@@ -21,9 +24,41 @@ export default function AgentSignup() {
     setPhoneNumber(e.currentTarget.value);
   }
 
+  // function handleSubmit() {
+  //   setLoading(true);
+  //   router.push(`https://shongi-agent.vercel.app/otp/${phoneNumber}`);
+  // }
+
   function handleSubmit() {
     setLoading(true);
-    router.push(`https://shongi-agent.vercel.app/otp/${phoneNumber}`);
+    if (validatePhoneNumber(phoneNumber) !== 'success') {
+      setError(() => validatePhoneNumber(phoneNumber));
+      setLoading(false);
+    } else {
+      setLoading(true);
+      accountExists(phoneNumber)
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.message === 'user exists') {
+            router.push(
+              `https://agent.shongi.org/password?phone_number=${phoneNumber}`,
+            );
+            setLoading(false);
+          } else {
+            sendOTP(phoneNumber)
+              .then((res) => res.json())
+              .then((res) => {
+                if (res.result === 'OTP Sent') {
+                  router.push(`https://agent.shongi.org/otp/${phoneNumber}`);
+                  setLoading(false);
+                } else {
+                  setError('Server Error. Please try again');
+                  setLoading(false);
+                }
+              });
+          }
+        });
+    }
   }
 
   return (
