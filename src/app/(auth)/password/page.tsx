@@ -16,7 +16,8 @@ import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 
 const PasswordPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const [forgotError, setForgotError] = useState<string | null>(null);
   const [password, setPassword] = useState('');
   const searchParams = useSearchParams();
   const appointment = useAppSelector((state) => state.appointment);
@@ -28,6 +29,7 @@ const PasswordPage: React.FC = () => {
 
   const handleSubmit = async () => {
     setLoading(true);
+    setLoginError(null);
     login(phoneNumber as string, password)
       .then((res) => res.json())
       .then((res) => {
@@ -37,33 +39,39 @@ const PasswordPage: React.FC = () => {
 
           if (from_cart !== 'null') {
             createAppointment(appointment)
-              .then(() => res.json())
+              .then((res) => res.json())
               .then((res) => {
-                router.push(`/order-success?order_id = ${res._id}`);
+                router.push(`/order-success?order_id=${res._id}`);
               })
               .catch((error) => {
                 setLoading(false);
-                console.log(error);
-                setError(`Server Error. Please try again`);
+                setLoginError('Server Error. Please try again');
               });
           } else {
             router.push('/');
           }
         } else {
-          setError(res.message);
+          setLoginError(res.message || 'Server Error. Please try again');
+          setLoading(false);
         }
       })
-      .catch((error) => {
-        setError(error);
+      .catch(() => {
+        setLoginError('Server Error. Please try again');
+        setLoading(false);
       });
   };
 
   const handleForgotPassword = () => {
-    const currentPhoneNumber = searchParams.get('phone_number');
-    if (currentPhoneNumber) {
-      router.push(`/forgot-password?phone_number=${currentPhoneNumber}`);
-    } else {
-      router.push('/forgot-password');
+    setForgotError(null);
+    try {
+      const currentPhoneNumber = searchParams.get('phone_number');
+      if (currentPhoneNumber) {
+        router.push(`/forgot-password?phone_number=${currentPhoneNumber}`);
+      } else {
+        router.push('/forgot-password');
+      }
+    } catch {
+      setForgotError('Server Error. Please try again');
     }
   };
 
@@ -74,21 +82,22 @@ const PasswordPage: React.FC = () => {
           <h1 className="text-4xl font-bold mb-6 text-center">Password</h1>
           <Input
             onChange={(e: React.FormEvent<HTMLInputElement>) => {
-              setError('');
+              setLoginError(null);
               setLoading(false);
               setPassword(e.currentTarget.value);
             }}
             className="h-14 text-xl "
             type="password"
             placeholder="Password"
+            value={password}
           />
-          <div>{error}</div>
+          <div className="min-h-[1.5rem]"></div>
           <div className="flex flex-col items-end">
             <Button
               className="h-14 text-xl mt-2 w-full bg-indigo-900"
-              type="submit"
+              type="button"
               onClick={handleSubmit}
-              disabled={loading ? true : false}
+              disabled={loading}
             >
               {loading ? (
                 <Image
@@ -100,13 +109,18 @@ const PasswordPage: React.FC = () => {
                 'Submit'
               )}
             </Button>
+            {loginError && (
+              <span className="text-red-600 text-sm mt-2 w-full text-center block">
+                {loginError}
+              </span>
+            )}
           </div>
           <div className="flex flex-col items-end">
             <Button
               className="h-14 text-xl mt-2 w-full text-indigo-900 bg-white border-solid border-2 border-indigo-900"
-              type="submit"
+              type="button"
               onClick={handleForgotPassword}
-              disabled={loading ? true : false}
+              disabled={loading}
             >
               {loading ? (
                 <Image
@@ -118,6 +132,11 @@ const PasswordPage: React.FC = () => {
                 'Forgot Password'
               )}
             </Button>
+            {forgotError && (
+              <span className="text-red-600 text-sm mt-2 w-full text-center block">
+                {forgotError}
+              </span>
+            )}
           </div>
         </div>
       </div>
