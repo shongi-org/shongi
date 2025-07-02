@@ -43,7 +43,7 @@ const PasswordPage: React.FC = () => {
               .then((res) => {
                 router.push(`/order-success?order_id=${res._id}`);
               })
-              .catch((error) => {
+              .catch(() => {
                 setLoading(false);
                 setLoginError('Server Error. Please try again');
               });
