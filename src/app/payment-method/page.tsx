@@ -44,7 +44,14 @@ const paymentOptions = [
     label: 'Card',
     value: 'card',
   },
+  {
+    label: 'Cash',
+    value: 'cash',
+  },
+];
 
+// Add this for conditional cash-only option
+const cashOnlyOption = [
   {
     label: 'Cash',
     value: 'cash',
@@ -99,7 +106,8 @@ export default function SchedulePage() {
 
             <SelectComponent
               handleChange={(e) => setPaymentMethod(e)}
-              options={paymentOptions}
+              // Show only "Cash" if "Pay After Service" is selected
+              options={paymentAmount === '0%' ? cashOnlyOption : paymentOptions}
               placeholder="Select Payment Method"
             />
 
