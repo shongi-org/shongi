@@ -106,8 +106,13 @@ export default function SchedulePage() {
 
             <SelectComponent
               handleChange={(e) => setPaymentMethod(e)}
-              // Show only "Cash" if "Pay After Service" is selected
-              options={paymentAmount === '0%' ? cashOnlyOption : paymentOptions}
+              options={
+                paymentAmount === '0%'
+                  ? cashOnlyOption
+                  : paymentAmount === '100%' || paymentAmount === '30%'
+                  ? paymentOptions.filter((opt) => opt.value !== 'cash')
+                  : paymentOptions
+              }
               placeholder="Select Payment Method"
             />
 
