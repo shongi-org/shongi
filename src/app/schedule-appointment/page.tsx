@@ -234,7 +234,7 @@ export default function SchedulePage() {
               <>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Select a 4-hour Time Frame
+                    Select a {duration && duration !== '0' ? duration : 'X'}-hour Time Frame
                   </label>
                   <Select.Root
                     value={selectedStartTime}
