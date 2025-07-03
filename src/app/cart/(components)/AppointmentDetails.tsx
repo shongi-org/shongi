@@ -21,12 +21,13 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
   const searchParams = useSearchParams();
 
   const payment_amount = searchParams.get('payment_amount');
-  const payment_amount_in_percent =
-    parseInt(
-      ((payment_amount as string).match(/\d+/g) as string[]).length > 0
-        ? ((payment_amount as string).match(/\d+/g) as string[])[0]
-        : '100',
-    ) / 100;
+  const payment_amount_in_percent = payment_amount
+    ? parseInt(
+      (payment_amount.match(/\d+/g) as string[]).length > 0
+        ? payment_amount.match(/\d+/g)![0]
+        : '100'
+    ) / 100
+    : 0;
 
   const price = appointment.price as number;
   const platformFee = 30;
