@@ -3,7 +3,7 @@ import Topbar from '@/components/Topbar';
 
 import { ReactNode } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
-import CartIconTopbar from '@/components/CartIconTopbar';
+// import CartIconTopbar from '@/components/CartIconTopbar';
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <Topbar
               title="Profile"
               leftIcon={<IoIosArrowBack fontSize={'24px'} />}
-              rightIcon={<CartIconTopbar></CartIconTopbar>}
+              // rightIcon={<CartIconTopbar></CartIconTopbar>}
             ></Topbar>
           </div>
           {/* <SearchBarSpecific purpose="medicine" /> */}
