@@ -5,6 +5,7 @@ export type IAppointment = {
     gender?: string;
     dob?: Date;
   };
+  existing_patient_id?: string;
   selectedDate?: Date;
   startTime?: string;
   endTime?: string;

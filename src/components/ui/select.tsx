@@ -7,12 +7,14 @@ const SelectComponent = ({
   options,
   placeholder,
   handleChange,
+  value,
 }: {
   options: { label: string; value: string }[];
   placeholder: string;
   handleChange: (e: string) => void;
+  value?: string;
 }) => (
-  <Select.Root onValueChange={handleChange}>
+  <Select.Root value={value} onValueChange={handleChange}>
     <Select.Trigger
       className="inline-flex h-14 items-center justify-between gap-[5px] border border-input rounded bg-white px-3 py-1 text-xl w-full leading-none text-violet11 mb-3  outline-none hover:bg-mauve3 focus:shadow-[0_0_0_2px] focus:shadow-black data-[placeholder]:text-violet9"
       aria-label={placeholder}
