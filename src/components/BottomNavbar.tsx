@@ -15,18 +15,33 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
     <>
       <FloatingCallButton phoneNumber="+8801577149428" />
       <div className="bg-white h-[9vh] w-full fixed bottom-0 z-10 shadow-inner flex justify-evenly pb-4 lg:hidden">
-        <div className="w-1/5 p-3">
-          <Link href="/past-orders">
-            <Image
-              src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png"
-              width={100}
-              height={100}
-              className=""
-              alt=""
-            ></Image>
-            <p></p>
-          </Link>
-        </div>
+        {isLoggedIn && (
+          <div className="w-1/5 p-3">
+            <Link href="/past-orders">
+              <Image
+                src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956002/Order_01_z83fzi.png"
+                width={100}
+                height={100}
+                className=""
+                alt="past-orders"
+              />
+              <p></p>
+            </Link>
+          </div>
+        )}
+        {isLoggedIn && (
+          <div className="w-1/5 p-3">
+            <Link href="/patients">
+              <Image
+                src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png"
+                width={100}
+                height={100}
+                alt="Patients Page"
+              />
+              <p></p>
+            </Link>
+          </div>
+        )}
         {/* <div className="w-1/5 p-3">
           <Link href={'/offers'}>
             <Image

@@ -21,7 +21,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
   }, []);
 
   return (
-    <div className="w-full mt-4 ">
+    <div className="w-full mt-4">
       <h2 className="font-poppins text-2xl mb-2 font-bold">Appointments</h2>
       <Box className="">
         {Object.values(orders).map((item: IPastAppointment) => {

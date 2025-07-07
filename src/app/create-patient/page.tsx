@@ -11,8 +11,8 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
-import { getPatientsByUser } from '@/services/getPatientsByUser';
 import { IPatient } from '@/interfaces/IPatient';
+import PatientList from '@/components/PatientList';
 
 const options = [
   {
@@ -33,13 +33,10 @@ export default function CreatePatientPage() {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState<Date | undefined>(undefined);
-  const [patients, setPatients] = useState<IPatient[]>([]);
   const [selectedPatient, setSelectedPatient] = useState<IPatient | null>(null);
   const [isNewPatient, setIsNewPatient] = useState(true);
   const [loading, setLoading] = useState<boolean>(false);
-  const [patientsLoading, setPatientsLoading] = useState<boolean>(false);
   const [error, setError] = useState('');
-  const [patientsError, setPatientsError] = useState('');
   const [isClient, setIsClient] = useState(false);
 
   const dispatch = useAppDispatch();
@@ -64,26 +61,6 @@ export default function CreatePatientPage() {
       router.push('/');
     }
   }, [duration, router]);
-
-  useEffect(() => {
-    const fetchPatients = async () => {
-      if (isLoggedIn) {
-        try {
-          setPatientsLoading(true);
-          setPatientsError('');
-          const userPatients = await getPatientsByUser();
-          setPatients(userPatients);
-        } catch (error) {
-          console.error('Error fetching patients:', error);
-          setPatientsError('Failed to load your patients');
-        } finally {
-          setPatientsLoading(false);
-        }
-      }
-    };
-
-    fetchPatients();
-  }, [isLoggedIn]);
 
   const handlePatientSelect = (patient: IPatient) => {
     setSelectedPatient(patient);
@@ -153,49 +130,13 @@ export default function CreatePatientPage() {
                 Select Existing Patient
               </h3>
 
-              {patientsLoading && (
-                <div className="flex justify-center py-4">
-                  <Image className="w-6 h-6" src={loader} alt="Loading patients..." />
-                </div>
-              )}
-
-              {patientsError && (
-                <div className="text-red-500 text-sm text-center py-2">
-                  {patientsError}
-                </div>
-              )}
-
-              {!patientsLoading && !patientsError && patients.length > 0 && (
-                <div className="space-y-2 max-h-40 overflow-y-auto border rounded-lg p-2">
-                  {patients.map((patient) => (
-                    <div
-                      key={patient._id}
-                      className={`flex justify-between items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors ${selectedPatient?._id === patient._id ? 'bg-blue-50 border-blue-200' : ''
-                        }`}
-                    >
-                      <div>
-                        <p className="font-medium text-gray-900">{patient.name}</p>
-                        <p className="text-sm text-gray-600">
-                          {patient.gender} • {new Date(patient.dob).toLocaleDateString()}
-                        </p>
-                      </div>
-                      <Button
-                        type="button"
-                        onClick={() => handlePatientSelect(patient)}
-                        className="px-3 py-1 text-sm bg-blue-600 hover:bg-blue-700"
-                      >
-                        Select
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              {!patientsLoading && !patientsError && patients.length === 0 && (
-                <div className="text-gray-500 text-center py-4">
-                  No patients found. Create your first patient below.
-                </div>
-              )}
+              <PatientList 
+                onPatientSelect={handlePatientSelect}
+                showSelectButton={true}
+                selectedPatientId={selectedPatient?._id}
+                className="max-h-40 overflow-y-auto border rounded-lg p-2"
+              />
+              
               <hr className="my-4" />
             </div>
           )}
