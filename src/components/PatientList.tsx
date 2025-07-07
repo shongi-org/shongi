@@ -116,7 +116,7 @@ const PatientList: React.FC<PatientListProps> = ({
     return (
       <div className={`text-center py-8 ${className}`}>
         <div className="bg-gray-50 p-6 rounded-lg">
-          <p className="text-gray-500 mb-2">No patients found matching "{searchTerm}".</p>
+          <p className="text-gray-500 mb-2">No patients found matching {searchTerm}.</p>
           <p className="text-sm text-gray-400">
             Try adjusting your search term.
           </p>

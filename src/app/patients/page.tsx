@@ -1,14 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import PatientList from '@/components/PatientList';
-import Button from '@/components/Button';
 import { Input } from '@/components/ui/input';
 import { useAppSelector } from '@/lib/hooks';
 
 const PatientsPage: React.FC = () => {
-  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState('');
   const isLoggedIn = useAppSelector(state => state.setIsLoggedIn);
 
