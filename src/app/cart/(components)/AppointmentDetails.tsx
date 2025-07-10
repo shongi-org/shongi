@@ -67,7 +67,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
                 <span className="font-bold text-gray-500">Date</span>{' '}
                 {new Date(
                   appointment.selectedDate as Date,
-                ).toLocaleDateString()}{' '}
+                ).toLocaleDateString('en-GB')}{' '}
               </p>
               <p className="font-poppins">
                 <span className="font-bold text-gray-500"> Timeframe </span>{' '}

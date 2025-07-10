@@ -47,7 +47,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                   <p className="font-poppins">
                     <span className="text-gray-700 font-bold">Date:</span>{' '}
                     {item?.date
-                      ? new Date(item.date).toLocaleDateString()
+                      ? new Date(item.date).toLocaleDateString('en-GB')
                       : 'N/A'}
                     <br />
                     <span className="text-gray-700 font-bold">
