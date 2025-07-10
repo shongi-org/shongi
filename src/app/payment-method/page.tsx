@@ -17,14 +17,14 @@ import { useAppDispatch } from '@/lib/hooks';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
 
 const paymentAmountOptions = [
-  {
-    label: 'Pay Full',
-    value: '100%',
-  },
-  {
-    label: 'Pay 30%',
-    value: '30%',
-  },
+  // {
+  //   label: 'Pay Full',
+  //   value: '100%',
+  // },
+  // {
+  //   label: 'Pay 30%',
+  //   value: '30%',
+  // },
   {
     label: 'Pay After Service',
     value: '0%',
