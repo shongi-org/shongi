@@ -47,7 +47,11 @@ export default function ForgotPasswordPage() {
         setMessage('An SMS with a reset token has been sent. Please check your phone.');
         setTimeout(() => {
           // Pass phone number to reset-password page if it was originally provided
-          router.push('/reset-password');
+          if (phoneNumber) {
+            router.push(`/reset-password?phone_number=${encodeURIComponent(phoneNumber)}`);
+          } else {
+            router.push('/reset-password');
+          }
         }, 3000);
       } else {
         setError(data.message || 'An error occurred. Please try again.');

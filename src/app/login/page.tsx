@@ -4,7 +4,7 @@ import { PhoneInput } from '@/components/PhoneInput';
 import { Button } from '@/components/ui/button';
 import { validatePhoneNumber } from '@/lib/utils/validatePhoneNumber';
 // import { sendOTP } from '@/services/sendOTP';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import Image from 'next/image';
@@ -23,6 +23,14 @@ export default function LoginPage() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    // Prefill phone number from query param if present
+    const phoneFromQuery = searchParams.get('phone_number');
+    if (phoneFromQuery) {
+      setPhoneNumber(phoneFromQuery);
+    }
+  }, [searchParams]);
 
   // const service_id = searchParams.get('service_id');
   // const service_name = searchParams.get('service_name');
@@ -107,7 +115,7 @@ export default function LoginPage() {
             <br />
             Enter Phone Number
           </h1>
-          <PhoneInput handleChange={handleChange}></PhoneInput>
+          <PhoneInput handleChange={handleChange} value={phoneNumber} />
           <div>{error}</div>
           <div className="flex flex-col items-end">
             <Button

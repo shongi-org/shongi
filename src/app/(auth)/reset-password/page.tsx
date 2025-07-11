@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -10,9 +10,13 @@ import { config } from '@/config';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [token, setToken] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  // Get phone number from query param if present
+  const phoneNumberFromQuery = searchParams.get('phone_number') || '';
+  const [phoneNumber, setPhoneNumber] = useState(phoneNumberFromQuery);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -43,7 +47,8 @@ export default function ResetPasswordPage() {
       if (res.ok) {
         setMessage('Password has been reset successfully. Redirecting to login...');
         setTimeout(() => {
-          router.push('/login');
+          // Always pass phoneNumber from query param if available
+          router.push(`/login?phone_number=${encodeURIComponent(phoneNumber)}`);
         }, 3000);
       } else {
         setError(data.message || 'An error occurred. Please try again.');
@@ -105,6 +110,17 @@ export default function ResetPasswordPage() {
               required
             />
           </div>
+          {/* Optionally, allow user to enter phone number if not present in token response */}
+          {/* <div>
+            <Input
+              type="tel"
+              id="phoneNumber"
+              placeholder="Phone Number (optional)"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="h-14 text-xl mt-2"
+            />
+          </div> */}
           {error && <p className="mt-2 text-red-500 text-sm">{error}</p>}
           {message && <p className="mt-2 text-green-500 text-sm">{message}</p>}
           <Button
