@@ -16,7 +16,7 @@ export default function ResetPasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   // Get phone number from query param if present
   const phoneNumberFromQuery = searchParams.get('phone_number') || '';
-  const [phoneNumber, setPhoneNumber] = useState(phoneNumberFromQuery);
+  const phoneNumber = phoneNumberFromQuery;
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
