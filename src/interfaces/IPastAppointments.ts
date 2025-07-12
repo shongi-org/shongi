@@ -1,3 +1,5 @@
+import { IAgent } from "./IAgent";
+
 export type IPastAppointment = {
   time_frame: {
     start_time: string;
@@ -6,7 +8,7 @@ export type IPastAppointment = {
   _id: string;
   status: string;
   date: Date;
-  agent?: string;
+  agent?: string | IAgent;
   home_address: string;
   hospital_address: string;
   preferred_agent_gender: string;
