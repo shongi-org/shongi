@@ -63,6 +63,7 @@ const transportOptions = [
   },
 ];
 
+
 export default function SchedulePage() {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -74,14 +75,19 @@ export default function SchedulePage() {
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [homeAddress, setHomeAddress] = useState<string>('');
-  const [servicePointAddress, setServicePointAddress] = useState<string>('');
-  const [selectedStartTime, setSelectedStartTime] = useState<
-    string | undefined
-  >(undefined);
+  const [selectedStartTime, setSelectedStartTime] = useState<string | undefined>(undefined);
   const [gender, setGender] = useState('');
   const [transport, setTransport] = useState('');
   const [contactInfo, setContactInfo] = useState('');
   const [additionalDetails, setAdditionalDetails] = useState('');
+  const [servicePointAddress, setServicePointAddress] = useState<string>('');
+
+  const patientGender = searchParams.get('patient_gender');
+
+  const filteredAgentGenderOptions =
+    patientGender === 'male'
+      ? options.filter(option => option.value !== 'female')
+      : options;
 
   const handleDateChange = (date: Date | undefined) => {
     if (date && isBefore(date, startOfDay(new Date()))) {
@@ -300,7 +306,8 @@ export default function SchedulePage() {
 
                 <SelectComponent
                   handleChange={(e) => setGender(e)}
-                  options={options}
+                  options={filteredAgentGenderOptions}
+                  value={gender}
                   placeholder="Select Agent Gender"
                 />
 

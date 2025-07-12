@@ -84,8 +84,8 @@ export default function CreatePatientPage() {
     setError('');
 
     try {
-      // Navigate to next step
-      router.push(`/schedule-appointment?duration=${duration}`);
+      // Navigate to next step, pass patient gender as query param
+      router.push(`/schedule-appointment?duration=${duration}&patient_gender=${gender}`);
 
       // Dispatch appointment data
       dispatch(
