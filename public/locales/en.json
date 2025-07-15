@@ -1,9 +1,91 @@
 {
   "greeting": "Hello",
-  "welcome_message": "Welcome to our application!",
-  "welcome_to_shongi": "Welcome to Shongi",
-  "navbar_past_orders": "Past Orders",
-  "navbar_home": "Home",
-  "navbar_profile": "Profile",
-  "navbar_login": "Login"
+  "welcomeMessage": "Welcome to our application!",
+  "welcomeToShongi": "Welcome to Shongi",
+  "navbar": {
+    "pastOrders": "Past Orders",
+    "home": "Home",
+    "profile": "Profile",
+    "login": "Login",
+    "services": "Services",
+    "testimonials": "Testimonials",
+    "faqs": "FAQs"
+  },
+  "auth": {
+    "signupAsAgent": "Signup as Agent",
+    "loginPhone": "Enter phone number"
+  },
+  "appointment": {
+    "title": "Appointment",
+    "details": "Appointment Details",
+    "selectDate": "Select a date for your appointment",
+    "schedule": "Schedule",
+    "timeframe": "Select a time frame",
+    "date": "Date",
+    "endTime": "End time"
+  },
+  "payment": {
+    "option": "Payment Option",
+    "chooseOption": "Choose Payment Options",
+    "method": "Select Payment Method",
+    "payNow": "Pay Now",
+    "payFull": "Pay Full",
+    "pay30": "Pay 30%",
+    "payAfterService": "Pay After Service",
+    "platformFee": "Platform fee",
+    "vat": "Vat",
+    "methods": {
+      "bkash": "Bkash",
+      "nagad": "Nagad",
+      "card": "Card",
+      "cash": "Cash"
+    }
+  },
+  "cart": {
+    "title": "Cart",
+    "summary": "Summary",
+    "placeOrder": "Place Order",
+    "orderSuccess": "Order Success",
+    "orderNote": "We have received your order . But we could not send you sms . Our agent will contact you shortly"
+  },
+  "form": {
+    "submit": "Submit",
+    "next": "Next",
+    "additionalDetails": "Additional Details (if needed)"
+  },
+  "guest": {
+    "moveOn": "Move on as Guest"
+  },
+  "package": {
+    "4Hour": "4 Hour Service",
+    "6Hour": "6 Hour Package",
+    "8Hour": "8 Hour Package",
+    "longTerm": "Long Term Package"
+  },
+  "gender": {
+    "select": "Select Gender",
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "agentGender": "Select agent gender"
+  },
+  "address": {
+    "home": "Home address",
+    "hospital": "Hospital Address",
+    "servicePoint": "Service point Address",
+    "addresses": "Addresses"
+  },
+  "whyChooseUs": "Why Choose Us",
+  "dob": "Date of Birth",
+  "amount": "Select Amount",
+  "or": "or",
+  "transport": {
+    "selectMode": "Select transport mode",
+    "uber": "UBER",
+    "cng": "CNG",
+    "public": "Public transport",
+    "ownCar": "I have a car",
+    "uptoAgent": "Upto the Agent"
+  },
+  "contactInfo": "Contact Info"
 }
