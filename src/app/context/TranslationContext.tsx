@@ -15,18 +15,24 @@ interface TranslationContextType {
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
+// Cache for loaded translations to avoid repeated fetching
+const loadedLanguages: { [lang: string]: Translations } = {};
+
 export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<string>('en'); // Default language
   const [translations, setTranslations] = useState<Translations>({});
 
-  const loadedLanguages: { [lang: string]: Translations } = {};
-
   const fetchTranslations = useCallback(async (lang: string): Promise<Translations> => {
     if (loadedLanguages[lang]) return loadedLanguages[lang];
-    const response = await fetch(`/locales/${lang}.json`);
-    const data = await response.json();
-    loadedLanguages[lang] = data;
-    return data;
+    try {
+      const response = await fetch(`/locales/${lang}.json`);
+      const data = await response.json();
+      loadedLanguages[lang] = data;
+      return data;
+    } catch (error) {
+      console.error(`Error loading translations for ${lang}:`, error);
+      return {};
+    }
   }, []);
 
   useEffect(() => {
@@ -61,8 +67,18 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const t = (key: TranslationKey): string => {
+    // Try current language
     const result = getNestedTranslation(translations, key);
-    return result || key; // Return the key if the translation is not found
+    if (result) return result;
+
+    // Fallback to English if not already in English
+    if (language !== 'en' && loadedLanguages['en']) {
+      const fallback = getNestedTranslation(loadedLanguages['en'], key);
+      if (fallback) return fallback;
+    }
+
+    // Final fallback: return the key itself
+    return key;
   };
 
   return (
