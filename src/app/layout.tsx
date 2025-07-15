@@ -7,6 +7,8 @@ import ReduxProvider from '@/lib/redux-provider';
 import BottomNavbar from '@/components/BottomNavbar';
 import AuthProvider from '@/Providers/AuthProvider';
 import type { Metadata } from 'next';
+import { TranslationProvider } from '@/app/context/TranslationContext';
+import LanguageSwitcher from './../components/LanguageSwitcher';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -37,13 +39,15 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <AuthProvider>
-            <Theme accentColor="ruby" panelBackground="solid">
-              <div className="">
-                {children}
-
-                <BottomNavbar></BottomNavbar>
-              </div>
-            </Theme>
+            <TranslationProvider>
+              <Theme accentColor="ruby" panelBackground="solid">
+                <div className="">
+                  <LanguageSwitcher />
+                  {children}
+                  <BottomNavbar></BottomNavbar>
+                </div>
+              </Theme>
+            </TranslationProvider>
           </AuthProvider>
         </ReduxProvider>
       </body>

@@ -1,3 +1,5 @@
+'use client';
+
 import { Flex } from '@radix-ui/themes';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,12 +9,16 @@ import SearchBarSpecific from './SearchBarSpecific';
 import NotificationIcon from '../NotificationIcon';
 // import CartIconTopbar from '../CartIconTopbar';
 import ProfilePicture from '../ProfilePicture';
+import { useTranslation } from '@/hooks/useTranslation';
+import LanguageSwitcher from '../LanguageSwitcher';
 
 type NavbarTopProps = {
   children?: string;
 };
 
 const NavbarTop: React.FC<NavbarTopProps> = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="hidden lg:block fixed top-0 w-full p-2 bg-white z-10">
       <Flex justify={'between'} align={'center'}>
@@ -27,13 +33,13 @@ const NavbarTop: React.FC<NavbarTopProps> = () => {
           <p></p>
         </Link>
         <p className="font-bold font-poppins">
-          Hello,
-          <br /> Welcome to Shongi
+          {t('greeting')},
+          <br /> {t('welcome_to_shongi')}
         </p>
 
-        <SelectArea></SelectArea>
-
-        <SearchBarSpecific></SearchBarSpecific>
+        <SelectArea />
+        <LanguageSwitcher />
+        <SearchBarSpecific />
         <Flex className="w-[8vw]" justify={'between'} align={'center'}>
           <NotificationIcon></NotificationIcon>
           {/* <CartIconTopbar></CartIconTopbar> */}

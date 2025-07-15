@@ -1,0 +1,9 @@
+{
+  "greeting": "Hello",
+  "welcome_message": "Welcome to our application!",
+  "welcome_to_shongi": "Welcome to Shongi",
+  "navbar_past_orders": "Past Orders",
+  "navbar_home": "Home",
+  "navbar_profile": "Profile",
+  "navbar_login": "Login"
+}
