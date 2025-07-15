@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { getPastOrders } from '@/services/getPastOrders';
 import { IPastOrder } from '@/interfaces/IPastOrder';
 import Link from 'next/link';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type PastOrdersListProps = {
   children?: string;
@@ -14,6 +15,8 @@ type PastOrdersListProps = {
 const PastOrdersList: React.FC<PastOrdersListProps> = () => {
   const [orders, setOrders] = useState([]);
   const [page, setPage] = useState(1);
+  const { t } = useTranslation();
+  
   useEffect(() => {
     setPage(1);
     getPastOrders(page)
@@ -25,7 +28,7 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
 
   return (
     <div className="w-full mt-4 ">
-      <h2 className="font-poppins text-2xl mb-2 font-bold">Orders</h2>
+      <h2 className="font-poppins text-2xl mb-2 font-bold">{t('order.title')}</h2>
       <Box className="">
         {Object.values(orders).map((item: IPastOrder) => {
           return (
@@ -44,13 +47,13 @@ const PastOrdersList: React.FC<PastOrdersListProps> = () => {
                     }
                     width={50}
                     height={50}
-                    alt="cart-item"
+                    alt={t('cart.title')}
                     className="w-auto h-fit"
                   ></Image>
                   <div className="ml-2">
-                    <p className="font-poppins font-bold">Pharamacy</p>
+                    <p className="font-poppins font-bold">{t('pharmacy.title')}</p>
                     <p className="font-poppins">
-                      {item?.medicine_name}...<Link href={``}>See Details</Link>
+                      {item?.medicine_name}...<Link href={``}>{t('common.seeDetails')}</Link>
                     </p>
                   </div>
                 </Flex>

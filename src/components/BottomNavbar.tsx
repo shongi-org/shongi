@@ -4,12 +4,14 @@ import Link from 'next/link';
 import React from 'react';
 import FloatingCallButton from './FloatingCallButton';
 import { useAppSelector } from '@/lib/hooks';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type BottomNavbarProps = object;
 
 const BottomNavbar: React.FC<BottomNavbarProps> = () => {
   // const cartItems = useAppSelector((state) => state.addToCart.items);
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -23,7 +25,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
                 width={100}
                 height={100}
                 className=""
-                alt="past-orders"
+                alt={t('navbar.pastOrders')}
               />
               <p></p>
             </Link>
@@ -36,7 +38,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
                 src="https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png"
                 width={100}
                 height={100}
-                alt="Patients Page"
+                alt={t('patients.title')}
               />
               <p></p>
             </Link>
@@ -59,7 +61,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
               src="https://res.cloudinary.com/dlezm6lou/image/upload/v1747480543/home-button_m9r42o.png"
               width={100}
               height={100}
-              alt=""
+              alt={t('navbar.home')}
             ></Image>
             <p></p>
           </Link>
@@ -70,7 +72,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
               src="https://res.cloudinary.com/dgayarw1f/image/upload/v1738956001/Cart_01_mn8gkq.png"
               width={100}
               height={100}
-              alt=""
+              alt={t('cart.title')}
             />
             {/* <div className="absolute bottom-[-10px] right-[-2px] bg-white border-solid border-2 border-indigo-900 pl-[6px] pt-[1px] pb-[1px] pr-[6px] rounded-full mt-8 text-indigo-900 font-poppins">
               {' '}
@@ -91,7 +93,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
                 width={100}
                 height={100}
                 className="rounded-full w-full aspect-square object-cover"
-                alt=""
+                alt={t('navbar.profile')}
               ></Image>
               <p></p>
             </Link>
@@ -102,7 +104,7 @@ const BottomNavbar: React.FC<BottomNavbarProps> = () => {
                 width={100}
                 height={100}
                 className="border-rounded"
-                alt=""
+                alt={t('navbar.login')}
               ></Image>
               <p></p>
             </Link>

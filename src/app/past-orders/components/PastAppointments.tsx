@@ -6,6 +6,7 @@ import { getPastAppointments } from '@/services/getPastAppointments';
 import { IPastAppointment } from '@/interfaces/IPastAppointments';
 import { formatTime } from '@/lib/utils/changeTimeformat';
 import { IAgent } from '@/interfaces/IAgent';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type PastOrdersListProps = {
   children?: string;
@@ -13,6 +14,8 @@ type PastOrdersListProps = {
 
 const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
   const [orders, setOrders] = useState([]);
+  const { t } = useTranslation();
+  
   useEffect(() => {
     getPastAppointments()
       .then((res) => res.json())
@@ -23,7 +26,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
 
   return (
     <div className="w-full mt-4">
-      <h2 className="font-poppins text-2xl mb-2 font-bold">Appointments</h2>
+      <h2 className="font-poppins text-2xl mb-2 font-bold">{t('appointment.title')}</h2>
       <Box className="">
         {Object.values(orders).map((item: IPastAppointment) => {
           return (
@@ -42,44 +45,44 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                       className="lg:w-[5vw] w-auto h-fit"
                       width={50}
                       height={50}
-                      alt="cart-item"
+                      alt={t('appointment.title')}
                     />
                     <div className="ml-2">
                       <p className="font-poppins">
-                        <span className="text-gray-700 font-bold">Date:</span>{' '}
+                        <span className="text-gray-700 font-bold">{t('appointment.date')}:</span>{' '}
                         {item?.date
                           ? new Date(item.date).toLocaleDateString('en-GB')
                           : 'N/A'}
                         <br />
                         <span className="text-gray-700 font-bold">
-                          Home Address:
+                          {t('address.home')}:
                         </span>{' '}
                         {item?.home_address || 'N/A'}
                         <br />
                         <span className="text-gray-700 font-bold">
-                          Hospital Address:
+                          {t('address.hospital')}:
                         </span>{' '}
                         {item?.hospital_address || 'N/A'}
                         <br />
                         <span className="text-gray-700 font-bold">
-                          Agent Gender:
+                          {t('gender.agentGender')}:
                         </span>{' '}
                         {item?.preferred_agent_gender || 'N/A'}
                         <br />
-                        <span className="text-gray-700 font-bold">Transport:</span>{' '}
+                        <span className="text-gray-700 font-bold">{t('transport.selectMode')}:</span>{' '}
                         {item?.transport_mode || 'N/A'}
                         <br />
                         <span className="text-gray-700 font-bold">
-                          Payment Option:
+                          {t('payment.option')}:
                         </span>{' '}
                         {item?.payment_option || 'N/A'}
                         <br />
                         <span className="text-gray-700 font-bold">
-                          Payment Method:
+                          {t('payment.method')}:
                         </span>{' '}
                         {item?.payment_method || 'N/A'}
                         <br />
-                        <span className="text-gray-700 font-bold">Timeframe:</span>{' '}
+                        <span className="text-gray-700 font-bold">{t('appointment.timeframe')}:</span>{' '}
                         {formatTime(item?.time_frame?.start_time.split('_')[1])} -{' '}
                         {formatTime(item?.time_frame?.end_time.split('_')[1])}
                       </p>
@@ -92,9 +95,9 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                 </Flex>
                 {item.agent && isPopulatedAgent(item.agent) && (
                   <div className="mt-3 p-3 bg-indigo-50 rounded-lg border border-indigo-200 flex flex-col gap-1">
-                    <div className="font-bold text-indigo-800 mb-1">Assigned Agent</div>
-                    <div className="text-indigo-900"><span className="font-semibold">Name:</span> {item.agent.name || 'N/A'}</div>
-                    <div className="text-indigo-900"><span className="font-semibold">Phone:</span> {item.agent.phone || 'N/A'}</div>
+                    <div className="font-bold text-indigo-800 mb-1">{t('agent.assigned')}</div>
+                    <div className="text-indigo-900"><span className="font-semibold">{t('agent.name')}:</span> {item.agent.name || 'N/A'}</div>
+                    <div className="text-indigo-900"><span className="font-semibold">{t('agent.phone')}:</span> {item.agent.phone || 'N/A'}</div>
                   </div>
                 )}
               </div>

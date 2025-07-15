@@ -1,10 +1,12 @@
+'use client';
+
 import React from 'react';
 // import PastOrdersList from './components/PastOrdersList';
 import PastAppointmentsList from './components/PastAppointments';
 
-type pageProps = object;
+type PageProps = object;
 
-const page: React.FC<pageProps> = () => {
+const Page: React.FC<PageProps> = () => {
   return (
     <div className="p-[2vw] lg:p-0 relative w-full lg:flex pb-[9vh]">
       <div className="lg:w-1/2 lg:p-2">
@@ -16,4 +18,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;

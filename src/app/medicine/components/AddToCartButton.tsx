@@ -56,7 +56,7 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ medicine }) => {
       ) : (
         <Box onClick={() => handleAddToCart(1)} className="">
           <Box className="bg-white text-primary border-solid border-2 border-primary font-poppins font-bold text-xl p-3 text-center rounded-md mb-2 cursor-pointer">
-            Add to Cart
+            {t('cart.addToCart')}
           </Box>
         </Box>
       )} */}

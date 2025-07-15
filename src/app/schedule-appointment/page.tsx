@@ -24,6 +24,7 @@ import { useAppDispatch } from '@/lib/hooks';
 import { Input } from '@/components/ui/input';
 import SelectComponent from '@/components/ui/select';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const options = [
   {
@@ -63,15 +64,14 @@ const transportOptions = [
   },
 ];
 
-
 export default function SchedulePage() {
-  const searchParams = useSearchParams();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const duration = searchParams.get('duration');
   // const price = searchParams.get('price');
-
-  const dispatch = useAppDispatch();
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [homeAddress, setHomeAddress] = useState<string>('');
@@ -214,17 +214,18 @@ export default function SchedulePage() {
   };
 
   return (
-    <>
+    <div className="relative pb-24">
+      <FloatingCallButton phoneNumber="+8801577149428" />
       <Topbar
-        title="Appointment"
+        title={t('appointment.title')}
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
-      />
+      ></Topbar>
       <div className=" lg:min-h-[70vh] flex items-center justify-center bg-gray-50">
         <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg flex flex-col justify-evenly">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex flex-col items-center">
               <label className="block text-lg font-medium text-gray-700 mb-2">
-                Select a Date for your appointment
+                {t('appointment.selectDate')}
               </label>
               <DayPicker
                 mode="single"
@@ -353,8 +354,7 @@ export default function SchedulePage() {
             </div>
           </form>
         </div>
-        <FloatingCallButton phoneNumber="1234567890" />
       </div>
-    </>
+    </div>
   );
 }

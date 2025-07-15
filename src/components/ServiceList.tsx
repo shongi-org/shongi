@@ -6,6 +6,7 @@ import { Label } from '@radix-ui/react-label';
 import Link from 'next/link';
 import { config } from '@/config';
 import Skeleton from './Skeleton';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type IServiceListProps = {
   data?: ReactNode;
@@ -40,11 +41,12 @@ const ServiceList: React.FC<IServiceListProps> = () => {
     }
     fetchServices();
   }, []);
+  const { t } = useTranslation();
 
   return (
     <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
       <Label className="font-poppins text-4xl font-bold">
-        {services.length > 0 && 'Services'}
+        {services.length > 0 && t('navbar.services')}
       </Label>
       <Flex
         justify={'between'}

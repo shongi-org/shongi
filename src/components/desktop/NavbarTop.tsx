@@ -34,7 +34,7 @@ const NavbarTop: React.FC<NavbarTopProps> = () => {
         </Link>
         <p className="font-bold font-poppins">
           {t('greeting')},
-          <br /> {t('welcome_to_shongi')}
+          <br /> {t('welcomeToShongi')}
         </p>
 
         <SelectArea />

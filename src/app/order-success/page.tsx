@@ -6,6 +6,7 @@ import { clearCart } from '@/lib/features/cart/addToCart';
 import { useAppDispatch } from '@/lib/hooks';
 // import { useParams } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type pageProps = object;
 // const mobileOptions = {
@@ -22,16 +23,17 @@ const Page: React.FC<pageProps> = () => {
   dispatch(clearCart());
   const searchParams = useSearchParams();
   const sms_error = searchParams.get('sms_error');
+  const { t } = useTranslation();
 
   return (
     <div className="p-[2vw] relative w-full h-[90vh] lg:h-[60vh] flex items-center">
       <div className="w-full flex justify-center">
         <p className="font-poppins text-3xl text-center text-bold">
-          We have received your order!
+          {t('cart.orderSuccess')}!
           <br />
           {sms_error === 'true'
-            ? 'But we couldnt send an SMS. Our Agent will contact you shortly.'
-            : 'You will get an SMS confirmation shortly.'}
+            ? t('cart.orderNote')
+            : t('order.smsConfirmation')}
         </p>
       </div>
     </div>

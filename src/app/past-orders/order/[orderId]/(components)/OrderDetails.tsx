@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import { Status } from '@/app/issue/past-issue/appointment/[apptId]/(components)/ApppointmentDetails';
 import { updateOrder } from '@/services/updateOrder';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type DetailsProps = object;
 
@@ -60,6 +61,7 @@ const OrderDetails: React.FC<DetailsProps> = () => {
   const [loading, setLoading] = useState(true);
   const [loadingYes, setLoadingYes] = useState(true);
   const [error, setError] = useState('');
+  const { t } = useTranslation();
 
   useEffect(() => {
     getOrder(orderId as string)
@@ -123,8 +125,8 @@ const OrderDetails: React.FC<DetailsProps> = () => {
 
   return (
     <>
-      {error && <p>Faced a server error. Please refresh</p>}
-      {loading && <p>Fetching Order</p>}
+      {error && <p>{t('error.server')}</p>}
+      {loading && <p>{t('loading.fetchingOrder')}</p>}
       {!loading && order?._id && (
         <Flex className="flex-col lg:flex-row">
           <Flex
@@ -134,7 +136,7 @@ const OrderDetails: React.FC<DetailsProps> = () => {
             className=" p-2 rounded-md mb-2 shadow-md font-poppins  border-[#283891] border-solid border-2 h-fit"
           >
             <Flex direction={'column'} className="ml-2 w-[90vw] lg:w-[30vw]">
-              <p className="font-bold">Cart Items</p>
+              <p className="font-bold">{t('cart.title')}</p>
               <div className="">
                 {order?.cart_id.cartItems.map((cartItem) => (
                   <div
@@ -152,19 +154,19 @@ const OrderDetails: React.FC<DetailsProps> = () => {
                     <Box>
                       <p>
                         <span className="text-gray-500 font-bold">
-                          Generic{' '}
+                          {t('medicine.generic')}{' '}
                         </span>{' '}
                         {cartItem.medicine_id.name}
                       </p>
 
                       <p>
-                        <span className="text-gray-500 font-bold">Brand </span>
+                        <span className="text-gray-500 font-bold">{t('medicine.brand')} </span>
                         {cartItem.medicine_id.brand}
                       </p>
 
                       <p>
                         <span className="text-gray-500 font-bold">
-                          Quantity{' '}
+                          {t('medicine.quantity')}{' '}
                         </span>
                         {cartItem.quantity}
                       </p>
@@ -188,7 +190,7 @@ const OrderDetails: React.FC<DetailsProps> = () => {
             onClick={handleCancelOrder}
             className="w-[96vw] lg:w-[40vw] m-2 bg-red-900 text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
           >
-            Cancel Order
+            {t('order.cancel')}
           </Box>
         </Box>
       )}
@@ -198,7 +200,7 @@ const OrderDetails: React.FC<DetailsProps> = () => {
           className="pb-[10vh] w-[96vw]  lg:w-[40vw] items-center"
         >
           <p className="font-bold text-xl">
-            Are you sure you want to cancel this order?
+            {t('order.confirmCancel')}
           </p>
           <Flex width={'100%'}>
             <Box
@@ -212,14 +214,14 @@ const OrderDetails: React.FC<DetailsProps> = () => {
                   alt="loader"
                 />
               ) : (
-                'Yes'
+                t('common.yes')
               )}
             </Box>
             <Box
               onClick={handleNo}
               className="w-1/2 m-2 bg-red-900 text-white font-poppins font-bold text-xl p-3 text-center rounded-md cursor-pointer"
             >
-              No
+              {t('common.no')}
             </Box>
           </Flex>
         </Flex>

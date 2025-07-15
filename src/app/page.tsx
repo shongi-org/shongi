@@ -1,3 +1,5 @@
+'use client';
+
 import { Flex } from '@radix-ui/themes';
 import Recommendation from '@/components/Recommendation';
 // import SelectArea from '@/components/SelectArea';
@@ -13,10 +15,13 @@ import Sliders from '@/components/Sliders';
 import AgentSignup from '@/components/AgentSignup';
 import { Suspense } from 'react';
 import Image from 'next/image';
+import { useTranslation } from '@/hooks/useTranslation';
 
 // import ProfileAvatar from '@/components/ProfileAvatar';
 
 export default function Home() {
+  const { t } = useTranslation();
+
   return (
     <>
       {/* desktop navbar  */}
@@ -37,7 +42,7 @@ export default function Home() {
               alt="logo"
             ></Image>
             <p className="font-poppins no-scrollbar font-bold text-xl">
-              Welcome to Shongi
+             {t('welcomeToShongi')}
             </p>
             <span> </span>
 

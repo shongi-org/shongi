@@ -1,5 +1,6 @@
 'use client';
 import React, { ReactNode, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type MedicineCategoriesProps = {
   children?: ReactNode;
@@ -11,6 +12,7 @@ type IMedicineCategory = {
   label: string;
 };
 const MedicineCategories: React.FC<MedicineCategoriesProps> = () => {
+  const { t } = useTranslation();
   const [showMore, setShowMore] = useState<boolean>(false);
   const data: IMedicineCategory[] = [
     {
@@ -67,7 +69,7 @@ const MedicineCategories: React.FC<MedicineCategoriesProps> = () => {
         }}
       >
         {' '}
-        Show {showMore ? 'less' : 'more'}
+        {t(showMore ? 'common.showLess' : 'common.showMore')}
       </p>
     </div>
   );

@@ -4,6 +4,7 @@ import { IService } from '@/interfaces/IService';
 // import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type SideNavbarProps = {
   children?: string;
@@ -11,6 +12,7 @@ type SideNavbarProps = {
 
 const SideNavbar: React.FC<SideNavbarProps> = () => {
   const [services, setServices] = useState([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function fetchServices() {
@@ -58,7 +60,7 @@ const SideNavbar: React.FC<SideNavbarProps> = () => {
             height={60}
             alt="service-icon"
           ></Image> */}
-          <p className="ml-5 font-bold">Appointments</p>
+          <p className="ml-5 font-bold">{t('appointment.title')}</p>
         </div>
       </Link>
     </div>

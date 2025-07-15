@@ -1,16 +1,33 @@
+'use client';
+// Server component wrapper
+import { config } from '@/config';
+
+// Split into server and client components
+export default async function PageWrapper({ params }: { params: { id: string } }) {
+  const slug = params.id;
+  const res = await fetch(`${config.backendURL}/api/medicine/${slug}`);
+  const data = await res.json();
+  
+  return <ClientPage data={data} />;
+}
+
+// Client component
+
 import React from 'react';
 import Image from 'next/image';
 import { Box, Flex } from '@radix-ui/themes';
 import SimilarItems from '@/components/SimilarItems';
-
-import { config } from '@/config';
 import AddToCartButton from '../components/AddToCartButton';
+import { useTranslation } from '@/hooks/useTranslation';
+import { IMedicine } from '@/interfaces/IMedicine';
 
-const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const slug = (await params).id;
-  const res = await fetch(`${config.backendURL}/api/medicine/${slug}`);
-  const data = await res.json();
+type MedicineWithId = IMedicine & {
+  _id: string;
+};
 
+const ClientPage = ({ data }: { data: MedicineWithId }) => {
+  const { t } = useTranslation();
+  
   return (
     <>
       <div className="w-full h-fit overflow-y-scroll no-scrollbar">
@@ -22,7 +39,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               data.image ||
               'https://res.cloudinary.com/dsuiwxwkg/image/upload/v1727873184/medicine_883407_jolgrg.png'
             }
-            alt="medicine-picture"
+            alt={t('medicine.picture')}
             className="w-screen lg:w-[25vw] p-2 lg:h-auto bg-red-200 lg:mt-10"
           />
           <Flex
@@ -41,24 +58,24 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               <p
                 className={`${data.discountedPrice ? 'line-through text-xl' : 'text-2xl'} font-poppins font-bold`}
               >
-                Tk. {data.price}
+                {t('common.taka')} {data.price}
               </p>
 
               <p className="text-2xl font-poppins">
                 {' '}
                 {(data.discountedPrice as number) > 0 &&
-                  `Tk. ${data.discountedPrice}`}
+                  `${t('common.taka')} ${data.discountedPrice}`}
               </p>
             </Flex>
           </Flex>
         </div>
         <Box className="pt-[10vh] pl-[5vw] pr-[5vw] bg-white  h-[60vh] w-full">
           <p className="text-black font-bold font-poppins text-xl mt-6">
-            Dosage{' '}
+            {t('medicine.dosage')}
           </p>
           <p className="text-black font-poppins mt-3">{data.dosage}</p>
           <p className="text-black font-bold font-poppins text-xl mt-6">
-            Description
+            {t('medicine.description')}
           </p>
           <p className="text-black font-poppins mt-3">
             {data.description ||
@@ -73,4 +90,3 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
     </>
   );
 };
-export default Page;

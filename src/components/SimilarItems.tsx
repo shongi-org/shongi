@@ -5,19 +5,21 @@ import * as subServiceList from '@/data/service.json';
 import Link from 'next/link';
 import { Url } from 'next/dist/shared/lib/router/router';
 import Image from 'next/image';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type SimilarItemsProps = {
   serviceSlug?: string;
 };
 
 const SimilarItems: React.FC<SimilarItemsProps> = ({ serviceSlug }) => {
+  const { t } = useTranslation();
   const data: { [key: string]: { [key: string]: string | number }[] } =
     subServiceList;
 
   return (
     <>
       <p className="font-poppins font-bold text-lg ml-3">
-        {data[serviceSlug as string] && 'Similar Items'}
+        {data[serviceSlug as string] && t('common.similarItems')}
       </p>
       <Flex
         justify={'start'}
@@ -41,7 +43,7 @@ const SimilarItems: React.FC<SimilarItemsProps> = ({ serviceSlug }) => {
                       width={200}
                       height={200}
                       className="w-[45vw] lg:w-full h-auto rounded-lg"
-                      alt="service"
+                      alt={t('common.serviceImage')}
                       src={service.image as string}
                     />
                     <Flex
@@ -68,7 +70,7 @@ const SimilarItems: React.FC<SimilarItemsProps> = ({ serviceSlug }) => {
               className="w-[45vw] lg:w-fit h-full justify-center items-center relative"
             >
               <p className="font-poppins font-semibold text-danger text-2xl lg:w-0 ">
-                See More
+                {t('common.seeMore')}
               </p>
             </Flex>
           </Link>

@@ -12,10 +12,10 @@ import { useSearchParams } from 'next/navigation';
 // import SearchBar from '@/components/SearchBar';
 import { useAppSelector } from '@/lib/hooks';
 import SearchBar from '../components/SearchBar';
-// import { ISearchResult } from '@/interfaces/ISearchResult';
-// import SearchBarSpecific from '@/components/SearchBarSpecific';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const RadioButtonList: React.FC = () => {
+  const { t } = useTranslation();
   const searchParams = useSearchParams();
   const category_id = searchParams.get('_id');
 
@@ -59,7 +59,7 @@ const RadioButtonList: React.FC = () => {
   return (
     <>
       <Topbar
-        title="Services"
+        title={t('navbar.services')}
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
       <SearchBar

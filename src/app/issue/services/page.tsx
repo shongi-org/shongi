@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import { config } from '@/config';
 import { ISubservice } from '@/interfaces/ISubservice';
+import { useTranslation } from '@/hooks/useTranslation';
 
 // const dummyData = [
 //   { label: 'Physiotherapist', value: 'physiotherapist' },
@@ -17,6 +18,7 @@ import { ISubservice } from '@/interfaces/ISubservice';
 // ];
 
 const RadioButtonList: React.FC = () => {
+  const { t } = useTranslation();
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -64,7 +66,7 @@ const RadioButtonList: React.FC = () => {
   return (
     <>
       <Topbar
-        title="Services"
+        title={t('navbar.services')}
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
       <div className="flex items-center justify-center min-h-screen">

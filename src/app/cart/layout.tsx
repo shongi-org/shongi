@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { ReactNode, useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import loader from '@/assets/loader.svg';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -17,6 +18,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string>();
   const isLoggedIn = useAppSelector((state) => state.setIsLoggedIn);
   const appointment = useAppSelector((state) => state.appointment);
+  const { t } = useTranslation();
 
   async function handlePlaceOrder() {
     if (!isLoggedIn) {
@@ -44,7 +46,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="lg:w-[70vw] lg:ml-[25vw] lg:mt-[50px]">
         <div className="relative flex flex-col items-center">
           <Topbar
-            title="Cart"
+            title={t('cart.title')}
             leftIcon={<IoIosArrowBack fontSize={'24px'} />}
           ></Topbar>
           <>{children}</>
@@ -58,12 +60,14 @@ export default function Layout({ children }: { children: ReactNode }) {
           >
             {loading ? (
               <Image
-                className="w-[2rem] h-[2rem] text-white"
                 src={loader}
-                alt="loader"
+                width={30}
+                height={30}
+                alt="loading"
+                className="animate-spin"
               />
             ) : (
-              <p>Place Order</p>
+              t('cart.placeOrder')
             )}
           </Flex>
         </Box>

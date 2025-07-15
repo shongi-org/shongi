@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { config } from '@/config';
 import axios from 'axios';
 import { setMedicineSearchResults } from '@/lib/features/searchResults/medicineSearchResults';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type SearchBarProps = {
   children?: ReactNode;
@@ -21,6 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
   visibility,
   searchEndPoint,
 }) => {
+  const { t } = useTranslation();
   const searchBarVisibility = useAppSelector(
     (state) => state.searchBarVisibility,
   );
@@ -30,18 +32,6 @@ const SearchBar: React.FC<SearchBarProps> = ({
   const [query, setQuery] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (query.trim() === '') {
-      dispatch(setMedicineSearchResults([]));
-      return;
-    }
-    const timeoutId = setTimeout(() => {
-      search(query);
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, [query]);
 
   const search = async (query: string) => {
     setLoading(true);
@@ -60,6 +50,18 @@ const SearchBar: React.FC<SearchBarProps> = ({
     }
   };
 
+  useEffect(() => {
+    if (query.trim() === '') {
+      dispatch(setMedicineSearchResults([]));
+      return;
+    }
+    const timeoutId = setTimeout(() => {
+      search(query);
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [query, dispatch]);
+
   return (
     <>
       <Box
@@ -70,16 +72,16 @@ const SearchBar: React.FC<SearchBarProps> = ({
           radius="full"
           className={` h-9 rounded-full font-poppins`}
           size="3"
-          placeholder="Search for Medicine and Medical Services"
+          placeholder={t('medicine.searchPlaceholder')}
           onChange={(e) => setQuery(e.target.value)}
         >
           <TextField.Slot className="">
-            <Image src={magnifyingGlass} alt="search"></Image>
+            <Image src={magnifyingGlass} alt={t('common.search')}></Image>
           </TextField.Slot>
         </TextField.Root>
       </Box>
-      {loading ? <p>Loading</p> : <></>}
-      {error ? <p>An Error Occured</p> : <></>}
+      {loading ? <p>{t('loading.searching')}</p> : <></>}
+      {error ? <p>{t('error.searchFailed')}</p> : <></>}
     </>
   );
 };

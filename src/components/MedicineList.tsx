@@ -4,12 +4,14 @@ import MedicineCard from './MedicineCard';
 import { IMedicine } from '@/interfaces/IMedicine';
 import { config } from '@/config';
 import { useAppSelector } from '@/lib/hooks';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type MedicineListProps = {
   children?: ReactNode;
 };
 
 const MedicineList: React.FC<MedicineListProps> = () => {
+  const { t } = useTranslation();
   const [medicines, setMedicines] = useState<IMedicine[]>();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -34,8 +36,8 @@ const MedicineList: React.FC<MedicineListProps> = () => {
 
   return (
     <div className="flex flex-wrap w-[100vw] lg:w-full justify-evenly lg:justify-start gap-y-3 mt-3 pb-20">
-      {error && <p>Faced a server error. Please refresh</p>}
-      {loading && <p>Fetching Medicines</p>}
+      {error && <p>{t('error.server')}</p>}
+      {loading && <p>{t('loading.fetchingMedicines')}</p>}
       {(medicineSearchResults.length > 0
         ? (medicineSearchResults as (IMedicine & { _id: string })[])
         : (medicines as (IMedicine & { _id: string })[])

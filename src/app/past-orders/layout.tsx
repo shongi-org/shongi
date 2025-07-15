@@ -2,12 +2,14 @@
 import NavbarTop from '@/components/desktop/NavbarTop';
 import SideNavbar from '@/components/desktop/SideNavbar';
 import Topbar from '@/components/Topbar';
+import { useTranslation } from '@/hooks/useTranslation';
 
 import { ReactNode } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 
 export default function Layout({ children }: { children: ReactNode }) {
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
+  const { t } = useTranslation();
 
   return (
     <>
@@ -20,7 +22,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <div className="lg:w-[70vw] lg:ml-[25vw] lg:mt-[50px]">
         <div className="relative flex flex-col items-center">
           <Topbar
-            title="Appointments"
+            title={t('appointment.title')}
             leftIcon={<IoIosArrowBack fontSize={'24px'} />}
           ></Topbar>
           <>{children}</>
