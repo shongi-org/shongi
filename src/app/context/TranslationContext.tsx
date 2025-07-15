@@ -1,15 +1,16 @@
 'use client'
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import { TranslationKey, NestedTranslations, getNestedTranslation } from '@/types/translation-keys';
 
 interface Translations {
-  [key: string]: string;
+  [key: string]: string | NestedTranslations;
 }
 
 interface TranslationContextType {
   language: string;
   translations: Translations;
   changeLanguage: (lang: string) => void;
-  t: (key: string) => string;
+  t: (key: TranslationKey) => string;
 }
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
@@ -20,13 +21,13 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
 
   const loadedLanguages: { [lang: string]: Translations } = {};
 
-  const fetchTranslations = async (lang: string): Promise<Translations> => {
+  const fetchTranslations = useCallback(async (lang: string): Promise<Translations> => {
     if (loadedLanguages[lang]) return loadedLanguages[lang];
     const response = await fetch(`/locales/${lang}.json`);
     const data = await response.json();
     loadedLanguages[lang] = data;
     return data;
-  };
+  }, []);
 
   useEffect(() => {
     const loadTranslations = async () => {
@@ -51,7 +52,7 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
     };
 
     loadTranslations();
-  }, [language]);
+  }, [language, fetchTranslations]);
 
   const changeLanguage = (lang: string) => {
     if (lang !== language) {
@@ -59,8 +60,9 @@ export const TranslationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const t = (key: string): string => {
-    return translations[key] || key; // Return key if translation not found
+  const t = (key: TranslationKey): string => {
+    const result = getNestedTranslation(translations, key);
+    return result || key; // Return the key if the translation is not found
   };
 
   return (

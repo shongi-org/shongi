@@ -46,7 +46,8 @@
     "summary": "Summary",
     "placeOrder": "Place Order",
     "orderSuccess": "Order Success",
-    "orderNote": "We have received your order . But we could not send you sms . Our agent will contact you shortly"
+    "orderNote": "We have received your order . But we could not send you sms . Our agent will contact you shortly",
+    "addToCart": "Add to Cart"
   },
   "form": {
     "submit": "Submit",
@@ -87,5 +88,54 @@
     "ownCar": "I have a car",
     "uptoAgent": "Upto the Agent"
   },
-  "contactInfo": "Contact Info"
+  "contactInfo": "Contact Info",
+  "error": {
+    "server": "Faced a server error. Please refresh",
+    "searchFailed": "Failed to fetch search results. Please try again."
+  },
+  "loading": {
+    "fetchingOrder": "Fetching Order",
+    "fetchingMedicines": "Fetching Medicines",
+    "searching": "Searching..."
+  },
+  "medicine": {
+    "generic": "Generic",
+    "brand": "Brand",
+    "quantity": "Quantity",
+    "title": "Medicine",
+    "searchPlaceholder": "Search for Medicine and Medical Services",
+    "dosage": "Dosage",
+    "description": "Description",
+    "picture": "Medicine picture"
+  },
+  "order": {
+    "cancel": "Cancel Order",
+    "confirmCancel": "Are you sure you want to cancel this order?",
+    "seeRunning": "See Running Orders",
+    "title": "Orders",
+    "smsConfirmation": "You will get an SMS confirmation shortly"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "seeDetails": "See Details",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "search": "Search",
+    "taka": "Tk.",
+    "similarItems": "Similar Items",
+    "seeMore": "See More",
+    "serviceImage": "Service image"
+  },
+  "pharmacy": {
+    "title": "Pharmacy"
+  },
+  "agent": {
+    "assigned": "Assigned Agent",
+    "name": "Name",
+    "phone": "Phone"
+  },
+  "patients": {
+    "title": "Patients"
+  }
 }
