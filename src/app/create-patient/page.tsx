@@ -7,29 +7,33 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import SelectComponent from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
 import { IPatient } from '@/interfaces/IPatient';
 import PatientList from '@/components/PatientList';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const options = [
-  {
-    label: 'Male',
-    value: 'male',
-  },
-  {
-    label: 'Female',
-    value: 'female',
-  },
-  {
-    label: 'Other',
-    value: 'other',
-  },
-];
+
 
 export default function CreatePatientPage() {
+  const { t } = useTranslation();
+  const options = [
+    {
+      label: t('gender.male'),
+      value: 'male',
+    },
+    {
+      label: t('gender.female'),
+      value: 'female',
+    },
+    {
+      label: t('gender.other'),
+      value: 'other',
+    },
+  ];
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState<Date | undefined>(undefined);
@@ -115,6 +119,8 @@ export default function CreatePatientPage() {
     }
   };
 
+
+
   return (
     <Suspense>
       <div className="pt-[10vh] h-[200vh] flex items-start justify-center bg-gray-100">
@@ -158,17 +164,17 @@ export default function CreatePatientPage() {
                 handleChange={(value) => setGender(value)}
                 options={options}
                 value={gender}
-                placeholder="Select Gender"
+                placeholder={t('gender.select')}
               />
               <div>
                 <label htmlFor="dob" className="sr-only">
-                  Date of Birth
+                  {t('dob')}
                 </label>
                 <DatePicker
                   selectedDate={dob}
                   onDateChange={setDob}
                   allowPastDates={true}
-                  placeholder="Date of Birth"
+                  placeholder={t('dob')}
                 />
               </div>
             </div>

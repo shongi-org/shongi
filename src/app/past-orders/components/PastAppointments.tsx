@@ -96,7 +96,7 @@ const PastAppointmentsList: React.FC<PastOrdersListProps> = () => {
                 {item.agent && isPopulatedAgent(item.agent) && (
                   <div className="mt-3 p-3 bg-indigo-50 rounded-lg border border-indigo-200 flex flex-col gap-1">
                     <div className="font-bold text-indigo-800 mb-1">{t('agent.assigned')}</div>
-                    <div className="text-indigo-900"><span className="font-semibold">{t('agent.name')}:</span> {item.agent.name || 'N/A'}</div>
+                    <div className="text-indigo-900"><span className="font-semibold">{t('common.name')}:</span> {item.agent.name || 'N/A'}</div>
                     <div className="text-indigo-900"><span className="font-semibold">{t('agent.phone')}:</span> {item.agent.phone || 'N/A'}</div>
                   </div>
                 )}

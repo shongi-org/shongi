@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import { useTranslation } from '@/hooks/useTranslation';
 import React, { useState } from 'react';
 import {
   AiOutlinePlus,
@@ -21,21 +22,22 @@ const UploadImage: React.FC<UploadImageProps> = ({
   onUploadImage,
   handleSkip,
 }) => {
+  const { t } = useTranslation();
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
-  const [uploading, setUploading] = useState(false);
+  const [uploading, setUploading] = useState<boolean>(false);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     setSelectedFiles(files);
 
-    const urls = files.map((file) => URL.createObjectURL(file));
+    const urls = files.map((file: File) => URL.createObjectURL(file));
     setPreviewUrls(urls);
   };
 
   const handleDelete = (index: number) => {
-    const updatedFiles = selectedFiles.filter((_, i) => i !== index);
-    const updatedUrls = previewUrls.filter((_, i) => i !== index);
+    const updatedFiles = selectedFiles.filter((_: File, i: number) => i !== index);
+    const updatedUrls = previewUrls.filter((_: string, i: number) => i !== index);
     setSelectedFiles(updatedFiles);
     setPreviewUrls(updatedUrls);
   };
@@ -46,7 +48,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
     setUploading(true);
 
     try {
-      const uploadPromises = selectedFiles.map((file) => {
+      const uploadPromises = selectedFiles.map((file: File) => {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', uploadPreset);
@@ -57,7 +59,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
       });
 
       const responses = await Promise.all(uploadPromises);
-      await onUploadImage(responses.map((response) => response.data.url));
+      await onUploadImage(responses.map((response: any) => response.data.url));
 
       setUploading(false);
       setSelectedFiles([]);
@@ -98,7 +100,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
 
       {previewUrls.length > 0 && (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
-          {previewUrls.map((url, index) => (
+          {previewUrls.map((url: string, index: number) => (
             <div key={index} className="relative">
               <img
                 src={url}
@@ -126,7 +128,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
           disabled={uploading}
           className={`mt-4 transition-all duration-300 ${uploading ? 'cursor-not-allowed opacity-50' : ''}`}
         >
-          {uploading ? 'Uploading...' : 'Submit'}
+          {uploading ? 'Uploading...' : t('form.submit')}
         </Button>
       )}
     </div>

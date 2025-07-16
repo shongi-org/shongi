@@ -12,6 +12,7 @@ import { useAppSelector } from '@/lib/hooks';
 import { Label } from '@radix-ui/react-label';
 // import { ISearchResult } from '@/interfaces/ISearchResult';
 // import SearchBarSpecific from '@/components/SearchBarSpecific';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const WhyChooseUs: React.FC = () => {
   const searchParams = useSearchParams();
@@ -56,10 +57,12 @@ const WhyChooseUs: React.FC = () => {
     fetchServices();
   }, [category_id]);
 
+  const { t } = useTranslation();
+
   return (
     <Box className="mt-3">
       <Label className="font-poppins text-4xl font-bold">
-        {options.length > 0 && 'Why Choose Us'}
+        {options.length > 0 && t('whyChooseUs')}
       </Label>
       <Flex
         wrap={'wrap'}

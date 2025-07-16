@@ -3,6 +3,7 @@
 import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import React, { Suspense, useState } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 import loader from '@/assets/loader.svg';
 import { login } from '@/services/login';
 import { useSearchParams } from 'next/navigation';
@@ -15,6 +16,7 @@ import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 // import OTPForm from './components/OTPForm';
 
 const PasswordPage: React.FC = () => {
+  const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [forgotError, setForgotError] = useState<string | null>(null);
@@ -106,7 +108,7 @@ const PasswordPage: React.FC = () => {
                   alt="loader"
                 />
               ) : (
-                'Submit'
+                t('form.submit')
               )}
             </Button>
             {loginError && (

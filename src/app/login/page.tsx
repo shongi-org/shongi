@@ -1,3 +1,4 @@
+import { useTranslation } from '@/hooks/useTranslation';
 'use client';
 
 import { PhoneInput } from '@/components/PhoneInput';
@@ -16,6 +17,7 @@ import { sendOTP } from '@/services/sendOTP';
 // import greenTick from '@/app/assets/green_tick.png';
 
 export default function LoginPage() {
+  const { t } = useTranslation();
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -131,7 +133,7 @@ export default function LoginPage() {
                   alt="loader"
                 />
               ) : (
-                'Submit'
+                t('form.submit')
               )}
               {error && <>Server Error please try again</>}
             </Button>

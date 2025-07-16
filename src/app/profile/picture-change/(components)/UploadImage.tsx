@@ -1,4 +1,5 @@
-'use client';
+"use client";
+import { useTranslation } from '@/hooks/useTranslation';
 import React, { useState } from 'react';
 import {
   AiOutlinePlus,
@@ -21,6 +22,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
   onUploadImage,
   handleSkip,
 }) => {
+  const { t } = useTranslation();
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
   const [uploading, setUploading] = useState(false);
@@ -125,7 +127,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
           disabled={uploading}
           className={`mt-4 transition-all duration-300 ${uploading ? 'cursor-not-allowed opacity-50' : ''}`}
         >
-          {uploading ? 'Uploading...' : 'Submit'}
+          {uploading ? 'Uploading...' : t('form.submit')}
         </Button>
       )}
     </div>

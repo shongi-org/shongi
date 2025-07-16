@@ -5,6 +5,7 @@ import OTPInput from './OTPInput';
 import Button from '@/components/Button';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface OTPFormProps {
   onSubmit: (otp: string) => void;
@@ -12,6 +13,8 @@ interface OTPFormProps {
   error?: string;
   loading?: boolean;
 }
+
+const { t } = useTranslation();
 
 const OTPForm: React.FC<OTPFormProps> = ({
   onSubmit,
@@ -114,7 +117,7 @@ const OTPForm: React.FC<OTPFormProps> = ({
               alt="loader"
             />
           ) : (
-            <p>Submit</p>
+            <p>{t('form.submit')}</p>
           )}
           {error && <>Server Error please try again</>}
         </Button>

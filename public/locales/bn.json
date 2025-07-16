@@ -51,7 +51,8 @@
   "form": {
     "submit": "জমা দিন",
     "next": "পরবর্তী",
-    "additionalDetails": "বিস্তারিত তথ্য (যদি প্রয়োজন হয়)"
+    "additionalDetails": "বিস্তারিত তথ্য (যদি প্রয়োজন হয়)",
+    "patientDetails": "রোগীর তথ্য দিন"
   },
   "guest": {
     "moveOn": "অতিথি হিসাবে সেবা চাহিদা করুন"
@@ -87,5 +88,54 @@
     "ownCar": "নিজস্ব গাড়ি",
     "uptoAgent": "এজেন্ট এর নির্বাচন অনুযায়ী"
   },
-  "contactInfo": "মোবাইল নম্বর"
+  "contactInfo": "মোবাইল নম্বর",
+  "error": {
+    "server": "Faced a server error. Please refresh",
+    "searchFailed": "Failed to fetch search results. Please try again."
+  },
+  "loading": {
+    "fetchingOrder": "Fetching Order",
+    "fetchingMedicines": "Fetching Medicines",
+    "searching": "Searching..."
+  },
+  "medicine": {
+    "generic": "Generic",
+    "brand": "Brand",
+    "quantity": "Quantity",
+    "title": "Medicine",
+    "searchPlaceholder": "Search for Medicine and Medical Services",
+    "dosage": "Dosage",
+    "description": "Description",
+    "picture": "Medicine picture"
+  },
+  "order": {
+    "cancel": "Cancel Order",
+    "confirmCancel": "Are you sure you want to cancel this order?",
+    "seeRunning": "See Running Orders",
+    "title": "Orders",
+    "smsConfirmation": "You will get an SMS confirmation shortly"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "seeDetails": "See Details",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "search": "Search",
+    "taka": "Tk.",
+    "similarItems": "Similar Items",
+    "seeMore": "See More",
+    "serviceImage": "Service image",
+    "name": "নাম"
+  },
+  "pharmacy": {
+    "title": "Pharmacy"
+  },
+  "agent": {
+    "assigned": "Assigned Agent",
+    "phone": "Phone"
+  },
+  "patients": {
+    "title": "Patients"
+  }
 }

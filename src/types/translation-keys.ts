@@ -47,6 +47,7 @@ export type TranslationKey =
   | "form.submit"
   | "form.next"
   | "form.additionalDetails"
+  | "form.patientDetails"
   | "guest.moveOn"
   | "package.4Hour"
   | "package.6Hour"

@@ -26,49 +26,51 @@ import SelectComponent from '@/components/ui/select';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const options = [
-  {
-    label: 'Male',
-    value: 'male',
-  },
-  {
-    label: 'Female',
-    value: 'female',
-  },
-  {
-    label: 'Other',
-    value: 'other',
-  },
-];
 
-const transportOptions = [
-  {
-    label: 'UBER',
-    value: 'UBER',
-  },
-  {
-    label: 'I have a car',
-    value: 'Own_car',
-  },
-  {
-    label: 'CNG',
-    value: 'CNG',
-  },
-  {
-    label: 'Public Transport',
-    value: 'Public_transport',
-  },
-  {
-    label: 'Upto the Agent',
-    value: 'Agent_preference',
-  },
-];
 
 export default function SchedulePage() {
+  const { t } = useTranslation();
+
+  const options = [
+    {
+      label: t('gender.male'),
+      value: 'male',
+    },
+    {
+      label: t('gender.female'),
+      value: 'female',
+    },
+    {
+      label: t('gender.other'),
+      value: 'other',
+    },
+  ];
+
+  const transportOptions = [
+    {
+      label: t('transport.uber'),
+      value: 'UBER',
+    },
+    {
+      label: t('transport.ownCar'),
+      value: 'Own_car',
+    },
+    {
+      label: t('transport.cng'),
+      value: 'CNG',
+    },
+    {
+      label: t('transport.public'),
+      value: 'Public_transport',
+    },
+    {
+      label: t('transport.uptoAgent'),
+      value: 'Agent_preference',
+    },
+  ];
   const router = useRouter();
   const searchParams = useSearchParams();
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
 
   const duration = searchParams.get('duration');
   // const price = searchParams.get('price');
@@ -224,9 +226,9 @@ export default function SchedulePage() {
         <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg flex flex-col justify-evenly">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex flex-col items-center">
-              <label className="block text-lg font-medium text-gray-700 mb-2">
-                {t('appointment.selectDate')}
-              </label>
+                <label className="block text-lg font-medium text-gray-700 mb-2">
+                  {t('appointment.selectDate')}
+                </label>
               <DayPicker
                 mode="single"
                 selected={selectedDate}
@@ -241,7 +243,7 @@ export default function SchedulePage() {
               <>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Select a {duration && duration !== '0' ? duration : 'X'}-hour Time Frame
+                    {t('appointment.timeframe')}
                   </label>
                   <Select.Root
                     value={selectedStartTime}
@@ -251,7 +253,7 @@ export default function SchedulePage() {
                       className="w-full flex justify-between items-center px-4 py-2 border border-gray-300 rounded-lg h-14 text-xl bg-white"
                       aria-label="Start Time"
                     >
-                      <Select.Value placeholder="Select a start time" />
+                      <Select.Value placeholder={t('appointment.schedule') || 'Select a start time'} />
                       <Select.Icon>
                         <FiChevronDown />
                       </Select.Icon>
@@ -285,7 +287,7 @@ export default function SchedulePage() {
             {selectedStartTime && (
               <>
                 <div className="text-lg font-medium text-gray-800 mt-1">
-                  End Time: {getEndTime(selectedStartTime)}
+                  {t('appointment.endTime')}: {getEndTime(selectedStartTime)}
                 </div>
 
                 <Input
@@ -294,7 +296,7 @@ export default function SchedulePage() {
                   }
                   className="h-14 text-xl"
                   type="name"
-                  placeholder="Home Address"
+                  placeholder={t('address.home') || 'Home Address'}
                 />
                 <Input
                   onChange={(e: React.FormEvent<HTMLInputElement>) =>
@@ -302,20 +304,20 @@ export default function SchedulePage() {
                   }
                   className="h-14 text-xl"
                   type="textarea"
-                  placeholder="Hospital Address"
+                  placeholder={t('address.hospital') || 'Hospital Address'}
                 />
 
                 <SelectComponent
                   handleChange={(e) => setGender(e)}
                   options={filteredAgentGenderOptions}
                   value={gender}
-                  placeholder="Select Agent Gender"
+                  placeholder={t('gender.agentGender') || 'Select Agent Gender'}
                 />
 
                 <SelectComponent
                   handleChange={(e) => setTransport(e)}
                   options={transportOptions}
-                  placeholder="Select Transport Mode"
+                  placeholder={t('transport.selectMode') || 'Select Transport Mode'}
                 />
 
                 <Input
@@ -324,7 +326,7 @@ export default function SchedulePage() {
                   }
                   className="h-14 text-xl "
                   type="name"
-                  placeholder="Contact Info"
+                  placeholder={t('contactInfo') || 'Contact Info'}
                 />
                 <Input
                   onChange={(e: React.FormEvent<HTMLInputElement>) =>
@@ -332,7 +334,7 @@ export default function SchedulePage() {
                   }
                   className="h-14 text-xl "
                   type="name"
-                  placeholder="Additional Details"
+                  placeholder={t('form.additionalDetails') || 'Additional Details'}
                 />
                 {/* <div className="text-sm text-gray-500 mb-2 flex items-start">
                   <CiCircleInfo className="mr-1 text-lg" />
@@ -349,7 +351,7 @@ export default function SchedulePage() {
                 type="submit"
                 className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 mb-[10vh] text-xl"
               >
-                Schedule
+                {t('appointment.schedule')}
               </Button>
             </div>
           </form>

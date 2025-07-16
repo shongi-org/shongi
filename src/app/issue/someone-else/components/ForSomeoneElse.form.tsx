@@ -1,6 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/hooks/useTranslation';
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -10,21 +11,22 @@ import { DatePicker } from '@/components/Calendar';
 import SelectComponent from '@/components/ui/select';
 import { validateSomeoneElse } from '@/lib/utils/validateSomeoneElseForm';
 
-const options = [
-  {
-    label: 'Male',
-    value: 'male',
-  },
-  {
-    label: 'Female',
-    value: 'female',
-  },
-  {
-    label: 'Other',
-    value: 'other',
-  },
-];
 export default function LoginPage() {
+  const { t } = useTranslation();
+  const options = [
+    {
+      label: t('gender.male'),
+      value: 'male',
+    },
+    {
+      label: t('gender.female'),
+      value: 'female',
+    },
+    {
+      label: t('gender.other'),
+      value: 'other',
+    },
+  ];
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [error, setError] = useState('');
@@ -49,7 +51,9 @@ export default function LoginPage() {
       setError(() => validateSomeoneElse(name, dob as Date, gender));
     } else {
       router.push(
-        `/issue/docs/?service_id=${service_id}&service_name=${service_name}&for_someone=true&name=${name}&dob=${new Date(dob as Date).toISOString()}&gender=${gender}&price=${price}`,
+        `/issue/docs/?service_id=${service_id}&service_name=${service_name}&for_someone=true&name=${name}&dob=${new Date(
+          dob as Date,
+        ).toISOString()}&gender=${gender}&price=${price}`,
       );
     }
   }
@@ -59,7 +63,7 @@ export default function LoginPage() {
       <div className=" flex items-center justify-center bg-gray-100 pb-[40vh] pt-[20vh]">
         <div className="bg-white p-8 rounded-lg shadow-md w-96 ">
           <h1 className="text-2xl font-bold mb-6 text-center">
-            Enter Patient Details
+            {t('form.patientDetails')}
           </h1>
           <Input
             onChange={handleChange}
@@ -93,16 +97,16 @@ export default function LoginPage() {
           <SelectComponent
             handleChange={handleSelectChange}
             options={options}
-            placeholder="Select Gender"
+            placeholder={t('gender.select')}
           />
           <div>
             <label htmlFor="dob" className="sr-only">
-              Date of Birth
+              {t('dob')}
             </label>
             <DatePicker
               selectedDate={dob}
               onDateChange={setDob}
-              placeholder="Date of Birth"
+              placeholder={t('dob')}
             />
           </div>
           <div className="text-lg text-red-700 font-bold">{error}</div>

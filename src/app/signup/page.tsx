@@ -14,23 +14,27 @@ import { setIsLoggedIn } from '@/lib/features/auth/isLoggedIn';
 import Image from 'next/image';
 import loader from '@/assets/loader.svg';
 import { createAppointment } from '@/services/createAppointment';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const options = [
-  {
-    label: 'Male',
-    value: 'male',
-  },
-  {
-    label: 'Female',
-    value: 'female',
-  },
-  {
-    label: 'Other',
-    value: 'other',
-  },
-];
+
 
 export default function SignupPage() {
+  const { t } = useTranslation();
+  const options = [
+    {
+      label: t('gender.male'),
+      value: 'male',
+    },
+    {
+      label: t('gender.female'),
+      value: 'female',
+    },
+    {
+      label: t('gender.other'),
+      value: 'other',
+    },
+  ];
+
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [dob, setDob] = useState<Date | undefined>(undefined);
@@ -119,17 +123,17 @@ export default function SignupPage() {
               <SelectComponent
                 handleChange={(e) => setGender(e)}
                 options={options}
-                placeholder="Select Gender"
+                placeholder={t('gender.select')}
               />
               <div>
                 <label htmlFor="dob" className="sr-only">
-                  Date of Birth
+                  {t('dob')}
                 </label>
                 <DatePicker
                   selectedDate={dob}
                   onDateChange={setDob}
                   allowPastDates={true}
-                  placeholder="Select Date of Birth"
+                  placeholder={t('dob')}
                 />
               </div>
             </div>
