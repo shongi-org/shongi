@@ -8,15 +8,18 @@ import { useAppSelector } from '@/lib/hooks';
 
 import { IAppointment } from '@/interfaces/IAppointment';
 import { useSearchParams } from 'next/navigation';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type AppointmentDetailsProps = {
   children?: string;
 };
 
+
 const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
   const appointment: IAppointment = useAppSelector(
     (state) => state.appointment,
   );
+  const { t } = useTranslation();
 
   const searchParams = useSearchParams();
 
@@ -70,7 +73,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
                 ).toLocaleDateString('en-GB')}{' '}
               </p>
               <p className="font-poppins">
-                <span className="font-bold text-gray-500"> Timeframe </span>{' '}
+                <span className="font-bold text-gray-500"> {t('appointment.timeframe')} </span>{' '}
                 {appointment.startTime} - {appointment.endTime}
               </p>
             </div>
@@ -81,7 +84,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
       <Box className="mt-5 mb-5">
         <Flex justify={'between'} className="mb-2">
           {' '}
-          <p className="font-poppins font-bold text-gray-400">Summary</p>
+          <p className="font-poppins font-bold text-gray-400">{t('cart.summary')}</p>
           <p className="font-poppins font-bold ">
             {appointment.price}
             Tk
@@ -93,7 +96,7 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
           className="border-b-2 border-black border-dotted pb-5"
         >
           {' '}
-          <p className="font-poppins font-bold text-gray-400">Platform fee</p>
+          <p className="font-poppins font-bold text-gray-400">{t('payment.platformFee')}</p>
           <p className="font-poppins font-bold">{30}Tk</p>
         </Flex>
         <Flex
@@ -101,21 +104,21 @@ const AppointmentDetails: React.FC<AppointmentDetailsProps> = () => {
           className="border-b-2 border-black border-dotted pb-5"
         >
           {' '}
-          <p className="font-poppins font-bold text-gray-400">Vat (15%)</p>
+          <p className="font-poppins font-bold text-gray-400">{t('payment.vat')} (15%)</p>
           <p className="font-poppins font-bold">
             {(appointment.price as number) * 0.15}
             Tk
           </p>
         </Flex>
         <Flex justify={'between'} className="mt-5">
-          <p className="font-poppins font-bold text-gray-400">Pay Now</p>
+          <p className="font-poppins font-bold text-gray-400">{t('payment.payNow')}</p>
           <p className="font-poppins font-bold">
             {payNow.toFixed(2)} Tk
           </p>
         </Flex>
         <Flex justify={'between'} className="mt-5">
           <p className="font-poppins font-bold text-gray-400">
-            Pay After Service
+            {t('payment.payAfterService')}
           </p>
           <p className="font-poppins font-bold">
             {payAfter.toFixed(2)} Tk

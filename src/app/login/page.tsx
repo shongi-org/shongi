@@ -106,16 +106,16 @@ export default function LoginPage() {
                 alt="loader"
               />
             ) : (
-              'Move on as Guest'
+              t('guest.moveOn')
             )}
             {error && <>Server Error please try again</>}
           </Button>
 
           <h1 className="text-2xl font-bold mb-6 text-center">
             <br />
-            Or <br />
+            {t('or')} <br />
             <br />
-            Enter Phone Number
+            {t('auth.loginPhone')}
           </h1>
           <PhoneInput handleChange={handleChange} value={phoneNumber} />
           <div>{error}</div>

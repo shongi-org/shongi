@@ -2,14 +2,16 @@
 import { useAppSelector } from '@/lib/hooks';
 import { Box, Flex } from '@radix-ui/themes';
 import React, { ReactNode } from 'react';
+import { useTranslation } from '@/hooks/useTranslation';
 
 type SelectAreaOrderProps = {
   children?: ReactNode;
 };
 
+
 // const data: IArea[] = [
-//   {
-//     _id: 1,
+  //   {
+    //     _id: 1,
 //     label: 'Dhanmondi',
 //     details: 'H57/1, R12/A, Dhanmondi',
 //   },
@@ -22,10 +24,11 @@ type SelectAreaOrderProps = {
 
 const Area: React.FC<SelectAreaOrderProps> = () => {
   const appointment = useAppSelector((state) => state.appointment);
+  const { t } = useTranslation();
 
   return (
     <div className="mt-4 font-poppins">
-      <p className="text-xl mb-5 font-bold">Addresses</p>
+      <p className="text-xl mb-5 font-bold">{t('address.addresses')}</p>
       <Box className="w-full">
         {/* {data.map((item) => (
           <Flex

@@ -6,8 +6,11 @@ import Topbar from '@/components/Topbar';
 // import { useRouter } from 'next/navigation';
 import { ReactNode, Suspense } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
+import { useTranslation } from '@/hooks/useTranslation';
+
 
 export default function Layout({ children }: { children: ReactNode }) {
+  const { t } = useTranslation();
   //   const router = useRouter();
 
   // const [orderSuccessful, setOrderSuccessful] = useState<string>('');
@@ -28,7 +31,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className="lg:w-[70vw] lg:ml-[25vw] lg:mt-[50px]">
             <div className="relative flex flex-col items-center">
               <Topbar
-                title="Order Success"
+                title={t('cart.orderSuccess')}
                 leftIcon={<IoIosArrowBack fontSize={'24px'} />}
               ></Topbar>
               <>{children}</>

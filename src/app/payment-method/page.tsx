@@ -15,55 +15,61 @@ import { IoIosArrowBack } from 'react-icons/io';
 import SelectComponent from '@/components/ui/select';
 import { useAppDispatch } from '@/lib/hooks';
 import { setAppointment } from '@/lib/features/appointment/appointmentDetails';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const paymentAmountOptions = [
-  // {
-  //   label: 'Pay Full',
-  //   value: '100%',
-  // },
-  // {
-  //   label: 'Pay 30%',
-  //   value: '30%',
-  // },
-  {
-    label: 'Pay After Service',
-    value: '0%',
-  },
-];
 
-const paymentOptions = [
-  {
-    label: 'Bkash',
-    value: 'bkash',
-  },
-  {
-    label: 'Nagad',
-    value: 'nagad',
-  },
-  {
-    label: 'Card',
-    value: 'card',
-  },
-  {
-    label: 'Cash',
-    value: 'cash',
-  },
-];
-
-// Add this for conditional cash-only option
-const cashOnlyOption = [
-  {
-    label: 'Cash',
-    value: 'cash',
-  },
-];
 
 export default function SchedulePage() {
+  const { t } = useTranslation();
+
+  const paymentAmountOptions = [
+    // {
+    //   label: t('payment.payFull'),
+    //   value: '100%',
+    // },
+    // {
+    //   label: t('payment.pay30'),
+    //   value: '30%',
+    // },
+    {
+      label: t('payment.payAfterService'),
+      value: '0%',
+    },
+  ];
+
+  const paymentOptions = [
+    {
+      label: t('payment.methods.bkash'),
+      value: 'bkash',
+    },
+    {
+      label: t('payment.methods.nagad'),
+      value: 'nagad',
+    },
+    {
+      label: t('payment.methods.card'),
+      value: 'card',
+    },
+    {
+      label: t('payment.methods.cash'),
+      value: 'cash',
+    },
+  ];
+
+  // Add this for conditional cash-only option
+  const cashOnlyOption = [
+    {
+      label: t('payment.methods.cash'),
+      value: 'cash',
+    },
+  ];
+
   const router = useRouter();
 
   const [paymentAmount, setPaymentAmount] = useState<string>();
   const [paymentMethod, setPaymentMethod] = useState<string>('');
   const dispatch = useAppDispatch();
+
 
   // const appointment = useAppSelector((state) => state.appointment);
 
@@ -86,6 +92,8 @@ export default function SchedulePage() {
     );
   };
 
+
+
   return (
     <>
       <Topbar
@@ -101,7 +109,7 @@ export default function SchedulePage() {
             <SelectComponent
               handleChange={(e) => setPaymentAmount(e)}
               options={paymentAmountOptions}
-              placeholder="Select Amount"
+              placeholder={t('amount')}
             />
 
             <SelectComponent
@@ -110,8 +118,8 @@ export default function SchedulePage() {
                 paymentAmount === '0%'
                   ? cashOnlyOption
                   : paymentAmount === '100%' || paymentAmount === '30%'
-                  ? paymentOptions.filter((opt) => opt.value !== 'cash')
-                  : paymentOptions
+                    ? paymentOptions.filter((opt) => opt.value !== 'cash')
+                    : paymentOptions
               }
               placeholder="Select Payment Method"
             />
