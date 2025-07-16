@@ -61,7 +61,7 @@ const Area: React.FC<SelectAreaOrderProps> = () => {
           align={'start'}
           className={` border-[#283b77]  border-2 p-2 rounded-md mb-2 shadow-md`}
         >
-          <p className="">Service Point Address</p>
+          <p className="">{t('address.servicePoint')}</p>
           <p className="">{appointment.servicePointAddress}</p>
         </Flex>
       </Box>
