@@ -51,7 +51,7 @@ const Area: React.FC<SelectAreaOrderProps> = () => {
           align={'start'}
           className={` border-gray-400 border-2 p-2 rounded-md mb-2 shadow-md`}
         >
-          <p className="">Home Address</p>
+          <p className="">{t('address.home')}</p>
           <p className="">{appointment.homeAddress}</p>
         </Flex>
         <Flex

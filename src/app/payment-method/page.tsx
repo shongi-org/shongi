@@ -97,13 +97,13 @@ export default function SchedulePage() {
   return (
     <>
       <Topbar
-        title="Payment Options"
+        title={t('payment.option')}
         leftIcon={<IoIosArrowBack fontSize={'24px'} />}
       />
       <div className="min-h-[90vh] lg:min-h-[70vh] flex items-center justify-center bg-gray-50">
         <div className="max-w-sm w-full p-6 bg-white rounded-xl shadow-lg flex flex-col justify-evenly">
           <p className="font-poppins text-2xl text-center m-4 font-bold">
-            Choose payment options
+            {t('payment.chooseOption')}
           </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             <SelectComponent
@@ -121,7 +121,7 @@ export default function SchedulePage() {
                     ? paymentOptions.filter((opt) => opt.value !== 'cash')
                     : paymentOptions
               }
-              placeholder="Select Payment Method"
+              placeholder={t('payment.method')}
             />
 
             <div>
@@ -130,7 +130,7 @@ export default function SchedulePage() {
                 className="w-full py-3 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 mb-[10vh] text-xl"
                 onClick={handleSubmit}
               >
-                Next
+                {t('form.next')}
               </Button>
             </div>
           </form>

@@ -101,9 +101,9 @@ export type TranslationKey =
   | "common.similarItems"
   | "common.seeMore"
   | "common.serviceImage"
+  | "common.name"
   | "pharmacy.title"
   | "agent.assigned"
-  | "agent.name"
   | "agent.phone"
   | "patients.title";
 

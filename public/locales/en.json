@@ -72,7 +72,7 @@
     "agentGender": "Select agent gender"
   },
   "address": {
-    "home": "Home address",
+    "home": "Home Address",
     "hospital": "Hospital Address",
     "servicePoint": "Service point Address",
     "addresses": "Addresses"
@@ -126,14 +126,14 @@
     "taka": "Tk.",
     "similarItems": "Similar Items",
     "seeMore": "See More",
-    "serviceImage": "Service image"
+    "serviceImage": "Service image",
+    "name": "Name"
   },
   "pharmacy": {
     "title": "Pharmacy"
   },
   "agent": {
     "assigned": "Assigned Agent",
-    "name": "Name",
     "phone": "Phone"
   },
   "patients": {

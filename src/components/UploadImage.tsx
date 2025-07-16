@@ -59,7 +59,7 @@ const UploadImage: React.FC<UploadImageProps> = ({
       });
 
       const responses = await Promise.all(uploadPromises);
-      await onUploadImage(responses.map((response: any) => response.data.url));
+      await onUploadImage(responses.map((response: { data: { url: string } }) => response.data.url));
 
       setUploading(false);
       setSelectedFiles([]);

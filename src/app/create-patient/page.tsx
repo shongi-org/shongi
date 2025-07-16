@@ -126,7 +126,7 @@ export default function CreatePatientPage() {
       <div className="pt-[10vh] h-[200vh] flex items-start justify-center bg-gray-100">
         <div className="max-w-md w-[95vw] space-y-8 p-8 bg-white rounded-xl shadow-lg">
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900 text-center">
-            Patient Details
+            {t('form.patientDetails')}
           </h2>
 
           {/* Show patient list only for logged in users - prevent hydration mismatch */}
@@ -136,13 +136,13 @@ export default function CreatePatientPage() {
                 Select Existing Patient
               </h3>
 
-              <PatientList 
+              <PatientList
                 onPatientSelect={handlePatientSelect}
                 showSelectButton={true}
                 selectedPatientId={selectedPatient?._id}
                 className="max-h-40 overflow-y-auto border rounded-lg p-2"
               />
-              
+
               <hr className="my-4" />
             </div>
           )}
@@ -157,7 +157,7 @@ export default function CreatePatientPage() {
                 value={name}
                 className="h-14 text-xl"
                 type="text"
-                placeholder="Patient Name"
+                placeholder={t('common.name')}
                 required
               />
               <SelectComponent

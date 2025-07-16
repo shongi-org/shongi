@@ -14,7 +14,7 @@ interface OTPFormProps {
   loading?: boolean;
 }
 
-const { t } = useTranslation();
+
 
 const OTPForm: React.FC<OTPFormProps> = ({
   onSubmit,
@@ -24,6 +24,8 @@ const OTPForm: React.FC<OTPFormProps> = ({
 }) => {
   const [otp, setOtp] = useState<string[]>(Array(length).fill(''));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     inputRefs.current[0]?.focus();

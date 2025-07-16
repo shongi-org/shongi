@@ -1,5 +1,5 @@
-import { useTranslation } from '@/hooks/useTranslation';
 'use client';
+import { useTranslation } from '@/hooks/useTranslation';
 
 import { PhoneInput } from '@/components/PhoneInput';
 import { Button } from '@/components/ui/button';

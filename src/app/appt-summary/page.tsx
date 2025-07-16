@@ -1,14 +1,14 @@
+'use client';
 import OrderItemList from '@/components/OrderItemList';
 import SelectAreaOrder from '@/components/SelectAreaOrder';
 import { Box } from '@radix-ui/themes';
 import React from 'react';
 import { useTranslation } from '@/hooks/useTranslation';
 
-type pageProps = object;
+type PageProps = object;
 
-const { t } = useTranslation();
-
-const page: React.FC<pageProps> = () => {
+const Page: React.FC<PageProps> = () => {
+  const { t } = useTranslation();
   
   return (
     <div className="p-[2vw] relative h-screen">
@@ -23,4 +23,4 @@ const page: React.FC<pageProps> = () => {
     </div>
   );
 };
-export default page;
+export default Page;
