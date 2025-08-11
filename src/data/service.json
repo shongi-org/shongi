@@ -3,24 +3,28 @@
     {
       "id": 1,
       "subserviceName": "Very prompt and Reliable Service",
+      "subserviceName_bn": "খুব দ্রুত এবং নির্ভরযোগ্য সেবা",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380e9"
     },
     {
       "id": 2,
       "subserviceName": "Very prompt and Reliable Service",
+      "subserviceName_bn": "খুব দ্রুত এবং নির্ভরযোগ্য সেবা",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380ea"
     },
     {
       "id": 3,
       "subserviceName": "Very prompt and Reliable Service",
+      "subserviceName_bn": "খুব দ্রুত এবং নির্ভরযোগ্য সেবা",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380f8"
     },
     {
       "id": 4,
       "subserviceName": "Very prompt and Reliable Service",
+      "subserviceName_bn": "খুব দ্রুত এবং নির্ভরযোগ্য সেবা",
       "image": "https://res.cloudinary.com/dgayarw1f/image/upload/v1730292455/pzmgg0mw21uvza1btsgm.png",
       "url": "67a28c419899c8d0d83380f9"
     }
@@ -29,27 +33,37 @@
     {
       "id": 1,
       "subserviceName": "What is Shongi Service?",
-      "description": "Shongi is a personalized service designed to assist patients or clients by providing a Shongi agent who will accompany them from home to the hospital or clinic and back home safely. The service ensures a smooth and secure journey for both patients and their families."
+      "subserviceName_bn": "শঙ্গী সেবা কী?",
+      "description": "Shongi is a personalized service designed to assist patients or clients by providing a Shongi agent who will accompany them from home to the hospital or clinic and back home safely. The service ensures a smooth and secure journey for both patients and their families.",
+      "description_bn": "শঙ্গী একটি ব্যক্তিগতকৃত সেবা যা রোগী বা ক্লায়েন্টদের সহায়তা করার জন্য ডিজাইন করা হয়েছে। এটি একটি শঙ্গী এজেন্ট প্রদান করে যারা তাদের বাড়ি থেকে হাসপাতাল বা ক্লিনিকে এবং নিরাপদে বাড়ি ফিরে আসার জন্য তাদের সাথে থাকবে। এই সেবা রোগী এবং তাদের পরিবারের জন্য একটি মসৃণ এবং নিরাপদ যাত্রা নিশ্চিত করে।"
     },
     {
       "id": 2,
       "subserviceName": "Why should I opt for Shongi Service?",
-      "description": "If you or a loved one need assistance traveling to and from a hospital or clinic, or if you require someone to bring medicine, test results, or visit a patient, Shongi service is the ideal solution. It saves you time and ensures your loved ones are well taken care of during their hospital visits."
+      "subserviceName_bn": "আমি কেন শঙ্গী সেবা গ্রহণ করব?",
+      "description": "If you or a loved one need assistance traveling to and from a hospital or clinic, or if you require someone to bring medicine, test results, or visit a patient, Shongi service is the ideal solution. It saves you time and ensures your loved ones are well taken care of during their hospital visits.",
+      "description_bn": "যদি আপনি বা আপনার প্রিয়জনকে হাসপাতাল বা ক্লিনিকে যাতায়াতের জন্য সহায়তা প্রয়োজন হয়, অথবা যদি আপনাকে ওষুধ, পরীক্ষার ফলাফল আনতে বা রোগীকে দেখতে কাউকে প্রয়োজন হয়, তাহলে শঙ্গী সেবা আদর্শ সমাধান। এটি আপনার সময় বাঁচায় এবং নিশ্চিত করে যে আপনার প্রিয়জনরা তাদের হাসপাতাল ভ্রমণের সময় ভালভাবে যত্ন নেওয়া হয়।"
     },
     {
       "id": 3,
       "subserviceName": "How do I book Shongi Service?",
-      "description": "You can book the service by registering on our website or as a guest. Simply specify the required duration and pay 30% of the booking amount to confirm your reservation."
+      "subserviceName_bn": "আমি কীভাবে শঙ্গী সেবা বুক করব?",
+      "description": "You can book the service by registering on our website or as a guest. Simply specify the required duration and pay 30% of the booking amount to confirm your reservation.",
+      "description_bn": "আপনি আমাদের ওয়েবসাইটে নিবন্ধন করে বা অতিথি হিসাবে সেবা বুক করতে পারেন। প্রয়োজনীয় সময়কাল নির্দিষ্ট করুন এবং আপনার সংরক্ষণ নিশ্চিত করতে বুকিং পরিমাণের ৩০% প্রদান করুন।"
     },
     {
       "id": 4,
       "subserviceName": "How will I know that my Shongi Agent is assigned?",
-      "description": "Once you’ve made the payment, you will receive a confirmation via SMS or email. You can also check your profile, where the booking status will be updated, including details of the assigned agent, such as their photo, contact number, and agent ID."
+      "subserviceName_bn": "আমি কীভাবে জানব যে আমার শঙ্গী এজেন্ট নির্ধারিত হয়েছে?",
+      "description": "Once you’ve made the payment, you will receive a confirmation via SMS or email. You can also check your profile, where the booking status will be updated, including details of the assigned agent, such as their photo, contact number, and agent ID.",
+      "description_bn": "আপনি পেমেন্ট করার পরে, আপনি এসএমএস বা ইমেলের মাধ্যমে একটি নিশ্চিতকরণ পাবেন। আপনি আপনার প্রোফাইলও চেক করতে পারেন, যেখানে বুকিং স্ট্যাটাস আপডেট করা হবে, নির্ধারিত এজেন্টের বিবরণ সহ, যেমন তাদের ছবি, যোগাযোগ নম্বর এবং এজেন্ট আইডি।"
     },
     {
       "id": 5,
       "subserviceName": "Will I receive a refund if I cancel the service?",
-      "description": "Yes, if you cancel the service at least two hours before the scheduled start time, you will receive a full refund. Cancellations made within two hours of the scheduled service time will not be refunded."
+      "subserviceName_bn": "আমি যদি সেবা বাতিল করি তাহলে কি রিফান্ড পাব?",
+      "description": "Yes, if you cancel the service at least two hours before the scheduled start time, you will receive a full refund. Cancellations made within two hours of the scheduled service time will not be refunded.",
+      "description_bn": "হ্যাঁ, আপনি যদি নির্ধারিত শুরুর সময়ের কমপক্ষে দুই ঘন্টা আগে সেবা বাতিল করেন, তাহলে আপনি সম্পূর্ণ রিফান্ড পাবেন। নির্ধারিত সেবা সময়ের দুই ঘন্টার মধ্যে করা বাতিলগুলি রিফান্ড করা হবে না।"
     }
   ]
 }

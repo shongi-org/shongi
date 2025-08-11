@@ -1,6 +1,7 @@
 import { Box, Flex, Text } from '@radix-ui/themes';
 import React from 'react';
 import * as subServiceList from '@/data/service.json';
+import { useTranslation } from '@/hooks/useTranslation';
 // import { ISubservice } from '@/interfaces/ISubservice';
 // import Link from 'next/link';
 // import { Url } from 'next/dist/shared/lib/router/router';
@@ -13,7 +14,9 @@ type ServiceSliderProps = {
 type Service = {
   id: number;
   subserviceName: string;
+  subserviceName_bn?: string;
   description?: string;
+  description_bn?: string;
   image?: string;
   url?: string;
 };
@@ -25,6 +28,7 @@ type feed = {
 
 const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
   const data: feed = subServiceList;
+  const { language } = useTranslation();
 
   return (
     <Flex
@@ -63,15 +67,21 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
                   weight={'bold'}
                   className="text-black text-lg font-poppins w-full"
                 >
-                  {service.subserviceName}
+                  {language === 'bn'
+                    ? service.subserviceName_bn || service.subserviceName
+                    : service.subserviceName}
                 </Text>
-                <Text
-                  as="p"
-                  weight={'bold'}
-                  className="text-black text-sm font-poppins w-full"
-                >
-                  {service.description}
-                </Text>
+                { (service.description || service.description_bn) && (
+                  <Text
+                    as="p"
+                    weight={'bold'}
+                    className="text-black text-sm font-poppins w-full"
+                  >
+                    {language === 'bn'
+                      ? service.description_bn || service.description
+                      : service.description}
+                  </Text>
+                )}
                 {/* <Button className="w-1/3 rounded-full">+</Button> */}
               </Flex>
             </Flex>
