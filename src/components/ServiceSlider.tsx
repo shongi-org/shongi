@@ -30,7 +30,7 @@ const ServiceSlider: React.FC<ServiceSliderProps> = ({ serviceSlug }) => {
     <Flex
       justify={'start'}
       align={'start'}
-      className="w-[70vw] overflow-x-scroll no-scrollbar mt-3 h-full"
+      className="overflow-x-scroll no-scrollbar mt-3 h-full"
     >
       {data[serviceSlug as keyof feed] &&
         data[serviceSlug as keyof feed].slice(0, 4).map((service: Service) => (
