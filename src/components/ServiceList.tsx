@@ -15,7 +15,9 @@ type IServiceListProps = {
 type IService = {
   _id: number;
   icon: string;
+  icon_bn?: string;
   name: string;
+  name_bn?: string;
   decription: string;
   price?: string;
   children?: IService[];
@@ -41,7 +43,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
     }
     fetchServices();
   }, []);
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
 
   return (
     <Box className="w-full sm:w-1/3 lg:w-[70vw] mt-3">
@@ -88,7 +90,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
                   align={'center'}
                   className="w-full lg:h-[11vw] h-[30vw] text-4xl lg:text-8xl text-center m-0 auto align-middle font-bold border-solid border-4 border-[#283891] text-indigo-900 rounded-2xl"
                 >
-                  <p>{service.icon}</p>
+                  <p>{language === 'bn' && service.icon_bn ? service.icon_bn : service.icon}</p>  
                 </Flex>
                 <Flex
                   justify={'center'}
@@ -98,7 +100,7 @@ const ServiceList: React.FC<IServiceListProps> = () => {
                     as="p"
                     className="text-black lg:text-2xl text-xl font-poppins text-center"
                   >
-                    {service.name}
+                    {language === 'bn' && service.name_bn ? service.name_bn : service.name}
                   </Text>
                 </Flex>
               </Flex>
